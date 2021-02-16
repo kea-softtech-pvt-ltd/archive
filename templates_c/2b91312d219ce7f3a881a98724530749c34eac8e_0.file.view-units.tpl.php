@@ -1,0 +1,146 @@
+<?php
+/* Smarty version 3.1.29, created on 2021-02-12 12:54:29
+  from "C:\xampp\htdocs\archive\default\templates\administrator\units\view-units.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_60262d2d107f45_07539693',
+  'file_dependency' => 
+  array (
+    '2b91312d219ce7f3a881a98724530749c34eac8e' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\units\\view-units.tpl',
+      1 => 1613114664,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:administrator/common/header.tpl' => 1,
+    'file:administrator/common/sidebar.tpl' => 1,
+    'file:administrator/common/top-bar.tpl' => 1,
+    'file:administrator/common/footer.tpl' => 1,
+    'file:administrator/common/scripts.tpl' => 1,
+  ),
+),false)) {
+function content_60262d2d107f45_07539693 ($_smarty_tpl) {
+?>
+ <!doctype html>
+<html>
+	<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
+		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+			
+		<div class="content-wrapper">
+		<form name="addUnitsForm"  action="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/units/view" method="post" enctype="multipart/form-data">
+		<input type="hidden"name="id" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['id'];?>
+">
+			<div class="container-fluid">
+				<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/top-bar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+			<!-- Breadcrumbs-->
+				
+					<div class="box_general padding_bottom">
+						<div class="header_box version_2">
+							<h2><i class="fa fa-eye"></i>view Units Information</h2>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Units name</label>
+									<input type="text" class="form-control" name="name" placeholder="Units name type" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['type'];?>
+" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Title</label>
+									<input type="text" class="form-control" name="title" placeholder="Unit title name" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['title'];?>
+" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Size</label>
+									<input type="text" class="form-control" name="size" placeholder="Enter Size" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['size'];?>
+" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Price</label>
+									<input type="text" class="form-control" name="price" placeholder="Enter Price" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['price'];?>
+" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Carpet area</label>
+									<input type="text" class="form-control" name="carpet_area" placeholder="Enter carpet area" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['carpet_area'];?>
+" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Builtup area</label>
+									<input type="text" class="form-control" name="built_area" placeholder="Enter carpet area" value="<?php echo $_smarty_tpl->tpl_vars['unitsuserArray']->value['built_area'];?>
+" required>
+								</div>
+							</div>
+						</div>
+				
+					</div>
+					<!-- /box_general-->
+					
+					<div class="box_general padding_bottom">
+						<div class="header_box version_2">
+							<h2><i class="fa fa-picture-o"></i>Images</h2>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>images</label>
+									<input class="form-control" type="file" id="image" name="image[]" value="" multiple>
+									<form action="/file-upload" class="dropzone" ></form>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>2d plan images</label>
+									<input class="form-control" type="file" id="2d_plan" name="2d_plan[]" value="" multiple>
+									<form action="/file-upload" class="dropzone" ></form>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>3d Images</label>
+									<input class="form-control" type="file" id="3d_plan" name="3d_plan[]" value="" multiple>
+								</div>
+							</div>
+						</div>
+						<!-- /row-->
+
+					</div>
+					<!-- /box_general-->
+					
+				</form>
+			</div>
+	  <!-- /.container-fluid-->
+   		</div>
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/scripts.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+	
+</body>
+</html><?php }
+}

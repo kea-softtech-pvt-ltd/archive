@@ -1,0 +1,66 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+<IfModule mod_headers.c>    
+  Header add Access-Control-Allow-Origin "*" 
+</IfModule>
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+RewriteRule    ^privacy/?$    default/source/workflow/privacy/privacy.php
+RewriteRule    ^terms/?$    default/source/workflow/terms/terms.php
+
+RewriteRule    ^doctor/?$    default/source/workflow/doctor/doctor.php
+RewriteRule    ^doctor/([^/]+)/([^/]+)/?$    default/source/workflow/doctor/doctor-list.php?categoryId=$2
+RewriteRule    ^doctor-details/([^/]+)/([^/]+)/?$    default/source/workflow/doctor/doctor-details.php?doctorId=$2
+RewriteRule    ^booking/?$    default/source/workflow/booking/booking.php
+RewriteRule    ^booking/confirm/?$    default/source/workflow/booking/confirm.php
+RewriteRule    ^login/?$    default/source/workflow/login/login.php
+RewriteRule    ^register/?$    default/source/workflow/login/register.php
+RewriteRule    ^contact/?$    default/source/workflow/contact/contact-us.php
+RewriteRule    ^add-contact/?$    default/source/workflow/contact/add-contact.php
+
+
+RewriteRule    ^admin/?$    administrator/source/index.php
+RewriteRule    ^admin/users?$    administrator/source/users/users.php
+RewriteRule    ^admin/login?$    administrator/source/login/login.php
+RewriteRule    ^admin/logout?$    administrator/source/login/logout.php
+RewriteRule    ^admin/dashboard?$    administrator/source/dashboard/dashboard.php
+RewriteRule    ^admin/builder?$    administrator/source/builder/builder.php
+RewriteRule    ^admin/builder/add?$    administrator/source/builder/add-builder.php
+RewriteRule    ^admin/builder/edit?$   administrator/source/builder/edit-builder.php
+RewriteRule    ^admin/builder/view?$   administrator/source/builder/view-builder.php
+RewriteRule    ^admin/builder/delete?$   administrator/source/builder/delete-builder.php
+RewriteRule    ^admin/properties?$    administrator/source/properties/properties.php
+RewriteRule    ^admin/properties/add?$    administrator/source/properties/add-properties.php
+RewriteRule    ^admin/customers?$    administrator/source/customers/customers.php
+RewriteRule    ^admin/customers/add?$    administrator/source/customers/add-customer.php
+RewriteRule    ^admin/amenities?$     administrator/source/amenities/amenities.php
+RewriteRule    ^admin/amenities/add?$ administrator/source/amenities/add-amenities.php
+RewriteRule    ^admin/amenities/edit?$ administrator/source/amenities/edit-amenities.php
+RewriteRule    ^admin/amenities/delete?$ administrator/source/amenities/delete-amenities.php
+RewriteRule    ^admin/amenities/view?$ administrator/source/amenities/view-amenities.php
+RewriteRule    ^admin/units?$     administrator/source/units/units.php
+RewriteRule    ^admin/units/add?$ administrator/source/units/add-units.php
+RewriteRule    ^admin/units/edit?$ administrator/source/units/edit-units.php
+RewriteRule    ^admin/units/delete?$ administrator/source/units/delete-units.php
+RewriteRule    ^admin/units/view?$ administrator/source/units/view-units.php
+
+
+RewriteRule    ^builder/?$    buildermodule/source/index.php
+RewriteRule    ^builder/login?$    buildermodule/source/login/login.php
+RewriteRule    ^builder/logout?$    buildermodule/source/login/logout.php
+RewriteRule    ^builder/dashboard?$    buildermodule/source/dashboard/dashboard.php
+RewriteRule    ^builder/properties?$    buildermodule/source/properties/properties.php
+
+
+
+
+
+
+
+
+
+
+
