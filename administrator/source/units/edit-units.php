@@ -24,7 +24,7 @@
 		$unitsArray['modified_at'] = date('Y/m/d H:i:s');
 		$unitsArray['status'] = 1;
 		$unitsId = $unitsObj->editUserValueById($unitsArray,$_POST['id']);
-		header("Location: " . SITE_URL . "admin/units");
+		header("Location: " . SITE_URL . "/admin/units");
 	}
 
 	$smarty->assign('moduleName', 'edit units');

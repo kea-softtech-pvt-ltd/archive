@@ -5,5 +5,5 @@
     $amenitiesObj = new Model_Amenities();
 	$amenitiesArray['status'] = 0;
 	$builderuserArray = $amenitiesObj->deleteUserValueById($amenitiesArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "admin/amenities");
+	header("Location: " . SITE_URL . "/admin/amenities");
 ?>

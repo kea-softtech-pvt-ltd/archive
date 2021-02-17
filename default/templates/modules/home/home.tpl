@@ -177,7 +177,7 @@
 					</div>
 					<div class="col-md-6">
 						<small>Application</small>
-						<h3>Download <strong>Findoctor App</strong> Now!</h3>
+						<h3>Download <strong>Flats ON Discount App</strong> Now!</h3>
 						<p class="lead">Tota omittantur necessitatibus mei ei. Quo paulo perfecto eu, errem percipit ponderum no eos. Has eu mazim sensibus. Ad nonumes dissentiunt qui, ei menandri electram eos. Nam iisque consequuntur cu.</p>
 						<div class="app_buttons wow" data-wow-offset="100">
 							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 43.1 85.9" style="enable-background:new 0 0 43.1 85.9;" xml:space="preserve">

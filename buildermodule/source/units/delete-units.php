@@ -5,5 +5,5 @@
     $unitsObj = new Model_Units();
 	$unitsArray['status'] = 0;
 	$unitsuserArray = $unitsObj->deleteUserValueById($unitsArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "admin/units");
+	header("Location: " . SITE_URL . "/admin/units");
 ?>

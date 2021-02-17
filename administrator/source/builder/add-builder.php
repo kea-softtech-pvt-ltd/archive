@@ -57,7 +57,7 @@ if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '')
 		//$builderArray['avatar'] = '';
 		$builderArray['properties'] = '';
 		$builderId = $builderObj->addBuilderByValue($builderArray);
-		header("Location: " . SITE_URL . "admin/builder");
+		header("Location: " . SITE_URL . "/admin/builder");
 	}
 
 	$smarty->assign('moduleName', 'Add builder');

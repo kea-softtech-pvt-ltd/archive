@@ -1,7 +1,8 @@
 <?php
     if($_SESSION['isLoggedIn']) {
-		header("Location: " . SITE_URL . "admin/dashboard");
+		header("Location: " . SITE_URL . "/admin/dashboard");
 	} else {
-		header("Location: " . SITE_URL . "admin/login");
+		echo "php else";
+		header("Location: " . SITE_URL . "/admin/login");
 	}
 ?>

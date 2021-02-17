@@ -12,7 +12,7 @@
 		$propertyArray['status'] = 1;
 		
 		$propertyId = $builderObj->addPropertiesByValue($propertyArray);
-		header("Location: " . SITE_URL . "admin/properties");
+		header("Location: " . SITE_URL . "/admin/properties");
 	}
 
 	$smarty->assign('moduleName', 'Add properties');

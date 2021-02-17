@@ -17,11 +17,11 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
   <!-- Bootstrap core CSS-->
-  <link href="{$siteroot}common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{$siteroot}/common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icon fonts-->
-  <link href="{$siteroot}common/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="{$siteroot}/common/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
-  <link href="{$siteroot}common/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="{$siteroot}/common/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Main styles -->
   <link href="{$siteroot}/administrator/css/admin.css" rel="stylesheet">
   <!-- Your custom styles -->

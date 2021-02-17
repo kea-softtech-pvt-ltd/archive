@@ -68,7 +68,7 @@
 						<div class="box_list wow fadeIn">
 							<a href="#0" class="wish_bt"></a>
 							<figure>
-								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}default/assets/img/doctor_listing_1.jpg" class="img-fluid" alt="">
+								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}/default/assets/img/doctor_listing_1.jpg" class="img-fluid" alt="">
 									<div class="preview"><span>Read more</span></div>
 								</a>
 							</figure>
@@ -78,7 +78,7 @@
 
 								<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
 								<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}default/assets/img/badges/badge_1.svg" width="15" height="15" alt=""></a>
+								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}/default/assets/img/badges/badge_1.svg" width="15" height="15" alt=""></a>
 							</div>
 							<ul>
 								<li><a href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>View on map</a></li>
@@ -93,7 +93,7 @@
 						<div class="box_list wow fadeIn">
 							<a href="#0" class="wish_bt"></a>
 							<figure>
-								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}default/assets/img/doctor_listing_2.jpg" class="img-fluid" alt="">
+								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}/default/assets/img/doctor_listing_2.jpg" class="img-fluid" alt="">
 									<div class="preview"><span>Read more</span></div>
 								</a>
 							</figure>
@@ -102,7 +102,7 @@
 								<h3>Dr. Will Griever</h3>
 								<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
 								<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}default/assets/img/badges/badge_2.svg" width="15" height="15" alt=""></a>
+								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}/default/assets/img/badges/badge_2.svg" width="15" height="15" alt=""></a>
 							</div>
 							<ul>
 								<li><a href="#0" onclick="onHtmlClick('Doctors', 1)"><i class="icon_pin_alt"></i>View on map</a></li>
@@ -117,7 +117,7 @@
 						<div class="box_list wow fadeIn">
 							<a href="#0" class="wish_bt"></a>
 							<figure>
-								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}default/assets/img/doctor_listing_3.jpg" class="img-fluid" alt="">
+								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}/default/assets/img/doctor_listing_3.jpg" class="img-fluid" alt="">
 									<div class="preview"><span>Read more</span></div>
 								</a>
 							</figure>
@@ -126,7 +126,7 @@
 								<h3>Dr. Jhoanna Steel</h3>
 								<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
 								<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}default/assets/img/badges/badge_3.svg" width="15" height="15" alt=""></a>
+								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}/default/assets/img/badges/badge_3.svg" width="15" height="15" alt=""></a>
 							</div>
 							<ul>
 								<li><a href="#0" onclick="onHtmlClick('Doctors', 2)"><i class="icon_pin_alt"></i>View on map</a></li>
@@ -141,7 +141,7 @@
 						<div class="box_list wow fadeIn">
 							<a href="#0" class="wish_bt"></a>
 							<figure>
-								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}default/assets/img/doctor_listing_4.jpg" class="img-fluid" alt="">
+								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}/default/assets/img/doctor_listing_4.jpg" class="img-fluid" alt="">
 									<div class="preview"><span>Read more</span></div>
 								</a>
 							</figure>
@@ -150,7 +150,7 @@
 								<h3>Dr. Slaughter</h3>
 								<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
 								<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}default/assets/img/badges/badge_3.svg" width="15" height="15" alt=""></a>
+								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}/default/assets/img/badges/badge_3.svg" width="15" height="15" alt=""></a>
 							</div>
 							<ul>
 								<li><a href="#0" onclick="onHtmlClick('Doctors', 3)"><i class="icon_pin_alt"></i>View on map</a></li>
@@ -165,7 +165,7 @@
 						<div class="box_list wow fadeIn">
 							<a href="#0" class="wish_bt"></a>
 							<figure>
-								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}default/assets/img/doctor_listing_5.jpg" class="img-fluid" alt="">
+								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}/default/assets/img/doctor_listing_5.jpg" class="img-fluid" alt="">
 									<div class="preview"><span>Read more</span></div>
 								</a>
 							</figure>
@@ -174,7 +174,7 @@
 								<h3>Dr. Watchmaker</h3>
 								<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
 								<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}default/assets/img/badges/badge_4.svg" width="15" height="15" alt=""></a>
+								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}/default/assets/img/badges/badge_4.svg" width="15" height="15" alt=""></a>
 							</div>
 							<ul>
 								<li><a href="#0" onclick="onHtmlClick('Doctors', 1)"><i class="icon_pin_alt"></i>View on map</a></li>
@@ -189,7 +189,7 @@
 						<div class="box_list wow fadeIn">
 							<a href="#0" class="wish_bt"></a>
 							<figure>
-								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}default/assets/img/doctor_listing_6.jpg" class="img-fluid" alt="">
+								<a href="{$siteroot}doctor-details/Dr.Sickman/1"><img src="{$siteroot}/default/assets/img/doctor_listing_6.jpg" class="img-fluid" alt="">
 									<div class="preview"><span>Read more</span></div>
 								</a>
 							</figure>
@@ -198,7 +198,7 @@
 								<h3>Dr. Sunshine</h3>
 								<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cuodo....</p>
 								<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}default/assets/img/badges/badge_4.svg" width="15" height="15" alt=""></a>
+								<a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="{$siteroot}/default/assets/img/badges/badge_4.svg" width="15" height="15" alt=""></a>
 							</div>
 							<ul>
 								<li><a href="#0" onclick="onHtmlClick('Doctors', 2)"><i class="icon_pin_alt"></i>View on map</a></li>

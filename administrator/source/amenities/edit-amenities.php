@@ -37,7 +37,7 @@
 		
 		$amenitiesId = $amenitiesObj->editUserValueById($amenitiesArray,$_POST['id']);
 
-		header("Location: " . SITE_URL . "admin/amenities");
+		header("Location: " . SITE_URL . "/admin/amenities");
 	}
 	$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/edit-amenities.tpl');
 ?>

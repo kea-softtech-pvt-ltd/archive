@@ -17,7 +17,7 @@
 								<i class="fa fa fa-user"></i>
 								</div>
 								<div class="box_form add_top_20">
-									<form action="{$siteroot}builder/login" method="post" name="frmLogin">
+									<form action="{$siteroot}/builder/login" method="post" name="frmLogin">
 										<div class="form-group">
 											<input type="text" name="mobile" class="form-control" placeholder="Your email">
 												{if isset($message) }

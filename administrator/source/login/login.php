@@ -34,13 +34,13 @@
 			$_SESSION['admin_id'] 	= $builderId['admin_id'];
 			$_SESSION['full_name'] 	= $builderId['full_name'];
 			$_SESSION['is_active'] 	= $builderId['is_active'];
-			header("Location: " . SITE_URL . "admin/dashboard");
+			header("Location: " . SITE_URL . "/admin/dashboard");
 		}
 
 		}
 	}
 	if(isset($_SESSION['isLoggedIn'])){
-		header("Location: " . SITE_URL . "admin/dashboard");
+		header("Location: " . SITE_URL . "/admin/dashboard");
 	}else{
 		$smarty->assign('moduleName', 'login');
 		$smarty->display(ADMIN_TEMPLATEDIR . '/login/login.tpl');

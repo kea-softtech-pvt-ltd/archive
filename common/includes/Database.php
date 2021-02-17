@@ -16,10 +16,10 @@ class Database
 				
 		public function __construct()
 				{						  
-					$this->HOST_NAME='localhost';
-					$this->DB_USER_NAME='root';
-					$this->DB_USER_PASSWORD='';
-					$this->DB_NAME='property';	
+					$this->HOST_NAME=HST;
+					$this->DB_USER_NAME=USR;
+					$this->DB_USER_PASSWORD=PWD;
+					$this->DB_NAME=DBN;	
 					$this->connection = "";		
 				} 
 				
@@ -40,7 +40,9 @@ class Database
 			
 			public function Connect_Db()
 				{
+					//echo $this->HOST_NAME,$this->DB_USER_NAME,$this->DB_USER_PASSWORD, $this->DB_NAME;
 					$this->connection=mysqli_connect($this->HOST_NAME,$this->DB_USER_NAME,$this->DB_USER_PASSWORD, $this->DB_NAME) or $this->DieError($this->connection, "I cannot connect to the database because: ");
+					//print_r($this->connection);
 					//$this->SelectDatabase($this->connection);
 					return $this->connection;
 				}

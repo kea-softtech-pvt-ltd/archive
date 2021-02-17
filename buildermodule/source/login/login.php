@@ -34,13 +34,13 @@
 			$_SESSION['id'] 	= $builderId['id'];
 			$_SESSION['name'] 	= $builderId['name'];
 			$_SESSION['status'] 	= $builderId['status'];
-			header("Location: " . SITE_URL . "dashboard/dashboard");
+			header("Location: " . SITE_URL . "/dashboard/dashboard");
 		}
 
 		}
 	}
 	if(isset($_SESSION['isLoggedIn'])){
-		header("Location: " . SITE_URL1 . "dashboard/dashboard");
+		header("Location: " . SITE_URL1 . "/dashboard/dashboard");
 	}else{
 		$smarty->display(BUILDER_TEMPLATEDIR . '/login/login.tpl');
 	}

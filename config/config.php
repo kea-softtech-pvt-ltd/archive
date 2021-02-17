@@ -2,8 +2,8 @@
 session_start();
 
 //ob_start();
-$application = "dev";
-//$application = "prod";
+//$application = "dev";
+$application = "prod";
 
 ini_set("dispaly_errors", "1");
 error_reporting(E_ALL);
@@ -34,24 +34,32 @@ if($application == "dev") {
 	
 } else {
 	define("HST", "localhost");
-	define("USR", "kea");
-	define("PWD", "Test@123");
-	define("DBN", "keacure"); 
-	define("DBTYPE", "mysql");
+	define("USR", "santy_flats");
+	define("PWD", "santy@123");
+	define("DBN", "flatsondiscounts"); 
+	define("DBTYPE", "mysqli");
 	define("EXACT_ROOT", realpath(dirname(dirname(__FILE__))));
 
-	define('SITE_URL','http://www.keacure/');
-	define('DOC_ROOT','/home/tourdekonkan/public_html/keacure/');
-	define('DOC_ROOT_COMMON','/home/tourdekonkan/public_html/keacure/common');
+	define('SITE_URL','http://flatsondiscount.keasofttech.com');
+	define('DOC_ROOT','/home/tourdekonkan/public_html/flatsondiscount.keasofttech.com');
+	define('DOC_ROOT_COMMON','/home/tourdekonkan/public_html/flatsondiscount.keasofttech.com/common');
 	
-	define('BASEFOLDER', '/home/tourdekonkan/public_html/keacure/');
+	define('BASEFOLDER', '/home/tourdekonkan/public_html/flatsondiscount.keasofttech.com');
 	
-	define('SITE_URL_COMMON','http://www.keacure/common');
+	define('SITE_URL_COMMON','http://flatsondiscount.keasofttech.com/common');
 
 
 	define('TEMPLATEDIR',DOC_ROOT.'/default/templates/');
+	
 	define("COMMON_JS_PATH", SITE_URL_COMMON."/js");
+
 	define('DOC_FOLDER' , '');
+
+	define('ADMIN_TEMPLATEDIR',TEMPLATEDIR.'/administrator/');
+
+	define('BUILDER_TEMPLATEDIR',TEMPLATEDIR.'/buildermodule/');
+	
+	define('ADMIN_FOLDER' , DOC_ROOT.'/administrator');
 
 	/* Paypal details*/
 	/* Paypal details*/
@@ -61,6 +69,7 @@ if($application == "dev") {
 	define("MEMBERSHIP_ID", "membership@keacure");
 	define("CONTACT_ID", "info@keacure");
 	define("TITLE_MSG", "TEST");
+	
 }
 	## Set time zone
 	date_default_timezone_set('Asia/Calcutta');
@@ -77,13 +86,13 @@ if($application == "dev") {
 	## Assign site url to smarty variable
 	$smarty->assign("siteroot", SITE_URL);
 	
-	$smarty->assign('adminroot', SITE_URL. "admin");
+	$smarty->assign('adminroot', SITE_URL. "/admin");
 	$smarty->assign("version", round(microtime(true) * 1000));
 
 	## Assign to bullder site url to smarty variable   // gsp 15-2-21
 	$smarty->assign("siteroot", SITE_URL);
 	
-	$smarty->assign('builderroot', SITE_URL. "builder");
+	$smarty->assign('builderroot', SITE_URL. "/builder");
 	$smarty->assign("version", round(microtime(true) * 1000));
 	
 

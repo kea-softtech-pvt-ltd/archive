@@ -69,7 +69,7 @@ if(isset($_POST['builderSave'])) {
 		$unitsArray['modified_at'] = date('Y/m/d H:i:s');
 		$unitsArray['status'] = 1;
 		$unitsId = $unitsObj->addUnitsByValue($unitsArray);
-		header("Location: " . SITE_URL . "admin/units");
+		header("Location: " . SITE_URL . "/admin/units");
 	}
 
 	$smarty->assign('moduleName', 'Add units');

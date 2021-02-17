@@ -10,50 +10,50 @@
 		<div class="row">
 			<h1>Cerificates</h1>
 			<div class="col-sm-6 col-xs-12 certificate-item clearfix">
-				<img src="default/assets/img/certificates/1.jpg">
+				<img src="/default/assets/img/certificates/1.jpg">
 			</div>
 			<div class="col-sm-6 col-xs-12 certificate-item">
-				<img src="default/assets/img/certificates/2.jpg">
+				<img src="/default/assets/img/certificates/2.jpg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 col-xs-12 certificate-item clearfix">
-				<img src="default/assets/img/certificates/3.jpg">
+				<img src="/default/assets/img/certificates/3.jpg">
 			</div>
 			<div class="col-sm-6 col-xs-12 certificate-item">
-				<img src="default/assets/img/certificates/4.jpg">
+				<img src="/default/assets/img/certificates/4.jpg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 col-xs-12 certificate-item clearfix">
-				<img src="default/assets/img/certificates/5.jpg">
+				<img src="/default/assets/img/certificates/5.jpg">
 			</div>
 			<div class="col-sm-6 col-xs-12 certificate-item">
-				<img src="default/assets/img/certificates/6.jpg">
+				<img src="/default/assets/img/certificates/6.jpg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 col-xs-12 certificate-item clearfix">
-				<img src="default/assets/img/certificates/7.jpg">
+				<img src="/default/assets/img/certificates/7.jpg">
 			</div>
 			<div class="col-sm-6 col-xs-12 certificate-item">
-				<img src="default/assets/img/certificates/8.jpg">
+				<img src="/default/assets/img/certificates/8.jpg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 col-xs-12 certificate-item clearfix">
-				<img src="default/assets/img/certificates/9.jpg">
+				<img src="/default/assets/img/certificates/9.jpg">
 			</div>
 			<div class="col-sm-6 col-xs-12 certificate-item">
-				<img src="default/assets/img/certificates/10.jpg">
+				<img src="/default/assets/img/certificates/10.jpg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 col-xs-12 certificate-item clearfix">
-				<img src="default/assets/img/certificates/11.jpg">
+				<img src="/default/assets/img/certificates/11.jpg">
 			</div>
 			<div class="col-sm-6 col-xs-12 certificate-item">
-				<img src="default/assets/img/certificates/12.jpg">
+				<img src="/default/assets/img/certificates/12.jpg">
 			</div>
 		</div>
 

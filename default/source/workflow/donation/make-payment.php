@@ -27,7 +27,7 @@
 		
 	}
 	else {
-		header("Location: " . SITE_URL . "donation" ); 
+		header("Location: " . SITE_URL . "/donation" ); 
 	}
 	
 

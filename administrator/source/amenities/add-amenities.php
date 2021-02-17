@@ -46,7 +46,7 @@ $imagelist = implode(",",$imagearray);
 		$amenitiesArray['status'] = 1;
 		
 		$amenitiesArray = $amenitiesObj->addAmenitiesByValue($amenitiesArray);
-		header("Location: " . SITE_URL . "admin/amenities");
+		header("Location: " . SITE_URL . "/admin/amenities");
   }
 }
 	$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/add-amenities.tpl');

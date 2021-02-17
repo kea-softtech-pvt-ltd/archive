@@ -41,7 +41,7 @@ if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '')
 		$builderId = $builderObj->editUserValueById($builderArray,$_POST['id']);
 
      //  print_r($builderArray);
-		header("Location: " . SITE_URL . "admin/builder");
+		header("Location: " . SITE_URL . "/admin/builder");
 	}
 
 	$smarty->assign('moduleName', 'Add builder');

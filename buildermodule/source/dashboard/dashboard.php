@@ -6,7 +6,7 @@
 		$smarty->assign('moduleName', 'dashboard');
 		$smarty->display(BUILDER_TEMPLATEDIR . '/dashboard/dashboard.tpl');
 	}else{
-		header("Location: " . SITE_URL . "builder/login");
+		header("Location: " . SITE_URL . "/builder/login");
 	}
 	
 ?>

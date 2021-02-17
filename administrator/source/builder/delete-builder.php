@@ -5,5 +5,5 @@
     $builderObj = new Model_Builders();
 	$builderArray['status'] = 0;
 	$builderuserArray = $builderObj->deleteUserValueById($builderArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "admin/builder");
+	header("Location: " . SITE_URL . "/admin/builder");
 ?>
