@@ -44,6 +44,18 @@
 		$result= $this->FetchRow($result1); 
 		return $result;		
 	}
+    function getAllBuilderscount($search='', $limit='',$offset='') {
+        $fields=array();	
+        $tables=array($this->builders);
+        $where = array(" status = '1'");
+        if($search != '') {
+            $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
+        }
+            
+        $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+        $result= $this->FetchAll($result1); 
+        return $result;		
+    }
         
     }
 ?>
