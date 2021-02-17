@@ -33,6 +33,7 @@
 							<li><strong>Address </strong> : {$v['street_address']}</li>
 							<li><strong>Telephone </strong> : {$v['telephone']}</li>
 							<li><strong>Email </strong> : {$v['email']}</li>
+							<li><strong>Unser Name </strong> : {$v['user_name']}</li>
 						</ul>
 						<!--<input type="hidden" name="id" value="id">--->
 						<ul class="buttons">
