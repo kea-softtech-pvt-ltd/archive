@@ -80,10 +80,10 @@ label.error {
 									<label>City</label>
 									<select class="form-control" name="city" required>
 										<option value="">Select city</option>
-										<option value="New York">New York</option>
-										<option value="Chicago">Chicago</option>
-										<option value="Miami">Miami</option>
-										<option value="Los Angeles">Los Angeles</option>
+										{foreach from=$citiesListArray key=k item=v}
+											<option value="{$v['id']}">{$v['name']}</option>
+										{/foreach}
+										
 									</select>
 								</div>
 							</div>
