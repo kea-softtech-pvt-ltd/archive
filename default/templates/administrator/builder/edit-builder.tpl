@@ -63,10 +63,10 @@ label.error {
 								<div class="form-group">
 									<label>Profile picture</label>
 								<!-- multiple image	<input class="form-control" type="file" id="image" name="image[]" value="" multiple>--->
-									
-									<input class="form-control" type="file" id="image" name="image" value="">{$builderuserArray['avatar']}</input>
+									<input class="form-control" type="file" id="image" name="image" value=""></input>
 									<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden>
-									<form action="/file-upload" class="dropzone" ></form>
+									<form action="/file-upload" class="dropzone" ></form><br>
+									<img class="d-block w-10" height="100px" width="100px" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" />
 								</div>
 							</div>
 						</div>
@@ -83,11 +83,11 @@ label.error {
 								<div class="form-group">
 									<label>City</label>
 									<select class="form-control" name="city" required>
-										<option value="{$builderuserArray['city']}">{$builderuserArray['city']}</option>
-										<option value="New York">New York</option>
-										<option value="Chicago">Chicago</option>
-										<option value="Miami">Miami</option>
-										<option value="Los Angeles">Los Angeles</option>
+										<option value="">Select City</option>
+										{foreach from=$citiesListArray key=k item=v}
+											<option {if ($v['id'] == $builderuserArray['city']) } selected {/if} value="{$v['id']}">{$v['name']}</option>
+										{/foreach}
+										
 									</select>
 								</div>
 							</div>
