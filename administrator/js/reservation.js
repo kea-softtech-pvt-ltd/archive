@@ -64,7 +64,7 @@ $().ready(function () {
                 required: "Please enter address"
             },
             "state": {
-                required: "Please enter state"
+                required: "Please select state"
             },
             "zipcode": {
                 required: "Please enter zipcode"
@@ -84,6 +84,87 @@ $().ready(function () {
         messages: {
             "name": {
                 required: "Please Amenities name."
+            }
+        },
+    });
+
+    //end validation
+    
+    // validation on city add or edit
+     $("#addcitys").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "state": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter city name."
+            },
+            "state": {
+                required: "Please select state."
+            }
+        },
+    });
+
+    //end validation
+
+    // validation on state add or edit
+     $("#addStates").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "country": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter state name."
+            },
+            "country": {
+                required: "Please select country."
+            }
+        },
+    });
+
+    //end validation
+    // validation on state add or edit
+     $("#addStates").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "country": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter state name."
+            },
+            "country": {
+                required: "Please select country."
+            }
+        },
+    });
+
+    //end validation
+
+    // validation on state add or edit
+    $("#addCountry").validate({
+        rules: {
+            "name": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter country name."
             }
         },
     });
