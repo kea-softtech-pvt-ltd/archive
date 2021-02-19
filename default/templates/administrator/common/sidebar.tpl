@@ -41,7 +41,38 @@
             <span class="nav-link-text">Customer management</span>
           </a>
         </li>
-     
+       <!--- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="City management">
+          <a class="nav-link" href="{$adminroot}/city">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">city management</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="State management">
+          <a class="nav-link" href="{$adminroot}/state">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">State management</span>
+          </a>
+        </li> --->
+
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Address management">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">Address management</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseProfile">
+            <li>
+              <a href="{$adminroot}/country">Add Country</a>
+            </li>
+			      <li>
+              <a href="{$adminroot}/state">Add State</a>
+            </li>
+            <li>
+              <a href="{$adminroot}/city">Add City</a>
+            </li>
+          </ul>
+        </li>
+
+
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
