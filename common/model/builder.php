@@ -56,6 +56,25 @@
         $result= $this->FetchAll($result1); 
         return $result;		
     }
+
+    public function getCities()
+    {
+        $fields=array('name','id','status');	//fetch fromdb
+        $tables=array('city');
+		$where = array(" status = '1'");	
+		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+		$result= $this->FetchAll($result1);
+		return $result;	
+    }
+    public function getStates()
+    {
+        $fields=array('name','s_id','status');	//fetch fromdb
+        $tables=array('state');
+		$where = array(" status = '1'");	
+		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+		$result= $this->FetchAll($result1);
+		return $result;	
+    }
         
     }
 ?>
