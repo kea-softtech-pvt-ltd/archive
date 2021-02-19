@@ -46,6 +46,28 @@ RewriteRule    ^admin/units/add?$ administrator/source/units/add-units.php
 RewriteRule    ^admin/units/edit?$ administrator/source/units/edit-units.php
 RewriteRule    ^admin/units/delete?$ administrator/source/units/delete-units.php
 RewriteRule    ^admin/units/view?$ administrator/source/units/view-units.php
+RewriteRule    ^admin/city?$    administrator/source/city/city.php
+RewriteRule    ^admin/city/add?$    administrator/source/city/add-city.php
+RewriteRule    ^admin/city/edit?$   administrator/source/city/edit-city.php
+RewriteRule    ^admin/city/delete?$ administrator/source/city/delete-city.php
+RewriteRule    ^admin/state?$    administrator/source/state/state.php
+RewriteRule    ^admin/state/add?$    administrator/source/state/add-state.php
+RewriteRule    ^admin/state/edit?$   administrator/source/state/edit-state.php
+RewriteRule    ^admin/state/delete?$ administrator/source/state/delete-state.php
+RewriteRule    ^admin/country?$    administrator/source/country/country.php
+RewriteRule    ^admin/country/add?$    administrator/source/country/add-country.php
+RewriteRule    ^admin/country/edit?$   administrator/source/country/edit-country.php
+RewriteRule    ^admin/country/delete?$ administrator/source/country/delete-country.php
+
+
+
+
+
+
+
+
+
+
 
 
 RewriteRule    ^builder/?$    buildermodule/source/index.php
