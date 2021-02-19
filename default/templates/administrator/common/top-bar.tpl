@@ -21,4 +21,3 @@
 		<a href="#">{$element|replace:'-':' '}</a> / <a href="#"> {$uri["filename"]|replace:'-':' '}</a>
 	</li>
 </ol>
-
