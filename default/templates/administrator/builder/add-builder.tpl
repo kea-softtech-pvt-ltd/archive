@@ -77,20 +77,25 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>State</label>
+									<select class="form-control" name="state" required>
+										<option value="">Select state</option>
+										{foreach from=$statesListArray key=k item=v}
+											<option value="{$v['s_id']}">{$v['name']}</option>
+										{/foreach}
+									</select>
+								<!--	<input type="text"name="state" class="form-control" placeholder="Your state">-->
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>City</label>
 									<select class="form-control" name="city" required>
 										<option value="">Select city</option>
 										{foreach from=$citiesListArray key=k item=v}
 											<option value="{$v['id']}">{$v['name']}</option>
 										{/foreach}
-										
 									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Address</label>
-									<textarea class="form-control" name="address" placeholder="Your address"></textarea>
 								</div>
 							</div>
 						</div>
@@ -98,8 +103,8 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>State</label>
-									<input type="text"name="state" class="form-control" placeholder="Your state">
+									<label>Address</label>
+									<textarea class="form-control" name="address" placeholder="Your address"></textarea>
 								</div>
 							</div>
 							<div class="col-md-6">
