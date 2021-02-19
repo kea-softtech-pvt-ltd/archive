@@ -5,8 +5,17 @@
 	$builderObj = new Model_Builders();
 	$builderListArray = $builderObj->getAllBuilders();
 	//print_r($builderListArray);
+	// $smarty->assign('builderListArray', $builderListArray);
+	// $smarty->assign('moduleName', 'List of builder');
+	// $smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
 	$smarty->assign('builderListArray', $builderListArray);
 	$smarty->assign('moduleName', 'List of builder');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
+	}else{
+		header("Location: " . SITE_URL . "/admin/login");
+	}
+	
 
 ?>
