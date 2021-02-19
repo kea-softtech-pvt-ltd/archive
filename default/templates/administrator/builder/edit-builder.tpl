@@ -81,20 +81,24 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>City</label>
-									<select class="form-control" name="city" required>
-										<option value="">Select City</option>
-										{foreach from=$citiesListArray key=k item=v}
-											<option {if ($v['id'] == $builderuserArray['city']) } selected {/if} value="{$v['id']}">{$v['name']}</option>
+									<label>State</label>
+									<select class="form-control" name="state" required>
+										<option value="">Select State</option>
+										{foreach from=$statesListArray key=k item=v}
+											<option {if ($v['s_id'] == $builderuserArray['state']) } selected {/if} value="{$v['s_id']}">{$v['name']}</option>
 										{/foreach}
-										
 									</select>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Address</label>
-									<textarea class="form-control" name="address" placeholder="Your address" value="{$builderuserArray['street_address']}">{$builderuserArray['street_address']}</textarea>
+									<label>City</label>
+									<select class="form-control" name="city" required>
+										<option value="">Select City</option>
+										{foreach from=$citiesListArray key=k item=v}
+											<option {if ($v['id'] == $builderuserArray['city']) } selected {/if} value="{$v['id']}">{$v['name']}</option>
+										{/foreach}		
+									</select>
 								</div>
 							</div>
 						</div>
@@ -102,8 +106,8 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>State</label>
-									<input type="text"name="state" class="form-control" placeholder="Your state"value="{$builderuserArray['state']}">
+									<label>Address</label>
+									<textarea class="form-control" name="address" placeholder="Your address" value="{$builderuserArray['street_address']}">{$builderuserArray['street_address']}</textarea>
 								</div>
 							</div>
 							<div class="col-md-6">
