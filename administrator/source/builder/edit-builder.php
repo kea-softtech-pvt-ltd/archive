@@ -18,9 +18,9 @@ if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '')
 	$res = move_uploaded_file($tempname,$folder);
 	$_POST['image'] = $filename;
 }
-
+$builderObj = new Model_Builders();
 	if(isset($_POST['builderSave'])) {
-		$builderObj = new Model_Builders();
+		
         $builderArray['id'] = $_POST['id'];
 		$builderArray['name'] = $_POST['name'];
 		$builderArray['partner_name'] = $_POST['partner_name'];
@@ -44,9 +44,13 @@ if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '')
 		header("Location: " . SITE_URL . "/admin/builder");
 	}
 
+	$citiesListArray = $builderObj->getCities();
+	$smarty->assign('citiesListArray', $citiesListArray);
+	$statesListArray = $builderObj->getStates();
+	$smarty->assign('statesListArray', $statesListArray);
 	$smarty->assign('moduleName', 'Add builder');
 
-    echo "moduleName" ;
+   // echo "moduleName" ;
 	//echo ADMIN_TEMPLATEDIR;
 	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/edit-builder.tpl');
 ?>
