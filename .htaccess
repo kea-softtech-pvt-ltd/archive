@@ -62,14 +62,6 @@ RewriteRule    ^admin/country/delete?$ administrator/source/country/delete-count
 
 
 
-
-
-
-
-
-
-
-
 RewriteRule    ^builder/?$    buildermodule/source/index.php
 RewriteRule    ^builder/login?$    buildermodule/source/login/login.php
 RewriteRule    ^builder/logout?$    buildermodule/source/login/logout.php
