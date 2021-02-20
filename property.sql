@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2021 at 11:05 AM
+-- Generation Time: Feb 20, 2021 at 10:51 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -53,6 +53,7 @@ INSERT INTO `admin` (`admin_id`, `full_name`, `mobile`, `password`, `role`, `is_
 CREATE TABLE `amenities` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
+  `font_awaesome` varchar(100) DEFAULT NULL,
   `images` longtext NOT NULL,
   `created_at` date NOT NULL,
   `modified_at` date NOT NULL,
@@ -63,11 +64,9 @@ CREATE TABLE `amenities` (
 -- Dumping data for table `amenities`
 --
 
-INSERT INTO `amenities` (`id`, `name`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 'Gym', '1613365880_gym.jpg,1613365880_gym1.jpg', '2021-02-12', '2021-02-12', '1'),
-(2, 'temple', '1613129474__Ninja-2-512.png,1613129394_images (1).jpg', '2021-02-12', '2021-02-12', '0'),
-(3, 'Temple', '1613366589_tem.jpg,1613366589_tem1.jpg,1613366589_tem2.jpg,1613366589_tem3.jpg', '2021-02-12', '2021-02-12', '1'),
-(4, 'garden', '1613384036_bg1.jpg', '2021-02-15', '2021-02-15', '0');
+INSERT INTO `amenities` (`id`, `name`, `font_awaesome`, `images`, `created_at`, `modified_at`, `status`) VALUES
+(1, 'gym', 'fa-fa fa-gym', '', '2021-02-20', '2021-02-20', '1'),
+(2, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1');
 
 -- --------------------------------------------------------
 
@@ -77,10 +76,9 @@ INSERT INTO `amenities` (`id`, `name`, `images`, `created_at`, `modified_at`, `s
 
 CREATE TABLE `builders` (
   `id` int(11) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `partner_name` varchar(30) NOT NULL,
-  `pan` int(20) NOT NULL,
-  `telephone` int(10) NOT NULL,
+  `name` varchar(40) DEFAULT NULL,
+  `register_number` int(20) NOT NULL,
+  `telephone` varchar(100) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
   `avatar` varchar(1000) NOT NULL,
@@ -92,17 +90,19 @@ CREATE TABLE `builders` (
   `create_at` date NOT NULL,
   `modified_at` date NOT NULL,
   `status` enum('0','1') NOT NULL COMMENT '1-active,0-delete',
-  `user_name` varchar(40) DEFAULT NULL
+  `user_name` varchar(40) DEFAULT NULL,
+  `m_con` text NOT NULL,
+  `role` int(11) NOT NULL DEFAULT '3' COMMENT '3 - builder login'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `builders`
 --
 
-INSERT INTO `builders` (`id`, `name`, `partner_name`, `pan`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`) VALUES
-(2, 'Roshan ', 'deva', 123456, 2147483647, 'roshandeorukhkar@gmail.com', '6493', '1613195846_images (3).jpg', '1', 'Pune', '1', 411013, 0, '2021-02-18', '2021-02-18', '1', 'Roshan '),
-(27, 'Gaurav ', 'Laxman', 345354, 2147483647, 'gaurav@gmail.com', '5570', '1613110869_images (1).jpg', '1', 'satara', '1', 415002, 0, '2021-02-18', '2021-02-18', '1', 'Gaurav '),
-(34, 'jon', 'hii', 345354, 2147483647, 'laxman@gmail.com', '4351', '1613652621_Screenshot (3).png', '2', 'jklllasf', '1', 686878, 0, '2021-02-18', '2021-02-18', '0', 'jon');
+INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`, `m_con`, `role`) VALUES
+(2, 'Roshan ', 123456, '2147483647', 'roshandeorukhkar@gmail.com', '6493', '1613792156_images (1).png', '1', 'Pune', '1', 411013, 0, '2021-02-18', '2021-02-20', '1', 'Roshan ', '', 3),
+(27, 'Gaurav ', 345354, '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'satara', '1', 415002, 0, '2021-02-18', '2021-02-20', '1', 'Gaurav ', '', 3),
+(33, 'amit', 2448, '9359249443', 'amit.pawar.7218@gmail.com', '2774', '1613808570_download (4).jpg', '3', 'satara', '1', 415002, 0, '2021-02-20', '2021-02-20', '1', 'amit', '9359249443,3453453455', 3);
 
 -- --------------------------------------------------------
 
@@ -333,12 +333,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `amenities`
 --
 ALTER TABLE `amenities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `city`
 --
