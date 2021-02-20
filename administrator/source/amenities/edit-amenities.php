@@ -10,30 +10,31 @@
 
 	if(isset($_POST['amenitiesEdit'])) {
 
-		$amenitiesObj = new Model_Amenities();
-		$targetDir = "../upload/amenities/"; 
-		if($_FILES['image']['error'][0] ==  0){
+		// $amenitiesObj = new Model_Amenities();
+		// $targetDir = "../upload/amenities/"; 
+		// if($_FILES['image']['error'][0] ==  0){
 
-			$imagearray = array();
-			foreach($_FILES['image']['name'] as $key=>$val){ 
-			// File upload path 
-				$fileName =  time().'_'.basename($_FILES['image']['name'][$key]); 
-				$targetFilePath = $targetDir . $fileName; 
+		// 	$imagearray = array();
+		// 	foreach($_FILES['image']['name'] as $key=>$val){ 
+		// 	// File upload path 
+		// 		$fileName =  time().'_'.basename($_FILES['image']['name'][$key]); 
+		// 		$targetFilePath = $targetDir . $fileName; 
 				
-				// Check whether file type is valid 
-			$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-				if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
-					array_push($imagearray,$fileName);
-				}
-			} 
-			$imagelist = implode(",",$imagearray);
-		}else{
-			$imagelist = $_POST['imageold'];
-		}
+		// 		// Check whether file type is valid 
+		// 	$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+		// 		if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
+		// 			array_push($imagearray,$fileName);
+		// 		}
+		// 	} 
+		// 	$imagelist = implode(",",$imagearray);
+		// }else{
+		// 	$imagelist = $_POST['imageold'];
+		// }
 
         $amenitiesArray['id'] = $_POST['id'];
 		$amenitiesArray['name'] = $_POST['name'];
-		$amenitiesArray['images'] = $imagelist; // multiple
+		$amenitiesArray['font_awaesome'] = $_POST['font_awaesome'];
+	//	$amenitiesArray['images'] = $imagelist; // multiple
 		
 		$amenitiesId = $amenitiesObj->editUserValueById($amenitiesArray,$_POST['id']);
 
