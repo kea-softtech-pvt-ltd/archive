@@ -2,11 +2,11 @@
 	include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/includefiles.php');
 	include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/common/model/amenities.php");
 	
-	$builderObj = new Model_Amenities();
+	$amenitiObj = new Model_Amenities();
 
-	$builderListArray = $builderObj->getAllAmenities();
+	$amenitiListArray = $amenitiObj->getAllAmenities();
 	
-	$smarty->assign('builderListArray', $builderListArray);
+	$smarty->assign('amenitiListArray', $amenitiListArray);
 
 
 	$smarty->assign('moduleName', 'List of Amenities');
