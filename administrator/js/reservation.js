@@ -7,9 +7,6 @@ $().ready(function () {
             "name": {
                 required: true,
             },
-            "partner_name": {
-                required: true,
-            }, 
             "email": {
                 required: true,
                 email: true,
@@ -19,10 +16,6 @@ $().ready(function () {
                 minlength: 10,
                 phoneUS: true
             },
-            "pan_number": {
-                required: true,
-            },
-			
             "city": {
                 required: true,
             },
@@ -42,9 +35,6 @@ $().ready(function () {
             "name": {
                 required: "Please enter builder name."
             },
-            "partner_name": {
-                required: "Please enter partner name."
-            },
             "email": {
                 required: "Please enter builder email",
                 email: "Your email address must be in the format of name@domain.com",
@@ -53,9 +43,6 @@ $().ready(function () {
             "contact_number": {
                 required: "Please enter phone number",
                 phoneUS: "Please enter a valid phone number: (e.g. 19999999999 or 9999999999)"
-            },
-            "pan_number": {
-                required: "Please enter pan number"
             },
             "city": {
                 required: "Please select city"
