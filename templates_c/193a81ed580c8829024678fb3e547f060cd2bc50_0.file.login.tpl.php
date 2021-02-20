@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-16 19:18:56
+/* Smarty version 3.1.29, created on 2021-02-19 22:07:59
   from "C:\xampp\htdocs\archive\default\templates\administrator\login\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602bcd48b62ad8_08598967',
+  'unifunc' => 'content_602fe96795e041_59252283',
   'file_dependency' => 
   array (
     '193a81ed580c8829024678fb3e547f060cd2bc50' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\login\\login.tpl',
-      1 => 1613483332,
+      1 => 1613752586,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602bcd48b62ad8_08598967 ($_smarty_tpl) {
+function content_602fe96795e041_59252283 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -33,8 +33,6 @@ function content_602bcd48b62ad8_08598967 ($_smarty_tpl) {
 
 				<main>
 					<div class="container">
-				
-						
 					 <span class="error"> <?php echo '<?php ';?>echo $nameErr;<?php echo '?>';?></span>
 
 					<div class="alert alert-danger text-center" name="error_msggg" id="error_msggg" style="display:none;"></div>
@@ -64,6 +62,13 @@ admin/login" method="post" name="frmLogin">
 													<?php echo $_smarty_tpl->tpl_vars['message1']->value;?>
 
 												<?php }?>
+										</div>
+										<div class="form-group">
+											<input type="radio" id="admin" name="role" value="admin" checked>
+											<label for="admin">Admin</label>
+											<input type="radio" id="builder" name="role" value="builder">
+											<label for="builder">Builder</label>
+
 										</div>
 										<div class="form-group text-center add_top_20">
 											<input class="btn_1 medium" name="login" type="submit" value="Login">

@@ -28,8 +28,7 @@
 						<figure><img src="{SITE_URL}/administrator/source/upload/{$v['avatar']}" alt=""></figure>
 						<h4>Builder Name : {$v['name']}</h4>
 						<ul class="booking_details">
-							<li><strong>Partner name </strong> : {$v['partner_name']}</li>
-							<li><strong>PAN number </strong> : {$v['pan']}</li>
+							<li><strong>Register number </strong> : {$v['register_number']}</li>
 							<li><strong>Address </strong> : {$v['street_address']}</li>
 							<li><strong>Telephone </strong> : {$v['telephone']}</li>
 							<li><strong>Email </strong> : {$v['email']}</li>

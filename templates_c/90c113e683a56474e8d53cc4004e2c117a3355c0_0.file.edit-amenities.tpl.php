@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-13 11:44:12
+/* Smarty version 3.1.29, created on 2021-02-20 15:03:06
   from "C:\xampp\htdocs\archive\default\templates\administrator\amenities\edit-amenities.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_60276e349f7906_90809036',
+  'unifunc' => 'content_6030d752a16021_52003255',
   'file_dependency' => 
   array (
     '90c113e683a56474e8d53cc4004e2c117a3355c0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\amenities\\edit-amenities.tpl',
-      1 => 1613196847,
+      1 => 1613813578,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_60276e349f7906_90809036 ($_smarty_tpl) {
+function content_6030d752a16021_52003255 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -58,6 +58,16 @@ function content_60276e349f7906_90809036 ($_smarty_tpl) {
 							</div>
 						</div>
 						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Font awaesome</label>
+									<input type="text" class="form-control" name="font_awaesome" placeholder="Font awaesome name" value="<?php echo $_smarty_tpl->tpl_vars['amenitiesuserArray']->value['font_awaesome'];?>
+">
+									<a>it's allowed only font awesome 4</a>
+								</div>
+							</div>
+						</div>
+					<!--	<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Profile picture</label>
@@ -97,8 +107,7 @@ if ($__foreach_count_0_saved_key) {
 $_smarty_tpl->tpl_vars['index'] = $__foreach_count_0_saved_key;
 }
 ?>
-						</div>
-						<br>
+						</div><br>--->
 						<p><button class="btn_1 medium" name="amenitiesEdit" type="submit">Update</button></p>
 					</div>			
 				</form>

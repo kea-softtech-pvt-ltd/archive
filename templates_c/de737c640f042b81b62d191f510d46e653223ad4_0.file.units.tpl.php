@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-13 12:01:26
+/* Smarty version 3.1.29, created on 2021-02-17 13:57:23
   from "C:\xampp\htdocs\archive\default\templates\administrator\units\units.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6027723edd0487_65186306',
+  'unifunc' => 'content_602cd36b592309_22546278',
   'file_dependency' => 
   array (
     'de737c640f042b81b62d191f510d46e653223ad4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\units\\units.tpl',
-      1 => 1613197880,
+      1 => 1613411966,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6027723edd0487_65186306 ($_smarty_tpl) {
+function content_602cd36b592309_22546278 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>

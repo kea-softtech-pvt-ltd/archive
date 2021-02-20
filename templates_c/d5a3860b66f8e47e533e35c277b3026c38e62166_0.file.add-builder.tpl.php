@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-15 13:38:35
+/* Smarty version 3.1.29, created on 2021-02-20 15:09:56
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\add-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602a2c0378dde1_78499141',
+  'unifunc' => 'content_6030d8ec935555_39372067',
   'file_dependency' => 
   array (
     'd5a3860b66f8e47e533e35c277b3026c38e62166' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\add-builder.tpl',
-      1 => 1613376434,
+      1 => 1613813992,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602a2c0378dde1_78499141 ($_smarty_tpl) {
+function content_6030d8ec935555_39372067 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -47,13 +47,10 @@ label.error {
 				<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/top-bar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-			<!-- Breadcrumbs-->
-				
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-file"></i>Builder information</h2>
 						</div>
-						
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -63,17 +60,9 @@ label.error {
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Partners name</label>
-									<input type="text" class="form-control" name="partner_name" placeholder="Partners name" required>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
+									<label>Profile picture</label>
+									<input class="form-control" type="file" id="image" name="image" value="">
+									<form action="/file-upload" class="dropzone" ></form>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -82,26 +71,14 @@ label.error {
 									<input type="email" class="form-control" name="email" placeholder="Builder email">
 								</div>
 							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>PAN number</label>
-									<input type="text" class="form-control" name="pan_number" placeholder="PAN number">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Profile picture</label>
-								<!-- multiple image	<input class="form-control" type="file" id="image" name="image[]" value="" multiple>--->
-									<input class="form-control" type="file" id="image" name="image" value="">
-									<form action="/file-upload" class="dropzone" ></form>
+									<label>Telephone</label>
+									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
 								</div>
 							</div>
 						</div>
-						<!-- /row-->
+				
 					</div>
 					<!-- /box_general-->
 					
@@ -112,14 +89,81 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>State</label>
+									<select class="form-control" name="state" required>
+										<option value="">Select state</option>
+										<?php
+$_from = $_smarty_tpl->tpl_vars['statesListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_v_0_saved_item = isset($_smarty_tpl->tpl_vars['v']) ? $_smarty_tpl->tpl_vars['v'] : false;
+$__foreach_v_0_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['v'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['v']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+$__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
+?>
+											<option value="<?php echo $_smarty_tpl->tpl_vars['v']->value['s_id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+</option>
+										<?php
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_local_item;
+}
+if ($__foreach_v_0_saved_item) {
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_item;
+}
+if ($__foreach_v_0_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
+}
+?>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>City</label>
 									<select class="form-control" name="city" required>
 										<option value="">Select city</option>
-										<option value="New York">New York</option>
-										<option value="Chicago">Chicago</option>
-										<option value="Miami">Miami</option>
-										<option value="Los Angeles">Los Angeles</option>
+										<?php
+$_from = $_smarty_tpl->tpl_vars['citiesListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_v_1_saved_item = isset($_smarty_tpl->tpl_vars['v']) ? $_smarty_tpl->tpl_vars['v'] : false;
+$__foreach_v_1_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['v'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['v']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+$__foreach_v_1_saved_local_item = $_smarty_tpl->tpl_vars['v'];
+?>
+											<option value="<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+</option>
+										<?php
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_1_saved_local_item;
+}
+if ($__foreach_v_1_saved_item) {
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_1_saved_item;
+}
+if ($__foreach_v_1_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_v_1_saved_key;
+}
+?>
 									</select>
+								</div>
+							</div>
+						</div>
+						<!-- /row-->
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Zip code</label>
+									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -130,22 +174,32 @@ label.error {
 							</div>
 						</div>
 						<!-- /row-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>State</label>
-									<input type="text"name="state" class="form-control" placeholder="Your state">
+			<!--	<div class="row">
+					<div class="col-md-12">
+						<h6>Multiple contact number</h6>
+					<table id="pricing-list-container" style="width:100%;">
+						<tr class="pricing-list-item">
+							<td>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" name="m_contact[]" class="form-control" placeholder="Add contact number">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Zip code</label>
-									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code">
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
+							</td>
+						</tr>
+					</table>
+					<a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add contact number</a>
+				</div>
+			</div>--->
 					</div>
+					
 					<!-- /box_general-->
 					
 					<p><button class="btn_1 medium" name="builderSave" type="submit">Save</button></p>

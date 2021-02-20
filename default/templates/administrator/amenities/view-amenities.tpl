@@ -21,8 +21,8 @@
                                         <td>{$amenitiesArray['name']}</td>
                                     </tr>
                                     <tr>
-                                        <th>image</th>
-                                        <td>{$amenitiesArray['images']}</td>
+                                        <th>Font awaesome</th>
+                                        <td><i class="{$amenitiesArray['font_awaesome']}"></i></td>
                                     </tr>
                                 </table>        
 							</div>

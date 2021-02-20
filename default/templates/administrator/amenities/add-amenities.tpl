@@ -19,17 +19,27 @@
 									<i class="text-danger">{if isset($message) }{$message}{/if}</i>
 								</div>
 							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Font awaesome</label>
+									<input type="text" class="form-control" name="font_awaesome" placeholder="Font awaesome " requird>
+									<i class="text-danger">{if isset($message2) }{$message2}{/if}</i>
+									<a>it's allowed only font awesome 4</a>
+								</div>
+							</div>
 						</div>
-						<div class="row">
+					<!--<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Amenities picture</label>
 										<input class="form-control" type="file" id="image" name="image[]" value="" multiple>
-									<!--<input class="form-control" type="file" id="image" name="image" value="">---->
+					
 									<i class="text-danger">{if isset($message1) }{$message1}{/if}</i>
 								</div>
 							</div>
-						</div>
+						</div>---->
 
 						<p><button class="btn_1 medium" name="amenitiesSave" type="submit">Save</button></p>
 					</div>			

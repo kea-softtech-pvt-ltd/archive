@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-11 16:41:54
+/* Smarty version 3.1.29, created on 2021-02-17 15:11:00
   from "C:\xampp\htdocs\archive\default\templates\administrator\customers\add-customer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602510fab2deb2_20697334',
+  'unifunc' => 'content_602ce4acd0e625_68315498',
   'file_dependency' => 
   array (
     '671339ef1bd9089fb39a931eadf2d36e8092f0ad' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\customers\\add-customer.tpl',
-      1 => 1612356982,
+      1 => 1613411966,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602510fab2deb2_20697334 ($_smarty_tpl) {
+function content_602ce4acd0e625_68315498 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>

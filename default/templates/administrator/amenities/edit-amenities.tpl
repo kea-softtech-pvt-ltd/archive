@@ -23,6 +23,15 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>Font awaesome</label>
+									<input type="text" class="form-control" name="font_awaesome" placeholder="Font awaesome name" value="{$amenitiesuserArray['font_awaesome']}">
+									<a>it's allowed only font awesome 4</a>
+								</div>
+							</div>
+						</div>
+					<!--	<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>Profile picture</label>
 										<input class="form-control" type="file" id="image" name="image[]" value="" multiple/>
 									<input class="form-control" type="hidden" id="imageold" name="imageold" value="{$amenitiesuserArray['images']}">
@@ -34,8 +43,7 @@
 							{foreach from=$imagearray key=index item=image name=count}
 							<img class="d-block w-10" height="150px" width="150px" src="{SITE_URL}/administrator/source/upload/amenities/{$image}"  alt="First slide">
 							{/foreach}
-						</div>
-						<br>
+						</div><br>--->
 						<p><button class="btn_1 medium" name="amenitiesEdit" type="submit">Update</button></p>
 					</div>			
 				</form>

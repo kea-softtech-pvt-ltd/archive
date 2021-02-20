@@ -12,13 +12,10 @@ label.error {
 		<form name="addBuilderForm" id="registration" action="{$adminroot}/builder/add" method="post" enctype="multipart/form-data">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
-			<!-- Breadcrumbs-->
-				
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-file"></i>Builder information</h2>
 						</div>
-						
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -28,17 +25,9 @@ label.error {
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Partners name</label>
-									<input type="text" class="form-control" name="partner_name" placeholder="Partners name" required>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
+									<label>Profile picture</label>
+									<input class="form-control" type="file" id="image" name="image" value="">
+									<form action="/file-upload" class="dropzone" ></form>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -47,26 +36,14 @@ label.error {
 									<input type="email" class="form-control" name="email" placeholder="Builder email">
 								</div>
 							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>PAN number</label>
-									<input type="text" class="form-control" name="pan_number" placeholder="PAN number">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Profile picture</label>
-								<!-- multiple image	<input class="form-control" type="file" id="image" name="image[]" value="" multiple>--->
-									<input class="form-control" type="file" id="image" name="image" value="">
-									<form action="/file-upload" class="dropzone" ></form>
+									<label>Telephone</label>
+									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
 								</div>
 							</div>
 						</div>
-						<!-- /row-->
+				
 					</div>
 					<!-- /box_general-->
 					
@@ -84,7 +61,6 @@ label.error {
 											<option value="{$v['s_id']}">{$v['name']}</option>
 										{/foreach}
 									</select>
-								<!--	<input type="text"name="state" class="form-control" placeholder="Your state">-->
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -103,19 +79,44 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Address</label>
-									<textarea class="form-control" name="address" placeholder="Your address"></textarea>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
 									<label>Zip code</label>
 									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code">
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Address</label>
+									<textarea class="form-control" name="address" placeholder="Your address"></textarea>
+								</div>
+							</div>
 						</div>
 						<!-- /row-->
+			<!--	<div class="row">
+					<div class="col-md-12">
+						<h6>Multiple contact number</h6>
+					<table id="pricing-list-container" style="width:100%;">
+						<tr class="pricing-list-item">
+							<td>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" name="m_contact[]" class="form-control" placeholder="Add contact number">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add contact number</a>
+				</div>
+			</div>--->
 					</div>
+					
 					<!-- /box_general-->
 					
 					<p><button class="btn_1 medium" name="builderSave" type="submit">Save</button></p>

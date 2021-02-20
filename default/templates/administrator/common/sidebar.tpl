@@ -11,6 +11,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+        {if (isset($smarty.session.role) && $smarty.session.role != 3) }
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Builder management">
           <a class="nav-link" href="{$adminroot}/builder">
             <i class="fa fa-fw fa-address-card"></i>
@@ -29,6 +30,25 @@
             <span class="nav-link-text">Units management</span>
           </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Address management">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">Address management</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseProfile">
+            <li>
+              <a href="{$adminroot}/country">Add Country</a>
+            </li>
+			      <li>
+              <a href="{$adminroot}/state">Add State</a>
+            </li>
+            <li>
+              <a href="{$adminroot}/city">Add City</a>
+            </li>
+          </ul>
+        </li>
+        {/if}
+        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Property management">
           <a class="nav-link" href="{$adminroot}/properties">
             <i class="fa fa-fw fa-sitemap"></i>
@@ -54,23 +74,7 @@
           </a>
         </li> --->
 
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Address management">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-institution"></i>
-            <span class="nav-link-text">Address management</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{$adminroot}/country">Add Country</a>
-            </li>
-			      <li>
-              <a href="{$adminroot}/state">Add State</a>
-            </li>
-            <li>
-              <a href="{$adminroot}/city">Add City</a>
-            </li>
-          </ul>
-        </li>
+        
 
 
         

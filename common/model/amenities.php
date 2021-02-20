@@ -36,7 +36,7 @@
         }
         ## Get builder by id
 	    function getUserNameByUserId($id) {
-		$fields=array('name','id','images');	//fetch fromdb
+		$fields=array('name','id','images','font_awaesome');	//fetch fromdb
         $tables=array($this->amenities);
 		$where=array("id=".$id);		
 		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 

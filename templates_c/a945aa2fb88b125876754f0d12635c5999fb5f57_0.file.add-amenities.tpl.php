@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-15 12:12:52
+/* Smarty version 3.1.29, created on 2021-02-20 15:01:50
   from "C:\xampp\htdocs\archive\default\templates\administrator\amenities\add-amenities.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602a17ecde6681_08265201',
+  'unifunc' => 'content_6030d706c21893_23098575',
   'file_dependency' => 
   array (
     'a945aa2fb88b125876754f0d12635c5999fb5f57' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\amenities\\add-amenities.tpl',
-      1 => 1613371363,
+      1 => 1613813499,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602a17ecde6681_08265201 ($_smarty_tpl) {
+function content_6030d706c21893_23098575 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -56,19 +56,31 @@ echo $_smarty_tpl->tpl_vars['message']->value;
 }?></i>
 								</div>
 							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Font awaesome</label>
+									<input type="text" class="form-control" name="font_awaesome" placeholder="Font awaesome " requird>
+									<i class="text-danger"><?php if (isset($_smarty_tpl->tpl_vars['message2']->value)) {
+echo $_smarty_tpl->tpl_vars['message2']->value;
+}?></i>
+									<a>it's allowed only font awesome 4</a>
+								</div>
+							</div>
 						</div>
-						<div class="row">
+					<!--<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Amenities picture</label>
 										<input class="form-control" type="file" id="image" name="image[]" value="" multiple>
-									<!--<input class="form-control" type="file" id="image" name="image" value="">---->
+					
 									<i class="text-danger"><?php if (isset($_smarty_tpl->tpl_vars['message1']->value)) {
 echo $_smarty_tpl->tpl_vars['message1']->value;
 }?></i>
 								</div>
 							</div>
-						</div>
+						</div>---->
 
 						<p><button class="btn_1 medium" name="amenitiesSave" type="submit">Save</button></p>
 					</div>			

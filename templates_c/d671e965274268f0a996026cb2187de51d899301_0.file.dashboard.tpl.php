@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-12 18:50:57
+/* Smarty version 3.1.29, created on 2021-02-17 15:45:32
   from "C:\xampp\htdocs\archive\default\templates\administrator\dashboard\dashboard.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602680b92af917_85318450',
+  'unifunc' => 'content_602cecc4419996_71717305',
   'file_dependency' => 
   array (
     'd671e965274268f0a996026cb2187de51d899301' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\dashboard\\dashboard.tpl',
-      1 => 1613131533,
+      1 => 1613556928,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602680b92af917_85318450 ($_smarty_tpl) {
+function content_602cecc4419996_71717305 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -46,11 +46,14 @@ function content_602680b92af917_85318450 ($_smarty_tpl) {
 						<div class="card dashboard text-white bg-primary o-hidden h-100">
 							<div class="card-body">
 							<div class="card-body-icon">
-								<i class="fa fa-fw fa-envelope-open"></i>
+								<i class="fa fa-fw fa-address-card"></i>
 							</div>
-							<div class="mr-5"><h5>26 New Messages!</h5></div>
+							<div class="mr-5">
+								<h5><?php echo $_smarty_tpl->tpl_vars['builderListArray']->value;?>
+ Builder</h5>
 							</div>
-							<a class="card-footer text-white clearfix small z-1" href="messages.html">
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="builder">
 							<span class="float-left">View Details</span>
 							<span class="float-right">
 								<i class="fa fa-angle-right"></i>
@@ -58,7 +61,7 @@ function content_602680b92af917_85318450 ($_smarty_tpl) {
 							</a>
 						</div>
 					</div>
-					<div class="col-xl-3 col-sm-6 mb-3">
+				<!--	<div class="col-xl-3 col-sm-6 mb-3">
 						<div class="card dashboard text-white bg-warning o-hidden h-100">
 							<div class="card-body">
 							<div class="card-body-icon">
@@ -105,7 +108,7 @@ function content_602680b92af917_85318450 ($_smarty_tpl) {
 							</span>
 							</a>
 						</div>
-					</div>
+					</div>---->
 				</div>
 				<!-- /cards -->
 				<h2></h2>

@@ -31,6 +31,13 @@
 													{$message1}
 												{/if}
 										</div>
+										<div class="form-group">
+											<input type="radio" id="admin" name="role" value="admin" checked>
+											<label for="admin">Admin</label>
+											<input type="radio" id="builder" name="role" value="builder">
+											<label for="builder">Builder</label>
+
+										</div>
 										<div class="form-group text-center add_top_20">
 											<input class="btn_1 medium" name="login" type="submit" value="Login">
 										</div>

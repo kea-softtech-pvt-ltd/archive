@@ -21,9 +21,9 @@ div .carouselExampleControls {
 			</div>
 			<div class="list_general">
 				<ul>
-					{foreach from=$builderListArray key=k item=v}
+					{foreach from=$amenitiListArray key=k item=v}
 					<li>
-						<div id="carouselExampleControls{$v['id']}" class="carousel slide carouselExampleControls" data-ride="carousel">
+					<!--	<div id="carouselExampleControls{$v['id']}" class="carousel slide carouselExampleControls" data-ride="carousel">
 							<div class="carousel-inner">
 							{$imagearray = explode(',',$v['images'])}
 							
@@ -43,11 +43,11 @@ div .carouselExampleControls {
 								<span class="carousel-control-next-icon" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
-							</div>
-						
-						<h4>{$v['name']} </h4>
+							</div>--->
+					<!--	<h4>{$v['name']}</h4>--->
 						<ul class="booking_details">	
-							<li block><br> </li>	
+							<li><strong>Amenities name </strong> : {$v['name']}</li>
+							<li><strong>font awaesome </strong> : <i class="{$v['font_awaesome']}"></i> </li>
 						</ul>
 						
 						<ul class="buttons">

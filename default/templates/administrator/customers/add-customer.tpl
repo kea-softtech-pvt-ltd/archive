@@ -153,7 +153,7 @@
 						</tr>
 					</table>
 					<a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add Item</a>
-					</div>
+				</div>
 			</div>
 			<!-- /row-->
 		</div>

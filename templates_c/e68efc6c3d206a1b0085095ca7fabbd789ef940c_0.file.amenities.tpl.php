@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-15 10:50:05
+/* Smarty version 3.1.29, created on 2021-02-20 14:54:53
   from "C:\xampp\htdocs\archive\default\templates\administrator\amenities\amenities.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602a04853b3cc9_62597269',
+  'unifunc' => 'content_6030d565d7de37_45103545',
   'file_dependency' => 
   array (
     'e68efc6c3d206a1b0085095ca7fabbd789ef940c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\amenities\\amenities.tpl',
-      1 => 1613366401,
+      1 => 1613813087,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602a04853b3cc9_62597269 ($_smarty_tpl) {
+function content_6030d565d7de37_45103545 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -57,7 +57,7 @@ div .carouselExampleControls {
 			<div class="list_general">
 				<ul>
 					<?php
-$_from = $_smarty_tpl->tpl_vars['builderListArray']->value;
+$_from = $_smarty_tpl->tpl_vars['amenitiListArray']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
@@ -71,7 +71,7 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 $__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
 ?>
 					<li>
-						<div id="carouselExampleControls<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
+					<!--	<div id="carouselExampleControls<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
 " class="carousel slide carouselExampleControls" data-ride="carousel">
 							<div class="carousel-inner">
 							<?php $_smarty_tpl->tpl_vars['imagearray'] = new Smarty_Variable(explode(',',$_smarty_tpl->tpl_vars['v']->value['images']), null);
@@ -125,12 +125,14 @@ $_smarty_tpl->tpl_vars['index'] = $__foreach_count_1_saved_key;
 								<span class="carousel-control-next-icon" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
-							</div>
-						
-						<h4><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
- </h4>
+							</div>--->
+					<!--	<h4><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+</h4>--->
 						<ul class="booking_details">	
-							<li block><br> </li>	
+							<li><strong>Amenities name </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+</li>
+							<li><strong>font awaesome </strong> : <i class="<?php echo $_smarty_tpl->tpl_vars['v']->value['font_awaesome'];?>
+"></i> </li>
 						</ul>
 						
 						<ul class="buttons">

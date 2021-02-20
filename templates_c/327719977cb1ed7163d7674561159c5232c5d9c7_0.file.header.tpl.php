@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-06 13:03:00
+/* Smarty version 3.1.29, created on 2021-02-17 13:56:31
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_601e462cdafff0_95338100',
+  'unifunc' => 'content_602cd33739b984_48588810',
   'file_dependency' => 
   array (
     '327719977cb1ed7163d7674561159c5232c5d9c7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\header.tpl',
-      1 => 1575335268,
+      1 => 1613541640,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_601e462cdafff0_95338100 ($_smarty_tpl) {
+function content_602cd33739b984_48588810 ($_smarty_tpl) {
 ?>
 <head>
   <meta charset="utf-8">
@@ -47,13 +47,13 @@ function content_601e462cdafff0_95338100 ($_smarty_tpl) {
 	
   <!-- Bootstrap core CSS-->
   <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+/common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icon fonts-->
   <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-common/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+/common/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
   <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-common/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+/common/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Main styles -->
   <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
 /administrator/css/admin.css" rel="stylesheet">

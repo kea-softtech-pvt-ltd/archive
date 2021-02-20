@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-09 14:13:36
+/* Smarty version 3.1.29, created on 2021-02-19 18:08:20
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\view-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_60224b3820dbe2_45429238',
+  'unifunc' => 'content_602fb13c4cfad8_94931067',
   'file_dependency' => 
   array (
     'cbb62c26990ebbd1ed986ce7e9cacc75611b67c5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\view-builder.tpl',
-      1 => 1612860212,
+      1 => 1613738294,
       2 => 'file',
     ),
   ),
@@ -24,11 +24,10 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_60224b3820dbe2_45429238 ($_smarty_tpl) {
+function content_602fb13c4cfad8_94931067 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
-
 	<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -59,16 +58,6 @@ function content_60224b3820dbe2_45429238 ($_smarty_tpl) {
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Partners name</label>
-									<input type="text" class="form-control" name="partner_name" placeholder="Partners name"  value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['partner_name'];?>
-" required>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
 									<label>Telephone</label>
 									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['telephone'];?>
 ">
@@ -81,7 +70,7 @@ function content_60224b3820dbe2_45429238 ($_smarty_tpl) {
 ">
 								</div>
 							</div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 								<div class="form-group">
 									<label>Address</label>
 									<textarea class="form-control" name="address" placeholder="Your address" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
@@ -89,8 +78,8 @@ function content_60224b3820dbe2_45429238 ($_smarty_tpl) {
 </textarea>
 								</div>
 							</div>
-
 						</div>
+					
 					</div>
 					<!-- /box_general-->
 					
@@ -109,13 +98,6 @@ function content_60224b3820dbe2_45429238 ($_smarty_tpl) {
 							</div>
                             <div class="col-md-6">
 								<div class="form-group">
-									<label>PAN number</label>
-									<input type="text" class="form-control" name="pan_number" placeholder="PAN number" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['pan'];?>
-">
-								</div>
-							</div>
-                            <div class="col-md-6">
-								<div class="form-group">
 									<label>State</label>
 									<input type="text"name="state" class="form-control" placeholder="Your state"value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['state'];?>
 ">
@@ -128,7 +110,6 @@ function content_60224b3820dbe2_45429238 ($_smarty_tpl) {
 ">
 								</div>
 							</div>
-
 						</div>
 						
 					</div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-10 17:00:33
+/* Smarty version 3.1.29, created on 2021-02-20 14:56:06
   from "C:\xampp\htdocs\archive\default\templates\administrator\amenities\view-amenities.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6023c3d9abc251_10979229',
+  'unifunc' => 'content_6030d5ae09e6c7_12156012',
   'file_dependency' => 
   array (
     '909de1eefe1a639d43ec45ad96bb90acb9055e87' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\amenities\\view-amenities.tpl',
-      1 => 1612956629,
+      1 => 1613813160,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6023c3d9abc251_10979229 ($_smarty_tpl) {
+function content_6030d5ae09e6c7_12156012 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -58,9 +58,9 @@ function content_6023c3d9abc251_10979229 ($_smarty_tpl) {
 </td>
                                     </tr>
                                     <tr>
-                                        <th>image</th>
-                                        <td><?php echo $_smarty_tpl->tpl_vars['amenitiesArray']->value['images'];?>
-</td>
+                                        <th>Font awaesome</th>
+                                        <td><i class="<?php echo $_smarty_tpl->tpl_vars['amenitiesArray']->value['font_awaesome'];?>
+"></i></td>
                                     </tr>
                                 </table>        
 							</div>

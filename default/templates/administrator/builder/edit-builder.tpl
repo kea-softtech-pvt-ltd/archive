@@ -13,14 +13,10 @@ label.error {
 			<input type="hidden"name="id" value="{$builderuserArray['id']}">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
-			<!-- Breadcrumbs-->
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-edit"></i>Edit Builder information</h2>
 						</div>
-					<!--	{$builderuserArray['name']}
-							{$builderuserArray['id']} --->
-			
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -28,15 +24,7 @@ label.error {
 									<input type="text" class="form-control" name="name" placeholder="Builder name" value="{$builderuserArray['name']}" required>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Partners name</label>
-									<input type="text" class="form-control" name="partner_name" placeholder="Partners name"  value="{$builderuserArray['partner_name']}" required>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
+							
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Telephone</label>
@@ -49,11 +37,24 @@ label.error {
 									<input type="email" class="form-control" name="email" placeholder="Builder email" value="{$builderuserArray['email']}">
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Profile picture</label>
+										<input class="form-control" type="file" id="image" name="image" value=""></input>
+										<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden>
+										<img class="d-block w-10" height="100px" width="100px" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" />					
+								</div>
+							</div>
+						<!---<div class="col-md-6">
+								<div class="form-group">
+									<label>Partners name</label>
+									<input type="text" class="form-control" name="partner_name" placeholder="Partners name"  value="{$builderuserArray['partner_name']}" required>
+								</div>
+							</div>--->
 						</div>
-						<!-- /row-->
 						<div class="row">
 							
-							<div class="col-md-6">
+					<!--		<div class="col-md-6">
 								<div class="form-group">
 									<label>PAN number</label>
 									<input type="text" class="form-control" name="pan_number" placeholder="PAN number" value="{$builderuserArray['pan']}">
@@ -62,13 +63,12 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Profile picture</label>
-								<!-- multiple image	<input class="form-control" type="file" id="image" name="image[]" value="" multiple>--->
 									<input class="form-control" type="file" id="image" name="image" value=""></input>
 									<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden>
-									<form action="/file-upload" class="dropzone" ></form><br>
+									<br>
 									<img class="d-block w-10" height="100px" width="100px" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" />
 								</div>
-							</div>
+							</div> --->
 						</div>
 						<!-- /row-->
 					</div>
@@ -118,6 +118,38 @@ label.error {
 							</div>
 						</div>
 						<!-- /row-->
+			<!--<div class="row">
+					<div class="col-md-12">
+						<h6>Multiple contact number</h6>
+					<table id="pricing-list-container" style="width:100%;">
+					{foreach from=explode(',',$builderuserArray['m_con']) key=k item=v}
+						<tr class="pricing-list-item">
+							<td>
+							
+								<div class="row">
+								
+									<div class="col-md-6">
+										<div class="form-group">
+										
+											<input type="text" name="m_contact[]" value="{$v}" class="form-control" placeholder="Add contact number">
+										
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a>
+										</div>
+									</div>
+									
+								</div>
+								
+							</td>
+						</tr>
+						{/foreach}
+					</table>
+					<a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add contact number</a>
+				</div>
+			</div>--->
 					</div>
 					<!-- /box_general-->
 					

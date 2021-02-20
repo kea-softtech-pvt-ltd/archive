@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-15 15:08:54
+/* Smarty version 3.1.29, created on 2021-02-19 22:17:51
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\sidebar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602a412e751462_07875310',
+  'unifunc' => 'content_602febb7c726e3_55078067',
   'file_dependency' => 
   array (
     '7c95806d8b7b921f120e64c090bdeb663e01d69e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\sidebar.tpl',
-      1 => 1613380471,
+      1 => 1613753269,
       2 => 'file',
     ),
   ),
@@ -19,11 +19,10 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_602a412e751462_07875310 ($_smarty_tpl) {
+function content_602febb7c726e3_55078067 ($_smarty_tpl) {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html"><img src="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"></a>
+    <a class="navbar-brand" href="index.html">Flats On Discount</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,6 +35,7 @@ default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"><
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+        <?php if ((isset($_SESSION['role']) && $_SESSION['role'] != 3)) {?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Builder management">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /builder">
@@ -57,6 +57,28 @@ default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"><
             <span class="nav-link-text">Units management</span>
           </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Address management">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">Address management</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseProfile">
+            <li>
+              <a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/country">Add Country</a>
+            </li>
+			      <li>
+              <a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/state">Add State</a>
+            </li>
+            <li>
+              <a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/city">Add City</a>
+            </li>
+          </ul>
+        </li>
+        <?php }?>
+        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Property management">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /properties">
@@ -71,7 +93,24 @@ default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"><
             <span class="nav-link-text">Customer management</span>
           </a>
         </li>
-     
+       <!--- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="City management">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/city">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">city management</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="State management">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/state">
+            <i class="fa fa-fw fa-institution"></i>
+            <span class="nav-link-text">State management</span>
+          </a>
+        </li> --->
+
+        
+
+
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">

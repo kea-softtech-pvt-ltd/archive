@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-15 13:37:53
+/* Smarty version 3.1.29, created on 2021-02-20 14:56:37
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602a2bd9d23c85_66209540',
+  'unifunc' => 'content_6030d5cd600fa4_97698339',
   'file_dependency' => 
   array (
     'b1bfca59b5a920db7cd738f31a572e990890539e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\builder.tpl',
-      1 => 1613376467,
+      1 => 1613809996,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602a2bd9d23c85_66209540 ($_smarty_tpl) {
+function content_6030d5cd600fa4_97698339 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -79,15 +79,15 @@ $__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
 						<h4>Builder Name : <?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
 </h4>
 						<ul class="booking_details">
-							<li><strong>Partner name </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['partner_name'];?>
-</li>
-							<li><strong>PAN number </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['pan'];?>
+							<li><strong>Register number </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['register_number'];?>
 </li>
 							<li><strong>Address </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['street_address'];?>
 </li>
 							<li><strong>Telephone </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['telephone'];?>
 </li>
 							<li><strong>Email </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['email'];?>
+</li>
+							<li><strong>Unser Name </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['user_name'];?>
 </li>
 						</ul>
 						<!--<input type="hidden" name="id" value="id">--->
