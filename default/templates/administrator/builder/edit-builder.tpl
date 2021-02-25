@@ -16,6 +16,8 @@ label.error {
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-edit"></i>Edit Builder information</h2>
+							<img class="" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" style="float: right; height: 50px; width:50px" /><br>				
+							<h2> </h2>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
@@ -42,7 +44,7 @@ label.error {
 									<label>Profile picture</label>
 										<input class="form-control" type="file" id="image" name="image" value=""></input>
 										<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden>
-										<img class="d-block w-10" height="100px" width="100px" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" />					
+										
 								</div>
 							</div>
 						<!---<div class="col-md-6">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 10:51 AM
+-- Generation Time: Feb 25, 2021 at 01:59 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -65,8 +65,8 @@ CREATE TABLE `amenities` (
 --
 
 INSERT INTO `amenities` (`id`, `name`, `font_awaesome`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 'gym', 'fa-fa fa-gym', '', '2021-02-20', '2021-02-20', '1'),
-(2, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1');
+(2, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1'),
+(4, 'home', 'fa fa-home', '', '2021-02-23', '2021-02-23', '1');
 
 -- --------------------------------------------------------
 
@@ -100,9 +100,8 @@ CREATE TABLE `builders` (
 --
 
 INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`, `m_con`, `role`) VALUES
-(2, 'Roshan ', 123456, '2147483647', 'roshandeorukhkar@gmail.com', '6493', '1613792156_images (1).png', '1', 'Pune', '1', 411013, 0, '2021-02-18', '2021-02-20', '1', 'Roshan ', '', 3),
-(27, 'Gaurav ', 345354, '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'satara', '1', 415002, 0, '2021-02-18', '2021-02-20', '1', 'Gaurav ', '', 3),
-(33, 'amit', 2448, '9359249443', 'amit.pawar.7218@gmail.com', '2774', '1613808570_download (4).jpg', '3', 'satara', '1', 415002, 0, '2021-02-20', '2021-02-20', '1', 'amit', '9359249443,3453453455', 3);
+(2, 'Roshan ', 123456, '2147483647', 'roshandeorukhkar@gmail.com', '5555', '1613792156_images (1).png', '1', 'Pune', '1', 411013, 0, '2021-02-18', '2021-02-25', '1', 'Roshan ', '', 3),
+(27, 'Gaurav ', 345354, '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'satara', '1', 415002, 0, '2021-02-18', '2021-02-25', '1', 'Gaurav ', '', 3);
 
 -- --------------------------------------------------------
 
@@ -333,12 +332,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `amenities`
 --
 ALTER TABLE `amenities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 --
 -- AUTO_INCREMENT for table `city`
 --
@@ -369,6 +368,4 @@ ALTER TABLE `units`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
