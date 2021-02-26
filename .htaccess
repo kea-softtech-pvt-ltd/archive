@@ -60,7 +60,11 @@ RewriteRule    ^admin/country/edit?$   administrator/source/country/edit-country
 RewriteRule    ^admin/country/delete?$ administrator/source/country/delete-country.php
 
 
+RewriteRule    ^admin/builder$    administrator/ajax/ajax_food.php
 
+RewriteRule    ^admin/api?$    administrator/source/api/addAmenities.php
+RewriteRule    ^admin/api/addAmenities?$ administrator/source/api/add-amenities.php
+RewriteRule    ^admin/api/edit?$ administrator/source/api/edit-amenities.php
 
 RewriteRule    ^builder/?$    buildermodule/source/index.php
 RewriteRule    ^builder/login?$    buildermodule/source/login/login.php
