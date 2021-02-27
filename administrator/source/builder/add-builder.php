@@ -19,10 +19,10 @@
 		$builderArray['name'] = $_POST['name'];
 		$builderArray['avatar'] = $_POST['image'];
 		$builderArray['telephone'] = $_POST['contact_number'];
+		$builderArray['landmark'] = $_POST['landmark'];
 		$builderArray['email'] = $_POST['email'];
-		$builderArray['register_number'] = rand(6,9999);
+		$builderArray['register_number'] = $_POST['register_number'];
 		$builderArray['city'] = $_POST['city'];
-	//	$builderArray['m_con'] = implode(',',$_POST['m_contact']) ; its use for multiple add contact
 		$builderArray['street_address'] = $_POST['address'];
 		$builderArray['state'] = $_POST['state'];
 		$builderArray['zip'] = $_POST['zipcode'];
@@ -32,8 +32,16 @@
 		$builderArray['user_name'] = $_POST['name'];
 		$builderArray['password'] = rand(6,9999);
 		$builderArray['properties'] = '';
+	//	$builderArray['m_con'] = implode(',',$_POST['m_contact']) ; its use for multiple add contact
+
+		$success = "You have successfully add builder.";
+		$smarty->assign("success",$success);
+
 		$builderId = $builderObj->addBuilderByValue($builderArray);
+
+		//header( "refresh:5;url=/admin/builder" );
 		header("Location: " . SITE_URL . "/admin/builder");
+		//	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
 	}
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
 	$citiesListArray = $builderObj->getCities();
@@ -41,7 +49,9 @@
 	$statesListArray = $builderObj->getStates();
 	$smarty->assign('statesListArray', $statesListArray);
 	$smarty->assign('moduleName', 'Add builder');
+
 	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/add-builder.tpl');
+
 	}else{
 		header("Location: " . SITE_URL . "/admin/login");
 	}
