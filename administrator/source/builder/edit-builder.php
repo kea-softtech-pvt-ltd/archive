@@ -24,16 +24,18 @@
 		$builderArray['name'] = $_POST['name'];
 		$builderArray['telephone'] = $_POST['contact_number'];
 		$builderArray['email'] = $_POST['email'];
+		$builderArray['register_number'] = $_POST['register_number'];
+		$builderArray['landmark'] = $_POST['landmark'];
 		$builderArray['city'] = $_POST['city'];
 		$builderArray['avatar'] = $_POST['image'];
 		$builderArray['street_address'] = $_POST['address'];
 		$builderArray['state'] = $_POST['state'];
-	//	$builderArray['m_con'] = implode(',',$_POST['m_contact']) ; its use multiple contact add use this
 		$builderArray['zip'] = $_POST['zipcode'];
 		$builderArray['modified_at'] = date('Y/m/d H:i:s');
 		$builderArray['status'] = 1;
 		$builderArray['user_name'] = $_POST['name']; 
 		$builderId = $builderObj->editUserValueById($builderArray,$_POST['id']);
+		//	$builderArray['m_con'] = implode(',',$_POST['m_contact']) ; its use multiple contact add use this
 
 		header("Location: " . SITE_URL . "/admin/builder");
 	}
