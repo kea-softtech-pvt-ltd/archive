@@ -18,4 +18,4 @@
     <script src="{$siteroot}/administrator/js/jquery.validate.js"></script>
     <script src="{$siteroot}/administrator/js/additional-methods.js"></script>
     <script src="{$siteroot}/administrator/js/reservation.js"></script>
-   
+    <script src="{$siteroot}/administrator/js/builder.js"></script>
