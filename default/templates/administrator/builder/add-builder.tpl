@@ -4,6 +4,10 @@
 label.error {
     color: red !important;
 }
+#msg{
+	color:#28a745;
+	background-color: #a8d9a3;
+}
 </style>
 	{include file='administrator/common/header.tpl'}
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
@@ -15,6 +19,11 @@ label.error {
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-file"></i>Builder information</h2>
+								<div id="msg" name="msg">	
+									{if isset($success) }
+										{$success}
+									{/if}
+								</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
@@ -42,8 +51,19 @@ label.error {
 									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Register number</label>
+									<input type="text" class="form-control" name="register_number" placeholder="Builder register number">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Zip code</label>
+									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code">
+								</div>
+							</div>
 						</div>
-				
 					</div>
 					<!-- /box_general-->
 					
@@ -55,7 +75,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>State</label>
-									<select class="form-control" name="state" required>
+									<select class="form-control" name="state" id="state" onchange="getModels();" required>
 										<option value="">Select state</option>
 										{foreach from=$statesListArray key=k item=v}
 											<option value="{$v['s_id']}">{$v['name']}</option>
@@ -66,7 +86,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>City</label>
-									<select class="form-control" name="city" required>
+									<select class="form-control" name="city" id="city" required>
 										<option value="">Select city</option>
 										{foreach from=$citiesListArray key=k item=v}
 											<option value="{$v['id']}">{$v['name']}</option>
@@ -79,8 +99,8 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Zip code</label>
-									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code">
+									<label>Landmark</label>
+									<input class="form-control" name="landmark" placeholder="Enter landmark" />
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -100,7 +120,7 @@ label.error {
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<input type="text" name="m_contact[]" class="form-control" placeholder="Add contact number">
+											<input type="text" name="m_contact[]" id="m_contact" class="form-control" placeholder="Add contact number">
 										</div>
 									</div>
 									<div class="col-md-2">
@@ -147,8 +167,17 @@ label.error {
 			</div>
 		</div>
 		</div>
+
+
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
+
+	<script type="text/javascript">
+   		 setTimeout(function() {
+   			 $('#msg').fadeOut('fast');
+   		 }, 3000); 
 	
+    		//window.location.replace("{$adminroot}/builder");
+	</script>
 </body>
 </html>
