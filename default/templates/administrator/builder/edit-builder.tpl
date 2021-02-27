@@ -16,8 +16,7 @@ label.error {
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-edit"></i>Edit Builder information</h2>
-							<img class="" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" style="float: right; height: 50px; width:50px" /><br>				
-							<h2> </h2>
+						<!--	<img class="" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" style="float: right; height: 50px; width:50px" /><br>	--->			
 						</div>
 						<div class="row">
 							<div class="col-md-6">
@@ -40,39 +39,35 @@ label.error {
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>Profile picture</label>
-										<input class="form-control" type="file" id="image" name="image" value=""></input>
-										<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden>
-										
-								</div>
-							</div>
-						<!---<div class="col-md-6">
-								<div class="form-group">
-									<label>Partners name</label>
-									<input type="text" class="form-control" name="partner_name" placeholder="Partners name"  value="{$builderuserArray['partner_name']}" required>
-								</div>
-							</div>--->
-						</div>
-						<div class="row">
-							
-					<!--		<div class="col-md-6">
-								<div class="form-group">
-									<label>PAN number</label>
-									<input type="text" class="form-control" name="pan_number" placeholder="PAN number" value="{$builderuserArray['pan']}">
+								<div class="row">
+									<div class="col-10">
+										<div class="form-group">
+											<label>Profile picture</label>
+												<input class="form-control" type="file" id="image" name="image" value="" />
+												<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden />	
+										</div>
+									</div>
+									<div class="col-2">
+										<div class="form-group">
+											<img class="" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" style="float: right; height: 50px; width:50px; margin-top: 30%" />
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Profile picture</label>
-									<input class="form-control" type="file" id="image" name="image" value=""></input>
-									<input class="form-control" type="text" id="image" name="image" value="{$builderuserArray['avatar']}" hidden>
-									<br>
-									<img class="d-block w-10" height="100px" width="100px" src="{SITE_URL}/administrator/source/upload/{$builderuserArray['avatar']}" />
+									<label>Register number</label>
+									<input type="text" class="form-control" name="register_number" placeholder="Builder register number"  value="{$builderuserArray['register_number']}" required>
 								</div>
-							</div> --->
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Zip code</label>
+									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code" value="{$builderuserArray['zip']}">
+								</div>
+							</div>
 						</div>
-						<!-- /row-->
+				
 					</div>
 					<!-- /box_general-->
 					
@@ -108,19 +103,19 @@ label.error {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Address</label>
-									<textarea class="form-control" name="address" placeholder="Your address" value="{$builderuserArray['street_address']}">{$builderuserArray['street_address']}</textarea>
+									<label>Landmark</label>
+									<input class="form-control" name="landmark" placeholder="Enter landmark" value="{$builderuserArray['landmark']}" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Zip code</label>
-									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code" value="{$builderuserArray['zip']}">
+									<label>Address</label>
+									<textarea class="form-control" name="address" placeholder="Your address" value="{$builderuserArray['street_address']}">{$builderuserArray['street_address']}</textarea>
 								</div>
 							</div>
 						</div>
 						<!-- /row-->
-			<!--<div class="row">
+					<!--<div class="row">
 					<div class="col-md-12">
 						<h6>Multiple contact number</h6>
 					<table id="pricing-list-container" style="width:100%;">
