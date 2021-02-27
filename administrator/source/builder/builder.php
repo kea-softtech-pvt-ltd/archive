@@ -16,6 +16,6 @@
 	}else{
 		header("Location: " . SITE_URL . "/admin/login");
 	}
-	
+	//echo $_REQUEST['message'];
 
 ?>
