@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 01:59 PM
+-- Generation Time: Feb 27, 2021 at 06:16 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -65,8 +65,8 @@ CREATE TABLE `amenities` (
 --
 
 INSERT INTO `amenities` (`id`, `name`, `font_awaesome`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(2, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1'),
-(4, 'home', 'fa fa-home', '', '2021-02-23', '2021-02-23', '1');
+(1, 'home', 'fa fa-home', '', '2021-02-23', '2021-02-23', '1'),
+(2, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1');
 
 -- --------------------------------------------------------
 
@@ -77,13 +77,14 @@ INSERT INTO `amenities` (`id`, `name`, `font_awaesome`, `images`, `created_at`, 
 CREATE TABLE `builders` (
   `id` int(11) NOT NULL,
   `name` varchar(40) DEFAULT NULL,
-  `register_number` int(20) NOT NULL,
+  `register_number` varchar(100) NOT NULL,
   `telephone` varchar(100) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `avatar` varchar(1000) NOT NULL,
+  `avatar` text NOT NULL,
   `city` varchar(20) NOT NULL,
-  `street_address` varchar(30) NOT NULL,
+  `street_address` text,
+  `landmark` text,
   `state` varchar(20) NOT NULL,
   `zip` int(10) NOT NULL,
   `properties` int(11) NOT NULL,
@@ -99,9 +100,9 @@ CREATE TABLE `builders` (
 -- Dumping data for table `builders`
 --
 
-INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`, `m_con`, `role`) VALUES
-(2, 'Roshan ', 123456, '2147483647', 'roshandeorukhkar@gmail.com', '5555', '1613792156_images (1).png', '1', 'Pune', '1', 411013, 0, '2021-02-18', '2021-02-25', '1', 'Roshan ', '', 3),
-(27, 'Gaurav ', 345354, '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'satara', '1', 415002, 0, '2021-02-18', '2021-02-25', '1', 'Gaurav ', '', 3);
+INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `landmark`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`, `m_con`, `role`) VALUES
+(1, 'Roshan ', 'E1234568888', '2147483647', 'roshandeorukhkar@gmail.com', '5555', '1613792156_images (1).png', '1', 'Ganesh Colony, Shiv Nagar, Hadapsar, Pune.', 'GK mobile shop.', '1', 411013, 0, '2021-02-18', '2021-02-26', '1', 'Roshan ', '', 3),
+(2, 'Gaurav ', 'E98234238933', '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'a/p: nahre mansi viswas nager ', 'RKS hotel ', '1', 415002, 0, '2021-02-18', '2021-02-26', '1', 'Gaurav ', '', 3);
 
 -- --------------------------------------------------------
 
@@ -124,8 +125,7 @@ CREATE TABLE `city` (
 INSERT INTO `city` (`id`, `s_id`, `name`, `status`, `created_date`) VALUES
 (1, 1, 'Pune', '1', '2021-02-19 06:29:02'),
 (2, 1, 'Karad', '1', '2021-02-19 06:29:12'),
-(3, 1, 'Satara', '1', '2021-02-19 06:29:22'),
-(4, 2, 'panji', '0', '2021-02-19 06:30:02');
+(3, 1, 'Satara', '1', '2021-02-19 06:29:22');
 
 -- --------------------------------------------------------
 
@@ -147,8 +147,7 @@ CREATE TABLE `country` (
 INSERT INTO `country` (`c_id`, `name`, `status`, `created_date`) VALUES
 (1, 'India', '1', '2021-02-19 08:45:37'),
 (2, 'USA', '1', '2021-02-19 08:45:45'),
-(3, 'Japan', '0', '2021-02-19 08:46:29'),
-(4, 'Chaina', '1', '2021-02-19 08:46:11');
+(3, 'Chaina', '1', '2021-02-27 05:15:11');
 
 -- --------------------------------------------------------
 
@@ -210,7 +209,6 @@ CREATE TABLE `state` (
 INSERT INTO `state` (`s_id`, `c_id`, `name`, `status`, `created_date`) VALUES
 (1, 1, 'Maharashtra', '1', '2021-02-19 06:38:42'),
 (2, 1, 'Goa', '1', '2021-02-19 06:10:19'),
-(4, 2, 'Abcc', '0', '2021-02-19 06:10:53'),
 (6, 1, 'Beharr', '1', '2021-02-19 06:37:39');
 
 -- --------------------------------------------------------
@@ -240,7 +238,7 @@ CREATE TABLE `units` (
 --
 
 INSERT INTO `units` (`id`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, '1bhk', 'Flat', 670, 23, 430, 290, '', '', '1613366982_1bhk.jpg,1613366982_1bhk1.jpg,1613366982_1bhk2.jpg', '2021-02-15', '2021-02-15', '1'),
+(1, '2bhk', 'Flat', 670, 23, 430, 290, '', '', '1613366982_1bhk.jpg,1613366982_1bhk1.jpg,1613366982_1bhk2.jpg', '2021-02-15', '2021-02-26', '1'),
 (2, '3bhk', 'villa', 12000, 90, 4367, 9090, '', '', '', '2021-02-17', '2021-02-17', '0');
 
 -- --------------------------------------------------------
@@ -332,12 +330,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `amenities`
 --
 ALTER TABLE `amenities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `city`
 --
@@ -368,4 +366,6 @@ ALTER TABLE `units`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
