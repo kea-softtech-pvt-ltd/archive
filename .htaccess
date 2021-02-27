@@ -59,8 +59,11 @@ RewriteRule    ^admin/country/add?$    administrator/source/country/add-country.
 RewriteRule    ^admin/country/edit?$   administrator/source/country/edit-country.php
 RewriteRule    ^admin/country/delete?$ administrator/source/country/delete-country.php
 
+RewriteRule    ^builder/login?$    administrator/source/builder/login.php
 
-RewriteRule    ^admin/builder$    administrator/ajax/ajax_food.php
+
+
+RewriteRule    ^admin/ajaxbuilder?$    administrator/ajax/ajax_food.php
 
 RewriteRule    ^admin/api?$    administrator/source/api/addAmenities.php
 RewriteRule    ^admin/api/addAmenities?$ administrator/source/api/add-amenities.php
