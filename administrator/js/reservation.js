@@ -23,8 +23,10 @@ $().ready(function () {
             "address": {
                 required: true,
             },
-            
-            "state": {
+             "state": {
+                required: true,
+            },
+            "register_number": {
                 required: true,
             },
             "zipcode": {
@@ -50,7 +52,10 @@ $().ready(function () {
 			 "address": {
                 required: "Please enter address"
             },
-            "state": {
+            "register_number": {
+                required: "Please enter register number"
+            },
+             "state": {
                 required: "Please select state"
             },
             "zipcode": {
