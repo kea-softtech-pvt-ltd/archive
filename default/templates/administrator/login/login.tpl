@@ -12,9 +12,8 @@
 						<div class="row justify-content-md-center">	
 							<div id="login" class="col-md-4" style="border: 2px solid #eeeeee; margin-top:10%">
 								<div class=" text-center add_top_20">
-
-								<i class="fa fa fa-building text-info" style='font-size:36px'></i>
-
+								<i class="fa fa-fw fa-address-card text-info" style='font-size:40px'></i>
+								
 							<!--		<a class="navbar-brand" href="{$siteroot}"><img src="../default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"></a>-->
 								</div>
 								<div class="box_form add_top_20">
@@ -30,13 +29,6 @@
 												{if isset($message1) }
 													{$message1}
 												{/if}
-										</div>
-										<div class="form-group">
-											<input type="radio" id="admin" name="role" value="admin" checked>
-											<label for="admin">Admin</label>
-											<input type="radio" id="builder" name="role" value="builder">
-											<label for="builder">Builder</label>
-
 										</div>
 										<div class="form-group text-center add_top_20">
 											<input class="btn_1 medium" name="login" type="submit" value="Login">
