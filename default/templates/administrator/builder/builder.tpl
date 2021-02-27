@@ -26,13 +26,14 @@
 					{foreach from=$builderListArray key=k item=v}
 					<li>
 						<figure><img src="{SITE_URL}/administrator/source/upload/{$v['avatar']}" alt=""></figure>
-						<h4>Builder Name : {$v['name']}</h4>
+						<h4>{$v['name']}</h4>
 						<ul class="booking_details">
 							<li><strong>Register number </strong> : {$v['register_number']}</li>
-							<li><strong>Address </strong> : {$v['street_address']}</li>
-							<li><strong>Telephone </strong> : {$v['telephone']}</li>
 							<li><strong>Email </strong> : {$v['email']}</li>
-							<li><strong>Unser Name </strong> : {$v['user_name']}</li>
+							<li><strong>User Name </strong> : {$v['user_name']}</li>
+							<li><strong>Telephone </strong> : {$v['telephone']}</li>
+							<li><strong>Address </strong> : {$v['street_address']}</li>
+							<li><strong>Landmark </strong> : {$v['landmark']}</li>
 						</ul>
 						<!--<input type="hidden" name="id" value="id">--->
 						<ul class="buttons">
@@ -71,6 +72,7 @@
         </div>
       </div>
     </div>
+	
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
 	
