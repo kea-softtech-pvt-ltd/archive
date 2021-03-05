@@ -4,6 +4,12 @@
 	//print_r($_REQUEST);
 	$builderObj = new Model_Builders();
 	$builderListArray = $builderObj->getAllBuilders();
+
+	//$_SESSION['message_add_b'];
+
+	//$builderuserArray = $builderObj->getUserNameByUserId($_SESSION);
+
+
 	//print_r($builderListArray);
 	// $smarty->assign('builderListArray', $builderListArray);
 	// $smarty->assign('moduleName', 'List of builder');
