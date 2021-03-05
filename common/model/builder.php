@@ -75,6 +75,16 @@
 		$result= $this->FetchAll($result1);
 		return $result;	
     }
+    public function getModels($s_id)
+    {
+        $fields=array('name','s_id','status','id');	//fetch fromdb
+        $tables=array('city');
+		$where = array(" status = '1'");	
+        $and = array(" s_id = '$s_id'");	
+		$result1 = $this->SelectData($fields,$tables, $and, $where, $order = array(), $group=array(),$limit = "",0,0); 
+		$result= $this->FetchAll($result1);
+		return $result;	
+    }
         
     }
 ?>
