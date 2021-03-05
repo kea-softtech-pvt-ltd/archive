@@ -29,7 +29,7 @@
 		$builderArray['city'] = $_POST['city'];
 		$builderArray['avatar'] = $_POST['image'];
 		$builderArray['street_address'] = $_POST['address'];
-		$builderArray['state'] = $_POST['state'];
+		$builderArray['state'] = $_POST['s_id'];
 		$builderArray['zip'] = $_POST['zipcode'];
 		$builderArray['modified_at'] = date('Y/m/d H:i:s');
 		$builderArray['status'] = 1;
