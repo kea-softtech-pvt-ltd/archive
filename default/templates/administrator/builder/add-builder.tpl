@@ -75,7 +75,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>State</label>
-									<select class="form-control" name="state" id="state" onchange="getModels();" required>
+									<select class="form-control" name="s_id" id="s_id" onchange="getModels();" required>
 										<option value="">Select state</option>
 										{foreach from=$statesListArray key=k item=v}
 											<option value="{$v['s_id']}">{$v['name']}</option>
@@ -88,9 +88,9 @@ label.error {
 									<label>City</label>
 									<select class="form-control" name="city" id="city" required>
 										<option value="">Select city</option>
-										{foreach from=$citiesListArray key=k item=v}
+									<!--	{foreach from=$citiesListArray key=k item=v}
 											<option value="{$v['id']}">{$v['name']}</option>
-										{/foreach}
+										{/foreach}--->
 									</select>
 								</div>
 							</div>
@@ -173,11 +173,82 @@ label.error {
     {include file='administrator/common/scripts.tpl'}
 
 	<script type="text/javascript">
+   		function getModels()
+{
+
+	if($('#s_id').val() == '')
+
+	{
+
+		var _html = '<option value="">Select State/option>';
+
+		_html += '<option value="0">Other</option>';
+
+		$('#city').html(_html);
+
+	}
+	
+	else
+
+	{		
+        
+		$.ajax({
+			type: "POST",
+
+			url: "{$adminroot}/ajaxbuilder",
+
+	  		 // url: "http://localhost/archive/administrator/ajax/ajax_food.php",
+           
+			
+			data: { action: 'getModels', s_id : $('#s_id').val() },
+
+			success: function(response){
+
+				var data_obj = JSON.parse(response);
+
+				var _html = '<option value="">Select  city </option>';
+				
+				if(data_obj.message == 'success')
+
+				{
+
+					for(var i=0; i < data_obj.result.length; i++)
+
+					{	
+
+						_html += '<option value="'+data_obj.result[i].id+'">'+data_obj.result[i].name+'</option>';
+
+					}
+
+				}
+
+				else
+					
+				{
+
+					$('#error_message').show();
+					
+				}	
+
+				_html += '<option value="0">Other</option>';
+
+				$('#city').html(_html);
+
+			}
+
+		});
+
+	}
+
+}
+	</script>
+	<script type="text/javascript">
    		 setTimeout(function() {
    			 $('#msg').fadeOut('fast');
    		 }, 3000); 
-	
-    		//window.location.replace("{$adminroot}/builder");
+		//header("Location: " . SITE_URL . "/admin/builder");
+    		
+			
 	</script>
 </body>
 </html>
