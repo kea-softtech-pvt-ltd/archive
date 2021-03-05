@@ -26,8 +26,26 @@
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units management">
           <a class="nav-link" href="{$adminroot}/units">
-            <i class="fa fa-fw fa-delicious"></i>
+            <i class="fa fa-fw fa-yelp"></i>
             <span class="nav-link-text">Units management</span>
+          </a>
+        </li>
+      <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Wings">
+          <a class="nav-link" href="{$adminroot}/wing">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Wings</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">
+          <a class="nav-link" href="{$adminroot}/buildingType">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Building Type</span>
+          </a>
+        </li>--->
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Neighbourhoods Type">
+          <a class="nav-link" href="{$adminroot}/neighbourhoods">
+            <i class="fa fa-fw fa-building-o"></i>
+            <span class="nav-link-text">Neighbourhoods</span>
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Address management">
@@ -74,10 +92,6 @@
           </a>
         </li> --->
 
-        
-
-
-        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
