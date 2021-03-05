@@ -34,6 +34,7 @@ RewriteRule    ^admin/builder/view?$   administrator/source/builder/view-builder
 RewriteRule    ^admin/builder/delete?$   administrator/source/builder/delete-builder.php
 RewriteRule    ^admin/properties?$    administrator/source/properties/properties.php
 RewriteRule    ^admin/properties/add?$    administrator/source/properties/add-properties.php
+RewriteRule    ^admin/properties/edit?$    administrator/source/properties/edit-properties.php
 RewriteRule    ^admin/customers?$    administrator/source/customers/customers.php
 RewriteRule    ^admin/customers/add?$    administrator/source/customers/add-customer.php
 RewriteRule    ^admin/amenities?$     administrator/source/amenities/amenities.php
@@ -58,6 +59,27 @@ RewriteRule    ^admin/country?$    administrator/source/country/country.php
 RewriteRule    ^admin/country/add?$    administrator/source/country/add-country.php
 RewriteRule    ^admin/country/edit?$   administrator/source/country/edit-country.php
 RewriteRule    ^admin/country/delete?$ administrator/source/country/delete-country.php
+
+RewriteRule    ^admin/buildingType?$    administrator/source/buildingType/buildingType.php
+RewriteRule    ^admin/buildingType/add?$    administrator/source/buildingType/add-buildingType.php
+RewriteRule    ^admin/buildingType/edit?$   administrator/source/buildingType/edit-buildingType.php
+RewriteRule    ^admin/buildingType/delete?$ administrator/source/buildingType/delete-buildingType.php
+RewriteRule    ^admin/buildingType/view?$ administrator/source/buildingType/view-buildingType.php
+
+RewriteRule    ^admin/wing?$    administrator/source/wing/wing.php
+RewriteRule    ^admin/wing/add?$    administrator/source/wing/add-wing.php
+RewriteRule    ^admin/wing/edit?$   administrator/source/wing/edit-wing.php
+RewriteRule    ^admin/wing/delete?$ administrator/source/wing/delete-wing.php
+RewriteRule    ^admin/wing/view?$ administrator/source/wing/view-wing.php
+
+RewriteRule    ^admin/neighbourhoods?$    administrator/source/neighbourhoods/neighbourhoods.php
+RewriteRule    ^admin/neighbourhoods/add?$    administrator/source/neighbourhoods/add-neighbourhoods.php
+RewriteRule    ^admin/neighbourhoods/edit?$   administrator/source/neighbourhoods/edit-neighbourhoods.php
+RewriteRule    ^admin/neighbourhoods/delete?$ administrator/source/neighbourhoods/delete-neighbourhoods.php
+RewriteRule    ^admin/neighbourhoods/view?$ administrator/source/neighbourhoods/view-neighbourhoods.php
+
+
+
 
 RewriteRule    ^builder/login?$    administrator/source/builder/login.php
 
