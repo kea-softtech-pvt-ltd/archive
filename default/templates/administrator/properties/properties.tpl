@@ -1,5 +1,11 @@
     <!doctype html>
+
 <html>
+<style>
+div .carouselExampleControls {
+    max-width: 100px;
+}
+</style>
 	{include file='administrator/common/header.tpl'}
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}			
@@ -25,52 +31,43 @@
                 </div>
 			</div>
 			<div class="list_general">
-				<ul>
+				<ul>{foreach from=$propertiesListArray key=k item=v}
 					<li>
+						<!--<div id="carouselExampleControls{$v['id']}" class="carousel slide carouselExampleControls" data-ride="carousel">
+							<div class="carousel-inner">
+							{$imagearray = explode(',',$v['images'])}
+							
+							{foreach from=$imagearray key=index item=image name=count}
+							
+								<div class="carousel-item {if $smarty.foreach.count.index == 0} active {/if}">
+								<img class="d-block w-100" style="height:80px" src="{SITE_URL}/administrator/source/upload/properties/{$image}" alt="First slide">
+								</div>
+								
+							{/foreach}
+							</div>
+							<a class="carousel-control-prev" href="#carouselExampleControls{$v['id']}" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleControls{$v['id']}" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>--->
 						<figure><img src="img/avatar1.jpg" alt=""></figure>
-						<h4>Enzo Ferrari <i class="pending">Pending</i></h4>
+						<h4>{$v['name']}</h4>
 						<ul class="booking_details">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking time</strong> 10.20AM</li>
-							<li><strong>Visits</strong> Cardiology test, Diabetic diagnose</li>
-							<li><strong>Telephone</strong> 0043 432324</li>
-							<li><strong>Email</strong> user@email.com</li>
+							<li><strong>RERA number</strong>{$v['rera_number']}</li>
+							<li><strong>Builder name</strong>{$v['builder_name']}</li>
+							<li><strong>possession date</strong>{$v['possession_date']}</li>
+							<li><strong>address</strong>{$v['address']}</li>
 						</ul>
 						<ul class="buttons">
 							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
 							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
 						</ul>
 					</li>
-					<li>
-						<figure><img src="img/avatar2.jpg" alt=""></figure>
-						<h4>Andrea Lomarco <i class="cancel">Cancel</i></h4>
-						<ul class="booking_details">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking time</strong> 10.20AM</li>
-							<li><strong>Visits</strong> Cardiology test, Diabetic diagnose</li>
-							<li><strong>Telephone</strong> 0043 432324</li>
-							<li><strong>Email</strong> user@email.com</li>
-						</ul>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
-					<li>
-						<figure><img src="img/avatar3.jpg" alt=""></figure>
-						<h4>Marc Twain <i class="approved">Approved</i></h4>
-						<ul class="booking_details">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking time</strong> 10.20AM</li>
-							<li><strong>Visits</strong> Cardiology test, Diabetic diagnose</li>
-							<li><strong>Telephone</strong> 0043 432324</li>
-							<li><strong>Email</strong> user@email.com</li>
-						</ul>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
+					{/foreach}
 				</ul>
 			</div>
 		</div>
