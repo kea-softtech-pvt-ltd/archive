@@ -23,6 +23,7 @@
 			</div>
 			<div class="list_general">
 				<ul>
+				<!--	{$_SESSION['message_add_b']} its use for message show session --> 
 					{foreach from=$builderListArray key=k item=v}
 					<li>
 						<figure><img src="{SITE_URL}/administrator/source/upload/{$v['avatar']}" alt=""></figure>
