@@ -21,31 +21,50 @@
 		   
 		$imagelist = implode(",",$imagearray);
 
-	//	$builderObj = new Model_Property();
 		$propertyArray['name'] = $_POST['name'];
 		$propertyArray['builder_name'] = $_POST['builder_name'];
 		$propertyArray['started_date'] = $_POST['started_date'];
 		$propertyArray['possession_date'] = $_POST['possession_date'];
 		$propertyArray['rera_number'] = $_POST['rera_number'];
 		$propertyArray['address'] = $_POST['address'];
-		$propertyArray['specification'] = $_POST['specification'];
-	//	$propertyArray['wing'] = $_POST['wing'];
-		$propertyArray['floor'] = $_POST['floor'];
+		//$propertyArray['specification'] = $_POST['specification'];
 		$propertyArray['images'] = $imagelist;
 		$propertyArray['status'] = 1;
 		$propertyArray['created_date'] = date('Y/m/d H:i:s');
 		$propertyArray['modified_date'] = date('Y/m/d H:i:s');
-		$propertyArray['wing'] = implode(',',$_POST['wing']) ;
-
+		// $propertyArray['wing'] = implode(',',$_POST['wing']) ;
+		// $propertyArray['floor'] = implode(',',$_POST['floor']);
+		// $propertyArray['flat'] = $_POST['flat'];
+		// $propertyArray['specality'] = $_POST['specality'];
 		$propertyId = $builderObj->addPropertiesByValue($propertyArray);
+		
+		for($i=0; $i<count($_POST['wing']);$i++){
 
-
+			$wingArray['p_id']		= $propertyId;
+			$wingArray['wing'] 		= $_POST['wing'][$i];
+			$wingArray['floor'] 	= $_POST['floor'][$i];
+			$wingArray['flat'] 		= $_POST['flat'][$i];
+			$wingArray['specality'] = $_POST['specality'][$i];
+			// print_r($wingArray);
+			$builderObj->addFloorsByValue($wingArray);
+		}
+		for($i=0; $i<count($_POST['wings']);$i++){
+			
+			$wingsArray['p_id']		= $propertyId;
+			$wingsArray['name'] 	= $_POST['wings'][$i];
+			// print_r($wingsArray);
+			// die();
+			$builderObj->addWingsByValue($wingsArray);
+			
+		}
 		header("Location: " . SITE_URL . "/admin/properties");
 	}
 	$statesListArray = $builderObj->getWing();
 	$smarty->assign('statesListArray', $statesListArray);
 
 	$smarty->assign('moduleName', 'Add properties');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/add-properties.tpl');
+	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/add-properties.tpl'); // its work 
+
+//	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/test-properties.tpl');
 	
 ?>
