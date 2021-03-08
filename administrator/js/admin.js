@@ -81,5 +81,39 @@
 			$(this).parent().parent().parent().remove();
 		});
 	}
+
+  // Wing add
+	function newMenuItem() {
+		var newElem = $('tr.wing-list-item').first().clone();
+		newElem.find('input').val('');
+		newElem.appendTo('table#wing-list-container');
+	}
+	if ($("table#wing-list-container").is('*')) {
+		$('.add-wing-list-item').on('click', function (e) {
+			e.preventDefault();
+			newMenuItem();
+		});
+		$(document).on("click", "#wing-list-container .delete", function (e) {
+			e.preventDefault();
+			$(this).parent().parent().parent().remove();
+		});
+	}
+
+   // floor add
+	function newMenuItem1() {
+		var newElem = $('tr.floor-list-item').first().clone();
+		newElem.find('input').val('');
+		newElem.appendTo('table#floor-list-container');
+	}
+	if ($("table#floor-list-container").is('*')) {
+		$('.add-floor-list-item').on('click', function (e) {
+			e.preventDefault();
+			newMenuItem1();
+		});
+		$(document).on("click", "#floor-list-container .delete1", function (e) {
+			e.preventDefault();
+			$(this).parent().parent().parent().remove();
+		});
+	}
 	
 })(jQuery); // End of use strict
