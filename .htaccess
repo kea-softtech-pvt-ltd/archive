@@ -34,7 +34,10 @@ RewriteRule    ^admin/builder/view?$   administrator/source/builder/view-builder
 RewriteRule    ^admin/builder/delete?$   administrator/source/builder/delete-builder.php
 RewriteRule    ^admin/properties?$    administrator/source/properties/properties.php
 RewriteRule    ^admin/properties/add?$    administrator/source/properties/add-properties.php
+RewriteRule    ^admin/properties/test?$    administrator/source/properties/add-properties.php
 RewriteRule    ^admin/properties/edit?$    administrator/source/properties/edit-properties.php
+RewriteRule    ^admin/properties/delete?$    administrator/source/properties/delete-properties.php
+RewriteRule    ^admin/properties/details?$    administrator/source/properties/details-properties.php
 RewriteRule    ^admin/customers?$    administrator/source/customers/customers.php
 RewriteRule    ^admin/customers/add?$    administrator/source/customers/add-customer.php
 RewriteRule    ^admin/amenities?$     administrator/source/amenities/amenities.php
@@ -78,6 +81,11 @@ RewriteRule    ^admin/neighbourhoods/edit?$   administrator/source/neighbourhood
 RewriteRule    ^admin/neighbourhoods/delete?$ administrator/source/neighbourhoods/delete-neighbourhoods.php
 RewriteRule    ^admin/neighbourhoods/view?$ administrator/source/neighbourhoods/view-neighbourhoods.php
 
+RewriteRule    ^admin/banner?$    administrator/source/banner/banner.php
+RewriteRule    ^admin/banner/add?$    administrator/source/banner/add-banner.php
+RewriteRule    ^admin/banner/edit?$   administrator/source/banner/edit-banner.php
+RewriteRule    ^admin/banner/delete?$ administrator/source/banner/delete-banner.php
+RewriteRule    ^admin/banner/view?$ administrator/source/banner/view-banner.php
 
 
 
@@ -96,6 +104,9 @@ RewriteRule    ^builder/login?$    buildermodule/source/login/login.php
 RewriteRule    ^builder/logout?$    buildermodule/source/login/logout.php
 RewriteRule    ^builder/dashboard?$    buildermodule/source/dashboard/dashboard.php
 RewriteRule    ^builder/properties?$    buildermodule/source/properties/properties.php
+
+RewriteRule    ^admin/floor/add?$    administrator/source/floor/add-floor.php
+
 
 
 
