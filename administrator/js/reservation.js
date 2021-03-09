@@ -125,6 +125,7 @@ $().ready(function () {
     });
 
     //end validation
+
     // validation on state add or edit
      $("#addStates").validate({
         rules: {
@@ -147,7 +148,7 @@ $().ready(function () {
 
     //end validation
 
-    // validation on state add or edit
+    // validation on country add or edit
     $("#addCountry").validate({
         rules: {
             "name": {
@@ -158,6 +159,63 @@ $().ready(function () {
             "name": {
                 required: "Please enter country name."
             }
+        },
+    });
+
+    //end validation
+
+     // validation on neighbourhoods add or edit
+     $("#neighbourhoodsAdd").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "geolocations": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter neighbourhood name."
+            },
+            "geolocations": {
+                required: "Please enter geolocations name."
+            }
+            
+        },
+    });
+
+    //end validation
+
+     // validation on wing add or edit
+     $("#wingAdd").validate({
+        rules: {
+            "name": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter wing name."
+            }
+            
+        },
+    });
+
+    //end validation
+
+     // validation on banner add or edit
+     $("#bannerAdd").validate({
+        rules: {
+            "title": {
+                required: true,
+            }
+        },
+        messages: {
+            "title": {
+                required: "Please enter title."
+            }
+            
         },
     });
 
