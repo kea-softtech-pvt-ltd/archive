@@ -8,13 +8,63 @@
     
         }	
          
-        ## Add builder in database
+        ## Add Properties in database
         function addPropertiesByValue($Array) {
             $this->InsertData( $this->property , $Array );		
             $insertId = $this->getLatestRecordId();
             return $insertId;
         }
 
+         ## Add Properties Address in database
+         function addPropertieAddressByValue($Array) {
+            $this->InsertData('properties_address' , $Array );		
+            $insertId = $this->getLatestRecordId();
+            return $insertId;
+        }
+
+         ## Add Properties Address in database
+         function updatePropertieAddressByValue($Array,$Id) {
+            return $this->UpdateData('properties_address',$Array,"p_id",$Id,0);
+        }
+        
+
+        ## Add Floors in database
+        function addFloorsByValue($Array) {
+            $this->InsertData('floor' , $Array );		
+            $insertId = $this->getLatestRecordId();
+            return $insertId;
+        }
+         ## Add wing in database
+         function addWingsByValue($Array) {
+            $this->InsertData('wing' , $Array );		
+            $insertId = $this->getLatestRecordId();
+            return $insertId;
+        }
+         ## Add unit in database
+         function addUnitsByValue($Array) {
+            $this->InsertData('units' , $Array );		
+            $insertId = $this->getLatestRecordId();
+            return $insertId;
+        }
+        ## Edit Properties by userid
+	    function editUserValueById($array, $Id){
+            return $this->UpdateData($this->property,$array,"id",$Id,0);
+         } 
+
+          ## Edit Properties by userid
+	    function editFloorValueById($array, $Id){
+            $this->UpdateData('floor',$array,"f_id",$Id,0);
+         } 
+           ## Edit Properties by userid
+	    function editWingValueById($array, $Id){
+            $this->UpdateData('wing',$array,"w_id",$Id,0);
+         } 
+
+         ## delete properties 
+         function deleteUserValueById($array, $Id){
+            $this->UpdateData($this->property,$array,"id",$Id,0);
+          
+         }
         ## Get all Properties details
         function getAllProperties($search='', $limit='',$offset='') {
             $fields=array();	
@@ -28,15 +78,53 @@
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+         ## Get properties by id
+	    function getUserNameByUserId($id) {
+            $fields=array('name','id','builder_name','started_date','possession_date','address','rera_number');	//fetch fromdb
+            $tables=array($this->property);
+            $where=array("id=".$id);		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
+
+         ## Get properties by id
+	    function getFloorsByUserId($id) {
+            $fields=array('f_id','p_id','wing','floor','flat','specality');	//fetch fromdb
+            $tables=array('floor');
+            $where=array("p_id=".$id);		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+          ## Get properties by id
+	    function getWingByUserId($id) {
+            $fields=array('w_id','p_id','name','totalFloor');	//fetch fromdb
+            $tables=array('wing');
+            $where=array("p_id=".$id);		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+
+        function getWingBypropertyId($id) {
+            $fields=array('w_id','p_id','name');	//fetch fromdb
+            $tables=array('wing');
+            $where=array("p_id=".$id);		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
         public function getWing()
         {
-            $fields=array('name','id','status');	//fetch fromdb
+            $fields=array('name','w_id','status','p_id','totalFloor');	//fetch fromdb
             $tables=array('wing');
             $where = array(" status = '1'");	
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
             $result= $this->FetchAll($result1);
             return $result;	
         }
+        
         
     }
 ?>
