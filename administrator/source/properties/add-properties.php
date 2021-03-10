@@ -4,7 +4,8 @@
 
 	//print_r($_REQUEST);
 	$builderObj = new Model_Property();
-	if(isset($_POST['propetySave'])) {
+	if(isset($_POST['propetySave'])) 
+	{
 
 		$targetDir = "../upload/properties/"; 
 			$imagearray = array();
@@ -52,13 +53,25 @@
 			
 			$wingsArray['p_id']		= $propertyId;
 			$wingsArray['name'] 	= $_POST['wings'][$i];
+			$wingsArray['totalFloor'] 	= $_POST['totalFloor'][$i];
 			// print_r($wingsArray);
 			// die();
 			$builderObj->addWingsByValue($wingsArray);
 			
 		}
-		header("Location: " . SITE_URL . "/admin/properties");
+		//header("Location: " . SITE_URL . "/admin/properties");
 	}
+	else if(isset($_POST['unitSave'])) 
+	{
+		$unitArray['p_id']	= $propertyId;
+		$unitArray['title'] = $_POST['title'];
+
+		$builderObj->addUnitsByValue($unitArray);
+
+		 header("Location: " . SITE_URL . "/admin/properties");
+
+	}
+	
 	$statesListArray = $builderObj->getWing();
 	$smarty->assign('statesListArray', $statesListArray);
 
