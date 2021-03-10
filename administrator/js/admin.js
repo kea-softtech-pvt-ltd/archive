@@ -115,5 +115,21 @@
 			$(this).parent().parent().parent().remove();
 		});
 	}
+	 // unit add
+	 function newMenuItem2() {
+		var newElem = $('tr.unit-list-item').first().clone();
+		newElem.find('input').val('');
+		newElem.appendTo('table#unit-list-container');
+	}
+	if ($("table#unit-list-container").is('*')) {
+		$('.add-unit-list-item').on('click', function (e) {
+			e.preventDefault();
+			newMenuItem2();
+		});
+		$(document).on("click", "#unit-list-container .delete2", function (e) {
+			e.preventDefault();
+			$(this).parent().parent().parent().remove();
+		});
+	}
 	
 })(jQuery); // End of use strict
