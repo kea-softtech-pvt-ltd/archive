@@ -1,10 +1,10 @@
-    <!doctype html>
+<!doctype html>
 <html>
 	{include file='administrator/common/header.tpl'}
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}	
 
-		<form name="addBuilderForm" action="{$adminroot}/properties/add" method="post" enctype="multipart/form-data">		
+		{* <form name="addBuilderForm" action="{$adminroot}/properties/add" method="post" enctype="multipart/form-data">		 *}
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
@@ -17,25 +17,31 @@
 							<li class="nav-item"><a href="#properties_address" data-toggle="tab" class="nav-link" title="Address Info">Address Info</a></li>
 							<li class="nav-item"><a href="#properties_wing" data-toggle="tab" class="nav-link" title="Assigne Assets">Wing Info</a></li>
 							<li class="nav-item"><a href="#properties_floar" data-toggle="tab" class="nav-link" title="Assigne Assets">Floor Info</a></li>
+							<li class="nav-item"><a href="#properties_unit" data-toggle="tab" class="nav-link" title="Units Assets">Units Info</a></li>
 						</ul>
 					</div>
 				</div>
 		</div>
+		<div class="tab-content">
 		<div class="box_general padding_bottom tab-pane fade show active" id="properties_profile">
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>Properties Basic info</h2>
 			</div>
+				<input type="hidden" id="propertyID" name="propertyID" />
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" name="name" class="form-control" placeholder="Project name">
+					
+						<input type="text" name="name" id="name" class="form-control" placeholder="Project name" />
+						<div class="text-danger" id="names_error"></div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Builder name</label>
-						<input type="text" name="builder_name" class="form-control" placeholder="Builder name">
+						<input type="text" name="builder_name" id="builder_name" class="form-control" placeholder="Builder name" />
+						<div class="text-danger" id="name_error"></div>
 					</div>
 				</div>
 			</div>
@@ -44,13 +50,13 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Start date</label>
-						<input type="date" name="started_date" class="form-control" placeholder="Select date">
+						<input type="date" name="started_date" id="started_date" class="form-control" placeholder="Select date" />
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Possession date</label>
-						<input type="date" name="possession_date" class="form-control" placeholder="Select date">
+						<input type="date" name="possession_date" id="possession_date" class="form-control" placeholder="Select date" />
 					</div>
 				</div>
 			</div>
@@ -59,18 +65,18 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>RERA number</label>
-						<input type="text" name="rera_number" class="form-control" placeholder="RERA">
+						<input type="text" name="rera_number" id="rera_number" class="form-control" placeholder="RERA" />
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Porject picture</label>
-						<input class="form-control" type="file" id="image" name="image[]" value="" multiple>
+						<input class="form-control" type="file" id="image" name="image[]" value="" multiple />
 					</div>
 				</div>
 			</div>
 			<!-- /row-->
-			
+			<button type="button" class="btn btn-primary" name="next" id="next" onclick="myFunction()">Next >></button>
 		</div>
 		<!-- /box_general-->
 		
@@ -82,32 +88,17 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Address</label>
-						<input type="text" name="address" class="form-control" placeholder="Your address">
+						<input type="text" name="address" id="address" class="form-control" placeholder="Your address">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Description</label>
-						<input type="text" name="description" class="form-control" placeholder="Your address">
+						<label>Add Url</label>
+						<input type="text" name="description" id="description" class="form-control" placeholder="Your address Url">
 					</div>
 				</div>
 			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Specification</label>
-						<input type="text" name="specification" class="form-control" placeholder="Your state">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Unit</label>
-						<input type="text" name="unit" class="form-control" placeholder="Your zip code">
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
+			<button type="button" class="btn btn-primary" name="next" id="next" onclick="nextWing()">Next >></button>
 		</div>
 		<!-- /box_general-->
 
@@ -118,6 +109,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6">
+				<form id="wings-form" action="" method="POST">
 					<div class="form-group">
 						<label>Wing</label>
 							<table id="wing-list-container" style="width:100%;">
@@ -126,7 +118,10 @@
 										<div class="row">
 											<div class="col-md-10">
 												<div class="form-group">
-													<input type="text" name="wing[]" class="form-control" placeholder="wing">
+													<input type="text" id="wings" name="wings[]" class="form-control" placeholder="wing">
+												</div>
+												<div class="form-group">
+													<input type="text" id="totalFloor" name="totalFloor[]" class="form-control" placeholder="Total no.of.floor">
 												</div>
 											</div>
 											<div class="col-md-2">
@@ -138,33 +133,46 @@
 									</td>
 								</tr>
 						</table>
+					<button type="button" class="btn btn-primary" name="next" id="next" onclick="nextFloor()">Next >></button>
 					</div>
+				</form>
 				</div>
 			</div>
-		</div>
+		</div>	
 		<div class="box_general padding_bottom tab-pane fade" id="properties_floar">
 			<div class="header_box version_2">
 				<h2><i class="fa fa-pen"></i>Floor Info</h2>
 				<a href="#0" class="btn_1 medium add-floor-list-item" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add Floor</a>
 			</div>
+			<form id="floor-form" method="POST" action="">
 			<div class="row">
-				<table id="floor-list-container" style="width:100%;">
+			
+			<table id="floor-list-container" style="width:100%;">
+			
 						<tr class="floor-list-item">
 							<td>
 								<div class="row">
-									<div class="col-md-2">
+								<div class="col-md-2">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Floor No">
+											{* <input type="text" name="wing[]" class="form-control" placeholder="wing"> *}
+											<select name="wing[]" id="wing" class="form-control">
+												<option value="">Select Wing</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
-											<input type="text" class="form-control"  placeholder="Total no.of flats">
+											<input type="text" class="form-control" id="floor" name="floor[]" placeholder="Floor No">
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<input type="text" class="form-control" id="flat" name="flat[]"  placeholder="Total no.of flats">
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
-											<textarea type="text" class="form-control"  placeholder="Specality"></textarea>
+											<textarea type="text" class="form-control" id="specality" name="specality[]" placeholder="Specality"></textarea>
 										</div>
 									</div>
 									<div class="col-md-1">
@@ -174,21 +182,282 @@
 									</div>
 								</div>
 							</td>
+							
 						</tr>
+						
 					</table>
+					<button type="button" class="btn btn-primary" name="next" id="next" onclick="nextUnit()">Next >></button>
 			</div>
+			</form>
 		</div>
-	
-	
+		<!----unit--->
+			
+				<div class="box_general padding_bottom fade" id="properties_unit">
+						<div class="header_box version_2">
+							<h2><i class="fa fa-file"></i>Add Units Information</h2>
+							<a href="#0" class="btn_1 medium add-unit-list-item" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add unit</a>
+						</div>
+						<div class="alert alert-success text-center col-md-12" id="pro_success" style="width:100%;display:none;"></div>
+						<form action="" method="POST" id="units-from">
+						<div class="row">
+							<table id="unit-list-container" style="width:100%;">
+			
+							<tr class="unit-list-item">
+							<td>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Units name</label>
+									<input type="text" class="form-control"id="name" name="name[]" placeholder="Units name type" >
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Title</label>
+									<input type="text" class="form-control" id="title" name="title[]" placeholder="Unit title name" >
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Size</label>
+									<input type="text" class="form-control" id="size" name="size[]" placeholder="Enter Size" >
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Price</label>
+									<input type="text" class="form-control" id="price" name="price[]" placeholder="Enter Price" >
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Carpet area</label>
+									<input type="text" class="form-control" id="carpet_area" name="carpet_area[]" placeholder="Enter carpet area" >
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Builtup area</label>
+									<input type="text" class="form-control" id="built_area" name="built_area" placeholder="Enter carpet area" >
+								</div>
+							</div>
+							<div class="col-md-1">
+								<div class="form-group">
+										<a class="delete2" href="#"><i class="fa fa-fw fa-remove"></i></a>
+								</div>
+							</div>
+						</div>
+						
 
-		<p><button class="btn_1 medium" name="propetySave" type="submit">Save</button></p>
-		</form>
+				
+				</td>
+							
+				</tr>	
+			</table>
+			
+					<button type="button" class="btn btn-primary" name="next" id="next" onclick="saveProperties()">Save</button>	
+					
+					</div>
+					</form>
+					
+
+		<!---end unit---->
+</div>
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>
+	<script>
 
+	/*window.onbeforeunload = function() {
+   return "Do you really want to leave our brilliant application?";
+   //if we return nothing here (just calling return;) then there will be no pop-up question at all
+   //return;
+};*/
+function myFunction() {
+
+		var _valid = 1;
+		var propertyID = $("#propertyID").val();
+		var name = $("#name").val();
+		var builder_name = $("#builder_name").val();
+		var started_date = $("#started_date").val();
+		var possession_date = $("#possession_date").val();
+		var rera_number = $("#rera_number").val();
+		if(builder_name=="") 
+        {
+            $('#name_error').show();
+            $('#name_error').html('Please enter builder name.');
+            setTimeout(function(){ $('#name_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+		if(name=="") 
+        {
+            $('#names_error').show();
+            $('#names_error').html('Please enter properti name.');
+            setTimeout(function(){ $('#names_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+		if(_valid == 1) {
+		$.ajax({     
+				url: "{$adminroot}/ajaxproperties",
+              //  url: "ajax/ajax_department.php",
+                type: "POST",
+                data: { 
+				action : 'addProperties',
+				propertyID:propertyID,
+				name : name,
+				builder_name:builder_name,
+				started_date:started_date,
+				possession_date:possession_date,
+				rera_number:rera_number,
+				},
+				dataType:"JSON",
+                success: function(result)
+                {	
+                    console.log(result);
+					if(result.status == 1){
+						$("#propertyID").val(result.propertyID);
+						$('.nav-tabs li:eq(1) a').tab('show')
+					}
+                }
+            });
+		}   
+}
+
+function nextWing() 
+{
+		var address 	= $("#address").val();
+		var description = $("#description").val();
+		var propertyID = $("#propertyID").val();
+		$.ajax({     
+				url: "{$adminroot}/ajaxproperties",
+                type: "POST",
+                data: { 
+				action : 'addPropertieAddress',
+				address : address,
+				description:description,
+				propertyID:propertyID,
+				},
+				dataType:"JSON",
+                success: function(result)
+                {	
+                    console.log(result);
+					if(result.status == 1){
+						$('.nav-tabs li:eq(2) a').tab('show');
+					}
+                }
+            });
+}
+function nextFloor() {
+
+
+	var propertyID = $("#propertyID").val();
+    var form_data = $('#wings-form').serialize()+"&action=addWing&propertyID="+propertyID;;
+    $.ajax({
+        type: "POST",
+        url: "{$adminroot}/ajaxproperties",
+        data: form_data,
+        dataType: "json",
+        success: function(response){
+            //data - response from server
+				$.ajax({
+			type: "POST",
+
+			 url: "{$adminroot}/ajaxproperties",
+			
+			data: { action: 'getWings', propertyID :propertyID },
+
+			success: function(response){
+				console.log(response);
+				var data_obj = JSON.parse(response);
+
+				var _html = '<option value="">Select  Wing </option>';
+				
+				if(data_obj.message == 'success')
+
+				{
+
+					for(var i=0; i < data_obj.result.length; i++)
+
+					{	
+
+						_html += '<option value="'+data_obj.result[i].name+'">'+data_obj.result[i].name+'</option>';
+
+					}
+
+				}
+
+				else
+					
+				{
+
+					$('#error_message').show();
+					
+				}	
+
+				$('#wing').html(_html);
+
+			}
+
+		});
+			console.log(response);
+			$('.nav-tabs li:eq(3) a').tab('show');
+		},
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+
+        }
+    });
+				
+}
+function nextUnit() {
+
+
+	var propertyID = $("#propertyID").val();
+    var form_data = $('#floor-form').serialize()+"&action=addFloor&propertyID="+propertyID;;
+    $.ajax({
+        type: "POST",
+        url: "{$adminroot}/ajaxproperties",
+        data: form_data,
+        dataType: "json",
+        success: function(response){
+            //data - response from server
+			console.log(response);
+			$('.nav-tabs li:eq(4) a').tab('show');
+		},
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+
+        }
+    });
+				
+}
+function saveProperties() {
+
+	var propertyID = $("#propertyID").val();
+    var form_data = $('#units-from').serialize()+"&action=addUnits&propertyID="+propertyID;;
+    $.ajax({
+        type: "POST",
+        url: "{$adminroot}/ajaxproperties",
+        data: form_data,
+        dataType: "json",
+        success: function(response){
+            //data - response from server
+			console.log(response);
+			$('#pro_success').show();
+            $('#pro_success').html('Add all properties successfully.');
+        	setTimeout(function(){ $('#pro_success').hide(); }, 1000);
+            setTimeout(function(){ window.location.href='{$adminroot}/properties'; }, 1000);
+		},
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+
+        }
+    });		
+}
+
+</script>
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
-	
+
+
 </body>
 </html>
