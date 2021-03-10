@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2021 at 07:03 AM
+-- Generation Time: Mar 10, 2021 at 07:41 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -52,6 +52,7 @@ INSERT INTO `admin` (`admin_id`, `full_name`, `mobile`, `password`, `role`, `is_
 
 CREATE TABLE `amenities` (
   `id` int(11) NOT NULL,
+  `p_id` int(12) NOT NULL COMMENT 'property id ',
   `name` varchar(20) NOT NULL,
   `font_awaesome` varchar(100) DEFAULT NULL,
   `images` longtext NOT NULL,
@@ -64,9 +65,31 @@ CREATE TABLE `amenities` (
 -- Dumping data for table `amenities`
 --
 
-INSERT INTO `amenities` (`id`, `name`, `font_awaesome`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 'home', 'fa fa-home', '', '2021-02-23', '2021-02-23', '1'),
-(2, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1');
+INSERT INTO `amenities` (`id`, `p_id`, `name`, `font_awaesome`, `images`, `created_at`, `modified_at`, `status`) VALUES
+(1, 0, 'home', 'fa fa-home', '', '2021-02-23', '2021-02-23', '1'),
+(2, 0, 'pune university', 'fa fa-university', '', '2021-02-20', '2021-02-20', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(12) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `image` text NOT NULL,
+  `status` enum('0','1') NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`id`, `title`, `image`, `status`, `created_date`, `modified_date`) VALUES
+(1, 'Builder', '1615019077_bui.jpg,1615019077_bui1.jpg,1615019077_bui2.jpg,1615019077_bui4.jpg,1615019077_bui5.jpg,1615019077_bui7.jpg,1615019077_images.jpg', '1', '2021-03-06 11:43:38', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -102,29 +125,7 @@ CREATE TABLE `builders` (
 
 INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `landmark`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`, `m_con`, `role`) VALUES
 (1, 'Roshan ', 'E1234568888', '2147483647', 'roshandeorukhkar@gmail.com', '5555', '1613792156_images (1).png', '1', 'Ganesh Colony, Shiv Nagar, Hadapsar, Pune.', 'GK mobile shop.', '1', 411013, 0, '2021-02-18', '2021-02-26', '1', 'Roshan ', '', 3),
-(2, 'Gaurav ', 'E98234238933', '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'a/p: nahre mansi viswas nager ', 'RKS hotel ', '1', 415002, 0, '2021-02-18', '2021-02-26', '1', 'Gaurav ', '', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `building_type`
---
-
-CREATE TABLE `building_type` (
-  `id` int(12) NOT NULL,
-  `title` text NOT NULL,
-  `status` enum('0','1') NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `building_type`
---
-
-INSERT INTO `building_type` (`id`, `title`, `status`, `created_date`) VALUES
-(1, 'wing', '1', '2021-02-27 08:12:03'),
-(2, 'chafa', '0', '2021-02-27 08:48:40'),
-(3, 'phase', '1', '2021-03-01 05:11:15');
+(2, 'Gaurav v', 'E98234238933', '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'a/p: nahre mansi viswas nager ', 'RKS hotel ', '1', 415002, 0, '2021-02-18', '2021-03-08', '1', 'Gaurav v', '', 3);
 
 -- --------------------------------------------------------
 
@@ -175,6 +176,31 @@ INSERT INTO `country` (`c_id`, `name`, `status`, `created_date`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `floor`
+--
+
+CREATE TABLE `floor` (
+  `f_id` int(11) NOT NULL,
+  `p_id` int(12) NOT NULL,
+  `wing` varchar(100) NOT NULL,
+  `floor` varchar(100) NOT NULL,
+  `flat` varchar(100) NOT NULL,
+  `specality` text NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `floor`
+--
+
+INSERT INTO `floor` (`f_id`, `p_id`, `wing`, `floor`, `flat`, `specality`, `status`, `created_date`) VALUES
+(1, 1, 'A', '1', '6', 'poll,gardeenfaceing', '1', '2021-03-10 06:40:39'),
+(2, 1, 'B', '1', '6', 'templ,neartoshop,collage', '1', '2021-03-10 06:40:39');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `neighbourhoods`
 --
 
@@ -187,15 +213,25 @@ CREATE TABLE `neighbourhoods` (
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `neighbourhoods`
+-- Table structure for table `properties_address`
 --
 
-INSERT INTO `neighbourhoods` (`id`, `p_id`, `name`, `geolocations`, `status`, `created_date`) VALUES
-(1, 0, 'Rks Hotel', 'https://www.google.com/maps/search/rks+restaurant/@18.5182891,73.7402512,11z/data=!3m1!4b1', '1', '2021-03-01 09:59:47'),
-(2, 0, '', '', '0', '2021-03-04 05:18:21'),
-(3, 0, '', '', '0', '2021-03-04 05:18:30'),
-(4, 0, '', '', '0', '2021-03-04 05:18:28');
+CREATE TABLE `properties_address` (
+  `a_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `properties_address`
+--
+
+INSERT INTO `properties_address` (`a_id`, `p_id`, `address`, `description`) VALUES
+(1, 1, 'satara ', 'pune');
 
 -- --------------------------------------------------------
 
@@ -220,18 +256,15 @@ CREATE TABLE `property` (
   `neighbourhoods` int(11) NOT NULL,
   `created_date` date NOT NULL,
   `modified_date` date NOT NULL,
-  `status` enum('0','1') NOT NULL,
-  `wing` text NOT NULL COMMENT 'wing table id show that file',
-  `floor` varchar(200) NOT NULL
+  `status` enum('0','1') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`id`, `name`, `builder_name`, `started_date`, `possession_date`, `address`, `rera_number`, `description`, `specification`, `images`, `videos`, `units`, `amenities`, `neighbourhoods`, `created_date`, `modified_date`, `status`, `wing`, `floor`) VALUES
-(1, 'magarpatha city', 'v.p patil', '2021-02-19', '2021-02-27', 'mansi viswas nager pune', 1234567, '', '', '', '', '', 0, 0, '2021-02-28', '2021-02-28', '1', '0', ''),
-(4, 'Sun CITY', 'V.K Patil', '2021-03-06', '2021-03-13', 'Magar patha city , hadapsar', 4354354, '', 'asdf', '', '', '', 0, 0, '2021-03-01', '2021-03-01', '1', '1', '9');
+INSERT INTO `property` (`id`, `name`, `builder_name`, `started_date`, `possession_date`, `address`, `rera_number`, `description`, `specification`, `images`, `videos`, `units`, `amenities`, `neighbourhoods`, `created_date`, `modified_date`, `status`) VALUES
+(1, 'magarpatha city', 'v.p patil', '0011-11-11', '2011-11-11', '', 1234567, '', '', '', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
 
 -- --------------------------------------------------------
 
@@ -263,7 +296,7 @@ INSERT INTO `state` (`s_id`, `c_id`, `name`, `status`, `created_date`) VALUES
 --
 
 CREATE TABLE `units` (
-  `id` int(10) NOT NULL,
+  `u_id` int(10) NOT NULL,
   `p_id` int(12) NOT NULL,
   `type` varchar(20) NOT NULL,
   `title` varchar(20) NOT NULL,
@@ -283,10 +316,8 @@ CREATE TABLE `units` (
 -- Dumping data for table `units`
 --
 
-INSERT INTO `units` (`id`, `p_id`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 0, '2bhk', 'Flat', 670, 23, 430, 290, '', '', '1613366982_1bhk.jpg,1613366982_1bhk1.jpg,1613366982_1bhk2.jpg', '2021-02-15', '2021-02-26', '1'),
-(2, 0, '3bhk', 'villa', 12000, 90, 4367, 9090, '', '', '', '2021-02-17', '2021-02-17', '0'),
-(4, 1, '1bhk', 'flat', 670, 0, 234, 290, '', '', '', '2021-03-03', '2021-03-03', '0');
+INSERT INTO `units` (`u_id`, `p_id`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
+(1, 1, '1bhk', 'flat', 690, 33, 989, 3, '', '', '', '0000-00-00', '0000-00-00', '0');
 
 -- --------------------------------------------------------
 
@@ -313,9 +344,11 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `wing` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `status` set('0','1') NOT NULL,
+  `w_id` int(11) NOT NULL,
+  `p_id` int(12) NOT NULL,
+  `name` text NOT NULL,
+  `totalFloor` text NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '1',
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -323,10 +356,9 @@ CREATE TABLE `wing` (
 -- Dumping data for table `wing`
 --
 
-INSERT INTO `wing` (`id`, `name`, `status`, `created_date`) VALUES
-(1, 'A', '1', '2021-03-01 06:49:37'),
-(2, 'c', '1', '2021-03-01 10:06:32'),
-(3, 'C', '0', '2021-03-01 07:10:30');
+INSERT INTO `wing` (`w_id`, `p_id`, `name`, `totalFloor`, `status`, `created_date`) VALUES
+(1, 1, 'A', '7', '1', '2021-03-10 06:39:24'),
+(2, 1, 'B', '7', '1', '2021-03-10 06:39:24');
 
 --
 -- Indexes for dumped tables
@@ -345,15 +377,15 @@ ALTER TABLE `amenities`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `builders`
+-- Indexes for table `banner`
 --
-ALTER TABLE `builders`
+ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `building_type`
+-- Indexes for table `builders`
 --
-ALTER TABLE `building_type`
+ALTER TABLE `builders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -369,10 +401,22 @@ ALTER TABLE `country`
   ADD PRIMARY KEY (`c_id`);
 
 --
+-- Indexes for table `floor`
+--
+ALTER TABLE `floor`
+  ADD PRIMARY KEY (`f_id`);
+
+--
 -- Indexes for table `neighbourhoods`
 --
 ALTER TABLE `neighbourhoods`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `properties_address`
+--
+ALTER TABLE `properties_address`
+  ADD PRIMARY KEY (`a_id`);
 
 --
 -- Indexes for table `property`
@@ -390,7 +434,7 @@ ALTER TABLE `state`
 -- Indexes for table `units`
 --
 ALTER TABLE `units`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`u_id`);
 
 --
 -- Indexes for table `user`
@@ -402,7 +446,7 @@ ALTER TABLE `user`
 -- Indexes for table `wing`
 --
 ALTER TABLE `wing`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`w_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -419,15 +463,15 @@ ALTER TABLE `admin`
 ALTER TABLE `amenities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `building_type`
---
-ALTER TABLE `building_type`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `city`
 --
@@ -439,15 +483,25 @@ ALTER TABLE `city`
 ALTER TABLE `country`
   MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `floor`
+--
+ALTER TABLE `floor`
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `neighbourhoods`
 --
 ALTER TABLE `neighbourhoods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `properties_address`
+--
+ALTER TABLE `properties_address`
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `state`
 --
@@ -457,7 +511,7 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --
@@ -467,7 +521,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wing`
 --
 ALTER TABLE `wing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
