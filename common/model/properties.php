@@ -117,7 +117,7 @@
         }
         public function getWing()
         {
-            $fields=array('name','w_id','status','p_id','totalFloor');	//fetch fromdb
+            $fields=array('name','w_id','status','p_id','totalFloor');	//fetch data
             $tables=array('wing');
             $where = array(" status = '1'");	
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
