@@ -16,7 +16,7 @@ div .carouselExampleControls {
 			<div class="header_box">
 				<h2 class="d-inline-block">Property List</h2>
                 
-				<div class="filter">
+			<!---	<div class="filter">
 					<select name="orderby" class="selectbox">
 						<option value="Any status">Any status</option>
 						<option value="Approved">Approved</option>
@@ -25,10 +25,13 @@ div .carouselExampleControls {
 					</select>
                     
                     
-				</div>
+				</div>--->
+				 <a class="btn btn-primary" href="{$adminroot}/properties/details" style="float:right"><i class="fa fa-align-justify"></i></a>
                 <div class="actions">
+					
                     <a class="btn_1 medium" href="{$adminroot}/properties/add" > Add new property</a>
                 </div>
+				
 			</div>
 			<div class="list_general">
 				<ul>{foreach from=$propertiesListArray key=k item=v}
@@ -63,8 +66,9 @@ div .carouselExampleControls {
 							<li><strong>address</strong>{$v['address']}</li>
 						</ul>
 						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+							 <a class="btn_1" href="{$adminroot}/properties/edit?id={$v['id']}" ><i class="fa fa-fw fa-edit"></i>Edit</a>
+							 <li><a href="{$adminroot}/properties/delete?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+
 						</ul>
 					</li>
 					{/foreach}
