@@ -27,7 +27,7 @@
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>Properties Basic info</h2>
 			</div>
-				<input type="hidden" id="propertyID" name="propertyID" />
+				<input type="hidden" id="propertyID" name="propertyID"/>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
@@ -88,6 +88,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Address</label>
+						<input type="hidden" name="addressID" id="addressID">
 						<input type="text" name="address" id="address" class="form-control" placeholder="Your address">
 					</div>
 				</div>
@@ -118,6 +119,7 @@
 										<div class="row">
 											<div class="col-md-10">
 												<div class="form-group">
+													<span id="wingsid" name="wingsid"></span>
 													<input type="text" id="wings" name="wings[]" class="form-control" placeholder="wing">
 												</div>
 												<div class="form-group">
@@ -154,7 +156,7 @@
 								<div class="row">
 								<div class="col-md-2">
 										<div class="form-group">
-											{* <input type="text" name="wing[]" class="form-control" placeholder="wing"> *}
+											<span id="floorsid"></span>
 											<select name="wing[]" id="wing" class="form-control">
 												<option value="">Select Wing</option>
 											</select>
@@ -206,6 +208,23 @@
 							<td>
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>Wings</label>
+									<input type="hidden" name="unitsID[]" id="unitsID">
+									<select  class="form-control"id="unitwingsid" name="unitwingsid[]">
+										<option vslue="">Select Wing</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Floor</label>
+									<select  class="form-control unitfloorsid"id="unitfloorsid" name="unitfloorsid[]">
+										<option value="">Select Floor</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>Units name</label>
 									<input type="text" class="form-control"id="name" name="name[]" placeholder="Units name type" >
 								</div>
@@ -237,7 +256,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Builtup area</label>
-									<input type="text" class="form-control" id="built_area" name="built_area" placeholder="Enter carpet area" >
+									<input type="text" class="form-control" id="built_area" name="built_area[]" placeholder="Enter carpet area" >
 								</div>
 							</div>
 							<div class="col-md-1">
@@ -327,6 +346,7 @@ function nextWing()
 		var address 	= $("#address").val();
 		var description = $("#description").val();
 		var propertyID = $("#propertyID").val();
+		var addressID = $("#addressID").val();
 		$.ajax({     
 				url: "{$adminroot}/ajaxproperties",
                 type: "POST",
@@ -335,12 +355,14 @@ function nextWing()
 				address : address,
 				description:description,
 				propertyID:propertyID,
+				addressID:addressID,
 				},
 				dataType:"JSON",
                 success: function(result)
                 {	
                     console.log(result);
 					if(result.status == 1){
+						$("#addressID").val(result.addressID);
 						$('.nav-tabs li:eq(2) a').tab('show');
 					}
                 }
@@ -350,14 +372,19 @@ function nextFloor() {
 
 
 	var propertyID = $("#propertyID").val();
-    var form_data = $('#wings-form').serialize()+"&action=addWing&propertyID="+propertyID;;
+    var form_data = $('#wings-form').serialize()+"&action=addWing&propertyID="+propertyID;
     $.ajax({
         type: "POST",
         url: "{$adminroot}/ajaxproperties",
         data: form_data,
         dataType: "json",
-        success: function(response){
+        success: function(response1){
             //data - response from server
+			var wingsid ='';
+			for(var i=0;i<response1.wingID.length;i++){
+				wingsid += '<input type="hidden" name="wingID[]" id="wingID" value="'+response1.wingID[i]+'">';
+			}
+			$("#wingsid").html(wingsid);
 				$.ajax({
 			type: "POST",
 
@@ -366,9 +393,9 @@ function nextFloor() {
 			data: { action: 'getWings', propertyID :propertyID },
 
 			success: function(response){
-				console.log(response);
+				
 				var data_obj = JSON.parse(response);
-
+				
 				var _html = '<option value="">Select  Wing </option>';
 				
 				if(data_obj.message == 'success')
@@ -398,7 +425,6 @@ function nextFloor() {
 			}
 
 		});
-			console.log(response);
 			$('.nav-tabs li:eq(3) a').tab('show');
 		},
         error: function (jqXHR, textStatus, errorThrown)
@@ -420,7 +446,12 @@ function nextUnit() {
         dataType: "json",
         success: function(response){
             //data - response from server
-			console.log(response);
+			var floorsid ='';
+			for(var i=0;i<response.floorID.length;i++){
+				floorsid += '<input type="hidden" name="floorID[]" id="floorID" value="'+response.floorID[i]+'">';
+			}
+			$("#floorsid").html(floorsid);
+			getWings(propertyID);
 			$('.nav-tabs li:eq(4) a').tab('show');
 		},
         error: function (jqXHR, textStatus, errorThrown)
@@ -454,10 +485,99 @@ function saveProperties() {
     });		
 }
 
+
+function getWings(propertyID){
+					$.ajax({
+			type: "POST",
+
+			 url: "{$adminroot}/ajaxproperties",
+			
+			data: { action: 'getFloorWings', propertyID :propertyID },
+
+			success: function(response){
+				
+				var data_obj = JSON.parse(response);
+				console.log(data_obj.result);
+				var _html = '<option value="">Select  Wing </option>';
+				
+				if(data_obj.message == 'success')
+
+				{
+
+					for(var i=0; i < data_obj.result.length; i++)
+
+					{	
+
+						_html += '<option value="'+data_obj.result[i].wing+'">'+data_obj.result[i].wing+'</option>';
+
+					}
+
+				}
+
+				else
+					
+				{
+
+					$('#error_message').show();
+					
+				}	
+				$('#unitwingsid').html(_html);
+
+			}
+
+		});
+}
+
 </script>
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
+<script>
 
+$('body').on('change', '#unitwingsid', function() {
+		var wingsID = $(this).val();
+		var propertyID = $("#propertyID").val();
+		$.ajax({
+			type: "POST",
+
+			 url: "{$adminroot}/ajaxproperties",
+			
+			data: { action: 'getFloors', wingsID :wingsID,propertyID:propertyID },
+
+			success: function(response){
+				
+				var data_obj = JSON.parse(response);
+				console.log(response);
+				var _html = '<option value="">Select  Floor </option>';
+				
+				if(data_obj.message == 'success')
+
+				{
+
+					for(var i=0; i < data_obj.result.length; i++)
+
+					{	
+
+						_html += '<option value="'+data_obj.result[i].floor+'">'+data_obj.result[i].floor+'</option>';
+
+					}
+
+				}
+
+				else
+					
+				{
+
+					$('#error_message').show();
+					
+				}	
+
+				$('.unitfloorsid').html(_html);
+
+			}
+
+		});
+});
+</script>
 
 </body>
 </html>
