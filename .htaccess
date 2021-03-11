@@ -89,6 +89,7 @@ RewriteRule    ^builder/login?$    administrator/source/builder/login.php
 
 RewriteRule    ^admin/ajaxbuilder?$    administrator/ajax/ajax_food.php
 RewriteRule    ^admin/ajaxproperties?$    administrator/ajax/ajax_properties.php
+RewriteRule    ^admin/ajaxEditproperties?$    administrator/ajax/ajax_editProperties.php
 
 
 RewriteRule    ^admin/api?$    administrator/source/api/addAmenities.php
