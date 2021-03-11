@@ -5,17 +5,21 @@
 	$builderObj = new Model_Property();
 
 	$builderuserArray = $builderObj->getUserNameByUserId($_REQUEST['id']);
+	$addressPropertiesArray = $builderObj->getAddressPropertiesById($_REQUEST['id']);
 	$floorsArray = $builderObj->getFloorsByUserId($_REQUEST['id']);
 	$wingArray = $builderObj->getWingByUserId($_REQUEST['id']);
+	$unitsArray = $builderObj->getUnitsByUserId($_REQUEST['id']);
 
 	//error_reporting(0);
 
-	// print_r($floorsArray);
+	// print_r($unitsArray);
 	// die();
 
 	$smarty->assign('builderuserArray', $builderuserArray);
 	$smarty->assign('floorsArray', $floorsArray);
 	$smarty->assign('wingArray', $wingArray);
+	$smarty->assign('unitsArray', $unitsArray);
+	$smarty->assign('addressPropertiesArray', $addressPropertiesArray);
 	//print_r($_REQUEST);
 	
 	if(isset($_POST['propetyEdit'])) {
