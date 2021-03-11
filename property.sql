@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2021 at 07:41 AM
+-- Generation Time: Mar 11, 2021 at 09:45 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -195,8 +195,8 @@ CREATE TABLE `floor` (
 --
 
 INSERT INTO `floor` (`f_id`, `p_id`, `wing`, `floor`, `flat`, `specality`, `status`, `created_date`) VALUES
-(1, 1, 'A', '1', '6', 'poll,gardeenfaceing', '1', '2021-03-10 06:40:39'),
-(2, 1, 'B', '1', '6', 'templ,neartoshop,collage', '1', '2021-03-10 06:40:39');
+(1, 1, 'A', '1', '5', 'gym,carparking', '1', '2021-03-11 08:43:32'),
+(2, 1, 'c', '9', '4', 'pool,gym,see,collage,near', '1', '2021-03-11 08:40:25');
 
 -- --------------------------------------------------------
 
@@ -231,7 +231,7 @@ CREATE TABLE `properties_address` (
 --
 
 INSERT INTO `properties_address` (`a_id`, `p_id`, `address`, `description`) VALUES
-(1, 1, 'satara ', 'pune');
+(1, 1, 'satara', 'saffasffsd');
 
 -- --------------------------------------------------------
 
@@ -264,7 +264,7 @@ CREATE TABLE `property` (
 --
 
 INSERT INTO `property` (`id`, `name`, `builder_name`, `started_date`, `possession_date`, `address`, `rera_number`, `description`, `specification`, `images`, `videos`, `units`, `amenities`, `neighbourhoods`, `created_date`, `modified_date`, `status`) VALUES
-(1, 'magarpatha city', 'v.p patil', '0011-11-11', '2011-11-11', '', 1234567, '', '', '', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
+(1, 'magarpatha city', 'v.p patil', '1120-06-08', '2021-03-11', '', 1234567, '', '', '', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
 
 -- --------------------------------------------------------
 
@@ -298,6 +298,8 @@ INSERT INTO `state` (`s_id`, `c_id`, `name`, `status`, `created_date`) VALUES
 CREATE TABLE `units` (
   `u_id` int(10) NOT NULL,
   `p_id` int(12) NOT NULL,
+  `floor` varchar(100) NOT NULL,
+  `wing` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
   `title` varchar(20) NOT NULL,
   `size` float NOT NULL,
@@ -316,8 +318,8 @@ CREATE TABLE `units` (
 -- Dumping data for table `units`
 --
 
-INSERT INTO `units` (`u_id`, `p_id`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 1, '1bhk', 'flat', 690, 33, 989, 3, '', '', '', '0000-00-00', '0000-00-00', '0');
+INSERT INTO `units` (`u_id`, `p_id`, `floor`, `wing`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
+(1, 1, '1', 'A', '1bhk', 'flat', 690, 33, 989, 444, '', '', '', '0000-00-00', '0000-00-00', '0');
 
 -- --------------------------------------------------------
 
@@ -357,8 +359,8 @@ CREATE TABLE `wing` (
 --
 
 INSERT INTO `wing` (`w_id`, `p_id`, `name`, `totalFloor`, `status`, `created_date`) VALUES
-(1, 1, 'A', '7', '1', '2021-03-10 06:39:24'),
-(2, 1, 'B', '7', '1', '2021-03-10 06:39:24');
+(1, 1, 'A', '5', '1', '2021-03-11 08:38:54'),
+(2, 1, 'c', '4', '1', '2021-03-11 08:39:04');
 
 --
 -- Indexes for dumped tables
@@ -471,7 +473,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `city`
 --
