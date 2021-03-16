@@ -30,6 +30,12 @@
             <span class="nav-link-text">Units management</span>
           </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner management">
+          <a class="nav-link" href="{$adminroot}/banner">
+            <i class="fa fa-fw fa-image"></i>
+            <span class="nav-link-text">banner management</span>
+          </a>
+        </li>
       <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Wings">
           <a class="nav-link" href="{$adminroot}/wing">
             <i class="fa fa-fw fa-delicious"></i>
