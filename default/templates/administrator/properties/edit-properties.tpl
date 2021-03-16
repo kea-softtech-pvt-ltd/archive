@@ -51,12 +51,14 @@
 					<div class="form-group">
 						<label>Start date</label>
 						<input type="date" name="started_date" id="started_date" class="form-control" placeholder="Select date" value="{$builderuserArray['started_date']}" />
+						<div class="text-danger" id="started_date_error"></div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Possession date</label>
 						<input type="date" name="possession_date" id ="possession_date" class="form-control" placeholder="Select date" value="{$builderuserArray['possession_date']}" />
+						<div class="text-danger" id="possession_date_error"></div>
 					</div>
 				</div>
 			</div>
@@ -66,6 +68,7 @@
 					<div class="form-group">
 						<label>RERA number</label>
 						<input type="text" name="rera_number" id="rera_number" class="form-control" placeholder="RERA" value="{$builderuserArray['rera_number']}" />
+						<div class="text-danger" id="rera_number_error"></div>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -90,6 +93,7 @@
 						<label>Address</label>
 						<input type="hidden"name="addressID" id="addressID" value="{if isset ($addressPropertiesArray['a_id'])}{$addressPropertiesArray['a_id']} {/if}">
 						<input type="text" name="address" id="address" class="form-control" placeholder="Your address" value="{if isset ($addressPropertiesArray['address'])}{$addressPropertiesArray['address']}{/if}" />
+						<div class="text-danger" id="address_error"></div>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -109,7 +113,7 @@
 				<a href="#0" class="btn_1 medium add-wing-list-item" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add Wings</a>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 				<form id="wings-form" action="" method="POST">
 					<div class="form-group">
 						<label>Wing</label>
@@ -126,11 +130,13 @@
 													<span id="wingsid" name="wingsid"></span>
 													<input type="hidden" name="wingID[]" id="wingID" value="{$v1['w_id']}" />
 													<input type="text" name="wings[]" id="wings" value="{$v1['name']}"  class="form-control" placeholder="Wing">
+													<div class="text-danger" id="wings_error"></div>
 												</div>
 											</div>
 											<div class="col-md-5">
 												<div class="form-group">
 													<input type="text" name="totalFloor[]" id="totalFloor" value="{$v1['totalFloor']}"  class="form-control" placeholder="Total no.of floor">
+													<div class="text-danger" id="totalFloor_error"></div>
 												</div>
 											</div>
 											<div class="col-md-2">
@@ -151,11 +157,13 @@
 												<div class="form-group">
 													<span id="wingsid" name="wingsid"></span>
 													<input type="text" name="wings[]" id="wings"  class="form-control" placeholder="Wing">
+													<div class="text-danger" id="wings_error"></div>
 												</div>
 											</div>
 											<div class="col-md-5">
 												<div class="form-group">
 													<input type="text" name="totalFloor[]" id="totalFloor"  class="form-control" placeholder="Total no.of floor">
+													<div class="text-danger" id="totalFloor_error"></div>
 												</div>
 											</div>
 											<div class="col-md-2">
@@ -199,21 +207,25 @@
 												<option {if $v1['wing'] == $v2['name'] } selected {/if} value="{$v2['name']}">{$v2['name']}</option>
 												{/foreach}
 											</select>
+											<div class="text-danger" id="wing_error"></div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<input type="text" name="floor[]" value="{$v1['floor']}" class="form-control" placeholder="Floor No">
+											<div class="text-danger" id="floor_error"></div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<input type="text" class="form-control" name="flat[]" value="{$v1['flat']}"  placeholder="Total no.of flats">
+											<div class="text-danger" id="flat_error"></div>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<textarea type="text" class="form-control" name="specality[]"  placeholder="Specality">{$v1['specality']}</textarea>
+											<div class="text-danger" id="specality_error"></div>
 										</div>
 									</div>
 									<div class="col-md-1">
@@ -238,21 +250,25 @@
 												<option  value="{$v2['wing']}">{$v2['name']}</option>
 												{/foreach}
 											</select>
+											<div class="text-danger" id="wing_error"></div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<input type="text" class="form-control" id="floor" name="floor[]" placeholder="Floor No">
+											<div class="text-danger" id="floor_error"></div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<input type="text" class="form-control" id="flat" name="flat[]"  placeholder="Total no.of flats">
+											<div class="text-danger" id="flat_error"></div>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<textarea type="text" class="form-control" id="specality" name="specality[]" placeholder="Specality"></textarea>
+											<div class="text-danger" id="specality_error"></div>
 										</div>
 									</div>
 									<div class="col-md-1">
@@ -290,7 +306,7 @@
 									<label>Wings</label>
 									<input type="hidden" name="unitsID[]" id="unitsID" value="{$v1['u_id']}">
 									<select  class="form-control"id="unitwingsid" name="unitwingsid[]">
-										<option vslue="">Select Wing</option>
+										<option vslue="{$v1['wing']}">{$v1['wing']}</option>
 										{foreach from=$wingArray key=k item=v2}
 											<option  value="{$v2['wing']}">{$v2['name']}</option>
 										{/foreach}			
@@ -301,7 +317,7 @@
 								<div class="form-group">
 									<label>Floor</label>
 									<select  class="form-control unitfloorsid"id="unitfloorsid" name="unitfloorsid[]">
-										<option value="">Select Floor</option>
+										<option value="{$v1['floor']}">{$v1['floor']}</option>
 										{foreach from=$floorsArray key=k item=v2}
 										<option  value="{$v2['floor']}">{$v2['floor']}</option>
 										{/foreach}
@@ -474,6 +490,27 @@ function myFunction() {
             setTimeout(function(){ $('#names_error').hide(); }, 2000);
             _valid = 0;
         }  
+		if(started_date=="") 
+        {
+            $('#started_date_error').show();
+            $('#started_date_error').html('Please select start date.');
+            setTimeout(function(){ $('#started_date_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+		if(possession_date=="") 
+        {
+            $('#possession_date_error').show();
+            $('#possession_date_error').html('Please select possession date.');
+            setTimeout(function(){ $('#possession_date_error').hide(); }, 2000);
+            _valid = 0;
+        }   
+		if(rera_number=="") 
+        {
+            $('#rera_number_error').show();
+            $('#rera_number_error').html('Please enter rera number.');
+            setTimeout(function(){ $('#rera_number_error').hide(); }, 2000);
+            _valid = 0;
+        }   
 		if(_valid == 1) {
 		$.ajax({     
 				url: "{$adminroot}/ajaxproperties",
@@ -503,10 +540,20 @@ function myFunction() {
 
 function nextWing() 
 {
+		var _valid = 1;
 		var address 	= $("#address").val();
 		var description = $("#description").val();
 		var propertyID = $("#propertyID").val();
 		var addressID = $("#addressID").val();
+
+		if(address=="") 
+        {
+            $('#address_error').show();
+            $('#address_error').html('Please enter address.');
+            setTimeout(function(){ $('#address_error').hide(); }, 2000);
+            _valid = 0;
+        } 
+		if(_valid == 1) {
 		$.ajax({     
 				url: "{$adminroot}/ajaxproperties",
                 type: "POST",
@@ -527,13 +574,32 @@ function nextWing()
 					}
                 }
             });
+		}
 }
 function nextFloor() {
 
-
+	var _valid = 1;
+	var wings = $("#wings").val();
+	var totalFloor = $("#totalFloor").val();
 	var propertyID = $("#propertyID").val();
     var form_data = $('#wings-form').serialize()+"&action=addWing&propertyID="+propertyID;
-    $.ajax({
+
+	if(wings=="") 
+        {
+            $('#wings_error').show();
+            $('#wings_error').html('Please enter wing.');
+            setTimeout(function(){ $('#wings_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+	if(wings=="") 
+        {
+            $('#totalFloor_error').show();
+            $('#totalFloor_error').html('Please enter total no.of.floor.');
+            setTimeout(function(){ $('#totalFloor_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+	if(_valid == 1) {
+   		$.ajax({
         type: "POST",
         url: "{$adminroot}/ajaxproperties",
         data: form_data,
@@ -545,7 +611,7 @@ function nextFloor() {
 				wingsid += '<input type="hidden" name="wingID[]" id="wingID" value="'+response1.wingID[i]+'">';
 			}
 			$("#wingsid").html(wingsid);
-				$.ajax({
+			$.ajax({
 			type: "POST",
 
 			 url: "{$adminroot}/ajaxproperties",
@@ -592,13 +658,39 @@ function nextFloor() {
 
         }
     });
-				
+	}				
 }
 function nextUnit() {
 
-
+	var _valid = 1;
 	var propertyID = $("#propertyID").val();
-    var form_data = $('#floor-form').serialize()+"&action=addFloor&propertyID="+propertyID;;
+    var form_data = $('#floor-form').serialize()+"&action=addFloor&propertyID="+propertyID;
+	var wing = $("#wing").val();
+	var floor = $("#floor").val();
+	var flat = $("#flat").val();
+	
+	if(wing=="") 
+        {
+            $('#wing_error').show();
+            $('#wing_error').html('Please select wing.');
+            setTimeout(function(){ $('#wing_error').hide(); }, 2000);
+            _valid = 0;
+        } 
+	if(floor=="") 
+        {
+            $('#floor_error').show();
+            $('#floor_error').html('Please enter floor no.');
+            setTimeout(function(){ $('#floor_error').hide(); }, 2000);
+            _valid = 0;
+        }   
+	if(flat=="") 
+        {
+            $('#flat_error').show();
+            $('#flat_error').html('Please enter total no.of flat.');
+            setTimeout(function(){ $('#flat_error').hide(); }, 2000);
+            _valid = 0;
+        } 
+	if(_valid == 1) {
     $.ajax({
         type: "POST",
         url: "{$adminroot}/ajaxproperties",
@@ -619,7 +711,7 @@ function nextUnit() {
 
         }
     });
-				
+	}			
 }
 function saveProperties() {
 
