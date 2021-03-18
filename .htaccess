@@ -69,6 +69,11 @@ RewriteRule    ^admin/wing/edit?$   administrator/source/wing/edit-wing.php
 RewriteRule    ^admin/wing/delete?$ administrator/source/wing/delete-wing.php
 RewriteRule    ^admin/wing/view?$ administrator/source/wing/view-wing.php
 
+RewriteRule    ^admin/un?$    administrator/source/un/un.php
+RewriteRule    ^admin/un/add?$    administrator/source/un/add-un.php
+RewriteRule    ^admin/un/edit?$   administrator/source/un/edit-un.php
+RewriteRule    ^admin/un/delete?$ administrator/source/un/delete-un.php
+
 RewriteRule    ^admin/neighbourhoods?$    administrator/source/neighbourhoods/neighbourhoods.php
 RewriteRule    ^admin/neighbourhoods/add?$    administrator/source/neighbourhoods/add-neighbourhoods.php
 RewriteRule    ^admin/neighbourhoods/edit?$   administrator/source/neighbourhoods/edit-neighbourhoods.php
