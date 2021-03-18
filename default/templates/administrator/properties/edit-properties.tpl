@@ -291,164 +291,89 @@
 				<div class="box_general padding_bottom fade" id="properties_unit">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-file"></i>Add Units Information</h2>
-							<a href="#0" class="btn_1 medium add-unit-list-item" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add unit</a>
+							<a href="#0" class="btn_1 medium add-unit-list-item" id="add"  style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add unit</a>
 						</div>
 						<div class="alert alert-success text-center col-md-12" id="pro_success" style="width:100%;display:none;"></div>
 						<form action="" method="POST" id="units-from">
-						<div class="row">
-							<table id="unit-list-container" style="width:100%;">
-						{if count($unitsArray) > 0}
+						<table id="unit-list-container" style="width:100%;">
+						 <div class="col-md-12 row" id="dynamic-fields"></div>
 						{foreach from=$unitsArray key=k item=v1}
-							<tr class="unit-list-item">
-							<td>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Wings</label>
-									<input type="hidden" name="unitsID[]" id="unitsID" value="{$v1['u_id']}">
-									<select  class="form-control"id="unitwingsid" name="unitwingsid[]">
-										<option vslue="{$v1['wing']}">{$v1['wing']}</option>
-										{foreach from=$wingArray key=k item=v2}
-											<option  value="{$v2['wing']}">{$v2['name']}</option>
-										{/foreach}			
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Floor</label>
-									<select  class="form-control unitfloorsid"id="unitfloorsid" name="unitfloorsid[]">
-										<option value="{$v1['floor']}">{$v1['floor']}</option>
-										{foreach from=$floorsArray key=k item=v2}
-										<option  value="{$v2['floor']}">{$v2['floor']}</option>
-										{/foreach}
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Units name</label>
-									<input type="text" class="form-control"id="name" name="name[]" placeholder="Units name type" value="{$v1['type']}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Title</label>
-									<input type="text" class="form-control" id="title" name="title[]" placeholder="Unit title name" value="{$v1['title']}" >
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Size</label>
-									<input type="text" class="form-control" id="size" name="size[]" placeholder="Enter Size" value="{$v1['size']}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Price</label>
-									<input type="text" class="form-control" id="price" name="price[]" placeholder="Enter Price" value="{$v1['price']}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Carpet area</label>
-									<input type="text" class="form-control" id="carpet_area" name="carpet_area[]" placeholder="Enter carpet area" value="{$v1['carpet_area']}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Builtup area</label>
-									<input type="text" class="form-control" id="built_area" name="built_area[]" placeholder="Enter carpet area" value="{$v1['built_area']}" >
-								</div>
-							</div>
-							<div class="col-md-1">
-								<div class="form-group">
-										<a class="delete2" href="#"><i class="fa fa-fw fa-remove"></i></a>
-								</div>
-							</div>
-						</div>
-						
-
-				
-				</td>
-							
-				</tr>
-				{/foreach}
-				{else}
 						<tr class="unit-list-item">
-							<td>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Wings</label>
-									<select  class="form-control"id="unitwingsid" name="unitwingsid[]">
-										<option vslue="">Select Wing</option>
-										{foreach from=$wingArray key=k item=v2}
-										<option  value="{$v2['wing']}">{$v2['name']}</option>
-										{/foreach}
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Floor</label>
-									<select  class="form-control unitfloorsid"id="unitfloorsid" name="unitfloorsid[]">
-										<option value="">Select Floor</option>
-										{foreach from=$floorsArray key=k item=v2}
-										<option  value="{$v2['floor']}">{$v2['floor']}</option>
-										{/foreach}
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Units name</label>
-									<input type="text" class="form-control"id="name" name="name[]" placeholder="Units name type" >
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Title</label>
-									<input type="text" class="form-control" id="title" name="title[]" placeholder="Unit title name" >
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Size</label>
-									<input type="text" class="form-control" id="size" name="size[]" placeholder="Enter Size" >
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Price</label>
-									<input type="text" class="form-control" id="price" name="price[]" placeholder="Enter Price" >
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Carpet area</label>
-									<input type="text" class="form-control" id="carpet_area" name="carpet_area[]" placeholder="Enter carpet area" >
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Builtup area</label>
-									<input type="text" class="form-control" id="built_area" name="built_area" placeholder="Enter carpet area" >
-								</div>
-							</div>
-							<div class="col-md-1">
-								<div class="form-group">
-										<a class="delete2" href="#"><i class="fa fa-fw fa-remove"></i></a>
-								</div>
-							</div>
-						</div>
-						
+   <td>
+      <div class="row">
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Wings</label>
+               <input type="hidden" name="unitsID[]" id="unitsID" value="{$v1['u_id']}">
+               <select  class="form-control unitwingsid"id="unitwingsid_{$k+1}" name="unitwingsid[]">
+				  <option value="">Select Wing</option>
+					{foreach from=$wingArray key=k item=v2}
+						<option {if ($v1['wing'] == $v2['name'])} selected {/if} value="{$v2['name']}">{$v2['name']}</option>
+					{/foreach}	
+               </select>
+               <div class="text-danger" id="unitsID_error"></div>
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Floor</label>
+               <select  class="form-control unitfloorsid"id="unitfloorsid_{$k+1}" name="unitfloorsid[]">
+				  <option value="">Select Floor</option>
+				{foreach from=$floorsArray key=k item=v2}
+				<option  {if ($v1['floor'] == $v2['floor'])} selected {/if}  value="{$v2['floor']}">{$v2['floor']}</option>
+				{/foreach}
+               </select>
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Units name</label>
+               <input type="text" class="form-control"id="name" name="name[]" placeholder="Units name type"  value="{$v1['type']}">
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Title</label>
+               <input type="text" class="form-control" id="title" name="title[]" placeholder="Unit title name" value="{$v1['title']}" >
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Size</label>
+               <input type="text" class="form-control" id="size" name="size[]" placeholder="Enter Size" value="{$v1['size']}">
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Price</label>
+               <input type="text" class="form-control" id="price" name="price[]" placeholder="Enter Price" value="{$v1['price']}">
+            </div>
+         </div>
+         <div class="col-md-3">
+            <div class="form-group">
+               <label>Carpet area</label>
+               <input type="text" class="form-control" id="carpet_area" name="carpet_area[]" placeholder="Enter carpet area" value="{$v1['carpet_area']}">
+            </div>
+         </div>
+         <div class="col-md-2">
+            <div class="form-group">
+               <label>Builtup area</label>
+               <input type="text" class="form-control" id="built_area" name="built_area[]" placeholder="Enter carpet area"  value="{$v1['built_area']}">
+            </div>
+         </div>
+         <div class="col-md-1">
+            <div class="form-group">
+               <a class="delete2" href="#"><i class="fa fa-fw fa-remove"></i></a>
+            </div>
+         </div>
+      </div>
+   </td>
+</tr>
+{/foreach}
 
-				
-				</td>
-							
-				</tr>
-				{/if}
-			</table>
-			
+	</table>
+
+						
 					<button type="button" class="btn btn-primary" name="next" id="next" onclick="saveProperties()">Save</button>	
 					
 					</div>
@@ -703,7 +628,8 @@ function nextUnit() {
 				floorsid += '<input type="hidden" name="floorID[]" id="floorID" value="'+response.floorID[i]+'">';
 			}
 			$("#floorsid").html(floorsid);
-			getWings(propertyID);
+			var rowCount = $("#dynamic-fields tr").length;
+			getWings(propertyID,rowCount);
 			$('.nav-tabs li:eq(4) a').tab('show');
 		},
         error: function (jqXHR, textStatus, errorThrown)
@@ -738,8 +664,10 @@ function saveProperties() {
 }
 
 
-function getWings(propertyID){
-					$.ajax({
+function getWings(propertyID,rowCount){
+	console.log(propertyID);
+	console.log(rowCount);
+			$.ajax({
 			type: "POST",
 
 			 url: "{$adminroot}/ajaxproperties",
@@ -773,7 +701,13 @@ function getWings(propertyID){
 					$('#error_message').show();
 					
 				}	
-				$('#unitwingsid').html(_html);
+
+				if(rowCount>1){
+					$('#unitwingsid_'+rowCount).html(_html);
+				}else{
+					$('.unitwingsid').html(_html);
+				}
+				
 
 			}
 
@@ -785,8 +719,11 @@ function getWings(propertyID){
     {include file='administrator/common/scripts.tpl'}
 <script>
 
-$('body').on('change', '#unitwingsid', function() {
+$('body').on('change', '.unitwingsid', function() {
 		var wingsID = $(this).val();
+		var element = $(this).attr('id');
+		var elementID = element.split("_");
+		console.log(elementID[1]);
 		var propertyID = $("#propertyID").val();
 		$.ajax({
 			type: "POST",
@@ -823,13 +760,121 @@ $('body').on('change', '#unitwingsid', function() {
 					
 				}	
 
-				$('.unitfloorsid').html(_html);
+				$('#unitfloorsid_'+elementID[1]).html(_html);
 
 			}
 
 		});
 });
 </script>
+
+<script>
+$(document).ready(function () {
+
+    var count = 1;
+    dynamic_field(count);
+    function dynamic_field(number) {
+        html  = '<tr class="unit-list-item"  id="div_'+ number +'">';
+		html += '<td>';
+		html += '<div class="row">';
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Wings'+number+'</label>';
+		html += '<input type="hidden" name="unitsID[]" id="unitsID">';
+		html += '<select  class="form-control unitwingsid" id="unitwingsid_'+number+'" name="unitwingsid[]">';
+    	html += '<option vslue="">Select Wing</option>';
+    	html += '</select>';
+		html += '<div class="text-danger" id="unitsID_error"></div>';
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Floor</label>';
+		html += '<select  class="form-control unitfloorsid" id="unitfloorsid_'+number+'" name="unitfloorsid[]">';
+        html += '<option value="">Select Floor</option>';
+        html += '</select>';
+		html += '</div>';
+        html += '</div>';
+
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Units name</label>';
+		html += '<input type="text" class="form-control"id="name_'+number+'" name="name[]" placeholder="Units name type" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Title</label>';
+		html += '<input type="text" class="form-control" id="title_'+number+'" name="title[]" placeholder="Unit title name" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Size</label>';
+		html += '<input type="text" class="form-control" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
+		html += '</div>';
+        html += '</div>';
+
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Price</label>';
+		html += '<input type="text" class="form-control" id="price_'+number+'" name="price[]" placeholder="Enter Price" >';
+		html += '</div>';
+        html += '</div>';
+
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Carpet area</label>';
+		html += '<input type="text" class="form-control" id="carpet_area_'+number+'" name="carpet_area[]" placeholder="Enter carpet area" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Builtup area</label>';
+		html += '<input type="text" class="form-control" id="built_area_'+number+'" name="built_area[]" placeholder="Enter carpet area" >';
+		html += '</div>';
+        html += '</div>';
+
+        if (number > 1) {
+            html += '<div class="col-md-1">';
+            html += '<div class="form-group">'
+            html += '<label>&nbsp;</label>';
+			html += '<a class="remove" href="#"><i class="fa fa-fw fa-remove"></i></a>';
+            html += '</div>';
+            html += '</div>';
+            $('#dynamic-fields').append(html);
+        } else {
+
+	
+        }
+    }
+
+    $(document).on('click','#add', function () {
+        count++;
+        dynamic_field(count);
+		
+    });
+    $(document).on('click', '.remove', function () {
+        count--;
+        var row_id = $(this).parent().parent().parent().parent().parent().attr('id');
+        $(this).closest("#" + row_id).remove();
+    });
+
+	 $("#add").click(function(){
+            var rowCount = $("#dynamic-fields tr").length;
+			var propertyID = $("#propertyID").val();
+			getWings(propertyID,rowCount+1);
+        });
+
+});
+</script> 
 
 </body>
 </html>
