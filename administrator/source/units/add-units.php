@@ -53,13 +53,14 @@
   $img = implode(",",$imagearray);
 
  }
-
+ $unitsObj = new Model_Units();
 if(isset($_POST['builderSave'])) {
-		$unitsObj = new Model_Units();
+
 		$unitsArray['type'] = $_POST['name'];
 		$unitsArray['title'] = $_POST['title'];
 		$unitsArray['size'] = $_POST['size'];
-		$unitsArray['price'] = $_POST['price'];
+		$unitsArray['size'] = $_POST['size'];
+		$unitsArray['p_id'] = $_POST['p_id'];
 		$unitsArray['carpet_area'] = $_POST['carpet_area'];
 		$unitsArray['built_area'] = $_POST['built_area'];
 		$unitsArray['images'] = $imagelist; 
@@ -71,8 +72,24 @@ if(isset($_POST['builderSave'])) {
 		$unitsId = $unitsObj->addUnitsByValue($unitsArray);
 		header("Location: " . SITE_URL . "/admin/units");
 	}
+	// $statesListArray = $unitsObj->getStates();
+	// $smarty->assign('statesListArray', $statesListArray);
 
-	$smarty->assign('moduleName', 'Add units');
-	//echo ADMIN_TEMPLATEDIR;
-	$smarty->display(ADMIN_TEMPLATEDIR . '/units/add-units.tpl');
+	// $smarty->assign('moduleName', 'Add units');
+	// //echo ADMIN_TEMPLATEDIR;
+	// $smarty->display(ADMIN_TEMPLATEDIR . '/units/add-units.tpl');
+
+
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
+		$statesListArray = $unitsObj->getStates();
+		$smarty->assign('statesListArray', $statesListArray);
+	
+		$smarty->assign('moduleName', 'Add units');
+		//echo ADMIN_TEMPLATEDIR;
+		$smarty->display(ADMIN_TEMPLATEDIR . '/units/add-units.tpl');
+	
+		}else{
+			header("Location: " . SITE_URL . "/admin/login");
+		}
 ?>
