@@ -4,7 +4,7 @@
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}	
 
-		{* <form name="addBuilderForm" action="{$adminroot}/properties/add" method="post" enctype="multipart/form-data">		 *}
+		{* <form name="addBuilderForm" action="{$adminroot}/properties/add" method="post" enctype="multipart/form-data">*}
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
@@ -18,6 +18,7 @@
 							<li class="nav-item"><a href="#properties_wing" data-toggle="tab" class="nav-link" title="Assigne Assets">Wing Info</a></li>
 							<li class="nav-item"><a href="#properties_floar" data-toggle="tab" class="nav-link" title="Assigne Assets">Floor Info</a></li>
 							<li class="nav-item"><a href="#properties_unit" data-toggle="tab" class="nav-link" title="Units Assets">Units Info</a></li>
+							<li class="nav-item"><a href="#properties_other" data-toggle="tab" class="nav-link" title="Other">Other</a></li>
 						</ul>
 					</div>
 				</div>
@@ -209,84 +210,48 @@
 			</div>
 			</form>
 		</div>
+		<!----- other----->
+		<div class="box_general padding_bottom tab-pane fade" id="properties_other">
+			<div class="header_box version_2">
+				<h2><i class="fa fa-map-marker"></i>Other</h2>
+			</div>
+
+			<form action="" method="POST" id="amenities-from">
+			
+			<div class="row">
+				<div class="alert alert-success text-center col-md-12" id="pro_amenities_success" style="width:100%;display:none;"></div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Amenities</label>
+						<input type="text" class="form-control" name="amenitieName" id="amenitieName" placeholder="Amenities " />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Neighbourhoods</label>
+						<input type="text" class="form-control" name="font_awaesome" id="font_awaesome" placeholder="Font Neighbourhoods " />
+					</div>
+				</div>
+			</div>
+			<button type="button" class="btn btn-primary" name="next" id="next" onclick="saveAmenities()">Save</button>
+			</form>
+			
+		</div>
+		<!---other------->
 		<!----unit--->
 				<div class="box_general padding_bottom fade" id="properties_unit">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-file"></i>Add Units Information</h2>
-							<a href="#0" class="btn_1 medium add-unit-list-item" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add unit</a>
+							<a href="#0" class="btn_1 medium add-unit-list-item" id="add" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add unit</a>
 						</div>
 						
 						<div class="alert alert-success text-center col-md-12" id="pro_success" style="width:100%;display:none;"></div>
 						<form action="" method="POST" id="units-from">
 							<table id="unit-list-container" style="width:100%;">
-							<tr class="unit-list-item">
-							<td>
-							<div class="row">
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Wings</label>
-									<input type="hidden" name="unitsID[]" id="unitsID">
-									<select  class="form-control"id="unitwingsid" name="unitwingsid[]">
-										<option vslue="">Select Wing</option>
-									</select>
-									<div class="text-danger" id="unitsID_error"></div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Floor</label>
-									<select  class="form-control unitfloorsid"id="unitfloorsid" name="unitfloorsid[]">
-										<option value="">Select Floor</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Units name</label>
-									<input type="text" class="form-control"id="name" name="name[]" placeholder="Units name type" >
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Title</label>
-									<input type="text" class="form-control" id="title" name="title[]" placeholder="Unit title name" >
-								</div>
-							</div>
-							
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Size</label>
-									<input type="text" class="form-control" id="size" name="size[]" placeholder="Enter Size" >
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Price</label>
-									<input type="text" class="form-control" id="price" name="price[]" placeholder="Enter Price" >
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="form-group">
-									<label>Carpet area</label>
-									<input type="text" class="form-control" id="carpet_area" name="carpet_area[]" placeholder="Enter carpet area" >
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="form-group">
-									<label>Builtup area</label>
-									<input type="text" class="form-control" id="built_area" name="built_area[]" placeholder="Enter carpet area" >
-								</div>
-							</div>
-							<div class="col-md-1">
-								<div class="form-group">
-										<a class="delete2" href="#"><i class="fa fa-fw fa-remove"></i></a>
-								</div>
-							</div>
-						</div>
-				</td>
-							
-				</tr>	
-			</table>
+								 <div class="col-md-12 row" id="dynamic-fields"></div>
+							</table>
 			
 					<button type="button" class="btn btn-primary" name="next" id="next" onclick="saveProperties()">Save</button>	
 					
@@ -295,7 +260,9 @@
 					
 
 		<!---end unit---->
+
 </div>
+
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>
@@ -315,6 +282,7 @@ function myFunction() {
 		var started_date = $("#started_date").val();
 		var possession_date = $("#possession_date").val();
 		var rera_number = $("#rera_number").val();
+		var image = $("#image").val();
 		var form_data = $('#property-form').serialize()+"&action=addProperties&propertyID="+propertyID;
 		if(builder_name=="") 
         {
@@ -450,18 +418,20 @@ function nextFloor() {
         success: function(response1){
             //data - response from server
 			var wingsid ='';
-			for(var i=0;i<response1.wingID.length;i++){
+			for(var i=0;i<response1.wingID.length;i++)
+			{
 				wingsid += '<input type="hidden" name="wingID[]" id="wingID" value="'+response1.wingID[i]+'">';
 			}
 			$("#wingsid").html(wingsid);
-				$.ajax({
+			$.ajax({
 			type: "POST",
 
 			 url: "{$adminroot}/ajaxproperties",
 			
 			data: { action: 'getWings', propertyID :propertyID },
 
-			success: function(response){
+			success: function(response)
+			{
 				
 				var data_obj = JSON.parse(response);
 				
@@ -559,7 +529,8 @@ function nextUnit() {
 				floorsid += '<input type="hidden" name="floorID[]" id="floorID" value="'+response.floorID[i]+'">';
 			}
 			$("#floorsid").html(floorsid);
-			getWings(propertyID);
+			var rowCount = $("#dynamic-fields tr").length;
+			getWings(propertyID,rowCount);
 			$('#pro_floor_sucess').show();
             $('#pro_floor_sucess').html('Add propertie floor info successfully.');
         	setTimeout(function(){ $('#pro_floor_sucess').hide(); }, 3000);
@@ -579,13 +550,7 @@ function saveProperties() {
 	var propertyID = $("#propertyID").val();
     var form_data = $('#units-from').serialize()+"&action=addUnits&propertyID="+propertyID;
 	var unitsID = $("#unitsID").val();
-	if(unitsID=="") 
-        {
-            $('#unitsID_error').show();
-            $('#unitsID_error').html('Please select wing.');
-            setTimeout(function(){ $('#unitsID_error').hide(); }, 2000);
-            _valid = 0;
-        }   
+	
 	if(_valid == 1) {
     $.ajax({
         type: "POST",
@@ -609,8 +574,41 @@ function saveProperties() {
 	}	
 }
 
+function saveAmenities() {
 
-function getWings(propertyID){
+	var propertyID = $("#propertyID").val();
+    var form_data = $('#amenities-from').serialize()+"&action=addAmenities&propertyID="+propertyID;
+	var amenitieName = $("#amenitieName").val();
+    $.ajax({
+        type: "POST",
+        url: "{$adminroot}/ajaxproperties",
+        data: form_data,
+        dataType: "json",
+        success: function(response){
+			var wingsid ='';
+			for(var i=0;i<response1.wingID.length;i++){
+				wingsid += '<input type="hidden" name="wingID[]" id="wingID" value="'+response1.wingID[i]+'">';
+			}
+			$("#wingsid").html(wingsid);
+			console.log(response);
+			$('#pro_amenities_success').show();
+            $('#pro_amenities_success').html('Add all amenities successfully.');
+        	setTimeout(function(){ $('#pro_amenities_success').hide(); }, 3000);
+            setTimeout(function(){ window.location.href='{$adminroot}/properties'; }, 4000);
+		},
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+
+        }
+    });	
+
+	
+}
+
+
+function getWings(propertyID,rowCount){
+	console.log(propertyID);
+	console.log(rowCount);
 			$.ajax({
 			type: "POST",
 
@@ -645,7 +643,13 @@ function getWings(propertyID){
 					$('#error_message').show();
 					
 				}	
-				$('#unitwingsid').html(_html);
+
+				if(rowCount>1){
+					$('#unitwingsid_'+rowCount).html(_html);
+				}else{
+					$('.unitwingsid').html(_html);
+				}
+				
 
 			}
 
@@ -657,8 +661,11 @@ function getWings(propertyID){
     {include file='administrator/common/scripts.tpl'}
 <script>
 
-$('body').on('change', '#unitwingsid', function() {
+$('body').on('change', '.unitwingsid', function() {
 		var wingsID = $(this).val();
+		var element = $(this).attr('id');
+		var elementID = element.split("_");
+		console.log(elementID[1]);
 		var propertyID = $("#propertyID").val();
 		$.ajax({
 			type: "POST",
@@ -695,13 +702,125 @@ $('body').on('change', '#unitwingsid', function() {
 					
 				}	
 
-				$('.unitfloorsid').html(_html);
+				$('#unitfloorsid_'+elementID[1]).html(_html);
 
 			}
 
 		});
 });
 </script>
+<script>
+$(document).ready(function () {
 
+    var count = 1;
+
+    dynamic_field(count);
+    function dynamic_field(number) {
+        html  = '<tr class="unit-list-item"  id="div_'+ number +'">';
+		html += '<td>';
+		html += '<div class="row">';
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Wings</label>';
+		html += '<input type="hidden" name="unitsID[]" id="unitsID">';
+		html += '<select  class="form-control unitwingsid" id="unitwingsid_'+number+'" name="unitwingsid[]">';
+    	html += '<option vslue="">Select Wing</option>';
+    	html += '</select>';
+		html += '<div class="text-danger" id="unitsID_error"></div>';
+		html += '</div>';
+		html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Floor</label>';
+		html += '<select  class="form-control unitfloorsid" id="unitfloorsid_'+number+'" name="unitfloorsid[]">';
+        html += '<option value="">Select Floor</option>';
+        html += '</select>';
+		html += '</div>';
+        html += '</div>';
+
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Units name</label>';
+		html += '<input type="text" class="form-control"id="name_'+number+'" name="name[]" placeholder="Units name type" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Title</label>';
+		html += '<input type="text" class="form-control" id="title_'+number+'" name="title[]" placeholder="Unit title name" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Size</label>';
+		html += '<input type="text" class="form-control" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
+		html += '</div>';
+        html += '</div>';
+
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Price</label>';
+		html += '<input type="text" class="form-control" id="price_'+number+'" name="price[]" placeholder="Enter Price" >';
+		html += '</div>';
+        html += '</div>';
+
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Carpet area</label>';
+		html += '<input type="text" class="form-control" id="carpet_area_'+number+'" name="carpet_area[]" placeholder="Enter carpet area" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Builtup area</label>';
+		html += '<input type="text" class="form-control" id="built_area_'+number+'" name="built_area[]" placeholder="Enter carpet area" >';
+		html += '</div>';
+        html += '</div>';
+
+        if (number > 1) {
+            html += '<div class="col-md-1">';
+            html += '<div class="form-group">'
+            html += '<label>&nbsp;</label>';
+			html += '<a class="remove" href="#"><i class="fa fa-fw fa-remove"></i></a>';
+            html += '</div>';
+            html += '</div>';
+            $('#dynamic-fields').append(html);
+        } else {
+
+			html += '<div class="col-md-1">';
+            html += '<div class="form-group">'
+            html += '<label>&nbsp;</label>';
+            html += '</div>';
+            html += '</div>';
+            $('#dynamic-fields').html(html);
+        }
+    }
+
+    $(document).on('click','#add', function () {
+        count++;
+        dynamic_field(count);
+		
+    });
+    $(document).on('click', '.remove', function () {
+        count--;
+        var row_id = $(this).parent().parent().parent().parent().parent().attr('id');
+        $(this).closest("#" + row_id).remove();
+    });
+
+	 $("#add").click(function(){
+            var rowCount = $("#dynamic-fields tr").length;
+			var propertyID = $("#propertyID").val();
+			getWings(propertyID,rowCount+1);
+        });
+
+});
+</script>  
 </body>
 </html>
