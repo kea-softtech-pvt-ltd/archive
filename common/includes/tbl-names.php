@@ -13,5 +13,6 @@ define("WING", 'wing');
 define("NEIGHBOURHOODS", 'neighbourhoods');
 define("FLOOR", 'floor');
 define("BANNER", 'banner');
+define("UNITTYPE", 'unit_type');
 
 ?>
