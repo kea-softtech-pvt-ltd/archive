@@ -36,13 +36,19 @@
             <span class="nav-link-text">banner management</span>
           </a>
         </li>
-      <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Wings">
+   <!--   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Wings">
           <a class="nav-link" href="{$adminroot}/wing">
             <i class="fa fa-fw fa-delicious"></i>
-            <span class="nav-link-text">Wings</span>
+            <span class="nav-link-text">Add wing</span>
+          </a>
+        </li>--->
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="{$adminroot}/un">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Add unit</span>
           </a>
         </li>
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">
+    <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">
           <a class="nav-link" href="{$adminroot}/buildingType">
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Building Type</span>
