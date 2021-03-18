@@ -5,6 +5,21 @@
      $builderObj = new Model_Property();
 if($_REQUEST['action']=="addProperties")
 {
+	// $targetDir = "../upload/properties/"; 
+	// 		$imagearray = array();
+	// 		//print_r($_FILES['image']);die;
+	// 		foreach($_FILES['image']['name'] as $key=>$val){ 
+			   
+	// 			$fileName =  time().'_'.basename($_FILES['image']['name'][$key]); 
+	// 			$targetFilePath = $targetDir . $fileName; 
+				
+	// 		   $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+	// 			if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
+	// 				array_push($imagearray,$fileName);
+	// 			}
+	// 		} 
+		   
+	// 	$imagelist = implode(",",$imagearray);
 
 	
     $propertyArray['name'] = $_POST['name'];
@@ -12,7 +27,8 @@ if($_REQUEST['action']=="addProperties")
     $propertyArray['started_date'] = $_POST['started_date'];
     $propertyArray['possession_date'] = $_POST['possession_date'];
     $propertyArray['rera_number'] = $_POST['rera_number'];
-
+	//$propertyArray['images'] = $imagelist;
+	
 	if(isset($_POST['propertyID']) && !empty($_POST['propertyID'])){
 		$builderObj->editUserValueById($propertyArray,$_POST['propertyID']);
 		$result = $_POST['propertyID'];
@@ -211,6 +227,52 @@ if($_REQUEST['action']=="addUnits")
 	echo json_encode($response);
 }
 
+if($_REQUEST['action']=="addAmenities")
+{
+	$result = array();
+	for($i=0; $i<count($_POST['amenitieName']);$i++)
+	{
+	
+	$propertyArray['name'] = $_POST['amenitieName'][$i];
+	$propertyArray['font_awaesome'] = $_POST['font_awaesome'][$i];
+	$propertyArray['p_id'] = $_POST['propertyID'];
+
+	//$result = $builderObj->addAmenitiesByValue($propertyArray);
+
+	if(isset($_POST['propertyID']) && !empty($_POST['propertyID']) && !empty($_POST['wingID'][$i])){
+		$builderObj->editAmenitiesById($propertyArray,$_POST['wingID'][$i]);
+		array_push($result,$_POST['wingID'][$i]);
+	}else{
+		$wingID = $builderObj->addAmenitiesByValue($propertyArray);
+		array_push($result,$wingID);
+	}
+
+	}
+	if($result)
+
+	{	
+
+		$response['status'] = '1'; 
+
+		$response['message'] = 'success'; 
+
+		$response['propertyID'] = $result; 
+
+	}
+
+	else
+
+	{
+
+		$response['status'] = '0'; 
+
+		$response['message'] = 'error'; 
+
+		$response['propertyID'] = '';
+
+	}
+	echo json_encode($response);
+}
 
 
 if($_REQUEST['action']=="getWings")
