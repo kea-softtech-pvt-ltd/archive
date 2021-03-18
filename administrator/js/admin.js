@@ -131,5 +131,23 @@
 			$(this).parent().parent().parent().remove();
 		});
 	}
+
+	 // amenities add
+	 function newMenuItem2() {
+		var newElem = $('tr.amenities-list-item').first().clone();
+		newElem.find('input').val('');
+		newElem.appendTo('table#amenities-list-container');
+	}
+	if ($("table#amenities-list-container").is('*')) {
+		$('.add-amenities-list-item').on('click', function (e) {
+			e.preventDefault();
+			newMenuItem2();
+		});
+		$(document).on("click", "#amenities-list-container .delete3", function (e) {
+			e.preventDefault();
+			$(this).parent().parent().parent().remove();
+		});
+	}
+
 	
 })(jQuery); // End of use strict
