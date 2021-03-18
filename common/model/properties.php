@@ -46,6 +46,12 @@
             $insertId = $this->getLatestRecordId();
             return $insertId;
         }
+         ## Add amenities in database
+          function addAmenitiesByValue($Array) {
+            $this->InsertData('amenities' , $Array );		
+            $insertId = $this->getLatestRecordId();
+            return $insertId;
+        }
         ## Edit Properties by userid
 	    function editUserValueById($array, $Id){
             return $this->UpdateData($this->property,$array,"id",$Id,0);
@@ -148,8 +154,9 @@
         function getFloorWingBypropertyId($id) {
             $fields=array('f_id','p_id','wing');	//fetch fromdb
             $tables=array('floor');
-            $where=array("p_id=".$id);		
-            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $where=array("p_id=".$id);	
+            $group = array('wing');	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group,$limit = "",0,0); 
             $result= $this->FetchAll($result1); 
             return $result;		
         }
@@ -175,6 +182,10 @@
           ## Edit Properties by userid
 	    function editUnitsValueById($array, $Id){
             $this->UpdateData('units',$array,"u_id",$Id,0);
+         } 
+           ## Edit amenities by userid
+	    function editAmenitiesById($array, $Id){
+            $this->UpdateData('amenities',$array,"id",$Id,0);
          } 
         
     }
