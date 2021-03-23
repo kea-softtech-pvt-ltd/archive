@@ -8,7 +8,9 @@
 				{include file='administrator/common/top-bar.tpl'}
                 <div class="box_general">
 			<div class="header_box">
-				<h2 class="d-inline-block">Builder List</h2>       
+				<h2 class="d-inline-block">Builder List</h2>     
+		
+								
 				<!--<div class="filter">
 					<select name="orderby" class="selectbox">
 						<option value="Any status">Any status</option>
@@ -22,6 +24,14 @@
                 </div>
 			</div>
 			<div class="list_general">
+			<div id="msg" name="msg">
+				{if isset($smarty.session.message_add_b) }
+					{$smarty.session.message_add_b}
+				{/if}
+				
+				
+				
+			</div>
 				<ul>
 				<!--	{$_SESSION['message_add_b']} its use for message show session --> 
 					{foreach from=$builderListArray key=k item=v}
@@ -31,6 +41,7 @@
 						<ul class="booking_details">
 							<li><strong>Register number </strong> : {$v['register_number']}</li>
 							<li><strong>Email </strong> : {$v['email']}</li>
+							<li><strong>Password </strong> : {$v['password']}</li>
 							<li><strong>User Name </strong> : {$v['user_name']}</li>
 							<li><strong>Telephone </strong> : {$v['telephone']}</li>
 							<li><strong>Address </strong> : {$v['street_address']}</li>
@@ -76,6 +87,12 @@
 	
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
+		<script type="text/javascript">
+   		
+		//header("Location: " . SITE_URL . "/admin/builder");
+    		
+			
+	</script>
 	
 </body>
 </html>
