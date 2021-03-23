@@ -5,6 +5,11 @@
 	$propertiesObj = new Model_Property();
 	$propertiesListArray = $propertiesObj->getAllProperties();
 
+	// echo'<pre>';
+	// print_r($propertiesListArray);
+	// echo'</pre>';
+	// die();   // use to debag sathi
+
 	$smarty->assign('propertiesListArray', $propertiesListArray);
 	$smarty->assign('moduleName', 'List of properties');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/properties.tpl');
