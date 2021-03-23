@@ -23,33 +23,34 @@ div .carouselExampleControls {
 				
 			</div>
             <!----table data--->
-            <div class="table-responsive">
-					<table class="table table-striped custom-table" id="myTable">
+         <div class="table-responsive">
+					<table class="table custom-table" id="myTable">
 						<thead>
 							<tr>
 								<th>Propertie Name</th>
 								<th>Builder Name</th>
-                                <th>RERA number</th>
-                                <th>Address</th>
+                <th>RERA number</th>
+                <th>Address</th>
 								<th class="text-right no-sort">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-                            {foreach from=$propertiesListArray key=k item=v}
+              {foreach from=$propertiesListArray key=k item=v}
 							<tr>
 								<td>{$v['name']}</td>
 								<td>{$v['builder_name']}</td>
-                                <td>{$v['rera_number']}</td>
-                                <td>{$v['address']}</td>
+                <td>{$v['rera_number']}</td>
+                <td>{$v['address']}</td>
 								<td class="text-right">
 									<div class="dropdown dropdown-action">
-										
+										<a name="id" title="Edit property"  href="{$adminroot}/properties/edit?id={$v['id']}"><i class="fa fa-pencil m-r-5"></i></a>&nbsp
+										<a name="id" title="Delete property" href="{$adminroot}/properties/delete?id={$v['id']}"><i class="fa fa-trash-o m-r-5"></i></a>
 									</div>
 								</td>
 							</tr>
-                            {/foreach}										
+              {/foreach}										
 						</tbody>
-					</table>
+					</table><br>
 				</div>
 
             <!----end table--->
@@ -58,6 +59,7 @@ div .carouselExampleControls {
 		</div>
             </div>
    	    </div>
+  
     <!-- /.container-wrapper-->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -83,6 +85,10 @@ div .carouselExampleControls {
     </div>
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
-	
+	<script>
+  $('#myTable').DataTable( {
+    responsive: true
+} );
+  </script>
 </body>
 </html>
