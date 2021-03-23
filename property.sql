@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 08:00 AM
+-- Generation Time: Mar 23, 2021 at 11:53 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -196,7 +196,7 @@ CREATE TABLE `floor` (
 --
 
 INSERT INTO `floor` (`f_id`, `p_id`, `wing`, `floor`, `flat`, `specality`, `status`, `created_date`) VALUES
-(1, 1, 'A', '1', '1', 'sdfg', '1', '2021-03-22 18:21:04');
+(1, 1, 'A', '1', '6', 'qwer', '1', '2021-03-23 10:50:08');
 
 -- --------------------------------------------------------
 
@@ -240,7 +240,7 @@ CREATE TABLE `properties_address` (
 --
 
 INSERT INTO `properties_address` (`a_id`, `p_id`, `address`, `description`) VALUES
-(1, 1, 'mansi viswas nager pune...', 'pune');
+(1, 1, 'pune', 'pune');
 
 -- --------------------------------------------------------
 
@@ -263,7 +263,7 @@ CREATE TABLE `properties_other` (
 --
 
 INSERT INTO `properties_other` (`o_id`, `p_id`, `amenities`, `image`, `neighbourhoods`, `status`, `created_date`) VALUES
-(1, 1, 'car parking,home', '1616437316_bg1.jpg', 'Collage', '1', '2021-03-23 07:00:11');
+(1, 1, 'car parking,Airploat', '1616496658_bg1.jpg,1616496658_WIN_20171228_20_19_26_Pro.jpg', 'Collage,Rks Hotel', '1', '2021-03-23 10:50:58');
 
 -- --------------------------------------------------------
 
@@ -284,7 +284,7 @@ CREATE TABLE `properties_type` (
 
 INSERT INTO `properties_type` (`id`, `name`, `status`, `created_date`) VALUES
 (1, 'Flat', '1', '2021-03-19 10:16:29'),
-(2, 'vila', '1', '2021-03-19 09:07:22'),
+(2, 'villa', '1', '2021-03-23 10:45:29'),
 (3, 'Shop', '1', '2021-03-19 10:44:04');
 
 -- --------------------------------------------------------
@@ -318,7 +318,7 @@ CREATE TABLE `property` (
 --
 
 INSERT INTO `property` (`id`, `name`, `builder_name`, `started_date`, `possession_date`, `address`, `rera_number`, `description`, `specification`, `images`, `videos`, `units`, `amenities`, `neighbourhoods`, `created_date`, `modified_date`, `status`) VALUES
-(1, 'magarpatha city', 'asdf', '2021-03-26', '2021-03-26', '', 1234567, '', '', '1616437221_bg1.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
+(1, 'magarpatha city', 'Roshan ', '2021-03-27', '2021-03-26', '', 1234567, '', '', '', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
 
 -- --------------------------------------------------------
 
@@ -373,7 +373,7 @@ CREATE TABLE `units` (
 --
 
 INSERT INTO `units` (`u_id`, `p_id`, `floor`, `wing`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 1, '1', 'A', '1', 'Flat', 690, 33, 989, 8987990, '', '', '', '0000-00-00', '0000-00-00', '0');
+(1, 1, '1', 'A', '2bhk', 'Flat', 690, 33, 989, 444, '', '', '', '0000-00-00', '0000-00-00', '0');
 
 -- --------------------------------------------------------
 
@@ -434,8 +434,8 @@ CREATE TABLE `wing` (
 --
 
 INSERT INTO `wing` (`w_id`, `p_id`, `name`, `totalFloor`, `status`, `created_date`) VALUES
-(1, 1, 'A', '5', '1', '2021-03-22 18:20:49'),
-(2, 1, 'B', '5', '1', '2021-03-22 18:20:49');
+(1, 1, 'A', '5', '1', '2021-03-23 10:49:19'),
+(2, 1, 'B', '5', '1', '2021-03-23 10:49:20');
 
 --
 -- Indexes for dumped tables
@@ -606,7 +606,7 @@ ALTER TABLE `properties_type`
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `state`
 --
