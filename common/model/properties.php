@@ -46,9 +46,9 @@
             $insertId = $this->getLatestRecordId();
             return $insertId;
         }
-         ## Add amenities in database
+         ## Add other info database
           function addAmenitiesByValue($Array) {
-            $this->InsertData('amenities' , $Array );		
+            $this->InsertData('properties_other' , $Array );		
             $insertId = $this->getLatestRecordId();
             return $insertId;
         }
@@ -85,7 +85,9 @@
         function getAllProperties($search='', $limit='',$offset='') {
             $fields=array();	
             $tables=array($this->property);
-            $where = array(" status = '1'");
+           // $where = array('pa.p_id ='.$this->property.'.id');
+           // $where = array('w.p_id ='.$this->property.'.id');
+            $where = array($this->property.".status = '1'");
             if($search != '') {
                 $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
             }
@@ -96,7 +98,7 @@
         }
          ## Get properties by id
 	    function getUserNameByUserId($id) {
-            $fields=array('name','id','builder_name','started_date','possession_date','address','rera_number');	//fetch fromdb
+            $fields=array('name','id','builder_name','started_date','possession_date','address','rera_number','images');	//fetch fromdb
             $tables=array($this->property);
             $where=array("id=".$id);		
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
@@ -140,6 +142,15 @@
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+        ##get other info 
+        function getOtherByUserId($id) {
+            $fields=array('o_id','p_id','amenities','neighbourhoods','image');	//fetch fromdb
+            $tables=array('properties_other');
+            $where=array("o_id=".$id);		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
 
         function getWingBypropertyId($id) {
             $fields=array('w_id','p_id','name');	//fetch fromdb
@@ -149,8 +160,29 @@
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+        ## get unit type for drop dwon
+        public function getUnitsType()
+        {
+            $fields=array('name','id');	//fetch fromdb
+            $tables=array('unit_type');
+            $where = array(" status = '1'");	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1);
+            return $result;	
+        }
 
-        
+          ## get property type for drop dwon
+          public function getProType()
+          {
+              $fields=array('name','id');	//fetch fromdb
+              $tables=array('properties_type');
+              $where = array(" status = '1'");	
+              $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+              $result= $this->FetchAll($result1);
+              return $result;	
+          }
+
+
         function getFloorWingBypropertyId($id) {
             $fields=array('f_id','p_id','wing');	//fetch fromdb
             $tables=array('floor');
@@ -173,6 +205,36 @@
         {
             $fields=array('name','w_id','status','p_id','totalFloor');	//fetch data
             $tables=array('wing');
+            $where = array(" status = '1'");	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1);
+            return $result;	
+        }
+        ##drop dwon use get amenities
+        public function getAmenities()
+        {
+            $fields=array('name','id','status');	//fetch fromdb
+            $tables=array('amenities');
+            $where = array(" status = '1'");	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1);
+            return $result;	
+        }
+        ##drop dwon use get builders
+        public function getBuilders()
+        {
+            $fields=array('name','id','user_name');	//fetch fromdb
+            $tables=array('builders');
+            $where = array(" status = '1'");	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1);
+            return $result;	
+        }
+        ## drop dwon use neibhourhoods
+        public function getNeighbourhoods()
+        {
+            $fields=array('name','id','status');	//fetch fromdb
+            $tables=array('neighbourhoods');
             $where = array(" status = '1'");	
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
             $result= $this->FetchAll($result1);
