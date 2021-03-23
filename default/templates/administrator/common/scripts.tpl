@@ -19,3 +19,13 @@
     <script src="{$siteroot}/administrator/js/additional-methods.js"></script>
     <script src="{$siteroot}/administrator/js/reservation.js"></script>
     <script src="{$siteroot}/administrator/js/builder.js"></script>
+    
+     <script src="{$siteroot}/administrator/js/chosen.jquery.js"></script>
+    {* <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script> *}
+    <script>
+          $(function() {
+            $('.chosen-select').chosen();
+            $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+        });
+      </script>
+
