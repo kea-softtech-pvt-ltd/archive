@@ -25,6 +25,7 @@
   <!-- Main styles -->
   <link href="{$siteroot}/administrator/css/admin.css" rel="stylesheet">
   <!-- Your custom styles -->
-  <link href="{$siteroot}/administrator/css/admin.css" rel="stylesheet">
+  <link href="{$siteroot}/administrator/css/chosen.css" rel="stylesheet">
+  {* <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css" rel="stylesheet">  *}
 	
 </head>
