@@ -3,31 +3,37 @@
      include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/archive/common/model/properties.php");
 
      $builderObj = new Model_Property();
+
 if($_REQUEST['action']=="addProperties")
 {
-	// $targetDir = "../upload/properties/"; 
-	// 		$imagearray = array();
-	// 		//print_r($_FILES['image']);die;
-	// 		foreach($_FILES['image']['name'] as $key=>$val){ 
-			   
-	// 			$fileName =  time().'_'.basename($_FILES['image']['name'][$key]); 
-	// 			$targetFilePath = $targetDir . $fileName; 
-				
-	// 		   $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-	// 			if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
-	// 				array_push($imagearray,$fileName);
-	// 			}
-	// 		} 
-		   
-	// 	$imagelist = implode(",",$imagearray);
+	$targetDir = "../upload/properties/";
+	if($_FILES['image']['error'][0] ==  0){ 
 
+			//source\upload\properties
+			$imagearray = array();
+			//print_r($_FILES['image']);die;
+			foreach($_FILES['image']['name'] as $key=>$val){ 
+			   
+				$fileName =  time().'_'.basename($_FILES['image']['name'][$key]); 
+				$targetFilePath = $targetDir . $fileName; 
+				
+			   $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+				if(move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetFilePath)){ 
+					array_push($imagearray,$fileName);
+				}
+			} 
+		   
+		$imagelist = implode(",",$imagearray);
+		 }else{
+			$imagelist = isset($_POST['imageold']) ? $_POST['imageold']:'';
+		}
 	
     $propertyArray['name'] = $_POST['name'];
     $propertyArray['builder_name'] = $_POST['builder_name'];
     $propertyArray['started_date'] = $_POST['started_date'];
     $propertyArray['possession_date'] = $_POST['possession_date'];
     $propertyArray['rera_number'] = $_POST['rera_number'];
-	//$propertyArray['images'] = $imagelist;
+	$propertyArray['images'] = $imagelist;
 	
 	if(isset($_POST['propertyID']) && !empty($_POST['propertyID'])){
 		$builderObj->editUserValueById($propertyArray,$_POST['propertyID']);
@@ -229,25 +235,29 @@ if($_REQUEST['action']=="addUnits")
 
 if($_REQUEST['action']=="addAmenities")
 {
-	$result = array();
-	for($i=0; $i<count($_POST['amenitieName']);$i++)
-	{
-	
-	$propertyArray['name'] = $_POST['amenitieName'][$i];
-	$propertyArray['font_awaesome'] = $_POST['font_awaesome'][$i];
+	$targetDir = "../upload/properties/other/"; 
+			$imagearray = array();
+			//print_r($_FILES['image1']);die;
+			foreach($_FILES['image1']['name'] as $key=>$val){ 
+			   
+				$fileName =  time().'_'.basename($_FILES['image1']['name'][$key]); 
+				$targetFilePath = $targetDir . $fileName; 
+				
+			   $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+				if(move_uploaded_file($_FILES["image1"]["tmp_name"][$key], $targetFilePath)){ 
+					array_push($imagearray,$fileName);
+				}
+			} 
+		   
+		$imagelist1 = implode(",",$imagearray);
+
 	$propertyArray['p_id'] = $_POST['propertyID'];
+	$propertyArray['amenities'] = implode(',',$_POST['amenitieName']);
+	$propertyArray['neighbourhoods'] = implode(',',$_POST['neibhourhood']);
+	$propertyArray['image'] = $imagelist1;
 
-	//$result = $builderObj->addAmenitiesByValue($propertyArray);
-
-	if(isset($_POST['propertyID']) && !empty($_POST['propertyID']) && !empty($_POST['wingID'][$i])){
-		$builderObj->editAmenitiesById($propertyArray,$_POST['wingID'][$i]);
-		array_push($result,$_POST['wingID'][$i]);
-	}else{
-		$wingID = $builderObj->addAmenitiesByValue($propertyArray);
-		array_push($result,$wingID);
-	}
-
-	}
+	$result = $builderObj->addAmenitiesByValue($propertyArray);
+	
 	if($result)
 
 	{	
@@ -256,7 +266,7 @@ if($_REQUEST['action']=="addAmenities")
 
 		$response['message'] = 'success'; 
 
-		$response['propertyID'] = $result; 
+	//	$response['propertyID'] = $result; 
 
 	}
 
@@ -268,7 +278,7 @@ if($_REQUEST['action']=="addAmenities")
 
 		$response['message'] = 'error'; 
 
-		$response['propertyID'] = '';
+	//	$response['propertyID'] = $result;
 
 	}
 	echo json_encode($response);
@@ -278,7 +288,7 @@ if($_REQUEST['action']=="addAmenities")
 if($_REQUEST['action']=="getWings")
 {
     $result = $builderObj->getWingBypropertyId($_POST['propertyID']);
-
+	
 	if($result)
 	{	
 		$response['status'] = '1'; 
