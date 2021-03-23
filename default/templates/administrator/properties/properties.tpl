@@ -23,8 +23,7 @@ div .carouselExampleControls {
 						<option value="Pending">Pending</option>
 						<option value="Cancelled">Cancelled</option>
 					</select>
-                    
-                    
+         
 				</div>--->
 				 <a class="btn btn-primary" href="{$adminroot}/properties/details" style="float:right"><i class="fa fa-align-justify"></i></a>
                 <div class="actions">
