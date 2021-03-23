@@ -9,6 +9,7 @@
 	$floorsArray = $builderObj->getFloorsByUserId($_REQUEST['id']);
 	$wingArray = $builderObj->getWingByUserId($_REQUEST['id']);
 	$unitsArray = $builderObj->getUnitsByUserId($_REQUEST['id']);
+	$otherArray = $builderObj->getOtherByUserId($_REQUEST['id']);
 
 	//error_reporting(0);
 
@@ -19,6 +20,7 @@
 	$smarty->assign('floorsArray', $floorsArray);
 	$smarty->assign('wingArray', $wingArray);
 	$smarty->assign('unitsArray', $unitsArray);
+	$smarty->assign('otherArray', $otherArray);
 	$smarty->assign('addressPropertiesArray', $addressPropertiesArray);
 	//print_r($_REQUEST);
 	
@@ -90,6 +92,22 @@
 
 		header("Location: " . SITE_URL . "/admin/properties");
 	}
+
+	$amenitiesListArray = $builderObj->getAmenities();
+	$smarty->assign('amenitiesListArray', $amenitiesListArray);
+
+	$builderListArray = $builderObj->getBuilders();
+	$smarty->assign('builderListArray', $builderListArray);
+
+	$unitsTypeListArray = $builderObj->getUnitsType();
+	$smarty->assign('unitsTypeListArray', $unitsTypeListArray);
+
+	$proTypeListArray = $builderObj->getProType();
+	$smarty->assign('proTypeListArray', $proTypeListArray);
+	
+	$neighbourhoodListArray = $builderObj->getNeighbourhoods();
+	$smarty->assign('neighbourhoodListArray', $neighbourhoodListArray);
+
 	$statesListArray = $builderObj->getWing();
 	$smarty->assign('statesListArray', $statesListArray);
 
