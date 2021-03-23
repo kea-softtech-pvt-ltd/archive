@@ -38,8 +38,10 @@
 		$smarty->assign("success",$success);
 		$builderId = $builderObj->addBuilderByValue($builderArray);
 
-		//$_SESSION['message_add_b']=$success;  // its use to session show message
-		
+		$_SESSION['message_add_b']=$success;  // its use to session show message
+		// echo $_SESSION['message_add_b'];die;
+		unset($_SESSION['message_add_b']);
+	
 		header("Location: " . SITE_URL . "/admin/builder");
 	
 	}
@@ -56,5 +58,15 @@
 	}else{
 		header("Location: " . SITE_URL . "/admin/login");
 	}
+
+	// function smarty_function_set_flash($params, $smarty) 
+	// {
+	// 	$flash = "";
+	// 	if (isset($_SESSION['success'])) {
+	// 		$flash = $_SESSION['success'];
+	// 		$_SESSION['success'] = ""; //unset the session
+	// 	}
+	// 	return $flash; //return flash message
+	// }
 	
 ?>
