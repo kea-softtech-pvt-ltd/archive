@@ -48,6 +48,12 @@
             <span class="nav-link-text">Add unit</span>
           </a>
         </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="{$adminroot}/proType">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Add Property Type</span>
+          </a>
+        </li>
     <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">
           <a class="nav-link" href="{$adminroot}/buildingType">
             <i class="fa fa-fw fa-delicious"></i>
