@@ -2,8 +2,8 @@
 session_start();
 
 //ob_start();
-$application = "dev";
-//$application = "prod";
+//$application = "dev";
+$application = "prod";
 
 ini_set("dispaly_errors", "1");
 error_reporting(E_ALL);
