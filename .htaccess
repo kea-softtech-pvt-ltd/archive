@@ -27,6 +27,7 @@ RewriteRule    ^admin/users?$    administrator/source/users/users.php
 RewriteRule    ^admin/login?$    administrator/source/login/login.php
 RewriteRule    ^admin/logout?$    administrator/source/login/logout.php
 RewriteRule    ^admin/dashboard?$    administrator/source/dashboard/dashboard.php
+RewriteRule    ^admin/dashboard1?$    administrator/source/dashboard/dashboard1.php
 RewriteRule    ^admin/builder?$    administrator/source/builder/builder.php
 RewriteRule    ^admin/builder/add?$    administrator/source/builder/add-builder.php
 RewriteRule    ^admin/builder/edit?$   administrator/source/builder/edit-builder.php
@@ -38,6 +39,7 @@ RewriteRule    ^admin/properties/test?$    administrator/source/properties/add-p
 RewriteRule    ^admin/properties/edit?$    administrator/source/properties/edit-properties.php
 RewriteRule    ^admin/properties/delete?$    administrator/source/properties/delete-properties.php
 RewriteRule    ^admin/properties/details?$    administrator/source/properties/details-properties.php
+RewriteRule    ^admin/properties/view?$    administrator/source/properties/view-properties.php
 RewriteRule    ^admin/customers?$    administrator/source/customers/customers.php
 RewriteRule    ^admin/customers/add?$    administrator/source/customers/add-customer.php
 RewriteRule    ^admin/amenities?$     administrator/source/amenities/amenities.php
