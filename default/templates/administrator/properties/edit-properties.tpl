@@ -56,11 +56,10 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Builder name</label>
-					<!--	<input type="text" name="builder_name" id="builder_name" class="form-control" placeholder="Builder name" value="{$builderuserArray['builder_name']}" />--->
-						<select class="form-control"  name="builder_name" id="builder_name" >
-							<option value="{$builderuserArray['builder_name']}">{$builderuserArray['builder_name']}</option>
+					<!--<input type="text" name="builder_name" id="builder_name" class="form-control" placeholder="Builder name" value="{$builderuserArray['builder_name']}" />--->
+						<select class="form-control"  name="builder_name" id="builder_name" id="builder_name" {if ($smarty.session.role == 3)} style="pointer-events:none" {/if} >
 								{foreach from=$builderListArray key=k item=v}
-									<option value="{$v['name']}">{$v['name']}</option>
+									<option  {if $builderuserArray['builder_name'] == $v['id'] } selected {/if} value="{$v['id']}">{$v['name']}</option>
 								{/foreach}
 						</select>
 						<div class="text-danger" id="name_error"></div>
@@ -144,9 +143,7 @@
 				<a href="#0" class="btn_1 medium" id="addWing" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add Wings</a>
 			</div>
 				<form id="wings-form" action="" method="POST">
-					<div class="form-group">
-						<label>Wing</label>
-							
+					<div class="form-group">	
 						<table id="wing-list-container" style="width:100%;">
 							{if count($wingArray) > 0}
 							{foreach from=$wingArray key=k item=v1}
@@ -156,6 +153,7 @@
 										<div class="row">
 											<div class="col-md-5">
 												<div class="form-group">
+													<label>Wing</label>
 													<span id="wingsid" name="wingsid"></span>
 													<input type="hidden" name="wingID[]" id="wingID" value="{$v1['w_id']}" />
 													<input type="text" name="wings[]" id="wings{$v1['w_id']}" value="{$v1['name']}"  class="form-control required" placeholder="Wing">
@@ -164,6 +162,7 @@
 											</div>
 											<div class="col-md-5">
 												<div class="form-group">
+													<label>Total no.of floor</label>
 													<input type="text" name="totalFloor[]" id="totalFloor{$v1['w_id']}" value="{$v1['totalFloor']}"  class="form-control required" placeholder="Total no.of floor">
 													<div class="text-danger" id="totalFloor_error"></div>
 												</div>
@@ -179,10 +178,15 @@
 							{/foreach}
 							
 							{else}
-								
+									<div id="dynamic-wing-fields"></div>
+							
 							{/if}
-							<div id="dynamic-wing-fields"></div>
+							
 						</table>
+						<table>
+							<div id="dynamic-wing-fields" ></div>
+						</table>
+						
 					<button type="submit" class="btn btn-primary" name="next" id="next">Next >></button>
 					</div>
 				</form>
@@ -190,7 +194,7 @@
 		<div class="box_general padding_bottom tab-pane fade" id="properties_floar">
 			<div class="header_box version_2">
 				<h2><i class="fa fa-pen"></i>Floor Info</h2>
-				<a href="#0" class="btn_1 medium add-floor-list-item" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add Floor</a>
+				<a href="#0" class="btn_1 medium add-floor-list-item"  id="addFloor" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add Floor</a>
 			</div>
 			<form id="floor-form" method="POST" action="">
 			
@@ -203,12 +207,13 @@
 								<div class="row">
 									<div class="col-md-2">
 										<div class="form-group">
+											<label>Wing</label>
 											<span id="floorsid"></span>
 											<input type="hidden" name="floorID[]" id="floorID" value="{$v1['f_id']}">
 											<select name="wing[]" id="wings{$v1['f_id']}" class="form-control wingsid required">
-												<option value="">Select Wing</option>
+												<option value="">Select Wing.</option>
 												{foreach from=$wingArray key=k item=v2}
-												<option {if $v1['wing'] == $v2['name'] } selected {/if} value="{$v2['name']}">{$v2['name']}</option>
+												<option {if $v1['wing'] == $v2['w_id'] } selected {/if} value="{$v2['w_id']}">{$v2['name']}</option>
 												{/foreach}
 											</select>
 											<div class="text-danger" id="wing_error"></div>
@@ -216,18 +221,21 @@
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
+											<label>Floor</label>
 											<input type="text" name="floor[]" id="floor{$v1['f_id']}" value="{$v1['floor']}" class="form-control required" placeholder="Floor No">
 											<div class="text-danger" id="floor_error"></div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
+											<label>Total no.of flat</label>
 											<input type="text" class="form-control required" id="flat{$v1['f_id']}" name="flat[]" value="{$v1['flat']}"  placeholder="Total no.of flats">
 											<div class="text-danger" id="flat_error"></div>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
+											<label>Specality</label>
 											<textarea type="text" class="form-control required" id="specality{$v1['f_id']}" name="specality[]"  placeholder="Specality">{$v1['specality']}</textarea>
 											<div class="text-danger" id="specality_error"></div>
 										</div>
@@ -242,9 +250,8 @@
 						</tr>
 							{/foreach}
 							{else}
-							
-						{/if}
-						<div id="dynamic-floor-fields"></div>
+								<div id="dynamic-floor-fields"></div>
+							{/if}
 					</table>
 					<button type="submit" class="btn btn-primary" name="next" id="next">Next >></button>
 			
@@ -256,17 +263,18 @@
 				<h2><i class="fa fa-map-marker"></i>Other</h2>
 			</div>
 			<form action="" method="POST" id="amenities-from" name="amenities-from" type="multipart/form-data">
-		
+			<input type="hidden" id="otherId" name="otherId" value="{$otherArray[0]['o_id']}"/>
 			<div class="row">
-			
 				<div class="alert alert-success text-center col-md-12" id="pro_amenities_success" style="width:100%;display:none;"></div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Amenities</label>
 						<select data-placeholder="Select amenities" name="amenitieName[]" id="amenitieName" multiple class="chosen-select">
 							<option value="">Select Amenities</option>
+								
 								{foreach from=$amenitiesListArray key=k item=v}
-									<option value="{$v['name']}">{$v['name']}</option>
+									
+									<option {if (in_array($v['id'], $amenities) )} selected {/if} value="{$v['id']}">{$v['name']}</option>
 								{/foreach}
 						</select>
 					</div>
@@ -280,7 +288,7 @@
 						<select data-placeholder="Select Neighbourhoods" name="neibhourhood[]" id="neibhourhood" multiple class="chosen-select" >
 							<option value="">Select neighbourhoods</option>
 								{foreach from=$neighbourhoodListArray key=k item=v}
-									<option value="{$v['name']}">{$v['name']}</option>
+									<option {if (in_array($v['id'], $neighbourhoods) )} selected {/if}  value="{$v['id']}">{$v['name']}</option>
 								{/foreach}
 						</select>
 					</div>
@@ -296,7 +304,6 @@
 			
 			</div>
 			<button type="button" class="btn btn-primary" name="next" id="next" onclick="saveAmenities()">Update</button>
-			
 			</form>	
 		</div>
 		<!---other------->
@@ -309,8 +316,9 @@
 						</div>
 						<div class="alert alert-success text-center col-md-12" id="pro_success" style="width:100%;display:none;"></div>
 						<form action="" method="POST" id="units-from">
+						{if count($unitsArray) > 0}
 						<table id="unit-list-container" style="width:100%;">
-						 <div class="col-md-12 row" id="dynamic-fields"></div>
+						
 						{foreach from=$unitsArray key=k item=v1}
 						<tr class="unit-list-item">
    <td>
@@ -319,10 +327,11 @@
             <div class="form-group">
                <label>Wings</label>
                <input type="hidden" name="unitsID[]" id="unitsID" value="{$v1['u_id']}">
-               <select  class="form-control unitwingsid"id="unitwingsid_{$k+1}" name="unitwingsid[]">
-				  <option value="">Select Wing</option>
-					{foreach from=$wingArray key=k item=v2}
-						<option {if ($v1['wing'] == $v2['name'])} selected {/if} value="{$v2['name']}">{$v2['name']}</option>
+			
+               <select  class="form-control unitwingsid required"id="unitwingsid_{date('s')}{$v2['name']}" name="unitwingsid[]">
+				  <option value=''>Select Wing</option>
+					{foreach from=$floorsArray key=k item=v2}
+						<option {if ($v1['wing'] == $v2['wing'])} selected {/if} value="{$v2['wing']}">{$v2['name']}</option>
 					{/foreach}	
                </select>
                <div class="text-danger" id="unitsID_error"></div>
@@ -331,8 +340,8 @@
          <div class="col-md-3">
             <div class="form-group">
                <label>Floor</label>
-               <select  class="form-control unitfloorsid required"id="unitfloorsid_{$k+1}" name="unitfloorsid[]">
-				  <option value="">Select Floor</option>
+               <select  class="form-control unitfloorsid required"id="unitfloorsid_{date('s')}{$v1['floor']}" name="unitfloorsid[]">
+				  <option value="">Select Floor sds</option>
 				{foreach from=$floorsArray key=k item=v2}
 				<option  {if ($v1['floor'] == $v2['floor'])} selected {/if}  value="{$v2['floor']}">{$v2['floor']}</option>
 				{/foreach}
@@ -343,7 +352,7 @@
             <div class="form-group">
                <label>Units name</label>
            <!-- <input type="text" class="form-control required" id="name{$v1['u_id']}" name="name[]" placeholder="Units name type"  value="{$v1['type']}"> -->
-				<select  class="form-control "id="name{$v1['u_id']}" name="name[]">
+				<select  class="form-control required" id="name{date('s')}{$v['name']}" name="name[]">
 				  <option value="{$v1['type']}">{$v1['type']}</option>
 					{foreach from=$unitsTypeListArray key=k item=v}
 						<option value="{$v['name']}">{$v['name']}</option>
@@ -355,7 +364,7 @@
             <div class="form-group">
                <label>Title</label>
              <!--<input type="text" class="form-control required" id="title{$v1['u_id']}" name="title[]" placeholder="Unit title name" value="{$v1['title']}" >--->
-				<select  class="form-control "id="title{$v1['u_id']}" name="title[]">
+				<select  class="form-control required"id="title{date('s')}{$v1['title']}" name="title[]">
 				  <option value="{$v1['title']}">{$v1['title']}</option>
 					{foreach from=$proTypeListArray key=k item=v}
 						<option value="{$v['name']}">{$v['name']}</option>
@@ -366,25 +375,25 @@
          <div class="col-md-3">
             <div class="form-group">
                <label>Size</label>
-               <input type="text" class="form-control required" id="size{$v1['u_id']}" name="size[]" placeholder="Enter Size" value="{$v1['size']}">
+               <input type="text" class="form-control required"  name="size[]" id="size{date('s')}{$v1['size']}" placeholder="Enter Size" value="{$v1['size']}">
             </div>
          </div>
          <div class="col-md-3">
             <div class="form-group">
                <label>Price</label>
-               <input type="text" class="form-control required" id="price{$v1['u_id']}" name="price[]" placeholder="Enter Price" value="{$v1['price']}">
+               <input type="text" class="form-control required" id="price{date('s')}{$v1['price']}" name="price[]" placeholder="Enter Price" value="{$v1['price']}">
             </div>
          </div>
          <div class="col-md-3">
             <div class="form-group">
                <label>Carpet area</label>
-               <input type="text" class="form-control required" id="carpet_area{$v1['u_id']}" name="carpet_area[]" placeholder="Enter carpet area" value="{$v1['carpet_area']}">
+               <input type="text" class="form-control required" id="carpet_area{date('s')}{$v1['carpet_area']}" name="carpet_area[]" placeholder="Enter carpet area" value="{$v1['carpet_area']}">
             </div>
          </div>
          <div class="col-md-2">
             <div class="form-group">
                <label>Builtup area</label>
-               <input type="text" class="form-control required" id="built_area{$v1['u_id']}" name="built_area[]" placeholder="Enter carpet area"  value="{$v1['built_area']}">
+               <input type="text" class="form-control required" id="built_area{date('s')}{$v1['built_area']}" name="built_area[]" placeholder="Enter carpet area"  value="{$v1['built_area']}">
             </div>
          </div>
          <div class="col-md-1">
@@ -398,6 +407,14 @@
 {/foreach}
 
 	</table>
+	{else}
+	<table>
+	<div id="dynamic-fields"></div>
+	</table>
+{/if}
+<table>
+ <div class="col-md-12 row" id="dynamic-fields"></div>
+ </table>
 
 						
 					<button type="submit" class="btn btn-primary" name="next" id="next">Next >></button>	
@@ -725,7 +742,55 @@ function saveProperties() {
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
 <script>
+function saveAmenities() {
 
+	var _valid = 1;
+	var propertyID = $("#propertyID").val();
+	var neibhourhood = $("#neibhourhood").val();
+	var amenitieName = $("#amenitieName").val();
+	var otherId = $("#otherId").val();
+	var image1 = $("#image1").val();
+
+	var form = $('#amenities-from')[0];
+	var formdata = new FormData(form);
+	formdata.append('action', 'addAmenities');
+	formdata.append('propertyID',propertyID);
+
+	if(neibhourhood=="") 
+        {
+            $('#neibhourhood_error').show();
+            $('#neibhourhood_error').html('Please select neibhourhood.');
+            setTimeout(function(){ $('#neibhourhood_error').hide(); }, 2000);
+            _valid = 0;
+        }   
+	if(_valid == 1) {
+    $.ajax({
+        url: "{$adminroot}/ajaxproperties",
+                type: "POST",
+                data:formdata, 
+				enctype: 'multipart/form-data',
+				dataType:"JSON",
+				processData: false,  // Important!
+				contentType: false,
+				cache: false,
+                success: function(result)
+				{
+				console.log(result);
+				if(result.status == 1){
+						$("#propertyID").val(result.propertyID);
+						$('#pro_amenities_success').show();
+           				$('#pro_amenities_success').html('Update other info successfully.');
+        				setTimeout(function(){ $('#pro_amenities_success').hide(); }, 3000);
+            			setTimeout(function(){ window.location.href='{$adminroot}/properties'; }, 4000);
+						
+					//	$('.nav-tabs li:eq(1) a').tab('show')  // its also work.	
+					}
+
+				},
+    });	
+	}
+	
+}
 function getWings(propertyID,rowCount,classnm=''){
 			$.ajax({
 			type: "POST",
@@ -748,7 +813,7 @@ function getWings(propertyID,rowCount,classnm=''){
 
 					{	
 
-						_html += '<option value="'+data_obj.result[i].wing+'">'+data_obj.result[i].wing+'</option>';
+						_html += '<option value="'+data_obj.result[i].wing+'">'+data_obj.result[i].name+'</option>';
 
 					}
 
@@ -952,8 +1017,11 @@ $().ready(function () {
 					$('#pro_wing_sucess').show();
 					$('#pro_wing_sucess').html('Add propertie wing info successfully.');
 					setTimeout(function(){ $('#pro_wing_sucess').hide(); }, 3000);
-					setTimeout(function(){ $('.nav-tabs li:eq(3) a').tab('show') }, 4000);
-					//$('.nav-tabs li:eq(3) a').tab('show');
+					//setTimeout(function(){ $('.nav-tabs li:eq(3) a').tab('show') }, 4000);
+					
+					var redURL = window.location.origin+window.location.pathname+'?id='+propertyID+'#properties_floar';
+					window.location.href = redURL;
+					location.reload();
 				},
 				error: function (jqXHR, textStatus, errorThrown)
 				{
@@ -964,7 +1032,24 @@ $().ready(function () {
          },
     });
 	// Wings Form Validation
-
+	var str = window.location.href;
+	var res = str.split("#");
+	var tabname = res[1];
+	var num  = '';
+	if(tabname == 'properties_profile'){
+		num = 0;
+	}else if(tabname == 'properties_address'){
+		num = 1;
+	}else if(tabname == 'properties_wing'){
+		num = 2;
+	}else if(tabname == 'properties_floar'){
+		num = 3;
+	}else if(tabname == 'properties_unit'){
+		num = 4;
+	}else if(tabname == 'properties_other'){
+		num = 5;
+	}
+	$('.nav-tabs li:eq('+num+') a').tab('show');
 	$("#floor-form").validate({
          submitHandler: function (form) {
 
@@ -989,7 +1074,10 @@ $().ready(function () {
 				$('#pro_floor_sucess').show();
 				$('#pro_floor_sucess').html('Add propertie floor info successfully.');
 				setTimeout(function(){ $('#pro_floor_sucess').hide(); }, 3000);
-				setTimeout(function(){ $('.nav-tabs li:eq(4) a').tab('show') }, 4000);
+				//setTimeout(function(){ $('.nav-tabs li:eq(4) a').tab('show') }, 4000);
+				var redURL = window.location.origin+window.location.pathname+'?id='+propertyID+'#properties_unit';
+				window.location.href = redURL;
+				location.reload();
 			//	$('.nav-tabs li:eq(4) a').tab('show');
 			},
 			error: function (jqXHR, textStatus, errorThrown)
@@ -1028,7 +1116,9 @@ $().ready(function () {
     });
     // Units Form Validation
 }); 
+// other info
 
+//End other info
 // Select units
 var count = 1;
     dynamic_field(count);
@@ -1036,6 +1126,7 @@ var count = 1;
 
 		var unitsType = {json_encode($unitsTypeListArray)};
 		var proType = {json_encode($proTypeListArray)};
+		
 		var unitop = '';
 		var proop = '';
 		for(var i=0;i<unitsType.length;i++)
@@ -1046,10 +1137,35 @@ var count = 1;
 		for(var i=0;i<proType.length;i++)
 		{
 		//	proop += '<option value='+proType[i]['id']+'>'+proType[i]['name']+'</option>'; its also work
-			proop += '<option value='+proType[i]['name']+'>'+proType[i]['name']+'</option>';
+			proop += '<option value='+proType[i]['id']+'>'+proType[i]['name']+'</option>';
 			
 		}
 
+		var propertyID = $("#propertyID").val();
+		var mdata = [];
+		var _html = '';
+			$.ajax({
+			type: "POST",
+
+			 url: "{$adminroot}/ajaxproperties",
+			
+			data: { action: 'getFloorWings', propertyID :propertyID },
+			async:false,
+
+			success: function(response){
+				mdata = response;
+				
+					var data_obj = JSON.parse(mdata);
+
+					console.log(data_obj);
+					for(var i=0; i < data_obj.result.length; i++)
+
+					{
+						_html += '<option value="'+data_obj.result[i].wing+'">'+data_obj.result[i].name+'</option>';
+
+					}
+
+		console.log(_html);
 
         html  = '<tr class="unit-list-item"  id="div_'+ number +'">';
 		html += '<td>';
@@ -1058,8 +1174,9 @@ var count = 1;
 		html += '<div class="form-group">';
 		html += '<label>Wings'+number+'</label>';
 		html += '<input type="hidden" name="unitsID[]" id="unitsID">';
-		html += '<select  class="form-control unitwingsid" id="unitwingsid_'+number+'" name="unitwingsid[]">';
-    	html += '<option vslue="">Select Wing</option>';
+		html += '<select  class="form-control unitwingsid required" id="unitwingsid_'+number+'" name="unitwingsid[]">';
+    	html += '<option value="">Select Wing</option>';
+		html += _html;
     	html += '</select>';
 		html += '<div class="text-danger" id="unitsID_error"></div>';
 		html += '</div>';
@@ -1068,7 +1185,7 @@ var count = 1;
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Floor</label>';
-		html += '<select  class="form-control unitfloorsid" id="unitfloorsid_'+number+'" name="unitfloorsid[]">';
+		html += '<select  class="form-control unitfloorsid required" id="unitfloorsid_'+number+'" name="unitfloorsid[]">';
         html += '<option value="">Select Floor</option>';
         html += '</select>';
 		html += '</div>';
@@ -1111,7 +1228,7 @@ var count = 1;
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Size</label>';
-		html += '<input type="text" class="form-control" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
+		html += '<input type="text" class="form-control required" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
 		html += '</div>';
         html += '</div>';
 
@@ -1119,7 +1236,7 @@ var count = 1;
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Price</label>';
-		html += '<input type="text" class="form-control" id="price_'+number+'" name="price[]" placeholder="Enter Price" >';
+		html += '<input type="text" class="form-control required" id="price_'+number+'" name="price[]" placeholder="Enter Price" >';
 		html += '</div>';
         html += '</div>';
 
@@ -1127,14 +1244,14 @@ var count = 1;
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Carpet area</label>';
-		html += '<input type="text" class="form-control" id="carpet_area_'+number+'" name="carpet_area[]" placeholder="Enter carpet area" >';
+		html += '<input type="text" class="form-control required" id="carpet_area_'+number+'" name="carpet_area[]" placeholder="Enter carpet area" >';
 		html += '</div>';
         html += '</div>';
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Builtup area</label>';
-		html += '<input type="text" class="form-control" id="built_area_'+number+'" name="built_area[]" placeholder="Enter carpet area" >';
+		html += '<input type="text" class="form-control required"  name="built_area[]" id="built_area_'+number+'" placeholder="Enter carpet area" >';
 		html += '</div>';
         html += '</div>';
 
@@ -1146,12 +1263,25 @@ var count = 1;
             html += '</div>';
             html += '</div>';
             $('#dynamic-fields').append(html);
-			var propertyID = $("#propertyID").val();
-			getWings(propertyID,number);
         } else {
-
+			html += '<div class="col-md-1">';
+            html += '<div class="form-group">'
+            html += '<label>&nbsp;</label>';
+			html += '<a class="remove" href="#"><i class="fa fa-fw fa-remove"></i></a>';
+            html += '</div>';
+            html += '</div>';
+			 $('#dynamic-fields').append(html);
+			 /*var propertyID = $("#propertyID").val();
+			 var classnm = '';
+			 var numItems = $('#dynamic-fields div .row').length;
+			getWings(propertyID,numItems+1,classnm);*/
 	
         }
+			}
+
+		});
+
+
     }
 
     $(document).on('click','#addUnit', function () {
@@ -1180,6 +1310,7 @@ var count = 1;
 		html += '<div class="row" id="div_'+ number +'">';
 		html += '<div class="col-md-5">';
 		html += '<div class="form-group">';
+		html += '<label>Wing</label>';
 		html += '<span id="wingsid" name="wingsid"></span>';
 		html += '<input type="text" id="wings'+ number +'" name="wings[]" class="form-control required" placeholder="wing">';
 		html +='<div class="text-danger" id="wings_error"></div>';
@@ -1188,6 +1319,7 @@ var count = 1;
 
 		html += '<div class="col-md-5">';
 		html += '<div class="form-group">';
+		html += '<label>Total no.of floor</label>';
 		html += '<input type="text" id="totalFloor'+ number +'" name="totalFloor[]" class="form-control required" placeholder="Total no.of.floor">';
 		html += '<div class="text-danger" id="totalFloor_error"></div>';
 		html += '</div>';
@@ -1203,7 +1335,13 @@ var count = 1;
             html += '</div>';
             $('#dynamic-wing-fields').append(html);
         } else {
-
+			 html += '<div class="col-md-1">';
+            html += '<div class="form-group">';
+            html += '<label>&nbsp;</label>';
+			html += '<a class="removewing" href="#"><i class="fa fa-fw fa-remove"></i></a>';
+            html += '</div>';
+            html += '</div>';
+			$('#dynamic-wing-fields').append(html);
 			
         }
     }
@@ -1239,6 +1377,7 @@ var count = 1;
 		html += '<div class="row" id="div_'+ number +'">';
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Wing</label>';
 		html += '<span id="floorsid"></span>';
 		html += '<select name="wing[]" id="wing'+ number +'" class="form-control required wingsid">';
 		html += '<option value="">Select Wing</option>';
@@ -1250,6 +1389,7 @@ var count = 1;
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Floor no</label>';
 		html += '<input type="text" class="form-control required" id="floor'+ number +'" name="floor[]" placeholder="Floor No">';
 		html += '<div class="text-danger" id="floor_error"></div>';
 		html += '</div>';
@@ -1257,6 +1397,7 @@ var count = 1;
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Total no.of flat</label>';
 		html += '<input type="text" class="form-control required" id="flat'+ number +'" name="flat[]"  placeholder="Total no.of flats">';
 		html += '<div class="text-danger" id="floor_error"></div>';
 		html += '</div>';
@@ -1264,6 +1405,7 @@ var count = 1;
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Specality</label>';
 		html += '<textarea type="text" class="form-control required" id="specality'+ number +'" name="specality[]" placeholder="Specality"></textarea>';
 		html += '<div class="text-danger" id="specality_error"></div>';
 		html += '</div>';
@@ -1282,7 +1424,7 @@ var count = 1;
 			var propertyID = $("#propertyID").val();
 			getWing(propertyID,number);
         } else {
-
+			$('#dynamic-floor-fields').append(html);
 			
         }
 		
@@ -1291,10 +1433,9 @@ var count = 1;
     $(document).on('click','#addFloor', function () {
         count++;
         dynamic_floor_field(count);
-		var propertyID = $("#propertyID").val();
-		
-		
+		var propertyID = $("#propertyID").val();	
     });
+	
     $(document).on('click', '.removeFloor', function () {
         count--;
         var row_id = $(this).parent().parent().parent().attr('id');

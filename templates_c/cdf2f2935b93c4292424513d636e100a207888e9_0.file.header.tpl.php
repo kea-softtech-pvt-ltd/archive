@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-06 12:57:11
+/* Smarty version 3.1.29, created on 2021-03-17 17:31:28
   from "C:\xampp\htdocs\archive\default\templates\widgets\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_601e44cf084ec6_26320531',
+  'unifunc' => 'content_6051ef989bcb52_24748448',
   'file_dependency' => 
   array (
     'cdf2f2935b93c4292424513d636e100a207888e9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\widgets\\header.tpl',
-      1 => 1575335268,
+      1 => 1613545850,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_601e44cf084ec6_26320531 ($_smarty_tpl) {
+function content_6051ef989bcb52_24748448 ($_smarty_tpl) {
 ?>
 <head>
 	<meta charset="utf-8">
@@ -33,34 +33,34 @@ function content_601e44cf084ec6_26320531 ($_smarty_tpl) {
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/img/favicon.ico" type="image/x-icon">
+/default/assets/img/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" type="image/x-icon" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/img/apple-touch-icon-57x57-precomposed.png">
+/default/assets/img/apple-touch-icon-57x57-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/img/apple-touch-icon-72x72-precomposed.png">
+/default/assets/img/apple-touch-icon-72x72-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/img/apple-touch-icon-114x114-precomposed.png">
+/default/assets/img/apple-touch-icon-114x114-precomposed.png">
 	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/img/apple-touch-icon-144x144-precomposed.png">
+/default/assets/img/apple-touch-icon-144x144-precomposed.png">
 
 	<!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 
 	<!-- BASE CSS -->
 	<link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/css/bootstrap.min.css" rel="stylesheet">
+/default/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/css/style.css" rel="stylesheet">
+/default/assets/css/style.css" rel="stylesheet">
 	<link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/css/menu.css" rel="stylesheet">
+/default/assets/css/menu.css" rel="stylesheet">
 	<link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/css/vendors.css" rel="stylesheet">
+/default/assets/css/vendors.css" rel="stylesheet">
 	<link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
+/default/assets/css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
     
 	<!-- YOUR CUSTOM CSS -->
 	<link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/css/custom.css" rel="stylesheet">
+/default/assets/css/custom.css" rel="stylesheet">
 	
 </head>
 <?php }

@@ -35,13 +35,22 @@
         }
         ## Get builder by id
 	    function getUserNameByUserId($id) {
-		$fields=array('type','title','id','size','price','carpet_area','built_area','images','status');	//fetch fromdb
+		$fields=array('type','title','id','size','price','carpet_area','built_area','images','status','p_id');	//fetch fromdb
         $tables=array($this->units);
 		$where=array("id=".$id);		
 		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
 		$result= $this->FetchRow($result1); 
 		return $result;		
 	}
+    public function getStates()
+    {
+        $fields=array('name','id','status');	//fetch fromdb
+        $tables=array('property');
+		$where = array(" status = '1'");	
+		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+		$result= $this->FetchAll($result1);
+		return $result;	
+    }
         
     }
 ?>

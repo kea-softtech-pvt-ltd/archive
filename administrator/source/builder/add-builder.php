@@ -29,7 +29,7 @@
 		$builderArray['create_at'] = date('Y/m/d H:i:s');
 		$builderArray['modified_at'] = date('Y/m/d H:i:s');
 		$builderArray['status'] = 1;
-		$builderArray['user_name'] = $_POST['name'];
+		$builderArray['user_name'] = $_POST['email'];
 		$builderArray['password'] = rand(6,9999);
 		$builderArray['properties'] = '';
 	//	$builderArray['m_con'] = implode(',',$_POST['m_contact']) ; its use for multiple add contact

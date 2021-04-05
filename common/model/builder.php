@@ -30,8 +30,10 @@
                 //$where[] = "concat(first_name,' ',last_name) like '%".$search."%'";
                 $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
             }
-                
-            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+            if ($_SESSION['role']=='3'){
+                $where=array('id='.$_SESSION['id']);
+            } 
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('id DESC'), $group=array(), $limit,$offset,0);
             $result= $this->FetchAll($result1); 
             return $result;		
         }

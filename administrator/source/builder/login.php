@@ -5,7 +5,8 @@
 	$builderObj = new Model_login();
 	
 	if(isset($_POST['login'])) {
-		if($_POST['role'] == 'builder'){
+		if($_POST['role'] == 'builder')
+		{
 		$vali = $builderObj->validation($_POST['mobile'],$_POST['password']);
 		}else{
 			$vali = $builderObj->validationBuilder($_POST['mobile'],$_POST['password']);
@@ -34,6 +35,7 @@
 				$_SESSION['isLoggedIn'] = true;
 				$_SESSION['id'] 	= $builderId['id'];
 				$_SESSION['name'] 	= $builderId['name'];
+				$_SESSION['email'] 	= $builderId['email'];
 				$_SESSION['status'] = $builderId['status'];
 				$_SESSION['role'] 	= $builderId['role'];
 				// header("Location: " . SITE_URL . "/admin/dashboard");
@@ -41,7 +43,8 @@
 		}
 	}
 	if(isset($_SESSION['isLoggedIn'])){
-		header("Location: " . SITE_URL . "/admin/dashboard");
+	//	header("Location: " . SITE_URL . "/admin/dashboard1");
+	 header("Location: " . SITE_URL . "/admin/dashboard"); 
 	}else{
 		$smarty->assign('moduleName', 'login');
 		$smarty->display(ADMIN_TEMPLATEDIR . '/builder/login.tpl');

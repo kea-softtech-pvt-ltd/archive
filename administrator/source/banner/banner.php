@@ -8,9 +8,12 @@
 	
 	$smarty->assign('bannerArray', $bannerArray);
 
-
+	if(isset($_SESSION['isLoggedIn'])){
 	$smarty->assign('moduleName', 'List of banner');
-
 	$smarty->display(ADMIN_TEMPLATEDIR . '/banner/banner.tpl');
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 
 ?>

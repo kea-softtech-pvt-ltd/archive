@@ -20,7 +20,7 @@
 	$smarty->assign('moduleName', 'List of builder');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
 	}else{
-		header("Location: " . SITE_URL . "/admin/login");
+		header("Location: " . SITE_URL . "admin/login");
 	}
 	//echo $_REQUEST['message'];
 

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-19 22:17:51
+/* Smarty version 3.1.29, created on 2021-04-04 23:40:13
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\sidebar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602febb7c726e3_55078067',
+  'unifunc' => 'content_606a0105e07d69_41745306',
   'file_dependency' => 
   array (
     '7c95806d8b7b921f120e64c090bdeb663e01d69e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\sidebar.tpl',
-      1 => 1613753269,
+      1 => 1617559808,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_602febb7c726e3_55078067 ($_smarty_tpl) {
+function content_606a0105e07d69_41745306 ($_smarty_tpl) {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Flats On Discount</a>
@@ -53,8 +53,50 @@ function content_602febb7c726e3_55078067 ($_smarty_tpl) {
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units management">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /units">
-            <i class="fa fa-fw fa-delicious"></i>
+            <i class="fa fa-fw fa-yelp"></i>
             <span class="nav-link-text">Units management</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner management">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/banner">
+            <i class="fa fa-fw fa-image"></i>
+            <span class="nav-link-text">banner management</span>
+          </a>
+        </li>
+   <!--   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Wings">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/wing">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Add wing</span>
+          </a>
+        </li>--->
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/un">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Add unit</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/proType">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Add Property Type</span>
+          </a>
+        </li>
+    <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/buildingType">
+            <i class="fa fa-fw fa-delicious"></i>
+            <span class="nav-link-text">Building Type</span>
+          </a>
+        </li>--->
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Neighbourhoods Type">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/neighbourhoods">
+            <i class="fa fa-fw fa-building-o"></i>
+            <span class="nav-link-text">Neighbourhoods</span>
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Address management">
@@ -108,10 +150,6 @@ function content_602febb7c726e3_55078067 ($_smarty_tpl) {
           </a>
         </li> --->
 
-        
-
-
-        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
@@ -119,10 +157,13 @@ function content_602febb7c726e3_55078067 ($_smarty_tpl) {
           </a>
           <ul class="sidenav-second-level collapse" id="collapseProfile">
             <li>
-              <a href="user-profile.html">User profile</a>
+              <a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/builder/edit?id=<?php echo $_SESSION['id'];?>
+">Edit profile</a>
             </li>
 			      <li>
-              <a href="doctor-profile.html">Doctor profile</a>
+              <a href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/builder">Builder profile</a>
             </li>
           </ul>
         </li>
@@ -135,6 +176,12 @@ function content_602febb7c726e3_55078067 ($_smarty_tpl) {
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+          <a class="nav-link " title="Link home page" href="https://www.youtube.com/watch?v=YpIdc7KlbQI">
+            <i class="fa fa-fw fa-home" style="font-size:20px" ></i>
+          </a>
+
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-envelope"></i>

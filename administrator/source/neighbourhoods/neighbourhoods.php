@@ -9,8 +9,14 @@
 	$smarty->assign('neighbourhoodsListArray', $neighbourhoodsListArray);
 
 
-	$smarty->assign('moduleName', 'List of Neighbourhoods type');
+	
 
+	if(isset($_SESSION['isLoggedIn'])){
+	$smarty->assign('moduleName', 'List of Neighbourhoods type');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/neighbourhoods/neighbourhoods.tpl');
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 
 ?>

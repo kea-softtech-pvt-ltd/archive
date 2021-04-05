@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 11:53 AM
+-- Generation Time: Mar 27, 2021 at 04:41 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -126,7 +126,8 @@ CREATE TABLE `builders` (
 
 INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `password`, `avatar`, `city`, `street_address`, `landmark`, `state`, `zip`, `properties`, `create_at`, `modified_at`, `status`, `user_name`, `m_con`, `role`) VALUES
 (1, 'Roshan ', 'E1234568888', '2147483647', 'roshandeorukhkar@gmail.com', '5555', '1613792156_images (1).png', '1', 'Ganesh Colony, Shiv Nagar, Hadapsar, Pune.', 'GK mobile shop.', '1', 411013, 0, '2021-02-18', '2021-02-26', '1', 'Roshan ', '', 3),
-(2, 'Gaurav v', 'E98234238933', '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'a/p: nahre mansi viswas nager ', 'RKS hotel ', '1', 415002, 0, '2021-02-18', '2021-03-08', '1', 'Gaurav v', '', 3);
+(2, 'Gaurav v', 'E98234238933', '2147483647', 'gaurav@gmail.com', '5570', '1613792171_download (2).png', '1', 'a/p: nahre mansi viswas nager ', 'RKS hotel ', '1', 415002, 0, '2021-02-18', '2021-03-08', '1', 'Gaurav v', '', 3),
+(9, 'Laxman ', 'E9823423888', '9876555555', 'laxman@gmail.com', '7806', '1616859463_bg1.jpg', '1', 'mansi hall near abc collage pune', 'sadf', '1', 686878, 0, '2021-03-27', '2021-03-27', '1', 'Laxman ', '', 3);
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,8 @@ CREATE TABLE `floor` (
 --
 
 INSERT INTO `floor` (`f_id`, `p_id`, `wing`, `floor`, `flat`, `specality`, `status`, `created_date`) VALUES
-(1, 1, 'A', '1', '6', 'qwer', '1', '2021-03-23 10:50:08');
+(1, 1, 'A', '1', '6', 'a wing big hall that floor', '1', '2021-03-27 15:40:38'),
+(2, 1, 'B', '2', '6', 'b wing secand floor big hall and rooms.', '1', '2021-03-27 15:40:39');
 
 -- --------------------------------------------------------
 
@@ -240,7 +242,7 @@ CREATE TABLE `properties_address` (
 --
 
 INSERT INTO `properties_address` (`a_id`, `p_id`, `address`, `description`) VALUES
-(1, 1, 'pune', 'pune');
+(1, 1, 'mansi viswas nager pune', 'pune');
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,7 @@ CREATE TABLE `properties_other` (
 --
 
 INSERT INTO `properties_other` (`o_id`, `p_id`, `amenities`, `image`, `neighbourhoods`, `status`, `created_date`) VALUES
-(1, 1, 'car parking,Airploat', '1616496658_bg1.jpg,1616496658_WIN_20171228_20_19_26_Pro.jpg', 'Collage,Rks Hotel', '1', '2021-03-23 10:50:58');
+(1, 1, 'car parking,Airploat', '1616859684_bg1.jpg,1616859684_WIN_20171228_20_19_26_Pro.jpg', 'Bus Stop,Collage', '1', '2021-03-27 15:41:24');
 
 -- --------------------------------------------------------
 
@@ -318,7 +320,7 @@ CREATE TABLE `property` (
 --
 
 INSERT INTO `property` (`id`, `name`, `builder_name`, `started_date`, `possession_date`, `address`, `rera_number`, `description`, `specification`, `images`, `videos`, `units`, `amenities`, `neighbourhoods`, `created_date`, `modified_date`, `status`) VALUES
-(1, 'magarpatha city', 'Roshan ', '2021-03-27', '2021-03-26', '', 1234567, '', '', '', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
+(1, 'magarpatha city', 'Roshan ', '2021-03-27', '2021-03-27', '', 1234567, '', '', '', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
 
 -- --------------------------------------------------------
 
@@ -373,7 +375,7 @@ CREATE TABLE `units` (
 --
 
 INSERT INTO `units` (`u_id`, `p_id`, `floor`, `wing`, `type`, `title`, `size`, `price`, `carpet_area`, `built_area`, `2d_plan_images`, `3d_plan_images`, `images`, `created_at`, `modified_at`, `status`) VALUES
-(1, 1, '1', 'A', '2bhk', 'Flat', 690, 33, 989, 444, '', '', '', '0000-00-00', '0000-00-00', '0');
+(1, 1, '1', 'A', '1bhk', 'Flat', 690, 33, 989, 444, '', '', '', '0000-00-00', '0000-00-00', '0');
 
 -- --------------------------------------------------------
 
@@ -434,8 +436,8 @@ CREATE TABLE `wing` (
 --
 
 INSERT INTO `wing` (`w_id`, `p_id`, `name`, `totalFloor`, `status`, `created_date`) VALUES
-(1, 1, 'A', '5', '1', '2021-03-23 10:49:19'),
-(2, 1, 'B', '5', '1', '2021-03-23 10:49:20');
+(1, 1, 'A', '8', '1', '2021-03-27 15:39:40'),
+(2, 1, 'B', '8', '1', '2021-03-27 15:39:41');
 
 --
 -- Indexes for dumped tables
@@ -566,7 +568,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `city`
 --
@@ -581,7 +583,7 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `floor`
 --
 ALTER TABLE `floor`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `neighbourhoods`
 --

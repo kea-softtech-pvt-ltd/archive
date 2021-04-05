@@ -5,7 +5,6 @@
 
 				<main>
 					<div class="container">
-					 <span class="error"> <?php echo $nameErr;?></span>
 
 					<div class="alert alert-danger text-center" name="error_msggg" id="error_msggg" style="display:none;"></div>
 

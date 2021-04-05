@@ -18,6 +18,17 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>Project Name</label>
+									<select class="form-control" name="p_id" id="p_id"  required>
+										<option value="">Select Project</option>
+										{foreach from=$statesListArray key=k item=v}
+											<option {if ($v['id'] == $unitsuserArray['p_id']) } selected {/if} value="{$v['id']}">{$v['name']}</option>
+										{/foreach}
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>Units name</label>
 									<input type="text" class="form-control" name="name" placeholder="Units name type" value="{$unitsuserArray['type']}" required>
 								</div>

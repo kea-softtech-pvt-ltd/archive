@@ -117,10 +117,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseProfile">
             <li>
-              <a href="user-profile.html">User profile</a>
+              <a href="{$adminroot}/builder/edit?id={$smarty.session.id}">Edit profile</a>
             </li>
 			      <li>
-              <a href="doctor-profile.html">Doctor profile</a>
+              <a href="{$adminroot}/builder">Builder profile</a>
             </li>
           </ul>
         </li>

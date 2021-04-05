@@ -256,7 +256,14 @@ if($_REQUEST['action']=="addAmenities")
 	$propertyArray['neighbourhoods'] = implode(',',$_POST['neibhourhood']);
 	$propertyArray['image'] = $imagelist1;
 
+//	$result = $builderObj->addAmenitiesByValue($propertyArray);
+
+if(isset($_POST['propertyID']) && !empty($_POST['propertyID']) && isset($_POST['otherId']) && !empty($_POST['otherId'])){
+	$builderObj->editAmenitiesOtherById($propertyArray,$_POST['otherId']);
+	$result = $_POST['otherId'];
+}else{
 	$result = $builderObj->addAmenitiesByValue($propertyArray);
+}
 	
 	if($result)
 
@@ -265,8 +272,6 @@ if($_REQUEST['action']=="addAmenities")
 		$response['status'] = '1'; 
 
 		$response['message'] = 'success'; 
-
-	//	$response['propertyID'] = $result; 
 
 	}
 
@@ -277,8 +282,6 @@ if($_REQUEST['action']=="addAmenities")
 		$response['status'] = '0'; 
 
 		$response['message'] = 'error'; 
-
-	//	$response['propertyID'] = $result;
 
 	}
 	echo json_encode($response);
@@ -314,7 +317,7 @@ if($_REQUEST['action']=="getWings")
 
 if($_REQUEST['action']=="getFloorWings")
 {
-    $result = $builderObj->getFloorWingBypropertyId($_POST['propertyID']);
+    $result = $builderObj->getFloorWingsBypropertyId($_POST['propertyID']);
 
 	if($result)
 	{	
@@ -346,7 +349,6 @@ if($_REQUEST['action']=="getFloors")
 	if($result)
 	{	
 		$response['status'] = '1'; 
-
 		$response['message'] = 'success';
 		$response['result'] = $result;
 

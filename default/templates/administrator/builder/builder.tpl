@@ -20,7 +20,9 @@
 					</select>               
 				</div>-->
                 <div class="actions">
+				{if ($smarty.session.role != 3)}
                     <a class="btn_1 medium" href="{$adminroot}/builder/add" > Add new builder</a>
+				{/if}
                 </div>
 			</div>
 			<div class="list_general">
@@ -28,9 +30,7 @@
 				{if isset($smarty.session.message_add_b) }
 					{$smarty.session.message_add_b}
 				{/if}
-				
-				
-				
+					
 			</div>
 				<ul>
 				<!--	{$_SESSION['message_add_b']} its use for message show session --> 
@@ -42,7 +42,7 @@
 							<li><strong>Register number </strong> : {$v['register_number']}</li>
 							<li><strong>Email </strong> : {$v['email']}</li>
 							<li><strong>Password </strong> : {$v['password']}</li>
-							<li><strong>User Name </strong> : {$v['user_name']}</li>
+							<!--<li><strong>User Name </strong> : {$v['user_name']}</li>--->
 							<li><strong>Telephone </strong> : {$v['telephone']}</li>
 							<li><strong>Address </strong> : {$v['street_address']}</li>
 							<li><strong>Landmark </strong> : {$v['landmark']}</li>

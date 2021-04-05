@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-18 11:21:57
+/* Smarty version 3.1.29, created on 2021-03-03 15:00:21
   from "C:\xampp\htdocs\archive\default\templates\administrator\units\edit-units.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602e007d0d7db4_65708559',
+  'unifunc' => 'content_603f572dd089e1_50203768',
   'file_dependency' => 
   array (
     '68bbd0a07426436bd5cbfefd43f6a8de48b3ca1e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\units\\edit-units.tpl',
-      1 => 1613411966,
+      1 => 1614763793,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602e007d0d7db4_65708559 ($_smarty_tpl) {
+function content_603f572dd089e1_50203768 ($_smarty_tpl) {
 ?>
  <!doctype html>
 <html>
@@ -52,6 +52,41 @@ function content_602e007d0d7db4_65708559 ($_smarty_tpl) {
 						</div>
 						
 						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Project Name</label>
+									<select class="form-control" name="p_id" id="p_id"  required>
+										<option value="">Select Project</option>
+										<?php
+$_from = $_smarty_tpl->tpl_vars['statesListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_v_0_saved_item = isset($_smarty_tpl->tpl_vars['v']) ? $_smarty_tpl->tpl_vars['v'] : false;
+$__foreach_v_0_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['v'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['v']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+$__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
+?>
+											<option <?php if (($_smarty_tpl->tpl_vars['v']->value['id'] == $_smarty_tpl->tpl_vars['unitsuserArray']->value['p_id'])) {?> selected <?php }?> value="<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+</option>
+										<?php
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_local_item;
+}
+if ($__foreach_v_0_saved_item) {
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_item;
+}
+if ($__foreach_v_0_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
+}
+?>
+									</select>
+								</div>
+							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Units name</label>

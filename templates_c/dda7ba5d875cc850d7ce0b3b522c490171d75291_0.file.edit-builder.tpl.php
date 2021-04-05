@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-20 13:53:18
+/* Smarty version 3.1.29, created on 2021-03-04 12:44:53
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\edit-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6030c6f6361253_71267250',
+  'unifunc' => 'content_604088ed87ecc7_79800220',
   'file_dependency' => 
   array (
     'dda7ba5d875cc850d7ce0b3b522c490171d75291' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\edit-builder.tpl',
-      1 => 1613809391,
+      1 => 1614842033,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6030c6f6361253_71267250 ($_smarty_tpl) {
+function content_604088ed87ecc7_79800220 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -52,6 +52,9 @@ label.error {
 					<div class="box_general padding_bottom">
 						<div class="header_box version_2">
 							<h2><i class="fa fa-edit"></i>Edit Builder information</h2>
+						<!--	<img class="" src="<?php echo SITE_URL;?>
+/administrator/source/upload/<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
+" style="float: right; height: 50px; width:50px" /><br>	--->			
 						</div>
 						<div class="row">
 							<div class="col-md-6">
@@ -77,47 +80,40 @@ label.error {
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group">
-									<label>Profile picture</label>
-										<input class="form-control" type="file" id="image" name="image" value=""></input>
-										<input class="form-control" type="text" id="image" name="image" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
-" hidden>
-										<img class="d-block w-10" height="100px" width="100px" src="<?php echo SITE_URL;?>
+								<div class="row">
+									<div class="col-10">
+										<div class="form-group">
+											<label>Profile picture</label>
+												<input class="form-control" type="file" id="image" name="image" value="" />
+												<input class="form-control" type="text" id="image" name="image" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
+" hidden />	
+										</div>
+									</div>
+									<div class="col-2">
+										<div class="form-group">
+											<img class="" src="<?php echo SITE_URL;?>
 /administrator/source/upload/<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
-" />					
-								</div>
-							</div>
-						<!---<div class="col-md-6">
-								<div class="form-group">
-									<label>Partners name</label>
-									<input type="text" class="form-control" name="partner_name" placeholder="Partners name"  value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['partner_name'];?>
-" required>
-								</div>
-							</div>--->
-						</div>
-						<div class="row">
-							
-					<!--		<div class="col-md-6">
-								<div class="form-group">
-									<label>PAN number</label>
-									<input type="text" class="form-control" name="pan_number" placeholder="PAN number" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['pan'];?>
-">
+" style="float: right; height: 50px; width:50px; margin-top: 30%" />
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Profile picture</label>
-									<input class="form-control" type="file" id="image" name="image" value=""></input>
-									<input class="form-control" type="text" id="image" name="image" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
-" hidden>
-									<br>
-									<img class="d-block w-10" height="100px" width="100px" src="<?php echo SITE_URL;?>
-/administrator/source/upload/<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
-" />
+									<label>Register number</label>
+									<input type="text" class="form-control" name="register_number" placeholder="Builder register number"  value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['register_number'];?>
+" required>
 								</div>
-							</div> --->
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Zip code</label>
+									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['zip'];?>
+">
+								</div>
+							</div>
 						</div>
-						<!-- /row-->
+				
 					</div>
 					<!-- /box_general-->
 					
@@ -129,7 +125,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>State</label>
-									<select class="form-control" name="state" required>
+									<select class="form-control" name="s_id" id="s_id"  onchange="getModels();" required>
 										<option value="">Select State</option>
 										<?php
 $_from = $_smarty_tpl->tpl_vars['statesListArray']->value;
@@ -164,7 +160,7 @@ $_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>City</label>
-									<select class="form-control" name="city" required>
+									<select class="form-control" name="city" id="city" required>
 										<option value="">Select City</option>
 										<?php
 $_from = $_smarty_tpl->tpl_vars['citiesListArray']->value;
@@ -201,22 +197,22 @@ $_smarty_tpl->tpl_vars['k'] = $__foreach_v_1_saved_key;
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>Landmark</label>
+									<input class="form-control" name="landmark" placeholder="Enter landmark" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['landmark'];?>
+" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>Address</label>
 									<textarea class="form-control" name="address" placeholder="Your address" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
 "><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
 </textarea>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Zip code</label>
-									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['zip'];?>
-">
-								</div>
-							</div>
 						</div>
 						<!-- /row-->
-			<!--<div class="row">
+					<!--<div class="row">
 					<div class="col-md-12">
 						<h6>Multiple contact number</h6>
 					<table id="pricing-list-container" style="width:100%;">
@@ -287,6 +283,80 @@ $_smarty_tpl->tpl_vars['k'] = $__foreach_v_2_saved_key;
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/scripts.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+
+	<?php echo '<script'; ?>
+ type="text/javascript">
+   		function getModels()
+{
+
+	if($('#s_id').val() == '')
+
+	{
+
+		var _html = '<option value="">Select State/option>';
+
+		_html += '<option value="0">Other</option>';
+
+		$('#city').html(_html);
+
+	}
+	
+	else
+
+	{		
+        
+		$.ajax({
+			type: "POST",
+
+			url: "<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/ajaxbuilder",
+
+	  		 // url: "http://localhost/archive/administrator/ajax/ajax_food.php",
+           
+			
+			data: { action: 'getModels', s_id : $('#s_id').val() },
+
+			success: function(response){
+
+				var data_obj = JSON.parse(response);
+
+				var _html = '<option value="">Select  city </option>';
+				
+				if(data_obj.message == 'success')
+
+				{
+
+					for(var i=0; i < data_obj.result.length; i++)
+
+					{	
+
+						_html += '<option value="'+data_obj.result[i].id+'">'+data_obj.result[i].name+'</option>';
+
+					}
+
+				}
+
+				else
+					
+				{
+
+					$('#error_message').show();
+					
+				}	
+
+				_html += '<option value="0">Other</option>';
+
+				$('#city').html(_html);
+
+			}
+
+		});
+
+	}
+
+}
+	<?php echo '</script'; ?>
+>
 	
 </body>
 </html><?php }

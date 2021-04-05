@@ -21,6 +21,11 @@
 	$smarty->assign('wingArray', $wingArray);
 	$smarty->assign('unitsArray', $unitsArray);
 	$smarty->assign('otherArray', $otherArray);
+	// print_r(explode(',',$otherArray[0]['amenities']));die;
+	if(!empty($otherArray)){
+	$smarty->assign('amenities', explode(',',$otherArray[0]['amenities']));
+	$smarty->assign('neighbourhoods',explode(',',$otherArray[0]['neighbourhoods']));
+	}
 	$smarty->assign('addressPropertiesArray', $addressPropertiesArray);
 	//print_r($_REQUEST);
 	

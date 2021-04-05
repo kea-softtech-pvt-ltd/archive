@@ -9,8 +9,11 @@
 	$smarty->assign('amenitiListArray', $amenitiListArray);
 
 
-	$smarty->assign('moduleName', 'List of Amenities');
-
-	$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/amenities.tpl');
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+		$smarty->assign('moduleName', 'List of Amenities');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/amenities.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
 
 ?>

@@ -60,14 +60,15 @@ div .carouselExampleControls {
 						<h4>{$v['name']}</h4>
 						<ul class="booking_details">
 							<li><strong>RERA number</strong>{$v['rera_number']}</li>
-							<li><strong>Builder name</strong>{$v['builder_name']}</li>
+							<li><strong>Builder name</strong>{$v['buildername']}</li>
 							<li><strong>possession date</strong>{$v['possession_date']}</li>
 							<li><strong>address</strong>{$v['address']}</li>
 						</ul>
 						<ul class="buttons">
 							 <a class="btn_1" href="{$adminroot}/properties/edit?id={$v['id']}" ><i class="fa fa-fw fa-edit"></i>Edit</a>
 							 <li><a href="{$adminroot}/properties/delete?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-
+							 <li><a href="{$adminroot}/properties/view?id={$v['id']}" class="btn_1 gray"><i class="fa fa-eye"></i> View</a></li>
+							
 						</ul>
 					</li>
 					{/foreach}
@@ -78,27 +79,7 @@ div .carouselExampleControls {
    	    </div>
     <!-- /.container-wrapper-->
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
 	

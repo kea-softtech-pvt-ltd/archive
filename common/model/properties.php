@@ -52,13 +52,17 @@
             $insertId = $this->getLatestRecordId();
             return $insertId;
         }
+        ## Edit other info database
+        function editAmenitiesOtherById($array, $Id){
+            return $this->UpdateData('properties_other',$array,"o_id",$Id,0);
+         } 
         ## Edit Properties by userid
 	    function editUserValueById($array, $Id){
             return $this->UpdateData($this->property,$array,"id",$Id,0);
          } 
 
            ## Edit Properties by userid
-	    function editPropertieAddressById($array, $Id){
+	     function editPropertieAddressById($array, $Id){
             return $this->UpdateData('properties_address',$array,"id",$Id,0);
          } 
 
@@ -83,15 +87,21 @@
          }
         ## Get all Properties details
         function getAllProperties($search='', $limit='',$offset='') {
-            $fields=array();	
-            $tables=array($this->property);
-           // $where = array('pa.p_id ='.$this->property.'.id');
-           // $where = array('w.p_id ='.$this->property.'.id');
-            $where = array($this->property.".status = '1'");
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description');
+            
+          //  $tables=array($this->property,'LEFT JOIN builders ON builders.name = '$this->property.builder_name);
+         //   $where = array($this->property.".status = '1'");
+         $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name');	
+         $where=array("property.id");
+         $where = array($this->property.".status = '1'");
             if($search != '') {
                 $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
-            }
                 
+            }
+           // echo $_SESSION['role'] ;
+            if ($_SESSION['role']=='3'){
+                $where=array('builders.id='.$_SESSION['id']);
+            }
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
             $result= $this->FetchAll($result1); 
             return $result;		
@@ -117,11 +127,14 @@
 
          ## Get properties by id
 	    function getFloorsByUserId($id) {
-            $fields=array('f_id','p_id','wing','floor','flat','specality');	//fetch fromdb
-            $tables=array('floor');
-            $where=array("p_id=".$id);		
+            $fields=array('floor.f_id','floor.p_id','floor.wing as w_id','floor.wing','floor.floor','floor.flat','floor.specality', 'wing.name');	//fetch fromdb
+            $tables=array('floor LEFT JOIN wing ON wing.w_id = floor.wing');
+            $where=array("floor.p_id=".$id);	
+            $group = array('wing.name'); 	
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
             $result= $this->FetchAll($result1); 
+            // echo '<pre>';
+            // print_r($result);die;
             return $result;		
         }
           ## Get properties by id
@@ -182,18 +195,34 @@
               return $result;	
           }
 
+        function getFloorWingsBypropertyId($id) {
+            // $fields=array('w_id','p_id','name');	//fetch fromdb
+            // $tables=array('wing');
+            // $where = array("p_id=".$id);	
+            // $group = array('name');	
+            // $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group,$limit = "",0,0); 
+            // $result= $this->FetchAll($result1);
+            // return $result;		
+            $fields=array('floor.f_id','floor.p_id','floor.wing','wing.name');	//fetch fromdb
+            $tables=array('floor LEFT JOIN wing ON wing.w_id = floor.wing');
+            $where = array("floor.p_id=".$id);	
+            $group = array('wing.name');   	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group,$limit = "",0,0); 
+            $result= $this->FetchAll($result1);
+            return $result;		
+        }
 
         function getFloorWingBypropertyId($id) {
-            $fields=array('f_id','p_id','wing');	//fetch fromdb
-            $tables=array('floor');
-            $where=array("p_id=".$id);	
-            $group = array('wing');	
+            $fields=array('floor.f_id','floor.p_id','floor.wing','wing.name');	//fetch fromdb
+            $tables=array('floor LEFT JOIN wing ON wing.w_id = floor.wing');
+            $where = array("floor.p_id=".$id);	
+            $group = array('floor.name');   	
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group,$limit = "",0,0); 
-            $result= $this->FetchAll($result1); 
+            $result= $this->FetchAll($result1);
             return $result;		
         }
         function getFloorBypropertyId($propertyID,$wingsID) {
-            $fields=array('f_id','p_id','floor');	//fetch fromdb
+            $fields=array('f_id','p_id','floor','wing');	//fetch fromdb
             $tables=array('floor');
             $where=array("p_id=".$propertyID,'wing="'.$wingsID.'"');		
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 

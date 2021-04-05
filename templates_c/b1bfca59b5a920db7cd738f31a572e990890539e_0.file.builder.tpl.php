@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-20 14:56:37
+/* Smarty version 3.1.29, created on 2021-04-04 23:18:16
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6030d5cd600fa4_97698339',
+  'unifunc' => 'content_6069fbe0771ef8_19951858',
   'file_dependency' => 
   array (
     'b1bfca59b5a920db7cd738f31a572e990890539e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\builder.tpl',
-      1 => 1613809996,
+      1 => 1617558015,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6030d5cd600fa4_97698339 ($_smarty_tpl) {
+function content_6069fbe0771ef8_19951858 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -42,7 +42,9 @@ function content_6030d5cd600fa4_97698339 ($_smarty_tpl) {
 
                 <div class="box_general">
 			<div class="header_box">
-				<h2 class="d-inline-block">Builder List</h2>       
+				<h2 class="d-inline-block">Builder List</h2>     
+		
+								
 				<!--<div class="filter">
 					<select name="orderby" class="selectbox">
 						<option value="Any status">Any status</option>
@@ -52,12 +54,23 @@ function content_6030d5cd600fa4_97698339 ($_smarty_tpl) {
 					</select>               
 				</div>-->
                 <div class="actions">
+				<?php if (($_SESSION['role'] != 3)) {?>
                     <a class="btn_1 medium" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /builder/add" > Add new builder</a>
+				<?php }?>
                 </div>
 			</div>
 			<div class="list_general">
+			<div id="msg" name="msg">
+				<?php if (isset($_SESSION['message_add_b'])) {?>
+					<?php echo $_SESSION['message_add_b'];?>
+
+				<?php }?>
+					
+			</div>
 				<ul>
+				<!--	<?php echo $_smarty_tpl->tpl_vars['_SESSION']->value['message_add_b'];?>
+ its use for message show session --> 
 					<?php
 $_from = $_smarty_tpl->tpl_vars['builderListArray']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -76,18 +89,22 @@ $__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
 						<figure><img src="<?php echo SITE_URL;?>
 /administrator/source/upload/<?php echo $_smarty_tpl->tpl_vars['v']->value['avatar'];?>
 " alt=""></figure>
-						<h4>Builder Name : <?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+						<h4><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
 </h4>
 						<ul class="booking_details">
 							<li><strong>Register number </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['register_number'];?>
 </li>
-							<li><strong>Address </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['street_address'];?>
-</li>
-							<li><strong>Telephone </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['telephone'];?>
-</li>
 							<li><strong>Email </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['email'];?>
 </li>
-							<li><strong>Unser Name </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['user_name'];?>
+							<li><strong>Password </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['password'];?>
+</li>
+							<!--<li><strong>User Name </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['user_name'];?>
+</li>--->
+							<li><strong>Telephone </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['telephone'];?>
+</li>
+							<li><strong>Address </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['street_address'];?>
+</li>
+							<li><strong>Landmark </strong> : <?php echo $_smarty_tpl->tpl_vars['v']->value['landmark'];?>
 </li>
 						</ul>
 						<!--<input type="hidden" name="id" value="id">--->
@@ -143,12 +160,21 @@ $_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
         </div>
       </div>
     </div>
+	
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/scripts.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+		<?php echo '<script'; ?>
+ type="text/javascript">
+   		
+		//header("Location: " . SITE_URL . "/admin/builder");
+    		
+			
+	<?php echo '</script'; ?>
+>
 	
 </body>
 </html><?php }

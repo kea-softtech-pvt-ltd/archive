@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-17 13:58:26
+/* Smarty version 3.1.29, created on 2021-03-04 12:26:44
   from "C:\xampp\htdocs\archive\default\templates\administrator\units\add-units.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602cd3aa297572_39746145',
+  'unifunc' => 'content_604084ac3f4df3_25585559',
   'file_dependency' => 
   array (
     '624bb71764e6ab91c0ab423f65f1dd9ca8fd417e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\units\\add-units.tpl',
-      1 => 1613411966,
+      1 => 1614835522,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602cd3aa297572_39746145 ($_smarty_tpl) {
+function content_604084ac3f4df3_25585559 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -55,6 +55,41 @@ label.error {
 						</div>
 						
 						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Project Name</label>
+									<select class="form-control" name="p_id" id="p_id"  required>
+										<option value="">Select Project</option>
+										<?php
+$_from = $_smarty_tpl->tpl_vars['statesListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_v_0_saved_item = isset($_smarty_tpl->tpl_vars['v']) ? $_smarty_tpl->tpl_vars['v'] : false;
+$__foreach_v_0_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['v'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['v']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+$__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
+?>
+											<option value="<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['v']->value['name'];?>
+</option>
+										<?php
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_local_item;
+}
+if ($__foreach_v_0_saved_item) {
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_item;
+}
+if ($__foreach_v_0_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
+}
+?>
+									</select>
+								</div>
+							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Units name</label>

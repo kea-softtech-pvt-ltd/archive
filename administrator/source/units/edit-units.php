@@ -15,6 +15,7 @@
 		$unitsArray['type'] = $_POST['name'];
 		$unitsArray['title'] = $_POST['title'];
 		$unitsArray['size'] = $_POST['size'];
+		$unitsArray['p_id'] = $_POST['p_id'];
 		$unitsArray['price'] = $_POST['price'];
 		$unitsArray['carpet_area'] = $_POST['carpet_area'];
 		$unitsArray['built_area'] = $_POST['built_area'];
@@ -26,6 +27,8 @@
 		$unitsId = $unitsObj->editUserValueById($unitsArray,$_POST['id']);
 		header("Location: " . SITE_URL . "/admin/units");
 	}
+	$statesListArray = $unitsObj->getStates();
+	$smarty->assign('statesListArray', $statesListArray);
 
 	$smarty->assign('moduleName', 'edit units');
 

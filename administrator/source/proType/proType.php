@@ -9,8 +9,14 @@
 	$smarty->assign('proTypeListArray', $proTypeListArray);
 
 
-	$smarty->assign('moduleName', 'List of ProType');
 
+	if(isset($_SESSION['isLoggedIn'])){
+
+	$smarty->assign('moduleName', 'List of ProType');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/proType/proType.tpl');
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 
 ?>

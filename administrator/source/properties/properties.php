@@ -9,8 +9,12 @@
 	// print_r($propertiesListArray);
 	// echo'</pre>';
 	// die();   // use to debag sathi
-
-	$smarty->assign('propertiesListArray', $propertiesListArray);
-	$smarty->assign('moduleName', 'List of properties');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/properties.tpl');
+	if(isset($_SESSION['isLoggedIn'])){
+		$smarty->assign('propertiesListArray', $propertiesListArray);
+		$smarty->assign('moduleName', 'List of properties');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/properties/properties.tpl');
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 ?>

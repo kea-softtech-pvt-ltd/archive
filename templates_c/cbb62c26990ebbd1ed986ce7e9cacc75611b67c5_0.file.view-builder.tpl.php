@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-19 18:08:20
+/* Smarty version 3.1.29, created on 2021-02-26 18:35:16
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\view-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602fb13c4cfad8_94931067',
+  'unifunc' => 'content_6038f20c9ac2a8_22260220',
   'file_dependency' => 
   array (
     'cbb62c26990ebbd1ed986ce7e9cacc75611b67c5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\view-builder.tpl',
-      1 => 1613738294,
+      1 => 1614344693,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602fb13c4cfad8_94931067 ($_smarty_tpl) {
+function content_6038f20c9ac2a8_22260220 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -36,10 +36,6 @@ function content_602fb13c4cfad8_94931067 ($_smarty_tpl) {
 ?>
 			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/builder/view" method="post" enctype="multipart/form-data">
-			<input type="hidden"name="id" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['id'];?>
-">
 			<div class="container-fluid">
 				<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:administrator/common/top-bar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -48,38 +44,53 @@ function content_602fb13c4cfad8_94931067 ($_smarty_tpl) {
 						<div class="header_box version_2">
 							<h2><i class="fa fa-file"></i>Builder information</h2>
 						</div>
+						<center><img class="" src="<?php echo SITE_URL;?>
+/administrator/source/upload/<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['avatar'];?>
+" style="height:100px;width:100px" /></center><hr>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Builder name</label>
-									<input class="form-control" name="name" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['name'];?>
-">
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['name'];?>
+</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['telephone'];?>
-">
+									<label>User name</label>
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['user_name'];?>
+</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Email</label>
-									<input type="email" class="form-control" name="email" placeholder="Builder email" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['email'];?>
-">
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['email'];?>
+</div>
 								</div>
 							</div>
-                            <div class="col-md-6">
+							<div class="col-md-6">
 								<div class="form-group">
-									<label>Address</label>
-									<textarea class="form-control" name="address" placeholder="Your address" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
-"><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
-</textarea>
+									<label>Telephone</label>
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['telephone'];?>
+</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Register number</label>
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['register_number'];?>
+</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Zip code</label>
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['zip'];?>
+</div>
 								</div>
 							</div>
 						</div>
-					
 					</div>
 					<!-- /box_general-->
 					
@@ -90,31 +101,29 @@ function content_602fb13c4cfad8_94931067 ($_smarty_tpl) {
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
+									<label>Address</label>
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
+</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 									<label>City</label>
-									<input class="form-control" name="city" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['city'];?>
-">
-									</input>
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['city'];?>
+</div>
 								</div>
 							</div>
                             <div class="col-md-6">
 								<div class="form-group">
 									<label>State</label>
-									<input type="text"name="state" class="form-control" placeholder="Your state"value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['state'];?>
-">
-								</div>
-							</div>
-                            <div class="col-md-6">
-								<div class="form-group">
-									<label>Zip code</label>
-									<input type="text" name="zipcode" class="form-control" placeholder="Your zip code" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['zip'];?>
-">
+									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['state'];?>
+</div>
 								</div>
 							</div>
 						</div>
 						
 					</div>
 					<!-- /box_general-->
-				</form>
 			</div>
 	  <!-- /.container-fluid-->
    		</div>	

@@ -8,6 +8,7 @@
 				{include file='administrator/common/top-bar.tpl'}
 				<!-- Icon Cards-->
 				<div class="row">
+				{if ($smarty.session.role != 3)}
 					<div class="col-xl-3 col-sm-6 mb-3">
 						<div class="card dashboard text-white bg-primary o-hidden h-100">
 							<div class="card-body">
@@ -15,7 +16,9 @@
 								<i class="fa fa-fw fa-address-card"></i>
 							</div>
 							<div class="mr-5">
+							
 								<h5>{$builderListArray} Builder</h5>
+							
 							</div>
 							</div>
 							<a class="card-footer text-white clearfix small z-1" href="builder">
@@ -25,6 +28,7 @@
 							</span>
 							</a>
 						</div>
+						{/if}
 					</div>
 				<!--	<div class="col-xl-3 col-sm-6 mb-3">
 						<div class="card dashboard text-white bg-warning o-hidden h-100">

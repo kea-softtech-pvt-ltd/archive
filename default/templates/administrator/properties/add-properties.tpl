@@ -10,6 +10,9 @@
 .form-control.required.wingsid.error,.form-control.unitwingsid.required.error,.form-control.unitfloorsid.required.error,.form-control.required.error{
 	color:black!important;
 }
+.user-tabs a.nav-link {
+    pointer-events: none;
+}
 </style>
 <html>
 	{include file='administrator/common/header.tpl'}
@@ -56,10 +59,10 @@
 					<div class="form-group">
 						<label>Builder name</label>
 					<!--<input type="text" name="builder_name" id="builder_name" class="form-control" placeholder="Builder name" />-->
-						<select class="form-control"  name="builder_name" id="builder_name" >
+						<select class="form-control"  name="builder_name" id="builder_name" {if ($smarty.session.role == 3)} style="pointer-events:none" {/if}>
 							<option value="">Select Builder</option>
 								{foreach from=$builderListArray key=k item=v}
-									<option value="{$v['name']}">{$v['name']}</option>
+									<option   {if ($smarty.session.role == 3)} {if ($smarty.session.id == $v['id'])} selected {/if} {/if} value="{$v['id']}">{$v['name']}</option>
 								{/foreach}
 						</select>
 						
@@ -72,14 +75,14 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Start date</label>
-						<input type="date" name="started_date" id="started_date" class="form-control" placeholder="Select date" />
+						<input type="text" name="started_date" id="started_date" class="form-control" placeholder="Select date" />
 						<div class="text-danger" id="started_date_error"></div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Possession date</label>
-						<input type="date" name="possession_date" id="possession_date" class="form-control" placeholder="Select date" />
+						<input type="text" name="possession_date" id="possession_date" class="form-control" placeholder="Select date" />
 						<div class="text-danger" id="possession_date_error"></div>
 					</div>
 				</div>
@@ -98,7 +101,8 @@
 						<label>Porject picture</label>
 						<input class="form-control" type="file" id="image" name="image[]" value="" multiple />
 					</div>
-				</div>
+				</div>			
+
 			</div>
 			<!-- /row-->
 			<button type="button" class="btn btn-primary" name="next" id="next" onclick="myFunction()">Next >></button>
@@ -139,8 +143,7 @@
 				<a href="#0" class="btn_1 medium add-unit-list-item" id="addWing" style="float: right"><i class="fa fa-fw fa-plus-circle"></i>Add Wings</a>
 			</div>
 				<form id="wings-form" action="" method="POST">
-					<div class="alert alert-success text-center col-md-12" id="pro_wing_sucess" style="width:100%;display:none;"></div>
-						<label>Wing</label>					
+					<div class="alert alert-success text-center col-md-12" id="pro_wing_sucess" style="width:100%;display:none;"></div>				
 					<div id="dynamic-wing-fields"></div>
 						<button type="submit" class="btn btn-primary" name="next" id="next">Next >></button>
 				</form>
@@ -174,7 +177,7 @@
 						<select  data-placeholder="Select Amenities"  class="form-control chosen-select" multiple name="amenitieName[]" id="amenitieName" multiple>
 							<option value="">Select Amenities</option>
 								{foreach from=$amenitiesListArray key=k item=v}
-									<option value="{$v['name']}">{$v['name']}</option>
+									<option value="{$v['id']}">{$v['name']}</option>
 								{/foreach}
 						</select>
 					</div>
@@ -186,7 +189,7 @@
 						<label>Neighbourhoods</label>
 						<select data-placeholder="Select Neighbourhoods" name="neibhourhood[]" id="neibhourhood" multiple class="chosen-select">
    								{foreach from=$neighbourhoodListArray key=k item=v}
-									<option value="{$v['name']}">{$v['name']}</option>
+									<option value="{$v['id']}">{$v['name']}</option>
 								{/foreach}
 						</select>
 						<div class="text-danger" id="neibhourhood_error"></div>
@@ -618,12 +621,12 @@ function getWings(propertyID,rowCount,classnm=''){
 				if(data_obj.message == 'success')
 
 				{
-
+					console.log(data_obj);
 					for(var i=0; i < data_obj.result.length; i++)
 
 					{	
 
-						_html += '<option value="'+data_obj.result[i].wing+'">'+data_obj.result[i].wing+'</option>';
+						_html += '<option value="'+data_obj.result[i].wing+'">'+data_obj.result[i].name+'</option>';
 
 					}
 
@@ -672,7 +675,7 @@ function getWing(propertyID,rowCount,classnm=''){
 
 					{	
 
-						_html += '<option value="'+data_obj.result[i].name+'">'+data_obj.result[i].name+'</option>';
+						_html += '<option value="'+data_obj.result[i].w_id+'">'+data_obj.result[i].name+'</option>';
 
 					}
 
@@ -868,7 +871,7 @@ $().ready(function () {
 		var proop = '';
 		for(var i=0;i<unitsType.length;i++)
 		{
-			unitop += '<option value='+unitsType[i]['name']+'>'+unitsType[i]['name']+'</option>';
+			unitop += '<option value='+unitsType[i]['name']+'>'+unitsType[i]['name']+'</option>';	
 			
 		}
 		for(var i=0;i<proType.length;i++)
@@ -1003,14 +1006,16 @@ var count = 1;
 		html += '<div class="row" id="div_'+ number +'">';
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Wing</label>';
 		html += '<span id="wingsid" name="wingsid"></span>';
 		html += '<input type="text" id="wings'+ number +'" name="wings[]" class="form-control required" placeholder="wing">';
-		html +='<div class="text-danger" id="wings_error"></div>';
+		html +=	'<div class="text-danger" id="wings_error"></div>';
 		html += '</div>';
 		html += '</div>';
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Total no.fo floor</label>';
 		html += '<input type="text" id="totalFloor'+ number +'" name="totalFloor[]" class="form-control required" placeholder="Total no.of.floor">';
 		html += '<div class="text-danger" id="totalFloor_error"></div>';
 		html += '</div>';
@@ -1067,6 +1072,7 @@ var count = 1;
 		html += '<div class="row" id="div_'+ number +'">';
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Wing</label>';
 		html += '<span id="floorsid"></span>';
 		html += '<select name="wing[]" id="wing'+ number +'" class="form-control required wingsid">';
 		html += '<option value="">Select Wing</option>';
@@ -1078,6 +1084,7 @@ var count = 1;
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Floor</label>';
 		html += '<input type="text" class="form-control required" id="floor'+ number +'" name="floor[]" placeholder="Floor No">';
 		html += '<div class="text-danger" id="floor_error"></div>';
 		html += '</div>';
@@ -1085,6 +1092,7 @@ var count = 1;
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Total no.of flat</label>';
 		html += '<input type="text" class="form-control required" id="flat'+ number +'" name="flat[]"  placeholder="Total no.of flats">';
 		html += '<div class="text-danger" id="floor_error"></div>';
 		html += '</div>';
@@ -1092,6 +1100,7 @@ var count = 1;
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
+		html += '<label>Specality</label>';
 		html += '<textarea type="text" class="form-control required" id="specality'+ number +'" name="specality[]" placeholder="Specality"></textarea>';
 		html += '<div class="text-danger" id="specality_error"></div>';
 		html += '</div>';
@@ -1145,6 +1154,106 @@ var count = 1;
 });
 
 
+</script>
+
+<script>
+var bindDateRangeValidation = function (f, s, e) {
+    if(!(f instanceof jQuery)){
+			console.log("Not passing a jQuery object");
+    }
+  
+    var jqForm = f,
+        startDateId = s,
+        endDateId = e;
+  
+    var checkDateRange = function (startDate, endDate) {
+        var isValid = (startDate != "" && endDate != "") ? startDate <= endDate : true;
+        return isValid;
+    }
+
+    var bindValidator = function () {
+        var bstpValidate = jqForm.data('bootstrapValidator');
+        var validateFields = {
+            startDate: {
+                validators: {
+                    notEmpty: { message: 'This field is required.' },
+                    callback: {
+                        message: 'Start Date must less than or equal to End Date.',
+                        callback: function (startDate, validator, $field) {
+                            return checkDateRange(startDate, $('#' + endDateId).val())
+                        }
+                    }
+                }
+            },
+            endDate: {
+                validators: {
+                    notEmpty: { message: 'This field is required.' },
+                    callback: {
+                        message: 'End Date must greater than or equal to Start Date.',
+                        callback: function (endDate, validator, $field) {
+                            return checkDateRange($('#' + startDateId).val(), endDate);
+                        }
+                    }
+                }
+            },
+          	customize: {
+                validators: {
+                    customize: { message: 'customize.' }
+                }
+            }
+        }
+        if (!bstpValidate) {
+            jqForm.bootstrapValidator({
+                excluded: [':disabled'], 
+            })
+        }
+      
+        jqForm.bootstrapValidator('addField', startDateId, validateFields.startDate);
+        jqForm.bootstrapValidator('addField', endDateId, validateFields.endDate);
+      
+    };
+
+    var hookValidatorEvt = function () {
+        var dateBlur = function (e, bundleDateId, action) {
+            jqForm.bootstrapValidator('revalidateField', e.target.id);
+        }
+
+        $('#' + startDateId).on("dp.change dp.update blur", function (e) {
+            $('#' + endDateId).data("DateTimePicker").setMinDate(e.date);
+            dateBlur(e, endDateId);
+        });
+
+        $('#' + endDateId).on("dp.change dp.update blur", function (e) {
+            $('#' + startDateId).data("DateTimePicker").setMaxDate(e.date);
+            dateBlur(e, startDateId);
+        });
+    }
+
+    bindValidator();
+    hookValidatorEvt();
+};
+
+
+$(function () {
+    var sd = new Date($("#started_date").val()), ed = new Date($("#possession_date").val());
+  
+    $('#started_date').datetimepicker({ 
+      pickTime: false, 
+      format: "YYYY-MM-DD", 
+      defaultDate: ed, 
+      maxDate: sd
+    });
+  
+    $('#possession_date').datetimepicker({ 
+      pickTime: false, 
+      format: "YYYY-MM-DD", 
+      defaultDate: sd, 
+      minDate: ed 
+    });
+
+    //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
+    bindDateRangeValidation($("#property-form"), 'started_date', 'possession_date');
+});	
 </script>
 </body>
 </html>

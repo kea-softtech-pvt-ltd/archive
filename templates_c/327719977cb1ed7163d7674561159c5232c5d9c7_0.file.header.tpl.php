@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-17 13:56:31
+/* Smarty version 3.1.29, created on 2021-04-04 18:54:06
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602cd33739b984_48588810',
+  'unifunc' => 'content_6069bdf6917f62_15973191',
   'file_dependency' => 
   array (
     '327719977cb1ed7163d7674561159c5232c5d9c7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\header.tpl',
-      1 => 1613541640,
+      1 => 1617542626,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_602cd33739b984_48588810 ($_smarty_tpl) {
+function content_6069bdf6917f62_15973191 ($_smarty_tpl) {
 ?>
 <head>
   <meta charset="utf-8">
@@ -46,6 +46,11 @@ function content_602cd33739b984_48588810 ($_smarty_tpl) {
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
   <!-- Bootstrap core CSS-->
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
+    
   <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
 /common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icon fonts-->
@@ -59,7 +64,16 @@ function content_602cd33739b984_48588810 ($_smarty_tpl) {
 /administrator/css/admin.css" rel="stylesheet">
   <!-- Your custom styles -->
   <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/administrator/css/admin.css" rel="stylesheet">
+/administrator/css/chosen.css" rel="stylesheet">
+
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/css/datepicker.css" rel="stylesheet">
+
+  
+
+  
 	
 </head><?php }
 }

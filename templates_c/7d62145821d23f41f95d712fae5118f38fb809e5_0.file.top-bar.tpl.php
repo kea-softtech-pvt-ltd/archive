@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-18 14:20:59
+/* Smarty version 3.1.29, created on 2021-03-30 15:52:12
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\top-bar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602e2a7315e7c4_49260748',
+  'unifunc' => 'content_6062fbd48a3082_21253622',
   'file_dependency' => 
   array (
     '7d62145821d23f41f95d712fae5118f38fb809e5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\top-bar.tpl',
-      1 => 1613638052,
+      1 => 1617099026,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_602e2a7315e7c4_49260748 ($_smarty_tpl) {
+function content_6062fbd48a3082_21253622 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_replace')) require_once 'C:\\xampp\\htdocs\\archive\\default\\source\\common\\third-party\\smarty-3.1.29\\libs\\plugins\\modifier.replace.php';
 ?>
 <style>

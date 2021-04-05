@@ -9,8 +9,12 @@
 	$smarty->assign('unitListArray', $unitListArray);
 
 
+	if(isset($_SESSION['isLoggedIn'])){
 	$smarty->assign('moduleName', 'List of UNIT type');
-
 	$smarty->display(ADMIN_TEMPLATEDIR . '/un/un.tpl');
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 
 ?>

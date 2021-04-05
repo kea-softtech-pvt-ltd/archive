@@ -14,7 +14,8 @@ $().ready(function () {
             "contact_number": {
                 required: true,
                 minlength: 10,
-                phoneUS: true
+                maxlength: 10,
+              //  phoneUS: true
             },
             "city": {
                 required: true,
@@ -44,7 +45,7 @@ $().ready(function () {
             },
             "contact_number": {
                 required: "Please enter phone number",
-                phoneUS: "Please enter a valid phone number: (e.g. 19999999999 or 9999999999)"
+               // phoneUS: "Please enter a valid phone number: (e.g. 19999999999 or 9999999999)"
             },
             "city": {
                 required: "Please select city"
