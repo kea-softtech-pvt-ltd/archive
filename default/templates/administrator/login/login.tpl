@@ -16,7 +16,7 @@
 							<!--<a class="navbar-brand" href="{$siteroot}"><img src="../default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"></a>-->
 								</div>
 								<div class="box_form add_top_20">
-									<form action="{$siteroot}/admin/login" method="post" name="frmLogin">
+									<form action="{$adminroot}/login" method="post" name="frmLogin">
 										<div class="form-group">
 											<input type="text" name="mobile" class="form-control" placeholder="Your mobile">
 												{if isset($message) }
