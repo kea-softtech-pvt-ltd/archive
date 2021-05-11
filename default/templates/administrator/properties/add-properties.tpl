@@ -1077,11 +1077,6 @@ var count = 1;
 	});
 
 
-// Dynamic WING
-
-
-// Dynamic Floor
-
 var count = 1;
 
     dynamic_floor_field(count);
@@ -1161,14 +1156,6 @@ var count = 1;
         $(this).closest("#" + row_id).remove();
     });
 
-	/*$("#addFloor").click(function(){
-		var rowCount = $("#dynamic-floor-fields row").length;
-		var propertyID = $("#propertyID").val();
-		alert('k-kk'+rowCount);
-		getWing(propertyID,rowCount+1);
-	});*/
-
-
 });
 
 
@@ -1205,7 +1192,7 @@ var bindDateRangeValidation = function (f, s, e) {
             },
             endDate: {
                 validators: {
-                    notEmpty: { message: 'This field is required.' },
+                    notEmpty: { message: 'This field is required..' },
                     callback: {
                         message: 'End Date must greater than or equal to Start Date.',
                         callback: function (endDate, validator, $field) {
