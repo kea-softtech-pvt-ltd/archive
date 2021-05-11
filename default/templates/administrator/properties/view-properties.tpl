@@ -17,7 +17,6 @@
 									<div>{$propertyArray['name']}</div>
 								</div>
 							</div>
-							<div></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Builder name</label>
@@ -67,7 +66,7 @@
 								<div class="form-group">
 									<label>Url</label>
 									{if isset($addressPropertiesArray['description']) }<div>{$addressPropertiesArray['description']}</div>{/if}
-									{* <div>{$addressPropertiesArray['description']}</div> *}
+									
 								</div>
 							</div>
 						</div>
@@ -167,10 +166,10 @@
          <div class="col-md-3">
             <div class="form-group">
                <label>Units name</label>
-			   <div>{$v1['type']}</div>
-           
+			   <div>{$v1['type']}</div>      
 			</div>
          </div>
+		 <div></div>
          <div class="col-md-3">
             <div class="form-group">
                <label>Title</label>

@@ -53,10 +53,10 @@
 						<div class="text-danger" id="names_error"></div>
 					</div>
 				</div>
+				<div></div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Builder name</label>
-					<!--<input type="text" name="builder_name" id="builder_name" class="form-control" placeholder="Builder name" value="{$builderuserArray['builder_name']}" />--->
 						<select class="form-control"  name="builder_name" id="builder_name" id="builder_name" {if ($smarty.session.role == 3)} style="pointer-events:none" {/if} >
 								{foreach from=$builderListArray key=k item=v}
 									<option  {if $builderuserArray['builder_name'] == $v['id'] } selected {/if} value="{$v['id']}">{$v['name']}</option>
@@ -71,7 +71,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Start date</label>
-						<input type="date" name="started_date" id="started_date" class="form-control" placeholder="Select date" value="{$builderuserArray['started_date']}" />
+						<input type="date" name="started_date" id="started_date" class="form-control" placeholder="Select date." value="{$builderuserArray['started_date']}" />
 						<div class="text-danger" id="started_date_error"></div>
 					</div>
 				</div>

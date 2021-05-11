@@ -88,15 +88,5 @@ label.error {
 
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
-
-
-	{* <script type="text/javascript">
-   		 setTimeout(function() {
-   			 $('#msg').fadeOut('fast');
-   		 }, 3000); 
-		//header("Location: " . SITE_URL . "/admin/builder");
-    		
-			
-	</script> *}
 </body>
 </html>
