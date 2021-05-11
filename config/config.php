@@ -2,7 +2,7 @@
 session_start();
 
 //ob_start();
-$application = "prod";
+$application = "dev"; // local use
 //$application = "prod";
 
 ini_set("dispaly_errors", "1");
@@ -27,6 +27,7 @@ if($application == "dev") {
 	define('DOC_FOLDER' , 'archive/');
 
 	define('ADMIN_TEMPLATEDIR',TEMPLATEDIR.'/administrator/');
+	define('FRONT_TEMPLATEDIR',TEMPLATEDIR.'/');
 
 	define('BUILDER_TEMPLATEDIR',TEMPLATEDIR.'/buildermodule/');
 	
@@ -58,6 +59,8 @@ if($application == "dev") {
 	define('ADMIN_TEMPLATEDIR',TEMPLATEDIR.'/administrator/');
 
 	define('BUILDER_TEMPLATEDIR',TEMPLATEDIR.'/buildermodule/');
+
+	define('FRONTEND_TEMPLATEDIR',TEMPLATEDIR.'/mikha/');
 	
 	define('ADMIN_FOLDER' , DOC_ROOT.'/administrator');
 
@@ -93,6 +96,13 @@ if($application == "dev") {
 	$smarty->assign("siteroot", SITE_URL);
 	
 	$smarty->assign('builderroot', SITE_URL. "/builder");
+	$smarty->assign("version", round(microtime(true) * 1000));
+
+
+	## Assign to bullder site url to smarty variable   // gsp 15-2-21
+	$smarty->assign("siteroot", SITE_URL);
+	
+	$smarty->assign('frontend', SITE_URL. "/mikha");
 	$smarty->assign("version", round(microtime(true) * 1000));
 	
 

@@ -24,12 +24,12 @@
             <span class="nav-link-text">Amenities management</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units management">
+      <!---<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units management">
           <a class="nav-link" href="{$adminroot}/units">
             <i class="fa fa-fw fa-yelp"></i>
             <span class="nav-link-text">Units management</span>
           </a>
-        </li>
+        </li>--->
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner management">
           <a class="nav-link" href="{$adminroot}/banner">
             <i class="fa fa-fw fa-image"></i>
@@ -41,17 +41,35 @@
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Add wing</span>
           </a>
-        </li>--->
+        </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="{$adminroot}/un">
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Add unit</span>
+          </a>
+        </li>---->
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="{$adminroot}/team">
+            <i class="fa fa fa-group"></i>
+            <span class="nav-link-text">Add Team</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="{$adminroot}/agent">
+            <i class="fa fa-user-secret"></i>
+            <span class="nav-link-text">Add Agent</span>
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="{$adminroot}/proType">
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Add Property Type</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="{$adminroot}/contact">
+            <i class="fa fa-phone"></i>
+            <span class="nav-link-text">Contact us Detail</span>
           </a>
         </li>
     <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">

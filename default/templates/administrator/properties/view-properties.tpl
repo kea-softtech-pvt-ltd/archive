@@ -204,6 +204,35 @@
                          {/foreach}
 					</div>
 					<!-- /unit-->
+					 <!-- other info-->
+					<div class="box_general padding_bottom">
+						<div class="header_box version_2">
+							<h2><i class="fa fa-map-marker"></i>Other Info</h2>
+						</div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Amenities</label>
+								{foreach from=$amenitiesListArray key=k item=v} {if (in_array($v['id'] , $amenities) )} {$v['name']}  {/if}       
+											
+								{/foreach}
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Neighbourhoods</label>
+								<div>
+									{foreach from=$neighbourhoodListArray key=k item=v}
+										{if (in_array($v['id'], $neighbourhoods) )}  {$v['name']} {/if}
+										{/foreach}
+								</div>
+							</div>
+						</div>	
+					</div>
+					</div>
+					<!-- /other-->
+					
 			</div>
 	  <!-- /.container-fluid-->
    		</div>	

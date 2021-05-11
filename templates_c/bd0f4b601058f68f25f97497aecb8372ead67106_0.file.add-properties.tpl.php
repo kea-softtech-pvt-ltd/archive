@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-04-04 21:06:37
+/* Smarty version 3.1.29, created on 2021-04-08 21:28:00
   from "C:\xampp\htdocs\archive\default\templates\administrator\properties\add-properties.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6069dd0598f359_06230120',
+  'unifunc' => 'content_606f2808b4ca05_25995602',
   'file_dependency' => 
   array (
     'bd0f4b601058f68f25f97497aecb8372ead67106' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\properties\\add-properties.tpl',
-      1 => 1617550442,
+      1 => 1617897458,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6069dd0598f359_06230120 ($_smarty_tpl) {
+function content_606f2808b4ca05_25995602 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <style>
@@ -370,7 +370,7 @@ function myFunction() {
 		if(builder_name=="") 
         {
             $('#name_error').show();
-            $('#name_error').html('Please enter builder name.');
+            $('#name_error').html('Please select builder name.');
             setTimeout(function(){ $('#name_error').hide(); }, 2000);
             _valid = 0;
         }  
@@ -1028,9 +1028,6 @@ $().ready(function () {
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Floor</label>';
-
-		
-
 		html += '<select  class="form-control unitfloorsid required" id="unitfloorsid_'+number+'" name="unitfloorsid[]">';
         html += '<option value="">Select Floor</option>';
         html += '</select>';
@@ -1040,7 +1037,7 @@ $().ready(function () {
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
-		html += '<label>Units name</label>';
+		html += '<label>Type</label>';
 		html += '<select  class="form-control required" name="name[]" id="name'+number+'">';
 		html += '<option value="">Select Units Type</option>';
 		html += unitop;
@@ -1059,17 +1056,17 @@ $().ready(function () {
 		html += '</div>';
         html += '</div>';
 
-		html += '<div class="col-md-3">';
-		html += '<div class="form-group">';
-		html += '<label>Size</label>';
-		html += '<input type="text" class="form-control required" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
-		html += '</div>';
-        html += '</div>';
+		//html += '<div class="col-md-3">';
+	//	html += '<div class="form-group">';
+	//	html += '<label>Size</label>';
+	//	html += '<input type="text" class="form-control required" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
+	//	html += '</div>';
+    //    html += '</div>';
 
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
-		html += '<label>Price</label>';
+		html += '<label>Price on per square foot</label>';
 		html += '<input type="text" class="form-control required" id="price_'+number+'" name="price[]" placeholder="Enter Price" >';
 		html += '</div>';
         html += '</div>';
@@ -1086,6 +1083,27 @@ $().ready(function () {
 		html += '<div class="form-group">';
 		html += '<label>Builtup area</label>';
 		html += '<input type="text" class="form-control required" id="built_area_'+number+'" name="built_area[]" placeholder="Enter carpet area" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Total no.of taric</label>';
+		html += '<input type="text" class="form-control required" id="tares_'+number+'" name="tares[]" placeholder="Total no.of taric" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Total no.of bath</label>';
+		html += '<input type="text" class="form-control required" id="bath_'+number+'" name="bath[]" placeholder="Total no.of bath" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Total no.of parking</label>';
+		html += '<input type="text" class="form-control required" id="parking_'+number+'" name="parking[]" placeholder="Total no.of parking" >';
 		html += '</div>';
         html += '</div>';
 
@@ -1387,6 +1405,29 @@ $(function () {
     //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
     bindDateRangeValidation($("#property-form"), 'started_date', 'possession_date');
 });	
+
+$('body').on('change', '.wingsid', function() {
+	var wing_id = $(this).val();
+	var getFloorInfo = 'getFloorInfo';
+	alert(wing_id);
+	$.ajax({     
+		url:  "<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/ajaxproperties",
+		type: "POST",
+		data: { wing_id: wing_id, action: 'getFloorInfo' },
+		dataType:"JSON",
+
+		success: function(result)
+		{	
+			console.log(result);
+			var wingselect = $('#dynamic-floor-fields select[name^="wing"]').val();;
+			var floorselect = $('#dynamic-floor-fields input[name^="floor"]').val();;
+		console.log(wingselect);
+		console.log(floorselect);
+
+		}
+	});
+});
 <?php echo '</script'; ?>
 >
 </body>

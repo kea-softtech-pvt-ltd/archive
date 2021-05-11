@@ -196,10 +196,16 @@ if($_REQUEST['action']=="addUnits")
 	$propertyArray['p_id'] = $_POST['propertyID'];
     $propertyArray['title'] = $_POST['title'][$i];
 	$propertyArray['type'] = $_POST['name'][$i];
-	$propertyArray['size'] = $_POST['size'][$i];
+	//$propertyArray['size'] = $_POST['size'][$i];
 	$propertyArray['price'] = $_POST['price'][$i];
 	$propertyArray['carpet_area'] = $_POST['carpet_area'][$i];
 	$propertyArray['built_area'] = $_POST['built_area'][$i];
+	$propertyArray['created_at'] = date('Y/m/d H:i:s');
+	$propertyArray['modified_at'] = date('Y/m/d H:i:s');
+	$propertyArray['tares'] = $_POST['tares'][$i];
+	$propertyArray['bath'] = $_POST['bath'][$i];
+	$propertyArray['parking'] = $_POST['parking'][$i];
+	
 	
 	if(isset($_POST['propertyID']) && !empty($_POST['propertyID']) && !empty($_POST['unitsID'][$i])){
 		$builderObj->editUnitsValueById($propertyArray,$_POST['unitsID'][$i]);
@@ -351,6 +357,31 @@ if($_REQUEST['action']=="getFloors")
 		$response['status'] = '1'; 
 		$response['message'] = 'success';
 		$response['result'] = $result;
+
+	}
+
+	else
+
+	{
+
+		$response['status'] = '0'; 
+
+		$response['message'] = 'error';
+		$response['result'] = $result;
+
+	}
+	echo json_encode($response);
+}
+
+if($_REQUEST['action']=="getFloorInfo")
+{
+	$result = $builderObj->getWingFlorrInfobyId($_POST['wing_id']);
+	// print_r($result[0]['totalFloor']);die;
+	if($result)
+	{	
+		$response['status'] = '1'; 
+		$response['message'] = 'success';
+		$response['result'] = $result[0]['totalFloor'];
 
 	}
 

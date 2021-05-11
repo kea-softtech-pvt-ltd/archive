@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-04-04 23:40:13
+/* Smarty version 3.1.29, created on 2021-05-11 13:30:01
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\sidebar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_606a0105e07d69_41745306',
+  'unifunc' => 'content_609a3981a76109_17747413',
   'file_dependency' => 
   array (
     '7c95806d8b7b921f120e64c090bdeb663e01d69e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\sidebar.tpl',
-      1 => 1617559808,
+      1 => 1620719799,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_606a0105e07d69_41745306 ($_smarty_tpl) {
+function content_609a3981a76109_17747413 ($_smarty_tpl) {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Flats On Discount</a>
@@ -50,13 +50,13 @@ function content_606a0105e07d69_41745306 ($_smarty_tpl) {
             <span class="nav-link-text">Amenities management</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units management">
+      <!---<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Units management">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /units">
             <i class="fa fa-fw fa-yelp"></i>
             <span class="nav-link-text">Units management</span>
           </a>
-        </li>
+        </li>--->
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Banner management">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /banner">
@@ -70,12 +70,26 @@ function content_606a0105e07d69_41745306 ($_smarty_tpl) {
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Add wing</span>
           </a>
-        </li>--->
+        </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /un">
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Add unit</span>
+          </a>
+        </li>---->
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/team">
+            <i class="fa fa fa-group"></i>
+            <span class="nav-link-text">Add Team</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/agent">
+            <i class="fa fa-user-secret"></i>
+            <span class="nav-link-text">Add Agent</span>
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
@@ -83,6 +97,13 @@ function content_606a0105e07d69_41745306 ($_smarty_tpl) {
 /proType">
             <i class="fa fa-fw fa-delicious"></i>
             <span class="nav-link-text">Add Property Type</span>
+          </a>
+        </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/contact">
+            <i class="fa fa-phone"></i>
+            <span class="nav-link-text">Contact us Detail</span>
           </a>
         </li>
     <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">

@@ -106,6 +106,52 @@
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+        ## Get all Properties details front end
+        function getAllProperties1($search='', $limit='',$offset='') {
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
+            
+          //  $tables=array($this->property,'LEFT JOIN builders ON builders.name = '$this->property.builder_name);
+         //   $where = array($this->property.".status = '1'");
+       //  $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name'); its working on use 9-4-21
+       $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id');		
+         $where=array("property.id");
+         $where = array($this->property.".status = '1'");
+            if($search != '') {
+                $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
+                
+            }
+    
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('id DESC'), $group=array(), 0,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+         ## Get all Properties details front end View page
+         function getAllPropertiesView($id, $search='', $limit='',$offset='') {
+
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
+            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id');		
+            $where=array("property.id=".$id);
+           // $where = array($this->property.".status = '1'");
+        
+    
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
+        ## Get all Properties details front end index
+        function getAllPropertiesIndex($search='', $limit='',$offset='') {
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
+            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id');		
+            $where=array("property.id");
+            $where = array($this->property.".status = '1'");
+            if($search != '') {
+                $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
+                
+            }
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('id DESC'), $group=array(), $limit=4, 0,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
          ## Get properties by id
 	    function getUserNameByUserId($id) {
             $fields=array('name','id','builder_name','started_date','possession_date','address','rera_number','images');	//fetch fromdb
@@ -148,7 +194,7 @@
         }
 
         function getUnitsByUserId($id) {
-            $fields=array('u_id','p_id','floor','wing','type','title','size','price','carpet_area','built_area','2d_plan_images','3d_plan_images','images');	//fetch fromdb
+            $fields=array('u_id','p_id','floor','wing','type','title','price','carpet_area','built_area','2d_plan_images','3d_plan_images','images','tares','bath','parking');	//fetch fromdb
             $tables=array('units');
             $where=array("p_id=".$id);		
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
@@ -277,7 +323,17 @@
            ## Edit amenities by userid
 	    function editAmenitiesById($array, $Id){
             $this->UpdateData('amenities',$array,"id",$Id,0);
-         } 
+        } 
         
+         public function getWingFlorrInfobyId($id)
+         {
+            $fields=array('totalFloor');	//fetch data
+            $tables=array('wing');
+            $where = array(" status = '1'");
+            $where = array(" w_id = ".$id);	
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1);
+            return $result;
+         }
     }
 ?>

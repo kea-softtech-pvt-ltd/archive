@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-03-18 10:57:23
+/* Smarty version 3.1.29, created on 2021-04-05 20:18:33
   from "C:\xampp\htdocs\archive\default\templates\administrator\login\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6052e4bb4614f4_75746737',
+  'unifunc' => 'content_606b23410295a2_63864386',
   'file_dependency' => 
   array (
     '193a81ed580c8829024678fb3e547f060cd2bc50' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\login\\login.tpl',
-      1 => 1615998002,
+      1 => 1617619588,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6052e4bb4614f4_75746737 ($_smarty_tpl) {
+function content_606b23410295a2_63864386 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -45,8 +45,8 @@ function content_6052e4bb4614f4_75746737 ($_smarty_tpl) {
 "><img src="../default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"></a>-->
 								</div>
 								<div class="box_form add_top_20">
-									<form action="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/admin/login" method="post" name="frmLogin">
+									<form action="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+/login" method="post" name="frmLogin">
 										<div class="form-group">
 											<input type="text" name="mobile" class="form-control" placeholder="Your mobile">
 												<?php if (isset($_smarty_tpl->tpl_vars['message']->value)) {?>

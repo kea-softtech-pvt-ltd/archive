@@ -12,7 +12,7 @@
 		$smarty->assign('moduleName', 'dashboard');
 		$smarty->display(ADMIN_TEMPLATEDIR . '/dashboard/dashboard.tpl');
 	}else{
-		header("Location: " . SITE_URL . "/admin/login");
+		header("Location: " . SITE_URL . "admin/login");
 	}
 	
 ?>

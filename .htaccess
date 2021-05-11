@@ -28,11 +28,13 @@ RewriteRule    ^admin/login?$    administrator/source/login/login.php
 RewriteRule    ^admin/logout?$    administrator/source/login/logout.php
 RewriteRule    ^admin/dashboard?$    administrator/source/dashboard/dashboard.php
 RewriteRule    ^admin/dashboard1?$    administrator/source/dashboard/dashboard1.php
+
 RewriteRule    ^admin/builder?$    administrator/source/builder/builder.php
 RewriteRule    ^admin/builder/add?$    administrator/source/builder/add-builder.php
 RewriteRule    ^admin/builder/edit?$   administrator/source/builder/edit-builder.php
 RewriteRule    ^admin/builder/view?$   administrator/source/builder/view-builder.php
 RewriteRule    ^admin/builder/delete?$   administrator/source/builder/delete-builder.php
+
 RewriteRule    ^admin/properties?$    administrator/source/properties/properties.php
 RewriteRule    ^admin/properties/add?$    administrator/source/properties/add-properties.php
 RewriteRule    ^admin/properties/test?$    administrator/source/properties/add-properties.php
@@ -40,26 +42,32 @@ RewriteRule    ^admin/properties/edit?$    administrator/source/properties/edit-
 RewriteRule    ^admin/properties/delete?$    administrator/source/properties/delete-properties.php
 RewriteRule    ^admin/properties/details?$    administrator/source/properties/details-properties.php
 RewriteRule    ^admin/properties/view?$    administrator/source/properties/view-properties.php
+
 RewriteRule    ^admin/customers?$    administrator/source/customers/customers.php
 RewriteRule    ^admin/customers/add?$    administrator/source/customers/add-customer.php
+
 RewriteRule    ^admin/amenities?$     administrator/source/amenities/amenities.php
 RewriteRule    ^admin/amenities/add?$ administrator/source/amenities/add-amenities.php
 RewriteRule    ^admin/amenities/edit?$ administrator/source/amenities/edit-amenities.php
 RewriteRule    ^admin/amenities/delete?$ administrator/source/amenities/delete-amenities.php
 RewriteRule    ^admin/amenities/view?$ administrator/source/amenities/view-amenities.php
+
 RewriteRule    ^admin/units?$     administrator/source/units/units.php
 RewriteRule    ^admin/units/add?$ administrator/source/units/add-units.php
 RewriteRule    ^admin/units/edit?$ administrator/source/units/edit-units.php
 RewriteRule    ^admin/units/delete?$ administrator/source/units/delete-units.php
 RewriteRule    ^admin/units/view?$ administrator/source/units/view-units.php
+
 RewriteRule    ^admin/city?$    administrator/source/city/city.php
 RewriteRule    ^admin/city/add?$    administrator/source/city/add-city.php
 RewriteRule    ^admin/city/edit?$   administrator/source/city/edit-city.php
 RewriteRule    ^admin/city/delete?$ administrator/source/city/delete-city.php
+
 RewriteRule    ^admin/state?$    administrator/source/state/state.php
 RewriteRule    ^admin/state/add?$    administrator/source/state/add-state.php
 RewriteRule    ^admin/state/edit?$   administrator/source/state/edit-state.php
 RewriteRule    ^admin/state/delete?$ administrator/source/state/delete-state.php
+
 RewriteRule    ^admin/country?$    administrator/source/country/country.php
 RewriteRule    ^admin/country/add?$    administrator/source/country/add-country.php
 RewriteRule    ^admin/country/edit?$   administrator/source/country/edit-country.php
@@ -95,15 +103,25 @@ RewriteRule    ^admin/banner/edit?$   administrator/source/banner/edit-banner.ph
 RewriteRule    ^admin/banner/delete?$ administrator/source/banner/delete-banner.php
 RewriteRule    ^admin/banner/view?$ administrator/source/banner/view-banner.php
 
+RewriteRule    ^admin/team?$    administrator/source/team/team.php
+RewriteRule    ^admin/team/add?$    administrator/source/team/add-team.php
+RewriteRule    ^admin/team/edit?$   administrator/source/team/edit-team.php
+RewriteRule    ^admin/team/delete?$ administrator/source/team/delete-team.php
+RewriteRule    ^admin/team/view?$ administrator/source/team/view-team.php
 
+RewriteRule    ^admin/agent?$    administrator/source/agent/agent.php
+RewriteRule    ^admin/agent/add?$    administrator/source/agent/add-agent.php
+RewriteRule    ^admin/agent/edit?$   administrator/source/agent/edit-agent.php
+RewriteRule    ^admin/agent/delete?$ administrator/source/agent/delete-agent.php
+RewriteRule    ^admin/agent/view?$ administrator/source/agent/view-agent.php
 
 RewriteRule    ^builder/login?$    administrator/source/builder/login.php
-
-
-
 RewriteRule    ^admin/ajaxbuilder?$    administrator/ajax/ajax_food.php
 RewriteRule    ^admin/ajaxproperties?$    administrator/ajax/ajax_properties.php
+RewriteRule    ^admin/ajaxcontact?$    administrator/ajax/ajax_contact.php
 RewriteRule    ^admin/ajaxEditproperties?$    administrator/ajax/ajax_editProperties.php
+RewriteRule    ^admin/ajaxuser?$    administrator/ajax/ajax_user.php
+
 
 
 RewriteRule    ^admin/api?$    administrator/source/api/addAmenities.php
@@ -118,9 +136,19 @@ RewriteRule    ^builder/properties?$    buildermodule/source/properties/properti
 
 RewriteRule    ^admin/floor/add?$    administrator/source/floor/add-floor.php
 
+RewriteRule    ^admin/contact?$    administrator/source/contact/details-contact.php
 
 
-
+RewriteRule    ^mikha/?$    mikha/index.php
+RewriteRule    ^mikha/category?$   mikha/category.php
+RewriteRule    ^mikha/category_list?$   mikha/category_list.php
+RewriteRule    ^mikha/contact?$   mikha/contact.php
+RewriteRule    ^mikha/single?$   mikha/single.php
+RewriteRule    ^mikha/blog?$   mikha/blog.php
+RewriteRule    ^mikha/search?$   mikha/search.php
+RewriteRule    ^mikha/search_list?$   mikha/search_list.php
+RewriteRule    ^mikha/blog_single?$   mikha/blog_single.php
+RewriteRule    ^mikha/about?$   mikha/about.php
 
 
 

@@ -259,7 +259,7 @@ function myFunction() {
 		if(builder_name=="") 
         {
             $('#name_error').show();
-            $('#name_error').html('Please enter builder name.');
+            $('#name_error').html('Please select builder name.');
             setTimeout(function(){ $('#name_error').hide(); }, 2000);
             _valid = 0;
         }  
@@ -897,9 +897,6 @@ $().ready(function () {
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
 		html += '<label>Floor</label>';
-
-		
-
 		html += '<select  class="form-control unitfloorsid required" id="unitfloorsid_'+number+'" name="unitfloorsid[]">';
         html += '<option value="">Select Floor</option>';
         html += '</select>';
@@ -909,7 +906,7 @@ $().ready(function () {
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
-		html += '<label>Units name</label>';
+		html += '<label>Type</label>';
 		html += '<select  class="form-control required" name="name[]" id="name'+number+'">';
 		html += '<option value="">Select Units Type</option>';
 		html += unitop;
@@ -928,17 +925,17 @@ $().ready(function () {
 		html += '</div>';
         html += '</div>';
 
-		html += '<div class="col-md-3">';
-		html += '<div class="form-group">';
-		html += '<label>Size</label>';
-		html += '<input type="text" class="form-control required" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
-		html += '</div>';
-        html += '</div>';
+		//html += '<div class="col-md-3">';
+	//	html += '<div class="form-group">';
+	//	html += '<label>Size</label>';
+	//	html += '<input type="text" class="form-control required" id="size_'+number+'" name="size[]" placeholder="Enter Size" >';
+	//	html += '</div>';
+    //    html += '</div>';
 
 
 		html += '<div class="col-md-3">';
 		html += '<div class="form-group">';
-		html += '<label>Price</label>';
+		html += '<label>Price on per square foot</label>';
 		html += '<input type="text" class="form-control required" id="price_'+number+'" name="price[]" placeholder="Enter Price" >';
 		html += '</div>';
         html += '</div>';
@@ -955,6 +952,27 @@ $().ready(function () {
 		html += '<div class="form-group">';
 		html += '<label>Builtup area</label>';
 		html += '<input type="text" class="form-control required" id="built_area_'+number+'" name="built_area[]" placeholder="Enter carpet area" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Total no.of taric</label>';
+		html += '<input type="text" class="form-control required" id="tares_'+number+'" name="tares[]" placeholder="Total no.of taric" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Total no.of bath</label>';
+		html += '<input type="text" class="form-control required" id="bath_'+number+'" name="bath[]" placeholder="Total no.of bath" >';
+		html += '</div>';
+        html += '</div>';
+
+		html += '<div class="col-md-3">';
+		html += '<div class="form-group">';
+		html += '<label>Total no.of parking</label>';
+		html += '<input type="text" class="form-control required" id="parking_'+number+'" name="parking[]" placeholder="Total no.of parking" >';
 		html += '</div>';
         html += '</div>';
 
@@ -1254,6 +1272,28 @@ $(function () {
     //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
     bindDateRangeValidation($("#property-form"), 'started_date', 'possession_date');
 });	
+
+$('body').on('change', '.wingsid', function() {
+	var wing_id = $(this).val();
+	var getFloorInfo = 'getFloorInfo';
+	alert(wing_id);
+	$.ajax({     
+		url:  "{$adminroot}/ajaxproperties",
+		type: "POST",
+		data: { wing_id: wing_id, action: 'getFloorInfo' },
+		dataType:"JSON",
+
+		success: function(result)
+		{	
+			console.log(result);
+			var wingselect = $('#dynamic-floor-fields select[name^="wing"]').val();;
+			var floorselect = $('#dynamic-floor-fields input[name^="floor"]').val();;
+		console.log(wingselect);
+		console.log(floorselect);
+
+		}
+	});
+});
 </script>
 </body>
 </html>
