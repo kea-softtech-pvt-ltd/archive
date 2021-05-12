@@ -13,7 +13,7 @@ label.error {
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="{$adminroot}/team/add" method="post" enctype="multipart/form-data">
+		<form name="addTeamForm" id="teamAdd" action="{$adminroot}/team/add" method="post" enctype="multipart/form-data">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
 					<div class="box_general padding_bottom">
@@ -35,28 +35,29 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Profile picture</label>
-									<input class="form-control" type="file" id="image" name="image" value="">
+									<input class="form-control" type="file" id="image" name="image" value="" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Title</label>
-									<input type="text" class="form-control" name="title" placeholder="title">
+									<input type="text" class="form-control" name="title" placeholder="title" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Description</label>
-									<input type="text" class="form-control" name="description" placeholder="Enter description">
+									<input type="text" class="form-control" name="description" placeholder="Enter description" required>
 								</div>
 							</div>
 						</div>
+						<p><button class="btn_1 medium" name="teamSave" type="submit">Save</button></p>
 					</div>
 					<!-- /box_general-->
 					
 					<!-- /box_general-->
 					
-					<p><button class="btn_1 medium" name="teamSave" type="submit">Save</button></p>
+					
 				</form>
 			</div>
 	  <!-- /.container-fluid-->

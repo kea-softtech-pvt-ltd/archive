@@ -88,8 +88,9 @@
                 <li><a href="contact">Contact</a></li>
               </ul>
             </li>
-            <li><a href="#modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Sign in</a></li>
-            <li><a href="#" class="signup" data-toggle="modal" data-target="#modal-signup">Sign up</a></li>
+            <li><a href="modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Sign in</a></li>
+            <li><a href="#modal-signup" class="signup" data-toggle="modal" data-target="#modal-signup">Sign up</a></li>
+            <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->

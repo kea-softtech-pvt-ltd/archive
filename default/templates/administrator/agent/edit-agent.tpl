@@ -9,7 +9,7 @@ label.error {
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="{$adminroot}/agent/edit" method="post" enctype="multipart/form-data">
+		<form name="editAgentForm" id="agentEdit" action="{$adminroot}/agent/edit" method="post" enctype="multipart/form-data">
 			<input type="hidden"name="id" value="{$agentuserArray['id']}">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
@@ -43,31 +43,31 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Email</label>
-									<input type="email" class="form-control" name="email" placeholder="Enter email" value="{$agentuserArray['email']}">
+									<input type="email" class="form-control" name="email" placeholder="Enter email" value="{$agentuserArray['email']}" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>phone</label>
-									<input type="text" class="form-control" name="phone" placeholder="Enter phone" value="{$agentuserArray['phone']}">
+									<input type="text" class="form-control" name="phone" placeholder="Enter phone" value="{$agentuserArray['phone']}" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Office phone</label>
-									<input type="text" class="form-control" name="office_phone" placeholder="Enter office phone no" value="{$agentuserArray['office_phone']}">
+									<input type="text" class="form-control" name="office_phone" placeholder="Enter office phone no" value="{$agentuserArray['office_phone']}" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>FAX</label>
-									<input type="text" class="form-control" name="fax" placeholder="Enter FAX" value="{$agentuserArray['fax']}">
+									<input type="text" class="form-control" name="fax" placeholder="Enter FAX" value="{$agentuserArray['fax']}" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Description</label>
-									<input type="text" class="form-control" name="description" placeholder="Enter" value="{$agentuserArray['description']}">
+									<input type="text" class="form-control" name="description" placeholder="Enter" value="{$agentuserArray['description']}" required>
 								</div>
 							</div>
 							

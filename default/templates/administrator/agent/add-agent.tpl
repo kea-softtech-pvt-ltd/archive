@@ -13,7 +13,7 @@ label.error {
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="{$adminroot}/agent/add" method="post" enctype="multipart/form-data">
+		<form name="addAgentForm" id="agentAdd" action="{$adminroot}/agent/add" method="post" enctype="multipart/form-data">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
 					<div class="box_general padding_bottom">
@@ -35,37 +35,37 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Profile picture</label>
-									<input class="form-control" type="file" id="image" name="image" value="">
+									<input class="form-control" type="file" id="image" name="image" value="" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Email</label>
-									<input type="email" class="form-control" name="email" placeholder="Enter email">
+									<input type="email" class="form-control" name="email" placeholder="Enter email" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Office phone no</label>
-									<input type="text" class="form-control" name="office_phone" placeholder="Office phone no">
+									<input type="text" class="form-control" name="office_phone" placeholder="Office phone no" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Mobile no</label>
-									<input type="text" class="form-control" name="phone" placeholder="Enter mobile no">
+									<input type="text" class="form-control" name="phone" placeholder="Enter mobile no" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>FAX</label>
-									<input type="text" class="form-control" name="fax" placeholder="Enter FAX">
+									<input type="text" class="form-control" name="fax" placeholder="Enter FAX" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Description</label>
-									<input type="text" class="form-control" name="description" placeholder="Enter description">
+									<input type="text" class="form-control" name="description" placeholder="Enter description" required>
 								</div>
 							</div>
 						</div>

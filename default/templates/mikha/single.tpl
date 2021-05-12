@@ -111,26 +111,32 @@
                         <h2>{$propertiesArray['name']}</h2>
                         <div id="slider-property" class="carousel slide" data-ride="carousel">
                           <ol class="carousel-indicators">
+                           {$imagearray = explode(',',$propertiesArray['images'])}
+							              {foreach from=$imagearray key=index item=image name=count}
                             <li data-target="#slider-property" data-slide-to="0" class="">
-                              <img src="img/img02.jpg" alt="">
+                              <img src="{SITE_URL}/administrator/upload/properties/{$image}" alt="" style="height: auto;">
                             </li>
-                            <li data-target="#slider-property" data-slide-to="1" class="active">
+                            {/foreach}
+                             <li data-target="#slider-property" data-slide-to="1" class="active">
                               <img src="img/img03.jpg" alt="">
                             </li>
-                            <li data-target="#slider-property" data-slide-to="2">
+                           {* <li data-target="#slider-property" data-slide-to="2">
                               <img src="img/img04.jpg" alt="">
-                            </li>
+                            </li> *}
                           </ol>
                           <div class="carousel-inner">
-                            <div class="item">
-                              <img src="img/img02.jpg" alt="">
+                            {$imagearray = explode(',',$propertiesArray['images'])}
+							              {foreach from=$imagearray key=index item=image name=count}
+                            <div class="item ">
+                              <img src="{SITE_URL}/administrator/upload/properties/{$image}" alt=""style="height: 520px;"> 
                             </div>
+                             {/foreach}
                             <div class="item active">
                               <img src="img/img03.jpg" alt="">
                             </div>
-                            <div class="item">
+                            {* <div class="item">
                               <img src="img/img04.jpg" alt="">
-                            </div>
+                            </div> *}
                           </div>
                           <a class="left carousel-control" href="#slider-property" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -174,11 +180,12 @@
                             <td>{$propertiesArray['carpet_area']}m<sup>2</sup> </td>
                           </tr>
                         </table>
-                        <h3>Property Features</h3>
+                        <h3>Property Amenities</h3>
                         <div class="row">
                           <div class="col-md-4 col-sm-4">
                             <ul>
-                              <li><i class="fa fa-check"></i> Air conditioning</li>
+                              <li><i class="fa fa-check"></i>{$propertiesArray['a_name']}</li>
+
                               <li><i class="fa fa-check"></i> Balcony</li>
                               <li><i class="fa fa-times"></i> Bedding</li>
                               <li><i class="fa fa-check"></i> Cable TV</li>
@@ -188,30 +195,8 @@
                               <li><i class="fa fa-times"></i> Cot</li>
                             </ul>
                           </div>
-                          <div class="col-md-4 col-sm-4">
-                            <ul>
-                              <li><i class="fa fa-check"></i> Internet</li>
-                              <li><i class="fa fa-times"></i> Iron</li>
-                              <li><i class="fa fa-check"></i> Juicer</li>
-                              <li><i class="fa fa-times"></i> Lift</li>
-                              <li><i class="fa fa-times"></i> Microwave</li>
-                              <li><i class="fa fa-check"></i> Oven</li>
-                              <li><i class="fa fa-times"></i> Parking</li>
-                              <li><i class="fa fa-times"></i> Parquet</li>
-                            </ul>
-                          </div>
-                          <div class="col-md-4 col-sm-4">
-                            <ul>
-                              <li><i class="fa fa-times"></i> Radio</li>
-                              <li><i class="fa fa-check"></i> Roof terrace</li>
-                              <li><i class="fa fa-times"></i> Smoking allowed</li>
-                              <li><i class="fa fa-check"></i> Terrace</li>
-                              <li><i class="fa fa-times"></i> Toaster</li>
-                              <li><i class="fa fa-check"></i> Towelwes</li>
-                              <li><i class="fa fa-check"></i> Use of pool</li>
-                              <li><i class="fa fa-check"></i> Video</li>
-                            </ul>
-                          </div>                          
+                       
+                                                 
                         </div>
 
                         <h3>Property Description</h3>

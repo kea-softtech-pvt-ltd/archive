@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-17 15:11:00
+/* Smarty version 3.1.29, created on 2021-05-11 15:26:03
   from "C:\xampp\htdocs\archive\default\templates\administrator\customers\add-customer.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_602ce4acd0e625_68315498',
+  'unifunc' => 'content_609a54b3aab376_25951764',
   'file_dependency' => 
   array (
     '671339ef1bd9089fb39a931eadf2d36e8092f0ad' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\customers\\add-customer.tpl',
-      1 => 1613411966,
+      1 => 1613740670,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_602ce4acd0e625_68315498 ($_smarty_tpl) {
+function content_609a54b3aab376_25951764 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -187,7 +187,7 @@ function content_602ce4acd0e625_68315498 ($_smarty_tpl) {
 						</tr>
 					</table>
 					<a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add Item</a>
-					</div>
+				</div>
 			</div>
 			<!-- /row-->
 		</div>

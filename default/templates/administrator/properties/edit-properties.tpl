@@ -102,7 +102,7 @@
 				<div class="col-md-12">
 					{$imagearray = explode(',',$builderuserArray['images'])}
 						{foreach from=$imagearray key=index item=image name=count}
-							<img class="d-block w-10" height="80px" width="80px" src="{SITE_URL}/administrator/upload/properties/{$image}"  alt="First slide">
+							<img class="d-block w-10" height="80px" width="80px" src="{SITE_URL}/administrator/upload/properties/{$image}"  alt="First slide" style="float: left">
 						{/foreach}
 				</div>
 			</div><br>

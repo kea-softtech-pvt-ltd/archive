@@ -12,6 +12,7 @@
               <li><a href="#">Home</a></li>
               <li><a href="#">Category</a></li>
               <li class="active">Villa</li>
+              {$_SESSION['username']}
             </ol>
           </div>
         </div>
@@ -66,9 +67,14 @@
             <div class="row container-realestate">
             {foreach from=$propertiesListArray key=k item=v}
               <div class="col-md-4 col-sm-6 col-xs-12">
-             
+                 {* {$imagearray = explode(',',$v['images'])}
+							     {foreach from=$imagearray key=index item=image name=count}
+                    <img src="{SITE_URL}/administrator/upload/properties/{$image}">
+                    {/foreach} *}
+                  
                 <div class="property-container">
                   <div class="property-image">
+                        
                         <img src="{$siteroot}/mikha/img/img02.jpg" alt="mikha real estate theme">
                     <div class="property-price">
                       <h4>{$v['title']}</h4>

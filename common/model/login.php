@@ -30,9 +30,27 @@ class Model_login extends Database
 		$result= $this->FetchRow($result1); 
 		return $result;		
 	}
+	##it use in front end in user
+	function validationUser($username, $password) { 
+		$fields=array('user_id');	
+		$tables=array('user_login');
+		$where=array("(email='".$username."'  AND  password='".$password."')");		
+		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+		$result= $this->FetchRow($result1); 
+		return $result;		
+	}
 	function getBuilderValueByDetailsBuildernameAndPassword($username, $password) {
 		$fields=array();	
 		$tables=array('builders');
+		$where=array("(email='".$username."'  AND  password='".$password."')");		
+		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+		$result= $this->FetchRow($result1); 
+		return $result;		
+	}
+	## it use in front end in user	
+	function getUserValueByDetailsBuildernameAndPassword($username, $password) {
+		$fields=array();	
+		$tables=array('user_login');
 		$where=array("(email='".$username."'  AND  password='".$password."')");		
 		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
 		$result= $this->FetchRow($result1); 

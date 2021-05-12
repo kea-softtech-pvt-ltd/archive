@@ -9,6 +9,7 @@ if($_REQUEST['action']=="signup")
 	
     $userArray['password'] = $_POST['password'];
     $userArray['email'] = $_POST['email'];
+	$userArray['username'] = $_POST['user_name'];
 	$userArray['otp'] = rand(999999,6);
  
 	$result = $userObj->addUserByValue($userArray);

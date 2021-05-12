@@ -69,7 +69,7 @@
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="{$adminroot}/contact">
             <i class="fa fa-phone"></i>
-            <span class="nav-link-text">Contact us Detail</span>
+            <span class="nav-link-text"> Contact Details</span>
           </a>
         </li>
     <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Building Type">

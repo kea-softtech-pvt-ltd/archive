@@ -128,8 +128,8 @@
          ## Get all Properties details front end View page
          function getAllPropertiesView($id, $search='', $limit='',$offset='') {
 
-            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
-            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id');		
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type,properties_other.amenities,amenities.name as a_name');
+            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id LEFT JOIN properties_other ON properties_other.p_id = property.id LEFT JOIN amenities ON amenities.id = property.id ');		
             $where=array("property.id=".$id);
            // $where = array($this->property.".status = '1'");
         

@@ -223,4 +223,169 @@ $().ready(function () {
     //end validation
 
     
+     // validation on team add 
+     $("#teamAdd").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "title": {
+                required: true,
+            },
+            "description": {
+                required: true,
+            },
+            "image": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter name."
+            },
+            "title": {
+                required: "Please enter title."
+            },
+            "description": {
+                required: "Please enter description."
+            },
+            "image": {
+                required: "Please select image."
+            }
+            
+        },
+    });
+
+    //end validation
+
+    // validation on team edit
+      $("#teamEdit").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "title": {
+                required: true,
+            },
+            "description": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter name."
+            },
+            "title": {
+                required: "Please enter title."
+            },
+            "description": {
+                required: "Please enter description."
+            }
+            
+        },
+    });
+
+    //end validation
+
+     // validation on Agent Add
+     $("#agentAdd").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "email": {
+                required: true,
+            },
+            "description": {
+                required: true,
+            },
+            "phone": {
+                required: true,
+            },
+            "office_phone": {
+                required: true,
+            },
+            "fax": {
+                required: true,
+            },
+            "image": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter name."
+            },
+            "email": {
+                required: "Please enter email."
+            },
+            "description": {
+                required: "Please enter description."
+            },
+            "phone": {
+                required: "Please enter phone no."
+            },
+            "office_phone": {
+                required: "Please enter office phone no."
+            },
+            "fax": {
+                required: "Please enter fax no."
+            },
+            "image": {
+                required: "Please select image."
+            }
+            
+        },
+    });
+
+    //end validation
+
+    // validation on Agent Edit
+    $("#agentEdit").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "email": {
+                required: true,
+            },
+            "description": {
+                required: true,
+            },
+            "phone": {
+                required: true,
+            },
+            "office_phone": {
+                required: true,
+            },
+            "fax": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter name."
+            },
+            "email": {
+                required: "Please enter email."
+            },
+            "description": {
+                required: "Please enter description."
+            },
+            "phone": {
+                required: "Please enter phone no."
+            },
+            "office_phone": {
+                required: "Please enter office phone no."
+            },
+            "fax": {
+                required: "Please enter fax no."
+            }
+            
+        },
+    });
+
+    //end validation
+
+    
     }); 

@@ -655,29 +655,37 @@
             <h4 class="modal-title">Sign in</h4>
           </div>
           <div class="modal-body">
-            <form role="form">
+            {* <form role="form"> *}
+            <form action="{$siteroot}mikha/index.php" method="post" name="frmLogin">
               <div class="form-group">
                 <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
+                <input type="email" name="email" class="form-control input-lg" placeholder="Enter email">
+                {if isset($message) }
+													{$message}
+								{/if}
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
+                <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+                  	{if isset($message1) }
+													{$message1}
+												{/if}
               </div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox" name="forget"> Keep me logged in
                 </label>
               </div>
-            </form>
+            
           </div>
           <div class="modal-footer">
             <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign in">
+            <input type="submit" name="login" class="btn btn-success btn-block btn-lg" value="Sign in">
           </div>
         </div>
       </div>
     </div>
+    </form>
     <!-- end:modal-signin -->
 
     <!-- begin:modal-signup -->
@@ -703,6 +711,10 @@
               <div class="form-group">
                 <input type="password" name="confirm_password" id="confirm_password" class="form-control input-lg" placeholder="Confirm Password">
                  <div class="text-danger" id="confirm_password_error"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="user_name" id="user_name" class="form-control input-lg" placeholder="User  name">
+                 <div class="text-danger" id="user_error"></div>
               </div>
               <div class="checkbox">
                 <label>
@@ -741,12 +753,20 @@ function myFunction() {
 		var _valid = 1;
 		var password = $("#password").val();
 		var email = $("#email").val();
+    var user_name = $("#user_name").val();
     var confirm_password = $("#confirm_password").val();
 		if(email=="") 
         {
             $('#email_error').show();
             $('#email_error').html('Please enter email.');
             setTimeout(function(){ $('#email_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+      if(user_name=="") 
+        {
+            $('user_error').show();
+            $('#user_error').html('Please enter user name.');
+            setTimeout(function(){ $('#user_error').hide(); }, 2000);
             _valid = 0;
         }  
 		if(password=="") 

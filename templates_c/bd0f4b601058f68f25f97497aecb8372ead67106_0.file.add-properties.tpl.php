@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-04-08 21:28:00
+/* Smarty version 3.1.29, created on 2021-05-11 15:26:16
   from "C:\xampp\htdocs\archive\default\templates\administrator\properties\add-properties.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_606f2808b4ca05_25995602',
+  'unifunc' => 'content_609a54c0b14920_00078765',
   'file_dependency' => 
   array (
     'bd0f4b601058f68f25f97497aecb8372ead67106' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\properties\\add-properties.tpl',
-      1 => 1617897458,
+      1 => 1620725938,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_606f2808b4ca05_25995602 ($_smarty_tpl) {
+function content_609a54c0b14920_00078765 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <style>
@@ -1208,11 +1208,6 @@ var count = 1;
 	});
 
 
-// Dynamic WING
-
-
-// Dynamic Floor
-
 var count = 1;
 
     dynamic_floor_field(count);
@@ -1292,14 +1287,6 @@ var count = 1;
         $(this).closest("#" + row_id).remove();
     });
 
-	/*$("#addFloor").click(function(){
-		var rowCount = $("#dynamic-floor-fields row").length;
-		var propertyID = $("#propertyID").val();
-		alert('k-kk'+rowCount);
-		getWing(propertyID,rowCount+1);
-	});*/
-
-
 });
 
 
@@ -1338,7 +1325,7 @@ var bindDateRangeValidation = function (f, s, e) {
             },
             endDate: {
                 validators: {
-                    notEmpty: { message: 'This field is required.' },
+                    notEmpty: { message: 'This field is required..' },
                     callback: {
                         message: 'End Date must greater than or equal to Start Date.',
                         callback: function (endDate, validator, $field) {

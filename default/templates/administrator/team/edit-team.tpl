@@ -9,7 +9,7 @@ label.error {
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="{$adminroot}/team/edit" method="post" enctype="multipart/form-data">
+		<form name="addTeamForm" id="teamEdit" action="{$adminroot}/team/edit" method="post" enctype="multipart/form-data">
 			<input type="hidden"name="id" value="{$teamuserArray['id']}">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
@@ -28,13 +28,13 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Title</label>
-									<input type="text" class="form-control" name="title" placeholder="Enter Title" value="{$teamuserArray['title']}">
+									<input type="text" class="form-control" name="title" placeholder="Enter Title" value="{$teamuserArray['title']}" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Description</label>
-									<input type="text" class="form-control" name="description" placeholder="Enter" value="{$teamuserArray['description']}">
+									<input type="text" class="form-control" name="description" placeholder="Enter" value="{$teamuserArray['description']}" required           >
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -42,7 +42,7 @@ label.error {
 									<div class="col-10">
 										<div class="form-group">
 											<label>Profile picture</label>
-												<input class="form-control" type="file" id="image" name="image" value="" />
+												<input class="form-control" type="file" id="image" name="image" value=""/>
 												<input class="form-control" type="text" id="image" name="image" value="{$teamuserArray['img']}" hidden />	
 										</div>
 									</div>
