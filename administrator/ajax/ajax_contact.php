@@ -36,6 +36,43 @@ if($_REQUEST['action']=="addContact")
 	}
 	echo json_encode($response);
 }
+// //insert in favroite in pro
+// if($_REQUEST['action']=="addFavorite")
+// {
+// 	//$contactArray['id'] = $_POST['id'];
+//     $contactArray['p_id'] = $_POST['product_id'];
+// 	$contactArray['user_id'] = $_SESSION['user_id'];
+// 	$contactArray['user_name'] = $_SESSION['username'];
+	
+// 	// print_r($contactArray);
+// 	// die();
+ 
+// 	//$result = $contactObj->addFavByValue($contactArray,$_POST['pro_id']);
+	
+// 	$result = $contactObj->addFavByValue($contactArray);
+	
+// 	if($result)
+
+// 	{	
+
+// 		$response['status'] = '1'; 
+
+// 		$response['message'] = 'success'; 
+
+
+// 	}
+
+// 	else
+
+// 	{
+
+// 		$response['status'] = '0'; 
+
+// 		$response['message'] = 'error'; 
+
+// 	}
+// 	echo json_encode($response);
+// }
 
 ?>
 

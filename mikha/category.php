@@ -6,13 +6,19 @@
 	$propertiesObj = new Model_Property();
 	$propertiesListArray = $propertiesObj->getAllProperties1();
 
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
 	$smarty->assign('propertiesListArray', $propertiesListArray);
 	$smarty->assign('moduleName', 'List of properties');
 
 	$agentObj = new Model_Agent();
 	$agentListArray = $agentObj->getAllAgent();
 	$smarty->assign('agentListArray', $agentListArray);
-
-	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/category.tpl');	
+	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/category.tpl');
+	
+		}else{
+			header("Location: " . SITE_URL . "mikha/home.php");
+		}
 	
 ?>

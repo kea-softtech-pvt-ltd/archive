@@ -86,12 +86,84 @@
                 <li><a href="blog_single">Blog Single</a></li>
                 <li><a href="about">About</a></li>
                 <li><a href="contact">Contact</a></li>
-              </ul>
+              </ul>     
             </li>
             <li><a href="modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Sign in</a></li>
             <li><a href="#modal-signup" class="signup" data-toggle="modal" data-target="#modal-signup">Sign up</a></li>
-            <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li>
-          </ul>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-ellipsis-v"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li>
+                <li><a href="modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Sign in</a></li>
+                <li><a href="#modal-signup" class="signin" data-toggle="modal" data-target="#modal-signup">Sign up</a></li>
+              </ul>     
+            </li>
+            <li><a style="color:#ffffff" href="message"><span>4</span><b><i class="	fa fa-envelope"> </i></b></a></li>
+            {* <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li> *}
+            {if ($smarty.session.role == 4)}
+             <li><a style="color:#ffffff"><b><i class="	fa fa-dot-circle-o text-success"></i></b> {$smarty.session.username}</a></li>
+            {elseif ($smarty.session.role != 4)}
+            <li><a href="">User</a></li>
+            {/if}
+            
+             {* {if ($smarty.session.role != 4)}
+                   user
+                   {elseif ($smarty.session.role == 4) }
+                {$smarty.session.username}
+				{/if} *}
+     
+             
+            {* {if isset($smarty.session.username) && $smarty.session.username != username}
+     { user }
+{elseif $smarty.session.role == 4}
+     { $smarty.session.role }
+{/if} *}
+
+
+{* {if $smarty.session.username == $smarty.session.username} 
+  {$smarty.session.username}
+  {elseif $smarty.session.username != username}
+
+   user
+
+{/if} *}
+
+{* {if $smarty.session.username != $smarty.session.username }
+sdfg
+{else}
+{$smarty.session.username}
+{/if} *}
+
+
+
+	<li class="nav-item dropdown">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<i class="fa fa-comment-o"></i>
+						</a>
+						<div class="dropdown-menu notifications">
+							<div class="noti-content">
+							
+								<ul class="notification-list">
+									<li class="notification-message">
+										<a href="#">
+											<div class="list-item">
+												<div class="list-body">
+													<span class="message-author">abc </span>
+													<span class="message-time">90-09</span>
+													<div class="clearfix">asfsadfsadf</div>
+													<span class="message-content">sdfdsfsdfdsfdsf</span>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+						
+							</div>
+					
+						</div>
+					</li>
+					<!-- /Message Notifications -->
+      </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>

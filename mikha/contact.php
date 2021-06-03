@@ -7,6 +7,9 @@
 	// $contactListArray = $contactObj->getAllContact();
 
 	// $smarty->assign('contactListArray', $contactListArray);
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
 	$smarty->assign('moduleName', 'List of contact');
 
 	$agentObj = new Model_Agent();
@@ -14,6 +17,10 @@
 	$smarty->assign('agentListArray', $agentListArray);
 
 	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/contact.tpl');	
+
+}else{
+	header("Location: " . SITE_URL . "mikha/home.php");
+}
 	
 ?>
 

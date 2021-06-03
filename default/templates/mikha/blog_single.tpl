@@ -145,7 +145,7 @@
     <!-- end:footer -->
 
     <!-- begin:modal-signin -->
-    <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
+    {* <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -175,11 +175,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> *}
     <!-- end:modal-signin -->
 
     <!-- begin:modal-signup -->
-    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
+    {* <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -210,7 +210,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> *}
     <!-- end:modal-signup -->
    
     <!-- Bootstrap core JavaScript

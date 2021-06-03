@@ -24,13 +24,15 @@ class Model_Contact extends Database
 	}	
 	 
 	## Add Properties in database
-	function addContactByValue($Array) {
+	function addContactByValue($Array) 
+	{
 		$this->InsertData( $this->contact , $Array );		
 		$insertId = $this->getLatestRecordId();
 		return $insertId;
 	}
 	   ## Get all Properties details
-	   function getAllContact($search='', $limit='',$offset='') {
+	   function getAllContact($search='', $limit='',$offset='') 
+	   {
 		$fields=array();
 	   	$tables=array($this->contact);
 	   	$where = array($this->contact.".status = '1'");
@@ -39,6 +41,16 @@ class Model_Contact extends Database
 		$result= $this->FetchAll($result1); 
 		return $result;		
 	}
+
+		// ## Add favroite in database
+		// function addFavByValue($Array) 
+		// {
+		// 	$this->InsertData('favorite' , $Array );		
+		// 	$insertId = $this->getLatestRecordId();
+		// 	return $insertId;
+		// }
+
+	
 	
 }
 ?>

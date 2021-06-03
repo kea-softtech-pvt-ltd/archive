@@ -194,10 +194,10 @@
                               <li><i class="fa fa-check"></i> Computer</li>
                               <li><i class="fa fa-times"></i> Cot</li>
                             </ul>
-                          </div>
-                       
-                                                 
+                          </div>                    
                         </div>
+                        
+      
 
                         <h3>Property Description</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -210,7 +210,29 @@
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.</p>
-                      </div>
+
+                      <!-- image Slider -->
+                       <div class="row">
+                          <h3>Property seen by user</h3>
+                            <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
+                          <div class="col-md-12">
+                            <div class="jcarousel-wrapper">
+                              <div class="jcarousel">
+                                <ul>
+                                {foreach from=$userListArray key=k item=v}
+                                  <li class="addGroup" data-id="{$v['p_id']}" data-user_id="{$v['user_id']}" ><a href="#">{$v['user_name']} <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><button type="button" class="btn btn-success btn-block">Add Group</button></li>
+                                {/foreach}
+                            </ul>
+                          </div>
+                             <a href="#" class="jcarousel-control-prev"><i class="fa fa-angle-left"></i></a>
+                             <a href="#" class="jcarousel-control-next"><i class="fa fa-angle-right"></i></a>
+                                      <!-- <p class="jcarousel-pagination"></p> -->
+                         </div>
+                       </div>
+                      <!---end img slider -->
+                    </div>
+
+                    </div>
                     </div>
 
                     
@@ -566,87 +588,69 @@
      {include file='mikha/footer.tpl'}
     <!-- end:footer -->
 
-    <!-- begin:modal-signin -->
-    <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign in</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="forget"> Keep me logged in
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign in">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signin -->
+<script>
+$(".addGroup").on("click", function(){
+  var pro_id = $(this).attr('data-id');
+  var pro_uid = $(this).attr('data-user_id');
+  $.ajax({     
+				url: "{$adminroot}/ajaxGroupAdd",
+        type: "POST",
+        data: { 
+				action : 'addGroups',
+				pro_id:pro_id,
+        pro_uid:pro_uid,
+				},
+        success: function(result)
+              {	
+          console.log(result);
+         // notification();
+				
 
-    <!-- begin:modal-signup -->
-    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign up</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Already have account ? <a href="#modal-signin" data-toggle="modal" data-target="#modal-signin">Sign in here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign up">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signup -->
-   
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-    <script src="js/gmap3.min.js"></script>
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/jquery.jcarousel.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
-</html>
+        if($.trim(result)=='error')				
+				{
+					$('#sucess_msg').show().html('Not add to user.');
+					setTimeout(function(){ $('#sucess_msg').hide();},3000)
+				}
+				else
+				{						
+					$('#sucess_msg').show().removeClass('alert-danger').addClass('alert-success').html('Add group meassage send to user.');
+					setTimeout(function(){ $('#sucess_msg').hide();},3000)
+					setTimeout(function(){ window.location.href='single?id={$v['p_id']}'; },3000);	
+				}
+        }
+   });
+});
+
+function notification()
+{		
+  var pro_id = $(this).attr('data-id');
+  var pro_uid = $(this).attr('data-user_id');
+	
+		$.ajax({       
+        url: "{$adminroot}/ajaxGroupAdd",
+        type: "POST",
+        data: { 
+				action : 'sendNotification',
+			  pro_id:pro_id,
+        pro_uid:pro_uid,
+				},
+			success: function(result)
+			{	
+				if($.trim(result)=='error')				
+				{
+					$('#error_msggg').show().html('Invalid OTP, Please try again.');
+					setTimeout(function(){ $('#error_msggg').hide();},3000)
+				}
+				else
+				{						
+					$('#sucess_msg').show().removeClass('alert-danger').addClass('alert-success').html('add group message send.');
+					setTimeout(function(){ $('#sucess_msg').hide();},3000)
+					setTimeout(function(){ window.location.href='category'; },3000);	
+				}
+			}
+		});						
+	
+
+}
+
+</script>

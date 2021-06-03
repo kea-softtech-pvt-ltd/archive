@@ -387,5 +387,29 @@ $().ready(function () {
 
     //end validation
 
+
+       // validation on signup
+       $("#signin").validate({
+        rules: {
+            "email": {
+                required: true,
+            },
+            "password": {
+                required: true,
+            }
+        },
+        messages: {
+            "email": {
+                required: "Please enter email."
+            },
+            "password": {
+                required: "Please enter password."
+            }
+            
+        },
+    });
+
+    //end validation
+
     
     }); 

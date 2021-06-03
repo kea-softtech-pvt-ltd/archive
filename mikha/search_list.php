@@ -7,6 +7,11 @@
 
 	// $smarty->assign('propertiesListArray', $propertiesListArray);
 	// $smarty->assign('moduleName', 'List of properties');
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
 	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/search_list.tpl');	
+}else{
+	header("Location: " . SITE_URL . "mikha/home.php");
+}
 	
 ?>

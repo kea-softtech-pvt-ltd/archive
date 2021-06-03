@@ -44,18 +44,21 @@
                         <div class="form-group">
                           <label for="email" class="sr-only">Email</label>
                           <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email">
+                           <div class="text-danger" id="email_error"></div>
                         </div>
                         <div class="form-group">
                           <label for="subject" class="sr-only">Subject</label>
                           <input type="text" name="subject" id="subject" class="form-control" placeholder="Enter subject">
+                          <div class="text-danger" id="subject_error"></div>
                         </div>
                         <div class="form-group">
                           <label for="name" class="sr-only">Message</label>
-                          <textarea class="form-control" name="address" id="address" rows="5" placeholder="Enter your name"></textarea>
+                          <textarea class="form-control" name="address" id="address" rows="5" placeholder="Enter your Message"></textarea>
+                          <div class="text-danger" id="address_error"></div>
                         </div>
                         <div class="form-group">
                         
-                          <button type="button" name="submit" class="btn btn-success" onclick="myFunction()" ><i class="fa fa-envelope-o"></i> Send Message</button>
+                          <button type="button" name="submit" class="btn btn-success" onclick="sendMessage()" ><i class="fa fa-envelope-o"></i> Send Message</button>
                         </div>
                       </form><br>
                     </div>
@@ -312,96 +315,15 @@
      {include file='mikha/footer.tpl'}
     <!-- end:footer -->
 
-    <!-- begin:modal-signin -->
-    <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign in</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="forget"> Keep me logged in
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign in">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signin -->
 
-    <!-- begin:modal-signup -->
-    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign up</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Already have account ? <a href="#modal-signin" data-toggle="modal" data-target="#modal-signin">Sign in here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign up">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signup -->
-   
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-    <script src="js/gmap3.min.js"></script>
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/jquery.jcarousel.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
-</html>
 <script>
-function myFunction() {
+function sendMessage() {
 
 		var _valid = 1;
 		var name = $("#name").val();
 		var email = $("#email").val();
+    var subject = $("#subject").val();
+    var address = $("#address").val();
 		if(email=="") 
         {
             $('#email_error').show();
@@ -409,10 +331,24 @@ function myFunction() {
             setTimeout(function(){ $('#email_error').hide(); }, 2000);
             _valid = 0;
         }  
+    if(subject=="") 
+        {
+            $('#subject_error').show();
+            $('#subject_error').html('Please enter subject.');
+            setTimeout(function(){ $('#subject_error').hide(); }, 2000);
+            _valid = 0;
+        }  
+    if(subject=="") 
+        {
+            $('#address_error').show();
+            $('#address_error').html('Please enter message.');
+            setTimeout(function(){ $('#address_error').hide(); }, 2000);
+            _valid = 0;
+        }  
 		if(name=="") 
         {
             $('#names_error').show();
-            $('#names_error').html('Please enter properti name.');
+            $('#names_error').html('Please enter name.');
             setTimeout(function(){ $('#names_error').hide(); }, 2000);
             _valid = 0;
         }  

@@ -12,7 +12,7 @@
               <li><a href="#">Home</a></li>
               <li><a href="#">Category</a></li>
               <li class="active">Villa</li>
-              {$_SESSION['username']}
+              {* {$_SESSION['username']} *}
             </ol>
           </div>
         </div>
@@ -63,19 +63,22 @@
             <!-- end:sorting -->
 
             <!-- begin:product -->
-             
+            <div class="alert alert-success text-center col-md-12" id="pro_BasicInfo" style="width:100%;display:none;"></div>
+            <form id="favorite-form" method="POST" action="" enctype="multipart/form-data"> 
+             <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
+             <div class="alert alert-danger text-center" id="sucess_msg1" style="display:none;"></div>
             <div class="row container-realestate">
             {foreach from=$propertiesListArray key=k item=v}
               <div class="col-md-4 col-sm-6 col-xs-12">
-                 {* {$imagearray = explode(',',$v['images'])}
-							     {foreach from=$imagearray key=index item=image name=count}
-                    <img src="{SITE_URL}/administrator/upload/properties/{$image}">
-                    {/foreach} *}
-                  
+              <input type="hidden" name="id" id="id" value="{$v['id']}" />
+                {$imagearray = explode(',',$v['images'])}
                 <div class="property-container">
                   <div class="property-image">
-                        
-                        <img src="{$siteroot}/mikha/img/img02.jpg" alt="mikha real estate theme">
+                         {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                                <img src="{SITE_URL}/administrator/upload/properties/{$image}" style="height: 200px">
+                            {/if}               
+                        {/foreach} 
                     <div class="property-price">
                       <h4>{$v['title']}</h4>
                       <span>${$v['built_area'] * $v['price']}</span>
@@ -93,8 +96,10 @@
                     <h3><a href="#">{$v['name']}</a> <small>{$v['address']}</small></h3>
                   </div>
                   <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
+                    
+                    {* <a title="Add to favorite" href="favadd?id={$v['id']}"><i class="fa fa-heart" name="builderSave" type="submit"></i><button class="btn_1 medium" name="builderSave" type="submit">Update</button></a> *}
+                     <a title="Add to favorite"><i class="fa fa-heart addToFav" data-id="{$v['id']}"  ></i></a>
+                    <a href="#" title="Contact Agent"><i class="fa fa-envelope" onclick="addfav()"></i></a>
                     <a href="single?id={$v['id']}" title="View page"><i class="fa fa-eye"></i></a>
                   </div>
                    
@@ -107,7 +112,7 @@
              
             </div>
             <!-- end:product -->
-
+            </form>
             <!-- begin:pagination -->
             <div class="row">
               <div class="col-md-12">
@@ -466,87 +471,33 @@
       {include file='mikha/footer.tpl'}
     <!-- end:footer link -->
 
-    <!-- begin:modal-signin -->
-    <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign in</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="forget"> Keep me logged in
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign in">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signin -->
+<script>
+$(".addToFav").on("click", function(){
+  var product_id = $(this).attr('data-id');
+  $.ajax({     
+				url: "{$adminroot}/ajaxFavorite",
+        type: "POST",
+         data: { 
+				action : 'addFavorite',
+				product_id:product_id,
+				},
+        success: function(result)
+        {	
+          console.log(result);
+          if($.trim(result)=='')				
+				{
+					$('#sucess_msg1').show().html('Not add to fav you are already add to fav.');
+					setTimeout(function(){ $('#sucess_msg1').hide();},3000)
+				}
+				else
+				{						
+					$('#sucess_msg').show().removeClass('alert-danger').addClass('alert-success').html('Add to favraite list.');
+					setTimeout(function(){ $('#sucess_msg').hide();},3000)
+					setTimeout(function(){ window.location.href='category'; },3000);	
+				}
+        }
+  });
 
-    <!-- begin:modal-signup -->
-    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign up</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Already have account ? <a href="#modal-signin" data-toggle="modal" data-target="#modal-signin">Sign in here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign up">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signup -->
-   
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{$siteroot}/mikha/js/jquery.js"></script>
-    <script src="{$siteroot}/mikha/js/bootstrap.js"></script>
-     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-    <script src="{$siteroot}/mikha/js/gmap3.min.js"></script>
-    <script src="{$siteroot}/mikha/js/jquery.easing.js"></script>
-    <script src="{$siteroot}/mikha/js/jquery.jcarousel.min.js"></script>
-    <script src="{$siteroot}/mikha/js/imagesloaded.pkgd.min.js"></script>
-    <script src="{$siteroot}/mikha/js/masonry.pkgd.min.js"></script>
-    <script src="{$siteroot}/mikha/js/jquery.nicescroll.min.js"></script>
-    <script src="{$siteroot}/mikha/js/script.js"></script>
-  </body>
-</html>
+});
+
+</script>

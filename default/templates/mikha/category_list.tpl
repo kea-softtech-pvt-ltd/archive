@@ -66,16 +66,21 @@
             <div class="row container-realestate">
             {foreach from=$propertiesListArray key=k item=v}
               <div class="col-md-12 col-sm-12 col-xs-12" href="index.php">
+               {$imagearray = explode(',',$v['images'])}
                 <div class="property-container">
                   <div class="property-content-list">
                     <div class="property-image-list">
-                      <img src="img/img12.jpg" alt="mikha real estate theme">
+                     {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                      <img src="{SITE_URL}/administrator/upload/properties/{$image}" alt="mikha real estate theme" style="height: 300px">
+                       {/if}               
+                        {/foreach}
                       <div class="property-price">
                         <h4>{$v['name']}</h4>
-                        <span>$30,000<small>/month</small></span>
+                        <span>${$v['built_area'] * $v['price']}<small></small></span>
                       </div>
                       <div class="property-status">
-                        <span>For Rent</span>
+                        <span>For Sele</span>
                       </div>
                       <div class="property-footer">
                         <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
@@ -468,87 +473,5 @@
      {include file='mikha/footer.tpl'}
     <!-- end:footer -->
 
-    <!-- begin:modal-signin -->
-    <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign in</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="forget"> Keep me logged in
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign in">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signin -->
-
-    <!-- begin:modal-signup -->
-    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign up</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Already have account ? <a href="#modal-signin" data-toggle="modal" data-target="#modal-signin">Sign in here.</a></p>
-            <input type="submit" class="btn btn-success btn-block btn-lg" value="Sign up">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal-signup -->
    
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-    <script src="js/gmap3.min.js"></script>
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/jquery.jcarousel.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
-</html>
+

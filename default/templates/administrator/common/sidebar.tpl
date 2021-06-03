@@ -54,12 +54,12 @@
             <span class="nav-link-text">Add Team</span>
           </a>
         </li>
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
+         {* <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="{$adminroot}/agent">
             <i class="fa fa-user-secret"></i>
             <span class="nav-link-text">Add Agent</span>
           </a>
-        </li>
+        </li> *}
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="{$adminroot}/proType">
             <i class="fa fa-fw fa-delicious"></i>

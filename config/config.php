@@ -20,6 +20,7 @@ if($application == "dev") {
 
 	define("EXACT_ROOT", realpath(dirname(dirname(__FILE__))));
 	define('TEMPLATEDIR',DOC_ROOT.'/default/templates/');
+
 	
 	define('SITE_URL_COMMON','http://localhost/archive/common');
 	define("COMMON_JS_PATH", SITE_URL_COMMON."/js");
@@ -27,11 +28,13 @@ if($application == "dev") {
 	define('DOC_FOLDER' , 'archive/');
 
 	define('ADMIN_TEMPLATEDIR',TEMPLATEDIR.'/administrator/');
+	//define('FRONT_TEMPLATEDIR',TEMPLATEDIR.'/mikha/');
 	define('FRONT_TEMPLATEDIR',TEMPLATEDIR.'/');
 
-	define('BUILDER_TEMPLATEDIR',TEMPLATEDIR.'/buildermodule/');
+	//define('BUILDER_TEMPLATEDIR',TEMPLATEDIR.'/buildermodule/');
 	
 	define('ADMIN_FOLDER' , DOC_ROOT.'/administrator');
+	//define('FRONT_TEMPLATEDIR' , DOC_ROOT.'/mikha');
 	
 } else {
 	define("HST", "localhost");
@@ -58,11 +61,11 @@ if($application == "dev") {
 
 	define('ADMIN_TEMPLATEDIR',TEMPLATEDIR.'/administrator/');
 
-	define('BUILDER_TEMPLATEDIR',TEMPLATEDIR.'/buildermodule/');
-
-	define('FRONTEND_TEMPLATEDIR',TEMPLATEDIR.'/mikha/');
+	define('FRONT_TEMPLATEDIR',TEMPLATEDIR.'/mikha/');
 	
 	define('ADMIN_FOLDER' , DOC_ROOT.'/administrator');
+
+	define('FRONT_FOLDER' , DOC_ROOT.'/mikha');
 
 	/* Paypal details*/
 	/* Paypal details*/
@@ -95,15 +98,16 @@ if($application == "dev") {
 	## Assign to bullder site url to smarty variable   // gsp 15-2-21
 	$smarty->assign("siteroot", SITE_URL);
 	
-	$smarty->assign('builderroot', SITE_URL. "/builder");
+	$smarty->assign('frontendroot', SITE_URL. "mikha");
 	$smarty->assign("version", round(microtime(true) * 1000));
-
 
 	## Assign to bullder site url to smarty variable   // gsp 15-2-21
-	$smarty->assign("siteroot", SITE_URL);
+	// $smarty->assign("siteroot", SITE_URL);
 	
-	$smarty->assign('frontend', SITE_URL. "/mikha");
-	$smarty->assign("version", round(microtime(true) * 1000));
+	// $smarty->assign('builderroot', SITE_URL. "/builder");
+	// $smarty->assign("version", round(microtime(true) * 1000));
+
+
 	
 
 	// 15-2-21

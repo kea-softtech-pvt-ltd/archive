@@ -121,6 +121,8 @@ RewriteRule    ^admin/ajaxproperties?$    administrator/ajax/ajax_properties.php
 RewriteRule    ^admin/ajaxcontact?$    administrator/ajax/ajax_contact.php
 RewriteRule    ^admin/ajaxEditproperties?$    administrator/ajax/ajax_editProperties.php
 RewriteRule    ^admin/ajaxuser?$    administrator/ajax/ajax_user.php
+RewriteRule    ^admin/ajaxFavorite?$    administrator/ajax/ajax_favorite.php
+RewriteRule    ^admin/ajaxGroupAdd?$    administrator/ajax/ajax_addGroup.php
 
 
 
@@ -138,18 +140,21 @@ RewriteRule    ^admin/floor/add?$    administrator/source/floor/add-floor.php
 
 RewriteRule    ^admin/contact?$    administrator/source/contact/details-contact.php
 
-
-RewriteRule    ^mikha/?$    mikha/index.php
+RewriteRule    ^mikha/?$    mikha/home.php
+RewriteRule    ^mikha/index?$    mikha/index.php
 RewriteRule    ^mikha/category?$   mikha/category.php
 RewriteRule    ^mikha/category_list?$   mikha/category_list.php
 RewriteRule    ^mikha/contact?$   mikha/contact.php
 RewriteRule    ^mikha/single?$   mikha/single.php
+RewriteRule    ^mikha/message?$   mikha/message.php
 RewriteRule    ^mikha/blog?$   mikha/blog.php
 RewriteRule    ^mikha/search?$   mikha/search.php
 RewriteRule    ^mikha/search_list?$   mikha/search_list.php
 RewriteRule    ^mikha/blog_single?$   mikha/blog_single.php
 RewriteRule    ^mikha/about?$   mikha/about.php
-
+RewriteRule    ^mikha/footer?$   mikha/footer.php
+RewriteRule    ^mikha/logout?$   mikha/logout.php
+RewriteRule    ^mikha/favadd?$   mikha/favadd.php
 
 
 

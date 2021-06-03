@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-05-12 11:56:50
+/* Smarty version 3.1.29, created on 2021-06-02 17:11:05
   from "C:\xampp\htdocs\archive\default\templates\administrator\common\sidebar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_609b752adb3899_30570493',
+  'unifunc' => 'content_60b76e51b3b616_67645810',
   'file_dependency' => 
   array (
     '7c95806d8b7b921f120e64c090bdeb663e01d69e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\common\\sidebar.tpl',
-      1 => 1620800791,
+      1 => 1622634060,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_609b752adb3899_30570493 ($_smarty_tpl) {
+function content_60b76e51b3b616_67645810 ($_smarty_tpl) {
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Flats On Discount</a>
@@ -85,13 +85,7 @@ function content_609b752adb3899_30570493 ($_smarty_tpl) {
             <span class="nav-link-text">Add Team</span>
           </a>
         </li>
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
-          <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
-/agent">
-            <i class="fa fa-user-secret"></i>
-            <span class="nav-link-text">Add Agent</span>
-          </a>
-        </li>
+         
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="unit">
           <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /proType">

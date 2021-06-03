@@ -110,9 +110,7 @@
         function getAllProperties1($search='', $limit='',$offset='') {
             $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
             
-          //  $tables=array($this->property,'LEFT JOIN builders ON builders.name = '$this->property.builder_name);
-         //   $where = array($this->property.".status = '1'");
-       //  $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name'); its working on use 9-4-21
+         
        $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id');		
          $where=array("property.id");
          $where = array($this->property.".status = '1'");
@@ -128,8 +126,8 @@
          ## Get all Properties details front end View page
          function getAllPropertiesView($id, $search='', $limit='',$offset='') {
 
-            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type,properties_other.amenities,amenities.name as a_name');
-            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id LEFT JOIN properties_other ON properties_other.p_id = property.id LEFT JOIN amenities ON amenities.id = property.id ');		
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type,properties_other.amenities,amenities.name as a_name,favorite.user_name');
+            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id LEFT JOIN properties_other ON properties_other.p_id = property.id LEFT JOIN amenities ON amenities.id = property.id LEFT JOIN favorite ON favorite.p_id = property.id');		
             $where=array("property.id=".$id);
            // $where = array($this->property.".status = '1'");
         
@@ -335,5 +333,91 @@
             $result= $this->FetchAll($result1);
             return $result;
          }
+        
+        ## Add favroite in database
+		function addFavByValue($Array) 
+		{
+			$this->InsertData('favorite' , $Array );		
+			$insertId = $this->getLatestRecordId();
+
+            // $this->InsertData('notification' , $Array );		
+			// $insertId = $this->getLatestRecordId();
+			return $insertId;
+		}
+          ## Add favrote Notification in database
+		function sendNoti($Array) 
+		{
+			$this->InsertData('notification' , $Array );		
+			$insertId = $this->getLatestRecordId();
+			return $insertId;
+		}
+        ## Add favroite in database
+		function addGroup($Array) 
+		{
+			$this->InsertData('add_group' , $Array );		
+			$insertId = $this->getLatestRecordId();
+
+            $this->InsertData('notification' , $Array );		
+			$insertId = $this->getLatestRecordId();
+            
+			return $insertId;
+		}
+        ## 
+        function getAllUser($id, $search='', $limit='',$offset='') {
+           // echo $id ;
+         $fields=array('favorite.user_id,favorite.user_name,favorite.p_id,user_login.image');
+         $tables=array('favorite INNER JOIN user_login ON favorite.user_id = user_login.user_id');	
+         $where=array("favorite.p_id=".$id);
+         
+        //  $where = array($this->property.".status = '1'");
+        //     if($search != '') {
+        //         $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
+                
+        //     }
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array('favorite.user_id'), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;	
+            
+        //  echo '<pre>';   print_r($result); 
+        //     die();
+        }
+
+
+         ##drop dwon use get builders
+        //  public function chekuser($user_id, $p_id)
+        //  {
+        //      $fields=array('user_id','user_name','p_id');	//fetch fromdb
+        //      $tables=array('favorite');
+        //      $where = array(" status = '1'");	
+        //      $where = array(" user_id =".$user_id);	
+        //      $where = array(" p_id =".$p_id);	
+        //      $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+        //      $result= $this->FetchAll($result1);
+        //      return $result;	
+        //  }
+
+         function chekuser($user_id, $p_id) { 
+            $fields=array('user_id','user_name','p_id');	
+            $tables=array('favorite');
+            $where=array("(user_id='".$user_id."'  AND  p_id='".$p_id."')");		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
+         ## Get all user message details
+	   function getAllUserMessage($search='', $limit='',$offset='') 
+	   {
+		$fields=array('notification.*,user_login.*');
+	   	$tables=array('notification LEFT JOIN user_login ON notification.reciver = user_login.user_id');
+	   	$where = array("notification.reciver = '2'");
+       // $where = array("user_login.user_id = '2'"); // try this exp
+
+		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+		$result= $this->FetchAll($result1); 
+		return $result;		
+	}
+
+
+        
     }
 ?>
