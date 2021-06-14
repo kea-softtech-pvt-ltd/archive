@@ -99,7 +99,7 @@
                     
                     {* <a title="Add to favorite" href="favadd?id={$v['id']}"><i class="fa fa-heart" name="builderSave" type="submit"></i><button class="btn_1 medium" name="builderSave" type="submit">Update</button></a> *}
                      <a title="Add to favorite"><i class="fa fa-heart addToFav" data-id="{$v['id']}"  ></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope" onclick="addfav()"></i></a>
+                    <a href="single1?id={$v['id']}" title="Contact Agent"><i class="fa fa-envelope"></i></a>
                     <a href="single?id={$v['id']}" title="View page"><i class="fa fa-eye"></i></a>
                   </div>
                    
@@ -412,60 +412,7 @@
     </div>
     <!-- end:news -->
 
-    <!-- begin:subscribe -->
-    <div id="subscribe">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5 col-md-offset-2 col-sm-8 col-xs-12">
-            <h3>Get Newsletter Update</h3>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="input-group">
-              <input type="text" class="form-control input-lg" placeholder="Enter your mail">
-              <span class="input-group-btn">
-                <button class="btn btn-success btn-lg" type="submit"><i class="fa fa-envelope"></i></button>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:subscribe -->
 
-    <!-- begin:partner -->
-    <div id="partner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="heading-title bg-white">
-              <h2>Our Partnership</h2>
-            </div>
-          </div>
-        </div>
-        <!-- break -->
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="jcarousel-wrapper">
-              <div class="jcarousel">
-                <ul>
-                  <li><a href="#"><img src="{$siteroot}/mikha/img/img01.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="{$siteroot}/mikha/img/img02.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="{$siteroot}/mikha/img/img03.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="{$siteroot}/mikha/img/img04.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="{$siteroot}/mikha/img/img05.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="{$siteroot}/mikha/img/img06.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                </ul>
-              </div>
-              <a href="#" class="jcarousel-control-prev"><i class="fa fa-angle-left"></i></a>
-              <a href="#" class="jcarousel-control-next"><i class="fa fa-angle-right"></i></a>
-              <!-- <p class="jcarousel-pagination"></p> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:partner -->
 
     <!-- begin:footer link -->
       {include file='mikha/footer.tpl'}

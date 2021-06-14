@@ -146,6 +146,7 @@ RewriteRule    ^mikha/category?$   mikha/category.php
 RewriteRule    ^mikha/category_list?$   mikha/category_list.php
 RewriteRule    ^mikha/contact?$   mikha/contact.php
 RewriteRule    ^mikha/single?$   mikha/single.php
+RewriteRule    ^mikha/single1?$   mikha/single1.php
 RewriteRule    ^mikha/message?$   mikha/message.php
 RewriteRule    ^mikha/blog?$   mikha/blog.php
 RewriteRule    ^mikha/search?$   mikha/search.php
@@ -153,8 +154,12 @@ RewriteRule    ^mikha/search_list?$   mikha/search_list.php
 RewriteRule    ^mikha/blog_single?$   mikha/blog_single.php
 RewriteRule    ^mikha/about?$   mikha/about.php
 RewriteRule    ^mikha/footer?$   mikha/footer.php
+RewriteRule    ^mikha/header?$   mikha/header.php
 RewriteRule    ^mikha/logout?$   mikha/logout.php
 RewriteRule    ^mikha/favadd?$   mikha/favadd.php
+RewriteRule    ^mikha/chat?$   mikha/chat.php
+RewriteRule    ^mikha/asc?$    mikha/asc.php
+RewriteRule    ^mikha/messagedelte?$    mikha/messagedelte.php
 
 
 

@@ -27,8 +27,17 @@ if(isset($_POST['bannerSave']))
 		$bannerArray['status'] = 1;
 		
 		$bannerArray = $bannerObj->addBanner($bannerArray);
-		header("Location: " . SITE_URL . "/admin/banner");
+		header("Location: " . SITE_URL . "admin/banner");
 
 }
-	$smarty->display(ADMIN_TEMPLATEDIR . '/banner/add-banner.tpl');
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->display(ADMIN_TEMPLATEDIR . '/banner/add-banner.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+
+		}
 ?>

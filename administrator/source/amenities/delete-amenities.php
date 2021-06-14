@@ -5,5 +5,15 @@
     $amenitiesObj = new Model_Amenities();
 	$amenitiesArray['status'] = 0;
 	$builderuserArray = $amenitiesObj->deleteUserValueById($amenitiesArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "/admin/amenities");
+
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			header("Location: " . SITE_URL . "admin/amenities");
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+
+		}
 ?>

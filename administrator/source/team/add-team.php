@@ -28,18 +28,19 @@
 		$_SESSION['message_add_b']=$success;  // its use to session show message
 		unset($_SESSION['message_add_b']);
 	
-		header("Location: " . SITE_URL . "/admin/team");
+		header("Location: " . SITE_URL . "admin/team");
 	
 	}
 	
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
 
+	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
 	$smarty->assign('moduleName', 'Add team');
-
 	$smarty->display(ADMIN_TEMPLATEDIR . '/team/add-team.tpl');
-
 	}else{
-		header("Location: " . SITE_URL . "/admin/login");
+		header("Location: " . SITE_URL . "admin/login");
+	}
+
 	}
 
 

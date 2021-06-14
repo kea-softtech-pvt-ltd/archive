@@ -161,7 +161,7 @@
           </div>
           <div class="modal-footer">
             <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" name="login" class="btn btn-success btn-block btn-lg" value="Sign in">
+            <input type="submit" name="login" class="btn btn-success btn-block btn-lg" value="Sign in" />
           </div>
            </form>
         </div>
@@ -256,6 +256,10 @@
     <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/script.js"></script>
+
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/additional-methods.js"></script>
+    <script src="js/reservation.js"></script>
   </body>
 </html>
 

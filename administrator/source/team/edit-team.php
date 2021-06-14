@@ -28,11 +28,22 @@
 	
 		$teamId = $teamObj->editUserValueById($teamArray,$_POST['id']);
 		
-		header("Location: " . SITE_URL . "/admin/team");
+		header("Location: " . SITE_URL . "admin/team");
 	}
 
-	
-	$smarty->assign('moduleName', 'Edit team');
 
-	$smarty->display(ADMIN_TEMPLATEDIR . '/team/edit-team.tpl');
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
+
+	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			
+		$smarty->assign('moduleName', 'Edit team');
+
+		$smarty->display(ADMIN_TEMPLATEDIR . '/team/edit-team.tpl');
+
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+	
+		}
 ?>

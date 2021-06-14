@@ -14,7 +14,10 @@
 	$userListArray = $propertiesObj->getAllUser($_REQUEST['id']);
 	$smarty->assign('userListArray', $userListArray);
 
-	//print_r($userListArray);
+	$userGroupListArray = $propertiesObj->getAllUserGroupM($_REQUEST['id']);
+	$smarty->assign('userGroupListArray', $userGroupListArray);
+
+	//print_r($userGroupListArray);
 
 	$propertiesArray = $propertiesObj->getAllPropertiesView($_REQUEST['id']);
     $smarty->assign('propertiesArray', $propertiesArray);

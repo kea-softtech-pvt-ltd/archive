@@ -6,7 +6,14 @@
 
 	$wingArray = $wingObj->getUserNameByUserId($_REQUEST['id']);
 
-    $smarty->assign('wingArray', $wingArray);
+
+	if(isset($_SESSION['isLoggedIn'])){
 	
-	$smarty->display(ADMIN_TEMPLATEDIR . '/wing/view-wing.tpl');
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('wingArray', $wingArray);
+			$smarty->display(ADMIN_TEMPLATEDIR . '/wing/view-wing.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+		}
 ?>

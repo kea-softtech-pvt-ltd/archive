@@ -20,11 +20,14 @@
 $userObj = new Model_login();
 	
 if(isset($_POST['login'])) {
-	
-	$vali = $userObj->validationUser($_POST['email'],$_POST['password']);
-	
+	if($_POST['role'] == 'user')
+	{
+		$vali = $userObj->validationUser($_POST['email'],$_POST['password']);
+	}
 		$userId = $userObj->getUserValueByDetailsBuildernameAndPassword($_POST['email'],$_POST['password']);
+		
 		// echo '<pre>';print_r($builderId);die;
+		
 		if(count($userId) > 0) {
 			$_SESSION['isLoggedIn'] = true;
 			$_SESSION['user_id'] 	= $userId['user_id'];

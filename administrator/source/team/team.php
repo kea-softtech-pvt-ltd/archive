@@ -8,13 +8,19 @@
 
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
 
+	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
 	$smarty->assign('teamListArray', $teamListArray);
 	$smarty->assign('moduleName', 'List of team');
-
 	$smarty->display(ADMIN_TEMPLATEDIR . '/team/team.tpl');
 	}else{
-		header("Location: " . SITE_URL . "admin/login");
+	$smarty->assign('moduleName', 'login');
+	header("Location: " . SITE_URL . "admin/login");
 	}
+
+	}
+	 //else{
+	// 	header("Location: " . SITE_URL . "admin/login");
+	// }
 	//echo $_REQUEST['message'];
 
 ?>

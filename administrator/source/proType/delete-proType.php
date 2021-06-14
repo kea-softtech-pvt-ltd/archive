@@ -5,5 +5,13 @@
     $proTypeObj = new Model_ProType();
 	$proTypeArray['status'] = 0;
 	$builderuserArray = $proTypeObj->deleteProTypeId($proTypeArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "/admin/proType");
+
+	if(isset($_SESSION['isLoggedIn'])){
+	
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			header("Location: " . SITE_URL . "admin/proType");
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+		}
 ?>

@@ -28,14 +28,14 @@
               {foreach from=$userMessage key=k item=v}
 				<tr>
                     <td><img src="img/{$v['image']}" style="width: 50px;border-radius: 100px;height: 50px;"></td>
-                    <td>{$v['n_id']}</td>
+                    <td>{$v['n_id']} {$v['reciver']}</td>
                     <td>{$v['username']}</td>
                     <td>Send a fraind requiest</td>
 				    <td class="text-right">
                         <div class="dropdown dropdown-action">
-                          
-                          <button type="button" class="btn btn-success"><i class="fa fa-check-triangle m-r-5"></i> Accept</button>
-                          <button type="button" class="btn btn-danger"><i class="fa fa-check-times m-r-5"></i> Reject</button>
+                          {* <a href="{$frontendroot}/asc?id={$v['n_id']}" class="fa fa-check-triangle m-r-5"> Cancel</a> *}
+                          <button type="button" class="btn btn-success"><i class="fa fa-check-triangle m-r-5"></i><a href="{$frontendroot}/asc?id={$v['n_id']} || {$v['reciver']} " style="color:#f7f4f4"> Accept </a></button>
+                          <button type="button" class="btn btn-danger"  ><i class="fa fa-check-times m-r-5" ></i><a href="{$frontendroot}/messagedelte?id={$v['n_id']}" style="color:#f7f4f4"> Reject</a></button>
                         </div>
 				    </td>
 				</tr>

@@ -5,5 +5,18 @@
     $propertiesObj = new Model_Property();
 	$propertiesArray['status'] = 0;
 	$propertiesArray = $propertiesObj->deleteUserValueById($propertiesArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "/admin/properties");
+	
+
+	if(isset($_SESSION['isLoggedIn'])){
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			header("Location: " . SITE_URL . "admin/properties");
+		}else{
+			$smarty->assign('moduleName', 'login');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/login/login.tpl');
+		}
+	
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 ?>

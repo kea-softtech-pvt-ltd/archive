@@ -6,7 +6,17 @@
 
 	$bannerArray = $bannerObj->getUserNameByUserId($_REQUEST['id']);
 
-    $smarty->assign('bannerArray', $bannerArray);
+   
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('bannerArray', $bannerArray);
 	
-	$smarty->display(ADMIN_TEMPLATEDIR . '/banner/view-banner.tpl');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/banner/view-banner.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+
+		}
 ?>

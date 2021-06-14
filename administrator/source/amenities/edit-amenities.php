@@ -38,7 +38,17 @@
 		
 		$amenitiesId = $amenitiesObj->editUserValueById($amenitiesArray,$_POST['id']);
 
-		header("Location: " . SITE_URL . "/admin/amenities");
+		header("Location: " . SITE_URL . "admin/amenities");
 	}
-	$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/edit-amenities.tpl');
+	
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/edit-amenities.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+
+		}
 ?>

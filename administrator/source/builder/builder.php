@@ -16,11 +16,16 @@
 	// $smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
 
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+
+	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
 	$smarty->assign('builderListArray', $builderListArray);
 	$smarty->assign('moduleName', 'List of builder');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
 	}else{
 		header("Location: " . SITE_URL . "admin/login");
+	}
+
 	}
 	//echo $_REQUEST['message'];
 

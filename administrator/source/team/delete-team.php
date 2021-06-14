@@ -5,5 +5,17 @@
     $teamObj = new Model_Team();
 	$teamArray['status'] = 0;
 	$teamuserArray = $teamObj->deleteUserValueById($teamArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "/admin/team");
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+				
+			header("Location: " . SITE_URL . "admin/team");
+
+			
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		
+			}
 ?>

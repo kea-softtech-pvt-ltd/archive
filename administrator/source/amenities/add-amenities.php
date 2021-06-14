@@ -54,8 +54,17 @@ if(isset($_POST['amenitiesSave']))
 		$amenitiesArray['status'] = 1;
 		
 		$amenitiesArray = $amenitiesObj->addAmenitiesByValue($amenitiesArray);
-		header("Location: " . SITE_URL . "/admin/amenities");
+		header("Location: " . SITE_URL . "admin/amenities");
   }
 }
-	$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/add-amenities.tpl');
+	
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->display(ADMIN_TEMPLATEDIR . '/amenities/add-amenities.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+
+		}
 ?>

@@ -15,8 +15,16 @@
 		$countryArray['created_date'] = date('Y/m/d H:i:s');
 		$countryArray['status'] = 1;
 		$countryId = $countryObj->editCountry($countryArray,$_POST['c_id']);
-		header("Location: " . SITE_URL . "/admin/country");
+		header("Location: " . SITE_URL . "admin/country");
 	}
-	$smarty->assign('moduleName', 'Add country');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/country/edit-country.tpl');
+	
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('moduleName', 'Add country');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/country/edit-country.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 ?>

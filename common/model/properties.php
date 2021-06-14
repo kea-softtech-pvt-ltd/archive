@@ -366,9 +366,10 @@
         function getAllUser($id, $search='', $limit='',$offset='') {
            // echo $id ;
          $fields=array('favorite.user_id,favorite.user_name,favorite.p_id,user_login.image');
-         $tables=array('favorite INNER JOIN user_login ON favorite.user_id = user_login.user_id');	
-         $where=array("favorite.p_id=".$id);
-         
+         $tables=array('favorite INNER JOIN user_login ON favorite.user_id = user_login.user_id LEFT JOIN notification ON notification.sender = user_login.user_id or notification.reciver = user_login.user_id');	
+         $where=array("favorite.p_id='".$id."' AND favorite.status='1' AND favorite.requestGroup= '0'");
+
+        // $where=array("notification.requestGroup= '0'");
         //  $where = array($this->property.".status = '1'");
         //     if($search != '') {
         //         $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
@@ -404,19 +405,59 @@
             $result= $this->FetchRow($result1); 
             return $result;		
         }
+        #chek user in group sender 
+        function chekuserGroup($user_id, $p_id) { 
+            $fields=array('sender','reciver','p_id','a_id');	
+            $tables=array('add_group');
+            $where=array("(sender='".$user_id."'  AND  reciver='".$p_id."')");		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
          ## Get all user message details
 	   function getAllUserMessage($search='', $limit='',$offset='') 
 	   {
 		$fields=array('notification.*,user_login.*');
-	   	$tables=array('notification LEFT JOIN user_login ON notification.reciver = user_login.user_id');
-	   	$where = array("notification.reciver = '2'");
+	   	$tables=array('notification LEFT JOIN user_login ON notification.sender = user_login.user_id');
+	   	$where = array("notification.reciver = '".$_SESSION['user_id']."' AND notification.status='1' AND notification.requestGroup='0'");
        // $where = array("user_login.user_id = '2'"); // try this exp
-
+        
+    //    if ($_SESSION['role']=='4'){
+    //     $where=array('user_id='.$_SESSION['user_id']);
+    //     } 
 		$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
 		$result= $this->FetchAll($result1); 
 		return $result;		
 	}
 
+   
+    // # it use message update
+    function deleteUserValueByIdesc($array, $Id){
+     $this->UpdateData('notification',$array,'n_id',$Id,0);
+     $this->UpdateData('favorite',$array,'f_id',$Id,0); // its use in property seen
+        echo $Id; 
+     }
+
+     // # it use user message delte
+    function deleteUserMessage($array, $Id){
+        $this->UpdateData('notification',$array,'n_id',$Id,0);
+           echo $Id; 
+        }
+
+    // assept requiest user group 
+
+    function getAllUserGroupM($id, $search='', $limit='',$offset='') {
+        // echo $id ;
+      $fields=array('notification.reciver,notification.p_id,notification.sender,user_login.image,user_login.username');
+      $tables=array('notification INNER JOIN user_login ON notification.reciver = user_login.user_id or notification.sender = user_login.user_id');	
+      $where=array("notification.p_id='".$id."' AND notification.status='1' AND notification.requestGroup='1'");
+     // $where = array("notification.reciver = '".$_SESSION['user_id']."' AND notification.status='1'");
+
+         $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array('user_login.user_id'), $limit,$offset,0);
+         $result= $this->FetchAll($result1); 
+         return $result;	
+         
+     }
 
         
     }

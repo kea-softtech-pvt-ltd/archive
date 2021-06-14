@@ -9,11 +9,13 @@
 	$smarty->assign('propertiesListArray', $propertiesListArray);
 
 
-    $userMessage = $propertiesObj->getAllUserMessage();
+    $userMessage = $propertiesObj->getAllUserMessage($_SESSION['user_id']);
 
 	$smarty->assign('userMessage', $userMessage);
 
-	// print_r($userMessage);
+
+
+	 //print_r($userMessage);
 
 	$smarty->assign('moduleName', 'List of message');
 	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/message.tpl');	

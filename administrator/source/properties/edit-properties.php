@@ -95,28 +95,41 @@
 			
 		}
 
-		header("Location: " . SITE_URL . "/admin/properties");
+		header("Location: " . SITE_URL . "admin/properties");
 	}
 
-	$amenitiesListArray = $builderObj->getAmenities();
-	$smarty->assign('amenitiesListArray', $amenitiesListArray);
-
-	$builderListArray = $builderObj->getBuilders();
-	$smarty->assign('builderListArray', $builderListArray);
-
-	$unitsTypeListArray = $builderObj->getUnitsType();
-	$smarty->assign('unitsTypeListArray', $unitsTypeListArray);
-
-	$proTypeListArray = $builderObj->getProType();
-	$smarty->assign('proTypeListArray', $proTypeListArray);
 	
-	$neighbourhoodListArray = $builderObj->getNeighbourhoods();
-	$smarty->assign('neighbourhoodListArray', $neighbourhoodListArray);
 
-	$statesListArray = $builderObj->getWing();
-	$smarty->assign('statesListArray', $statesListArray);
-
-	$smarty->assign('moduleName', 'Add properties');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/edit-properties.tpl');
+	if(isset($_SESSION['isLoggedIn'])){
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$amenitiesListArray = $builderObj->getAmenities();
+			$smarty->assign('amenitiesListArray', $amenitiesListArray);
+		
+			$builderListArray = $builderObj->getBuilders();
+			$smarty->assign('builderListArray', $builderListArray);
+		
+			$unitsTypeListArray = $builderObj->getUnitsType();
+			$smarty->assign('unitsTypeListArray', $unitsTypeListArray);
+		
+			$proTypeListArray = $builderObj->getProType();
+			$smarty->assign('proTypeListArray', $proTypeListArray);
+			
+			$neighbourhoodListArray = $builderObj->getNeighbourhoods();
+			$smarty->assign('neighbourhoodListArray', $neighbourhoodListArray);
+		
+			$statesListArray = $builderObj->getWing();
+			$smarty->assign('statesListArray', $statesListArray);
+		
+			$smarty->assign('moduleName', 'Add properties');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/properties/edit-properties.tpl');
+		}else{
+			$smarty->assign('moduleName', 'login');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/login/login.tpl');
+		}
+	
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 	
 ?>

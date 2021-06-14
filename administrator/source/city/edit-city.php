@@ -19,10 +19,19 @@
 		$cityArray['status'] = 1;
 		$builderId = $cityObj->editCity($cityArray,$_POST['id']);
 
-		header("Location: " . SITE_URL . "/admin/city");
+		header("Location: " . SITE_URL . "admin/city");
 	}
-	$statesListArray = $cityObj->getStates();
-	$smarty->assign('statesListArray', $statesListArray);
-	$smarty->assign('moduleName', 'Add city');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/city/edit-city.tpl');
+
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+		$statesListArray = $cityObj->getStates();
+		$smarty->assign('statesListArray', $statesListArray);
+		$smarty->assign('moduleName', 'Add city');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/city/edit-city.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+	}
 ?>

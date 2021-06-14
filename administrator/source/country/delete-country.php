@@ -5,5 +5,14 @@
     $countryObj = new Model_Country();
 	$countryArray['status'] = 0;
 	$countryuserArray = $countryObj->deleteCountry($countryArray,$_REQUEST['c_id']);
-	header("Location: " . SITE_URL . "/admin/country");
+	
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			header("Location: " . SITE_URL . "admin/country");
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 ?>

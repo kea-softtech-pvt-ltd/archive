@@ -62,8 +62,11 @@
             }
         }
         if(isset($_SESSION['isLoggedIn'])){
+            if($_SESSION['role']== 4) {
+                header("Location: " . SITE_URL . "mikha/category"); 
+            }
         //	header("Location: " . SITE_URL . "/admin/dashboard1");
-         header("Location: " . SITE_URL . "mikha/category"); 
+         
         }else{
             $smarty->assign('moduleName', 'login');
             $smarty->display(FRONT_TEMPLATEDIR . '/mikha/home.tpl');

@@ -13,8 +13,17 @@ if(isset($_POST['typeSave']))
 		$neighbourhoodsArray['status'] = 1;
 		
 		$neighbourhoodsArray = $neighbourhoodsObj->addNeighbourhoods($neighbourhoodsArray);
-		header("Location: " . SITE_URL . "/admin/neighbourhoods");
+		header("Location: " . SITE_URL . "admin/neighbourhoods");
   
 }
-	$smarty->display(ADMIN_TEMPLATEDIR . '/neighbourhoods/add-neighbourhoods.tpl');
+	
+	if(isset($_SESSION['isLoggedIn'])){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->display(ADMIN_TEMPLATEDIR . '/neighbourhoods/add-neighbourhoods.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+		
+		}
 ?>

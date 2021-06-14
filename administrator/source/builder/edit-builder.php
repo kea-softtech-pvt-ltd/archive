@@ -37,14 +37,23 @@
 		$builderId = $builderObj->editUserValueById($builderArray,$_POST['id']);
 		//	$builderArray['m_con'] = implode(',',$_POST['m_contact']) ; its use multiple contact add use this
 
-		header("Location: " . SITE_URL . "/admin/builder");
+		header("Location: " . SITE_URL . "admin/builder");
 	}
 
-	$citiesListArray = $builderObj->getCities();
-	$smarty->assign('citiesListArray', $citiesListArray);
-	$statesListArray = $builderObj->getStates();
-	$smarty->assign('statesListArray', $statesListArray);
-	$smarty->assign('moduleName', 'Add builder');
 
-	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/edit-builder.tpl');
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
+	
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$citiesListArray = $builderObj->getCities();
+			$smarty->assign('citiesListArray', $citiesListArray);
+			$statesListArray = $builderObj->getStates();
+			$smarty->assign('statesListArray', $statesListArray);
+			$smarty->assign('moduleName', 'Add builder');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/builder/edit-builder.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+	
+		}
 ?>

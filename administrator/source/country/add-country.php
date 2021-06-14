@@ -12,9 +12,12 @@
 		header("Location: " . SITE_URL . "/admin/country");
 	}
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
-	$smarty->assign('moduleName', 'Add country');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/country/add-country.tpl');
-	}else{
-		header("Location: " . SITE_URL . "/admin/login");
-	}
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('moduleName', 'Add country');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/country/add-country.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 ?>

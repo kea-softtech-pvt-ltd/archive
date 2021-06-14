@@ -17,10 +17,19 @@
 		$statesArray['status'] = 1;
 		$stateId = $stateObj->editState($statesArray,$_POST['s_id']);
 
-		header("Location: " . SITE_URL . "/admin/state");
+		header("Location: " . SITE_URL . "admin/state");
 	}
-	$countryListArray = $stateObj->getCountry();
+	
+
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$countryListArray = $stateObj->getCountry();
 	$smarty->assign('countryListArray', $countryListArray);
 	$smarty->assign('moduleName', 'Add state');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/state/edit-state.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 ?>

@@ -6,12 +6,15 @@
 	$stateListArray = $stateObj->getAllStates();
 
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
-	$smarty->assign('stateListArray', $stateListArray);
-	$smarty->assign('moduleName', 'List of city');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/state/state.tpl');
-	}else{
-		header("Location: " . SITE_URL . "/admin/login");
-	}
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('stateListArray', $stateListArray);
+			$smarty->assign('moduleName', 'List of city');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/state/state.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 	
 
 ?>

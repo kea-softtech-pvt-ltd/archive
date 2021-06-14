@@ -42,22 +42,27 @@
 		// echo $_SESSION['message_add_b'];die;
 		unset($_SESSION['message_add_b']);
 	
-		header("Location: " . SITE_URL . "/admin/builder");
+		header("Location: " . SITE_URL . "admin/builder");
 	
 	}
 	
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){	
-	$citiesListArray = $builderObj->getCities();
-	$smarty->assign('citiesListArray', $citiesListArray);
-	$statesListArray = $builderObj->getStates();
-	$smarty->assign('statesListArray', $statesListArray);
-	$smarty->assign('moduleName', 'Add builder');
+	
+	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+		$citiesListArray = $builderObj->getCities();
+		$smarty->assign('citiesListArray', $citiesListArray);
+		$statesListArray = $builderObj->getStates();
+		$smarty->assign('statesListArray', $statesListArray);
+		$smarty->assign('moduleName', 'Add builder');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/builder/add-builder.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
 
-	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/add-builder.tpl');
-
-	}else{
-		header("Location: " . SITE_URL . "/admin/login");
 	}
+	// else{
+	// 	header("Location: " . SITE_URL . "/admin/login");
+	// }
 
 	// function smarty_function_set_flash($params, $smarty) 
 	// {

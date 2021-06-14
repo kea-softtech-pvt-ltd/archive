@@ -12,8 +12,16 @@ if(isset($_POST['typeSave']))
 		$proTypeArray['status'] = 1;
 		
 		$proTypeArray = $proTypeObj->addProTypeByValue($proTypeArray);
-		header("Location: " . SITE_URL . "/admin/proType");
+		header("Location: " . SITE_URL . "admin/proType");
 
 }
-	$smarty->display(ADMIN_TEMPLATEDIR . '/proType/add-proType.tpl');
+	
+	if(isset($_SESSION['isLoggedIn'])){
+	
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->display(ADMIN_TEMPLATEDIR . '/proType/add-proType.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+		}
 ?>

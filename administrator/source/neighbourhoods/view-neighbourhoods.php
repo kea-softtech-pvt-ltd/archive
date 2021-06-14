@@ -6,7 +6,16 @@
 
 	$neighbourhoodsArray = $neighbourhoodsObj->getUserNameByUserId($_REQUEST['id']);
 
-    $smarty->assign('neighbourhoodsArray', $neighbourhoodsArray);
-	
-	$smarty->display(ADMIN_TEMPLATEDIR . '/neighbourhoods/view-neighbourhoods.tpl');
+    
+
+	if(isset($_SESSION['isLoggedIn'])){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('neighbourhoodsArray', $neighbourhoodsArray);
+			$smarty->display(ADMIN_TEMPLATEDIR . '/neighbourhoods/view-neighbourhoods.tpl');
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+		
+		}
 ?>

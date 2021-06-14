@@ -10,14 +10,19 @@
 		$stateArray['created_date'] = date('Y/m/d H:i:s');
 		$stateArray['status'] = 1;
 		$stateId = $stateObj->addState($stateArray);
-		header("Location: " . SITE_URL . "/admin/state");
+		header("Location: " . SITE_URL . "admin/state");
 	}
+
+
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
-	$countryListArray = $stateObj->getCountry();
-	$smarty->assign('countryListArray', $countryListArray);
-	$smarty->assign('moduleName', 'Add city');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/state/add-state.tpl');
-	}else{
-		header("Location: " . SITE_URL . "/admin/login");
-	}
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$countryListArray = $stateObj->getCountry();
+			$smarty->assign('countryListArray', $countryListArray);
+			$smarty->assign('moduleName', 'Add city');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/state/add-state.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 ?>

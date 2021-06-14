@@ -11,9 +11,11 @@ if($_REQUEST['action']=="addGroups")
 	$contactArray['sender'] = $_SESSION['user_id'];
 	$contactArray['reciver'] = $_POST['pro_uid'];
 	
-	
+	$result1 = $contactObj->chekuserGroup($_SESSION['user_id'],$_POST['pro_uid']);
+	if(!empty($result1)== 0){
+		
 	$result = $contactObj->addGroup($contactArray);
-	
+
 	if($result)
 
 	{	
@@ -35,6 +37,7 @@ if($_REQUEST['action']=="addGroups")
 
 	}
 	echo json_encode($response);
+}
 }
 
 if($_REQUEST['action']=="sendNotification")

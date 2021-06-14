@@ -39,7 +39,13 @@
 		}
 	}
 	if(isset($_SESSION['isLoggedIn'])){
-		header("Location: " . SITE_URL . "admin/dashboard");
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			header("Location: " . SITE_URL . "admin/dashboard");
+		}else{
+			$smarty->assign('moduleName', 'login');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/login/login.tpl');
+		}
+		//header("Location: " . SITE_URL . "admin/dashboard");
 	}else{
 		$smarty->assign('moduleName', 'login');
 		$smarty->display(ADMIN_TEMPLATEDIR . '/login/login.tpl');

@@ -72,26 +72,39 @@
 
 	}
 	
-	$statesListArray = $builderObj->getWing();
-	$smarty->assign('statesListArray', $statesListArray);
 
-	$amenitiesListArray = $builderObj->getAmenities();
-	$smarty->assign('amenitiesListArray', $amenitiesListArray);
 
-	$builderListArray = $builderObj->getBuilders();
-	$smarty->assign('builderListArray', $builderListArray);
-
-	$neighbourhoodListArray = $builderObj->getNeighbourhoods();
-	$smarty->assign('neighbourhoodListArray', $neighbourhoodListArray);
-
-	$unitsTypeListArray = $builderObj->getUnitsType();
-	$smarty->assign('unitsTypeListArray', $unitsTypeListArray);
-
-	$proTypeListArray = $builderObj->getProType();
-	$smarty->assign('proTypeListArray', $proTypeListArray);
-
-	$smarty->assign('moduleName', 'Add properties');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/add-properties.tpl'); // its work 
+	if(isset($_SESSION['isLoggedIn'])){
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$statesListArray = $builderObj->getWing();
+			$smarty->assign('statesListArray', $statesListArray);
+		
+			$amenitiesListArray = $builderObj->getAmenities();
+			$smarty->assign('amenitiesListArray', $amenitiesListArray);
+		
+			$builderListArray = $builderObj->getBuilders();
+			$smarty->assign('builderListArray', $builderListArray);
+		
+			$neighbourhoodListArray = $builderObj->getNeighbourhoods();
+			$smarty->assign('neighbourhoodListArray', $neighbourhoodListArray);
+		
+			$unitsTypeListArray = $builderObj->getUnitsType();
+			$smarty->assign('unitsTypeListArray', $unitsTypeListArray);
+		
+			$proTypeListArray = $builderObj->getProType();
+			$smarty->assign('proTypeListArray', $proTypeListArray);
+		
+			$smarty->assign('moduleName', 'Add properties');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/properties/add-properties.tpl'); // its work 
+		}else{
+			$smarty->assign('moduleName', 'login');
+		$smarty->display(ADMIN_TEMPLATEDIR . '/login/login.tpl');
+		}
+	
+	
+	}else{
+		header("Location: " . SITE_URL . "admin/login");
+	}
 
 //	$smarty->display(ADMIN_TEMPLATEDIR . '/properties/test-properties.tpl');
 	

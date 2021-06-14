@@ -6,12 +6,15 @@
 	$countryListArray = $countryObj->getAllCountry();
 
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
-	$smarty->assign('countryListArray', $countryListArray);
-	$smarty->assign('moduleName', 'List of country');
-	$smarty->display(ADMIN_TEMPLATEDIR . '/country/country.tpl');
-	}else{
-		header("Location: " . SITE_URL . "/admin/login");
-	}
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			$smarty->assign('countryListArray', $countryListArray);
+			$smarty->assign('moduleName', 'List of country');
+			$smarty->display(ADMIN_TEMPLATEDIR . '/country/country.tpl');
+			}else{
+				header("Location: " . SITE_URL . "admin/login");
+			}
+		}
 	
 
 ?>

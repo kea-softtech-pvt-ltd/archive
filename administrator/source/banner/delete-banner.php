@@ -5,5 +5,15 @@
     $bannerObj = new Model_Banner();
 	$bannerArray['status'] = 0;
 	$bannerArray = $bannerObj->deleteUserValueById($bannerArray,$_REQUEST['id']);
-	header("Location: " . SITE_URL . "/admin/banner");
+	
+	
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
+
+		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
+			header("Location: " . SITE_URL . "admin/banner");
+		}else{
+			header("Location: " . SITE_URL . "admin/login");
+		}
+
+		}
 ?>
