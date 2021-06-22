@@ -13,8 +13,10 @@
 
 	$userListArray = $propertiesObj->getAllUser($_REQUEST['id']);
 	$smarty->assign('userListArray', $userListArray);
+	
+	// show to asscepte group reques user show hear.
 
-	$userGroupListArray = $propertiesObj->getAllUserGroupM($_REQUEST['id']);
+	$userGroupListArray = $propertiesObj->getAllUserGroupAccept($_REQUEST['id']);
 	$smarty->assign('userGroupListArray', $userGroupListArray);
 
 	//print_r($userGroupListArray);

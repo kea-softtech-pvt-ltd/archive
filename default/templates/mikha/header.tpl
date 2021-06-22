@@ -101,7 +101,7 @@
               </ul>     
             </li>
             {* {$userMessage} *}
-            <li><a style="color:#ffffff" href="message"><span>4</span> <b><i class="	fa fa-envelope"> </i></b></a></li>
+            <li><a style="color:#ffffff" href="message"><span>4  </span> <b><i class="	fa fa-envelope"> </i></b></a></li>
             {* <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li> *}
             {if ($smarty.session.role == 4)}
              <li><a style="color:#ffffff"><b><i class="	fa fa-dot-circle-o text-success"></i></b> {$smarty.session.username}</a></li>

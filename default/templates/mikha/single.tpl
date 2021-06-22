@@ -220,7 +220,13 @@
                               <div class="jcarousel">
                                 <ul>
                                 {foreach from=$userListArray key=k item=v}
-                                  <li class="addGroup" data-id="{$v['p_id']}" data-user_id="{$v['user_id']}" ><a href="#">{$v['user_name']} <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><button type="button" class="btn btn-success btn-block">Add Group</button></li>
+                                  <li class="addGroup" data-id="{$v['p_id']}" data-user_id="{$v['user_id']}" ><a href="#">{$v['user_name']} <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a>
+                                   {if ($smarty.session.user_id != $v['user_id'])}
+                                   <button type="button" class="btn btn-success btn-block">Add Group</button>
+                                   {elseif ($smarty.session.user_id == $v['user_id'])}
+                                    <div style="height: 34px;background-color: #6f9a37;"></div>
+                                   {/if}
+                                  </li>
                                 {/foreach}
                             </ul>
                           </div>
@@ -243,14 +249,17 @@
             </div>
           </div>
         </div>
-                      <div class="row">
+            <div class="row">
           <div class="col-md-12">
             <div class="jcarousel-wrapper">
               <div class="jcarousel">
                 <ul>
                    {foreach from=$userGroupListArray key=k item=v}
-                  {* {$v['sender']} *}
-                  <li><a href="#"> {$v['username']}<img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><a href="chat"><button type="button" class="btn btn-success btn-block"><i class="fa fa-envelope"></i></button></a></li>
+
+                  <li><a href="#"> {$v['username']}<img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><a href="chat?id={$v['user_id']}">
+                   {if ($smarty.session.user_id != $v['user_id'])}
+                  <button type="button" class="btn btn-success btn-block"><i class="fa fa-envelope"></i></button></a></li>
+                  {/if}
                   {/foreach}
                  
                 </ul>

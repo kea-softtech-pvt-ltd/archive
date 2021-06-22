@@ -5,7 +5,9 @@
 	$propertiesObj = new Model_Property();
 
 	$userArray['requestGroup'] = 1;
-	$builderuserArray = $propertiesObj->deleteUserValueByIdesc($userArray,$_REQUEST['id']);
+	//$userArray['reciver'] = 1;
+	$builderuserArray = $propertiesObj->JoinPropertyGroup($userArray,$_REQUEST['id']);
+	$builderuserArray = $propertiesObj->JoinPropertyGroup($userArray,$_REQUEST['rid']);
 	header("Location: " . SITE_URL . "mikha/message.php");	
 	
 ?>

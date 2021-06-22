@@ -420,7 +420,8 @@
 		$fields=array('notification.*,user_login.*');
 	   	$tables=array('notification LEFT JOIN user_login ON notification.sender = user_login.user_id');
 	   	$where = array("notification.reciver = '".$_SESSION['user_id']."' AND notification.status='1' AND notification.requestGroup='0'");
-       // $where = array("user_login.user_id = '2'"); // try this exp
+       // $where = array("notification.reciver = notification.sender");
+           // $where = array("user_login.user_id = '2'"); // try this exp
         
     //    if ($_SESSION['role']=='4'){
     //     $where=array('user_id='.$_SESSION['user_id']);
@@ -432,10 +433,12 @@
 
    
     // # it use message update
-    function deleteUserValueByIdesc($array, $Id){
+    function JoinPropertyGroup($array, $Id){
+
      $this->UpdateData('notification',$array,'n_id',$Id,0);
+
      $this->UpdateData('favorite',$array,'f_id',$Id,0); // its use in property seen
-        echo $Id; 
+      //  echo $Id; 
      }
 
      // # it use user message delte
@@ -444,11 +447,11 @@
            echo $Id; 
         }
 
-    // assept requiest user group 
+     // accept requiest user group that propert show on single.php page  
 
-    function getAllUserGroupM($id, $search='', $limit='',$offset='') {
+    function getAllUserGroupAccept($id, $search='', $limit='',$offset='') {
         // echo $id ;
-      $fields=array('notification.reciver,notification.p_id,notification.sender,user_login.image,user_login.username');
+      $fields=array('notification.reciver,notification.p_id,notification.sender,user_login.image,user_login.username,user_login.user_id');
       $tables=array('notification INNER JOIN user_login ON notification.reciver = user_login.user_id or notification.sender = user_login.user_id');	
       $where=array("notification.p_id='".$id."' AND notification.status='1' AND notification.requestGroup='1'");
      // $where = array("notification.reciver = '".$_SESSION['user_id']."' AND notification.status='1'");
@@ -458,6 +461,39 @@
          return $result;	
          
      }
+
+          ## Get all Properties user in chat  details front end View page chat.php page
+          function getUserForChat($id, $search='', $limit='',$offset='') {
+            $fields=array('user_login.*,user_chat.*');
+            $tables=array('user_login LEFT JOIN user_chat ON user_login.user_id = user_chat.sender');		
+            $where=array("user_login.user_id=".$id);
+        
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
+
+            ## chat user two user message show in message 
+            function getUserChatMessage($search='', $limit='',$offset='') {
+            $fields=array('user_chat.*,user_login.*');
+             $tables=array('user_chat INNER JOIN user_login ON user_chat.reciver = user_login.user_id');		
+             $where=array("user_chat.sender = '".$_SESSION['user_id']."'");
+                 
+                $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), 0,0);
+                $result= $this->FetchAll($result1); 
+                return $result;		
+            }
+
+             ## Get all Properties user in chat  details front end View page chat.php page
+          function getUserForChat1($id, $search='', $limit='',$offset='') {
+            $fields=array('user_login.*,user_chat.*');
+            $tables=array('user_login LEFT JOIN user_chat ON user_login.user_id = user_chat.sender');		
+            $where=array("user_login.user_id=".$id);
+        
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('user_chat.created_date'), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
 
         
     }

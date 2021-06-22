@@ -119,6 +119,7 @@ RewriteRule    ^builder/login?$    administrator/source/builder/login.php
 RewriteRule    ^admin/ajaxbuilder?$    administrator/ajax/ajax_food.php
 RewriteRule    ^admin/ajaxproperties?$    administrator/ajax/ajax_properties.php
 RewriteRule    ^admin/ajaxcontact?$    administrator/ajax/ajax_contact.php
+RewriteRule    ^admin/ajaxchat?$    administrator/ajax/ajax_chat.php
 RewriteRule    ^admin/ajaxEditproperties?$    administrator/ajax/ajax_editProperties.php
 RewriteRule    ^admin/ajaxuser?$    administrator/ajax/ajax_user.php
 RewriteRule    ^admin/ajaxFavorite?$    administrator/ajax/ajax_favorite.php

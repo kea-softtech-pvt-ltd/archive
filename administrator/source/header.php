@@ -2,7 +2,7 @@
     if($_SESSION['isLoggedIn']) {
 		header("Location: " . SITE_URL . "/admin/dashboard");
 	} else {
-		echo "php else";
+		//echo "php else";
 		header("Location: " . SITE_URL . "/admin/login");
 	}
 ?>

@@ -50,6 +50,14 @@ class Model_Contact extends Database
 		// 	return $insertId;
 		// }
 
+	## Add Properties in database
+	function addChatByValue($Array) 
+	{
+		$this->InsertData('user_chat' , $Array );		
+		$insertId = $this->getLatestRecordId();
+		return $insertId;
+	}
+
 	
 	
 }
