@@ -474,16 +474,50 @@
         }
 
             ## chat user two user message show in message 
-            function getUserChatMessage($search='', $limit='',$offset='') {
-            $fields=array('user_chat.*,user_login.*');
-             $tables=array('user_chat INNER JOIN user_login ON user_chat.reciver = user_login.user_id');		
-             $where=array("user_chat.sender = '".$_SESSION['user_id']."'");
+            // function getUserChatMessage($search='', $limit='',$offset='') {
+            // $fields=array('user_chat.*,user_login.*');
+            //  $tables=array('user_chat INNER JOIN user_login ON user_chat.reciver = user_login.user_id');		
+            //  $where=array("user_chat.sender = '".$_SESSION['user_id']."'");
+                 
+            //     $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), 0,0);
+            //     $result= $this->FetchAll($result1); 
+            //     return $result;		
+            // }
+
+            function getUserChatMessageNew($from_user_id, $to_user_id) {
+               
+                    $fields=array('user_chat.*');
+                    $tables=array('user_chat');		
+                    $where=array("(sender = '".$from_user_id."' 
+                    AND reciver = '".$to_user_id."') 
+                    OR (sender = '".$to_user_id."' 
+                    AND reciver = '".$from_user_id."') ");
+                     
+                    $result1 = $this->SelectData($fields,$tables, $where, $order = array("created_date ASC"), $group=array(), 0,0);
+                    $result= $this->FetchAll($result1); 
+                    return $result;		
+                }
+            function getUserGroupChatMessageNew() {
+               
+                    $fields=array('user_chat.*');
+                    $tables=array('user_chat');		
+                    $where=array("reciver = '0'");
+                     
+                    $result1 = $this->SelectData($fields,$tables, $where, $order = array("created_date ASC"), $group=array(), 0,0);
+                    $result= $this->FetchAll($result1); 
+                    return $result;		
+                }
+
+            public function get_user_name($user_id)
+            {
+                $fields=array('user_login.username');
+                $tables=array('user_login');		
+                $where=array("user_login.user_id = $user_id");
                  
                 $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), 0,0);
-                $result= $this->FetchAll($result1); 
-                return $result;		
+                $result= $this->FetchRow($result1); 
+                return $result;
             }
-
              ## Get all Properties user in chat  details front end View page chat.php page
           function getUserForChat1($id, $search='', $limit='',$offset='') {
             $fields=array('user_login.*,user_chat.*');
@@ -491,6 +525,39 @@
             $where=array("user_login.user_id=".$id);
         
             $result1 = $this->SelectData($fields,$tables, $where, $order = array('user_chat.created_date'), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+
+           ## Get all favroite list in user in show navbar
+           function getAllfavrite($search='', $limit='',$offset='') {
+            $fields=array('favorite.*,property.name as pname,property.images');
+            $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id');		
+            $where=array("favorite.user_id='".$_SESSION['user_id']."'");
+        
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+
+          ## Get all favroite list in user in show navbar limit 4
+        //   function getAllfavritenav($id, $search='', $limit='',$offset='') {
+        //     $fields=array('favorite.*,user_login.*,property.name as pname,property.images');
+        //     $tables=array('favorite LEFT JOIN user_login ON favorite.user_id = user_login.user_id LEFT JOIN property ON favorite.p_id = property.id');		
+        //     $where=array("favorite.user_id='".$_SESSION['user_id']."'");
+        
+        //     $result1 = $this->SelectData($fields,$tables, $where, $order = array('favorite.f_id DESC'), $group=array(),$limit=1,0,0); 
+        //     $result= $this->FetchAll($result1); 
+        //     return $result;		
+        // }
+
+         ## Get all favroite list in user in show navbar limit 4
+         function getAllfavritenav($search='', $limit='',$offset='') {
+            $fields=array('favorite.*,property.name as pname,property.images');
+            $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id');		
+            $where=array("favorite.user_id='".$_SESSION['user_id']."'");
+        
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('favorite.f_id DESC'), $group=array(),$limit=4,0,0); 
             $result= $this->FetchAll($result1); 
             return $result;		
         }

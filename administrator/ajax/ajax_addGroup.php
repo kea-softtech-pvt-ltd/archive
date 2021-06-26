@@ -10,7 +10,7 @@ if($_REQUEST['action']=="addGroups")
     $contactArray['p_id'] = $_POST['pro_id'];
 	$contactArray['sender'] = $_SESSION['user_id'];
 	$contactArray['reciver'] = $_POST['pro_uid'];
-	
+
 	$result1 = $contactObj->chekuserGroup($_SESSION['user_id'],$_POST['pro_uid']);
 	if(!empty($result1)== 0){
 		

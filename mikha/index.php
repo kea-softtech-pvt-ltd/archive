@@ -10,6 +10,12 @@
 	$smarty->assign('propertiesListArray', $propertiesListArray);
 	$smarty->assign('moduleName', 'List of properties');
 
+	$favoriteListArray = $propertiesObj->getAllfavritenav();
+	$smarty->assign('favoriteListArray', $favoriteListArray);
+
+	// print_r($favoriteListArray);
+	// die();
+
 	$agentObj = new Model_Agent();
 	$agentListArray = $agentObj->getAllAgent();
 	$smarty->assign('agentListArray', $agentListArray);

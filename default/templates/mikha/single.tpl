@@ -220,11 +220,18 @@
                               <div class="jcarousel">
                                 <ul>
                                 {foreach from=$userListArray key=k item=v}
-                                  <li class="addGroup" data-id="{$v['p_id']}" data-user_id="{$v['user_id']}" ><a href="#">{$v['user_name']} <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a>
-                                   {if ($smarty.session.user_id != $v['user_id'])}
-                                   <button type="button" class="btn btn-success btn-block">Add Group</button>
-                                   {elseif ($smarty.session.user_id == $v['user_id'])}
-                                    <div style="height: 34px;background-color: #6f9a37;"></div>
+                                  <li>
+                                    {if ($smarty.session.user_id != $v['user_id'])}
+                                   {* <a href="#">{$v['user_name']} <i class="fa fa-plus-circle" style="font-size:28px;color:#7aa93c;"></i> <a type="button" class="btn btn-success" style="float: right; border-radius: 400px;"><i class="fa fa-plus"> Add Group</i> </a> *}
+                                    <a href="#">{$v['user_name']} 
+                                     {* {if ($smarty.session.user_id != $v['user_id'])}
+                                    <a style="float: right" type="button" title="Add Group"> <i class="fa fa-plus-circle" style="font-size:28px;color:#7aa93c;"></i> </a>
+                                    {/if} *}
+                                    <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme">
+                                    </a>
+                                
+                                   <button type="button" class="btn btn-success btn-block addGroup" data-id="{$v['p_id']}" data-user_id="{$v['user_id']}" >Add Group</button>
+                                  
                                    {/if}
                                   </li>
                                 {/foreach}
@@ -249,20 +256,27 @@
             </div>
           </div>
         </div>
-            <div class="row">
+                      <div class="row">
           <div class="col-md-12">
             <div class="jcarousel-wrapper">
               <div class="jcarousel">
                 <ul>
                    {foreach from=$userGroupListArray key=k item=v}
-
-                  <li><a href="#"> {$v['username']}<img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><a href="chat?id={$v['user_id']}">
-                   {if ($smarty.session.user_id != $v['user_id'])}
+                  {* {$v['user_id']}  *}
+                  <li><a href="#"> {$v['username']}
+                  {if ($smarty.session.user_id != $v['user_id'])}
+                   <a href="chat?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}" style="float: right" type="button" title="Send Message"> <i class="fa fa-envelope-square" style="font-size:28px;color:#7aa93c;"></i> </a>
+                    {elseif ($smarty.session.user_id == $v['user_id'])}
+                      <a style="font-size:28px;color:white;"disabled><i class="fa fa-home"></i></a>
+                   {/if}
+                  <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><a href="chat?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}">
+                   {* {if ($smarty.session.user_id != $v['user_id'])}
                   <button type="button" class="btn btn-success btn-block"><i class="fa fa-envelope"></i></button></a></li>
-                  {/if}
+                  {/if} *}
                   {/foreach}
-                 
+                 <h1> <a href="chatGroup?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}" style="float: right" type="button" title="Send Message"> <i class="fa fa-envelope-square" style="font-size:28px;color:#7aa93c;"> Group chat</i> </a></h1>
                 </ul>
+                
               </div>
               <a href="#" class="jcarousel-control-prev"><i class="fa fa-angle-left"></i></a>
               <a href="#" class="jcarousel-control-next"><i class="fa fa-angle-right"></i></a>
@@ -568,10 +582,28 @@
       </div>
     </div>
     <!-- end:news -->
-
+    </div>
     <!-- begin:footer -->
-     {include file='mikha/footer.tpl'}
+    {include file='mikha/footer.tpl'}
     <!-- end:footer -->
+
+
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="js/gmap3.min.js"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
 
 <script>
 $(".addGroup").on("click", function(){

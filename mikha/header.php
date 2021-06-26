@@ -8,6 +8,10 @@
 	$propertiesListArray = $propertiesObj->getAllProperties1();
 	$smarty->assign('propertiesListArray', $propertiesListArray);
 
+	
+	$favoriteListArray = $propertiesObj->getAllfavritenav();
+	$smarty->assign('favoriteListArray', $favoriteListArray);
+
 	// $userMessage = $propertiesObj->getAllUserMessage($_SESSION['user_id']);
 
 	// $smarty->assign('userMessage',count($userMessage));

@@ -18,8 +18,7 @@
       </div>
     </div>
     <!-- end:subscribe -->
-
-    <!-- begin:partner -->
+      <!-- begin:partner -->
     <div id="partner">
       <div class="container">
         <div class="row">
@@ -53,9 +52,7 @@
       </div>
     </div>
     <!-- end:partner -->
-</div> <!---That div add on 2-06-21  -->
-    <!-- begin:footer -->
-    <div id="footer">
+  <div id="footer">
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12">
@@ -73,13 +70,13 @@
           <!-- break -->
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
-              <h3>Properties in Pune</h3>
+              <h3>Top Real Estate Listed</h3>
               <ul class="list-unstyled">
-                <li><a href="#">Aundh</a></li>
-                <li><a href="#">Hadapsar</a></li>
-                <li><a href="#">Kothrud</a></li>
-                <li><a href="#">Wakad</a></li>
-                <li><a href="#">Shivaji Nagar</a></li>
+                <li><a href="#">Apartments</a></li>
+                <li><a href="#">Office</a></li>
+                <li><a href="#">Bungalows</a></li>
+                <li><a href="#">Serviced Residence</a></li>
+                <li><a href="#">Villa</a></li>
               </ul>
             </div>
           </div>
@@ -124,10 +121,9 @@
 
       </div>
     </div>
-    <!-- end:footer -->
 
 
-   <!-- begin:modal-signin -->
+        <!-- begin:modal-signin -->
     <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -136,37 +132,36 @@
             <h4 class="modal-title">Sign in</h4>
           </div>
           <div class="modal-body">
-           
-            <form action="{$siteroot}mikha/index.php" id="signin" method="post" name="signin">
+            {* <form role="form"> *}
+            <form action="{$siteroot}mikha/index.php" method="post" name="frmLogin">
               <div class="form-group">
                 <label for="emailAddress">Email address</label>
-                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Enter email" >
+                <input type="email" name="email" class="form-control input-lg" placeholder="Enter email">
                 {if isset($message) }
 													{$message}
 								{/if}
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" >
+                <input type="password" name="password" class="form-control input-lg" placeholder="Password">
                   	{if isset($message1) }
 													{$message1}
 												{/if}
               </div>
-              {* <div class="checkbox">
+              <div class="checkbox">
                 <label>
                   <input type="checkbox" name="forget"> Keep me logged in
                 </label>
-              </div> *}
+              </div>
             
           </div>
           <div class="modal-footer">
             <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" name="login" class="btn btn-success btn-block btn-lg" value="Sign in" />
+            <input type="submit" name="login" class="btn btn-success btn-block btn-lg" value="Sign in">
           </div>
-           </form>
+          </form>
         </div>
       </div>
-     
     </div>
     
     <!-- end:modal-signin -->
@@ -200,14 +195,14 @@
                  <div class="text-danger" id="user_error"></div>
               </div>
               <div class="form-group">
-               	<input class="upload" type="file" id="image" name="image" />
+               	<input class="upload" type="file" id="image" name="image">
                  <div class="text-danger" id="image_error"></div>
               </div>				
-              {* <div class="checkbox">
+              <div class="checkbox">
                 <label>
                   <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
                 </label>
-              </div> *}
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -241,29 +236,7 @@
       </div>
     </div>
     <!-- end:modal-logout -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-    <script src="js/gmap3.min.js"></script>
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/jquery.jcarousel.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/script.js"></script>
-
-    <script src="js/jquery.validate.js"></script>
-    <script src="js/additional-methods.js"></script>
-    <script src="js/reservation.js"></script>
-  </body>
-</html>
-
-  <script>
+<script>
 function signUp() {
 
 		var _valid = 1;

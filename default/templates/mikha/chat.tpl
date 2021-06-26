@@ -29,27 +29,11 @@
                  </div>
             
                   </div>
-                  <div class="property-content">
+                  <div class="property-content" style="border: 2px solid #d5d5d5a1">
                     
                      <h5><center><a href="#">Today {$smarty.now|date_format:"%A"}  {$smarty.now|date_format:"%d-%m-%Y"}</a></center></h5>
                     
-                       {* <h3> <small>Hiii</small></h3> *}
-                       {* {$userArray['message']} *}
-
-                        {foreach from=$usersArray key=k item=v}
-                       <h3 style="text-align: left"><a href="#"></a> <small>{$v['message']}</small></h3>
-                       {/foreach}
-
-                        {* {$smarty.now|date_format} *}
-
-                      {* <h3 class="test-right" style="text-align: right"><small>hello</small></h3>
-
-                      <h3 class="test-right" style="text-align: right"><small>Are you free from Tommarow? can you come to see a property</small></h3> *}
-
-                        {foreach from=$propertiesListArray key=k item=v}
-                       <h3 style="text-align: right"><a href="#"></a> <small>{$v['message']}</small></h3>
-                        {* <a>{$v['created_date']}</a> *}
-                       {/foreach}
+                      {$output}
                        
                     <div class="input-group">
                     <input type ="hidden" name="reciver" id="reciver" value="{$userArray['user_id']}"/>
@@ -70,8 +54,29 @@
     <div class="col-md-4"></div>
 </div>
 
+  </div>
+    <!-- begin:footer -->
+    {include file='mikha/footer.tpl'}
+    <!-- end:footer -->
 
-{include file='mikha/footer.tpl'}
+
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="js/gmap3.min.js"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
+
 <script>
 function sendMessage() {
 
@@ -105,7 +110,10 @@ function sendMessage() {
 					        	$('#send_message').show();
           	        $('#send_message').html('Send message sucessfull.');
         		        setTimeout(function(){ $('#send_message').hide(); }, 3000);
-                    setTimeout(function(){ window.location.href='chat?id={$userArray['user_id']}'; },3000);	
+                    setTimeout(function(){ 
+                      location.reload();
+                      
+                      },3000);	
 					        }
                 }
             });

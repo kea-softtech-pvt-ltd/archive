@@ -178,12 +178,6 @@
          </div>
          <div class="col-md-3">
             <div class="form-group">
-               <label>Size</label>
-                <div>{$v1['size']}</div>
-            </div>
-         </div>
-         <div class="col-md-3">
-            <div class="form-group">
                <label>Price</label>
                <div>{$v1['price']}</div>
             </div>

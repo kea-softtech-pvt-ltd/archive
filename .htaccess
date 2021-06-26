@@ -157,8 +157,10 @@ RewriteRule    ^mikha/about?$   mikha/about.php
 RewriteRule    ^mikha/footer?$   mikha/footer.php
 RewriteRule    ^mikha/header?$   mikha/header.php
 RewriteRule    ^mikha/logout?$   mikha/logout.php
+RewriteRule    ^mikha/fav?$   mikha/fav.php
 RewriteRule    ^mikha/favadd?$   mikha/favadd.php
 RewriteRule    ^mikha/chat?$   mikha/chat.php
+RewriteRule    ^mikha/chatGroup?$   mikha/chatGroup.php
 RewriteRule    ^mikha/asc?$    mikha/asc.php
 RewriteRule    ^mikha/messagedelte?$    mikha/messagedelte.php
 

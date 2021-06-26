@@ -36,6 +36,37 @@ if($_REQUEST['action']=="addChat")
 	echo json_encode($response);
 }
 
+if($_REQUEST['action']=="addChatGroup")
+{
+	$contactArray['message'] = $_POST['message'];
+    $contactArray['reciver'] = '0';
+    $contactArray['sender'] = $_SESSION['user_id'];
+ 
+	$result = $contactObj->addChatByValue($contactArray);
+	
+	if($result)
+
+	{	
+
+		$response['status'] = '1'; 
+
+		$response['message'] = 'success'; 
+
+
+	}
+
+	else
+
+	{
+
+		$response['status'] = '0'; 
+
+		$response['message'] = 'error'; 
+
+	}
+	echo json_encode($response);
+}
+
 
 ?>
 

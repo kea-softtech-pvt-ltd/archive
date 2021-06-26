@@ -10,8 +10,10 @@
 
 
     $userMessage = $propertiesObj->getAllUserMessage($_SESSION['user_id']);
-
 	$smarty->assign('userMessage', $userMessage);
+
+	$favoriteListArray = $propertiesObj->getAllfavritenav();
+	$smarty->assign('favoriteListArray', $favoriteListArray); // its use nav show all fav list
 
 
 

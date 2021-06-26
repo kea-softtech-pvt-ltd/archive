@@ -1,5 +1,6 @@
 
   {include file='mikha/header.tpl'}
+  
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({$siteroot}/mikha/img/img01.jpg);">
       <div class="container">
@@ -413,10 +414,28 @@
     <!-- end:news -->
 
 
+</div>
+    <!-- begin:footer -->
+    {include file='mikha/footer.tpl'}
+    <!-- end:footer -->
 
-    <!-- begin:footer link -->
-      {include file='mikha/footer.tpl'}
-    <!-- end:footer link -->
+
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="js/gmap3.min.js"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
 
 <script>
 $(".addToFav").on("click", function(){

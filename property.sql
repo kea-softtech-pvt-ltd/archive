@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 07:00 PM
+-- Generation Time: Jun 26, 2021 at 10:48 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -40,7 +40,7 @@ CREATE TABLE `add_group` (
 --
 
 INSERT INTO `add_group` (`a_id`, `p_id`, `sender`, `reciver`, `status`, `created_date`) VALUES
-(1, 3, 1, 2, '1', '2021-06-10 16:53:20');
+(1, 3, 3, 1, '1', '2021-06-26 08:04:43');
 
 -- --------------------------------------------------------
 
@@ -185,7 +185,8 @@ INSERT INTO `builders` (`id`, `name`, `register_number`, `telephone`, `email`, `
 (3, 'Laxman', '87987897', '8789789789', 'laxman@gmail.com', '2222', '1617392129_bg1.jpg', '0', 'hghj', 'dgfhd', '2', 8789798, 0, '2021-04-03', '2021-04-03', '1', 'laxman@gmail.com', '', 3),
 (4, 'jon', 'E98234238888', '6666666668', 'joni@gmail.com', '9259', '1617612023_WIN_20171228_20_19_26_Pro.jpg', '1', 'Sai complex', 'ABC home', '1', 899234, 0, '2021-04-05', '2021-04-05', '0', 'joni@gmail.com', '', 3),
 (5, 'jooommm', '1234568888', '1234567890', 'jomli@gmail.com', '5281', '1620573354_IMG_20200809_171914636.jpg', '1', 'UP ADDRESS', 'SAI MULL', '1', 32121, 0, '2021-05-09', '2021-05-09', '0', 'jomli@gmail.com', '', 3),
-(6, 'LUCIoooo', 'E9823425555', '2323232323', 'loci@gmail.com', '5434', '1623088662_gym.jpg', '1', 'NNNNN', 'MMMMM', '1', 244324, 0, '2021-06-07', '2021-06-07', '0', 'LUCIoooo', '', 3);
+(6, 'LUCIoooo', 'E9823425555', '2323232323', 'loci@gmail.com', '5434', '1623088662_gym.jpg', '1', 'NNNNN', 'MMMMM', '1', 244324, 0, '2021-06-07', '2021-06-07', '0', 'LUCIoooo', '', 3),
+(7, 'Bunty Properties', 'kdaks23232', '1111111111', 'bunty@gmail.com', '1784', '1624523272_8363_marcos.jpg', '1', 'survey no. 51 Hadapsar', 'near Shriram Chawk', '1', 411028, 0, '2021-06-24', '2021-06-24', '1', 'bunty@gmail.com', '', 3);
 
 -- --------------------------------------------------------
 
@@ -236,7 +237,9 @@ INSERT INTO `contact` (`c_id`, `name`, `email`, `subject`, `address`, `status`, 
 (1, 'joni', 'laxman@gmail.com', 'mmmm', 'jklllasf', '1', '2021-04-08 18:55:14'),
 (2, 'nmo', 'nmo@gmail.com', 'is it flat is avliable in 5 bhk in pune', 'i want to flat in pune in fc rood near sk schoole', '1', '2021-04-09 14:06:21'),
 (3, 'bbn', 'bbbbb@gmail.com', 'bbmull', 'hii bb mull', '1', '2021-05-10 13:06:40'),
-(4, 'bala', 'bala@gamil.com', 'property sale', 'send best agent contact no to sale property in best prise', '1', '2021-05-13 13:07:14');
+(4, 'bala', 'bala@gamil.com', 'property sale', 'send best agent contact no to sale property in best prise', '1', '2021-05-13 13:07:14'),
+(5, 'njk', 'njk@gmail.com', 'nklll', 'msndfmnsfm', '1', '2021-06-23 19:53:57'),
+(6, 'helllo', 'sadf@gmail.com', 'asdf', 'nmnmnmnmn', '1', '2021-06-24 17:20:27');
 
 -- --------------------------------------------------------
 
@@ -273,16 +276,19 @@ CREATE TABLE `favorite` (
   `p_id` varchar(120) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `status` enum('0','1') NOT NULL DEFAULT '1',
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `requestGroup` enum('0','1') NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `favorite`
 --
 
-INSERT INTO `favorite` (`f_id`, `user_id`, `p_id`, `user_name`, `status`, `created_date`) VALUES
-(1, '1', '3', 'gaurav', '1', '2021-06-10 16:49:49'),
-(2, '2', '3', 'amit', '1', '2021-06-10 16:51:20');
+INSERT INTO `favorite` (`f_id`, `user_id`, `p_id`, `user_name`, `status`, `created_date`, `requestGroup`) VALUES
+(1, '1', '3', 'gaurav', '1', '2021-06-26 08:05:29', '1'),
+(2, '3', '3', 'tom', '1', '2021-06-26 08:03:01', '0'),
+(3, '4', '3', 'ram', '1', '2021-06-26 08:05:29', '1'),
+(6, '1', '5', 'gaurav', '1', '2021-06-26 08:13:31', '0');
 
 -- --------------------------------------------------------
 
@@ -309,7 +315,9 @@ INSERT INTO `floor` (`f_id`, `p_id`, `wing`, `floor`, `flat`, `specality`, `stat
 (1, 1, '1', '1', '6', 'a wing', '1', '2021-04-08 15:59:00'),
 (2, 2, '2', '1', '6', 'a wing', '1', '2021-04-12 15:23:16'),
 (3, 3, '5', '1', '6', 'a wing', '1', '2021-05-11 09:58:26'),
-(4, 4, '6', '1', '6', 'a wing', '1', '2021-06-07 16:10:29');
+(4, 4, '6', '1', '6', 'a wing', '1', '2021-06-07 16:10:29'),
+(5, 5, '9', '1', '8', 'garden facing', '1', '2021-06-24 08:37:26'),
+(6, 5, '9', '2', '8', 'garden facing', '1', '2021-06-24 08:37:26');
 
 -- --------------------------------------------------------
 
@@ -358,7 +366,7 @@ CREATE TABLE `notification` (
 --
 
 INSERT INTO `notification` (`n_id`, `p_id`, `sender`, `reciver`, `status`, `created_date`, `requestGroup`) VALUES
-(1, 3, 1, 2, '1', '2021-06-10 16:54:08', '1');
+(1, 3, 3, 1, '1', '2021-06-26 08:05:29', '1');
 
 -- --------------------------------------------------------
 
@@ -380,7 +388,8 @@ CREATE TABLE `properties_address` (
 INSERT INTO `properties_address` (`a_id`, `p_id`, `address`, `description`) VALUES
 (1, 1, 'amnora hadapsar pune', 'pune'),
 (2, 2, 'mansi viswas nager pune', 'pune'),
-(3, 3, 'satara rajwada road. b.v.m schoole', 'satara');
+(3, 3, 'satara rajwada road. b.v.m schoole', 'satara'),
+(4, 5, 'Survey No 50 Handewadi Road Hadapsar', '');
 
 -- --------------------------------------------------------
 
@@ -406,7 +415,8 @@ INSERT INTO `properties_other` (`o_id`, `p_id`, `amenities`, `image`, `neighbour
 (1, 1, '2', '', '2', '1', '2021-04-08 16:00:17'),
 (2, 2, '1', '', '2', '1', '2021-04-12 15:23:56'),
 (3, 3, '1,2', '1620727223_download.jpg,1620727223_images (1).jpg', '2', '1', '2021-05-11 10:00:23'),
-(4, 4, '1', '', '2', '1', '2021-06-07 16:12:28');
+(4, 4, '1', '', '2', '1', '2021-06-07 16:12:28'),
+(5, 5, '2,3', '', '1,3', '1', '2021-06-24 08:38:53');
 
 -- --------------------------------------------------------
 
@@ -426,10 +436,11 @@ CREATE TABLE `properties_type` (
 --
 
 INSERT INTO `properties_type` (`id`, `name`, `status`, `created_date`) VALUES
-(1, 'Flat', '1', '2021-04-01 08:30:21'),
+(1, 'Apartment', '1', '2021-06-24 08:29:28'),
 (2, 'Villa', '1', '2021-04-01 08:30:29'),
 (3, 'Shop', '1', '2021-04-12 16:32:18'),
-(4, 'vvvv', '0', '2021-06-07 18:58:44');
+(4, 'vvvv', '0', '2021-06-07 18:58:44'),
+(5, 'Land', '1', '2021-06-24 08:29:15');
 
 -- --------------------------------------------------------
 
@@ -463,9 +474,10 @@ CREATE TABLE `property` (
 
 INSERT INTO `property` (`id`, `name`, `builder_name`, `started_date`, `possession_date`, `address`, `rera_number`, `description`, `specification`, `images`, `videos`, `units`, `amenities`, `neighbourhoods`, `created_date`, `modified_date`, `status`) VALUES
 (1, 'magarpatha city', '1', '2021-04-09', '2021-04-10', '', 234234, '', '', '1620811939_download.jpg,1620811939_download2.jpg,1620811939_download4.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '1'),
-(2, 'SUNSINE', '2', '2021-04-09', '2021-04-21', '', 234234, '', '', '1620812046_images2.jpg,1620812046_images3.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '1'),
+(2, 'SUNSINE', '2', '2021-04-09', '2021-04-21', '', 234234, '', '', '1620812046_images2.jpg,1620812046_images3.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '0'),
 (3, 'Sky villaa', '5', '2021-05-12', '2021-05-13', '', 345345, '', '', '1620836973_download5.jpg,1620836973_gym.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '1'),
-(4, 'MOONmm', '5', '2021-06-05', '2021-06-09', '', 234234, '', '', '1623082181_gym.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '0');
+(4, 'MOONmm', '5', '2021-06-05', '2021-06-09', '', 234234, '', '', '1623082181_gym.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '0'),
+(5, 'Mayur Geminus', '7', '2017-09-01', '2021-06-10', '', 23, '', '', '1624523586_bg1.jpg', '', '', 0, 0, '0000-00-00', '0000-00-00', '1');
 
 -- --------------------------------------------------------
 
@@ -556,7 +568,8 @@ INSERT INTO `units` (`u_id`, `p_id`, `floor`, `wing`, `type`, `title`, `size`, `
 (1, 1, '1', '1', '2bhk', 'Flat', 0, 4000, 989, 444, '', '', '', '2021-04-08', '2021-04-08', '0', '3', '3', '3'),
 (2, 2, '1', '2', '1bhk', 'Flat', 0, 798, 989, 444, '', '', '', '2021-04-12', '2021-04-12', '0', '2', '2', '2'),
 (3, 3, '1', '5', '1bhk', 'Flat', 0, 8000, 989, 700, '', '', '', '2021-05-11', '2021-05-11', '0', '2', '2', '1'),
-(4, 4, '1', '6', '1bhk', 'Flat', 0, 798, 989, 898, '', '', '', '2021-06-07', '2021-06-07', '0', '2', '1', '1');
+(4, 4, '1', '6', '1bhk', 'Flat', 0, 798, 989, 898, '', '', '', '2021-06-07', '2021-06-07', '0', '2', '1', '1'),
+(5, 5, '1', '9', '1bhk', 'Apartment', 0, 4000, 300, 450, '', '', '', '2021-06-24', '2021-06-24', '0', '2', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -600,6 +613,29 @@ CREATE TABLE `user` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_chat`
+--
+
+CREATE TABLE `user_chat` (
+  `u_id` int(11) NOT NULL,
+  `sender` int(12) NOT NULL,
+  `reciver` int(12) NOT NULL,
+  `message` longtext NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '1',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_chat`
+--
+
+INSERT INTO `user_chat` (`u_id`, `sender`, `reciver`, `message`, `status`, `created_date`) VALUES
+(1, 1, 0, ' hiii alll', '1', '2021-06-26 08:05:55'),
+(2, 1, 3, ' hii tom', '1', '2021-06-26 08:09:27');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_login`
 --
 
@@ -620,10 +656,11 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`user_id`, `name`, `email`, `password`, `image`, `status`, `otp`, `username`, `role`) VALUES
-(1, '', 'gaurav@gmail.com', 'gaurav', 'avatar.png', '1', 896485, 'gaurav', 4),
+(1, '', 'gaurav@gmail.com', 'gaurav', 'team01.jpg', '1', 896485, 'gaurav', 4),
 (2, '', 'amit@gmail.com', 'amit', 'team02.jpg', '1', 665163, 'amit', 4),
 (3, '', 'tom@gmail.com', 'tom', 'team03.jpg', '1', 955139, 'tom', 4),
-(4, '', 'ram@gmail.com', 'ram', 'team01.jpg', '1', 866242, 'ram', 4);
+(4, '', 'ram@gmail.com', 'ram', 'team01.jpg', '1', 866242, 'ram', 4),
+(14, '', 'farin@gmail.com', 'farin', '1624697253_bg1.jpg', '1', 810060, 'farin', 4);
 
 -- --------------------------------------------------------
 
@@ -652,7 +689,8 @@ INSERT INTO `wing` (`w_id`, `p_id`, `name`, `totalFloor`, `status`, `created_dat
 (5, 3, 'B', '5', '1', '2021-05-11 09:58:03'),
 (6, 4, 'A', '5', '1', '2021-06-07 16:10:08'),
 (7, 6, 'A', '6', '1', '2021-06-08 17:07:49'),
-(8, 6, 'B', '7', '1', '2021-06-08 17:07:49');
+(8, 6, 'B', '7', '1', '2021-06-08 17:07:49'),
+(9, 5, 'A', '11', '1', '2021-06-24 08:36:27');
 
 --
 -- Indexes for dumped tables
@@ -791,6 +829,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_chat`
+--
+ALTER TABLE `user_chat`
+  ADD PRIMARY KEY (`u_id`);
+
+--
 -- Indexes for table `user_login`
 --
 ALTER TABLE `user_login`
@@ -835,7 +879,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `builders`
 --
 ALTER TABLE `builders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `city`
 --
@@ -845,7 +889,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `c_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `country`
 --
@@ -855,12 +899,12 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `f_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `f_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `floor`
 --
 ALTER TABLE `floor`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `neighbourhoods`
 --
@@ -875,22 +919,22 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `properties_address`
 --
 ALTER TABLE `properties_address`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `properties_other`
 --
 ALTER TABLE `properties_other`
-  MODIFY `o_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `o_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `properties_type`
 --
 ALTER TABLE `properties_type`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `state`
 --
@@ -905,7 +949,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `unit_type`
 --
@@ -917,15 +961,20 @@ ALTER TABLE `unit_type`
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `user_chat`
+--
+ALTER TABLE `user_chat`
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `wing`
 --
 ALTER TABLE `wing`
-  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

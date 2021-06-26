@@ -13,6 +13,9 @@
 
 	$userListArray = $propertiesObj->getAllUser($_REQUEST['id']);
 	$smarty->assign('userListArray', $userListArray);
+
+	$favoriteListArray = $propertiesObj->getAllfavritenav();
+	$smarty->assign('favoriteListArray', $favoriteListArray); // its use nav show all fav list
 	
 	// show to asscepte group reques user show hear.
 

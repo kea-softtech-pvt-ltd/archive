@@ -101,13 +101,34 @@
               </ul>     
             </li>
             {* {$userMessage} *}
-            <li><a style="color:#ffffff" href="message"><span>4  </span> <b><i class="	fa fa-envelope"> </i></b></a></li>
+            <li><a style="color:#ffffff" href="message" title="Property Group request"><span>4  </span> <b><i class="fa fa-group"></i></b></a></li>
             {* <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li> *}
             {if ($smarty.session.role == 4)}
              <li><a style="color:#ffffff"><b><i class="	fa fa-dot-circle-o text-success"></i></b> {$smarty.session.username}</a></li>
             {elseif ($smarty.session.role != 4)}
             <li><a href="">User</a></li>
             {/if}
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Favorite List"> <i class="fa fa-heart" style="color:white"></i></a>
+              <ul class="dropdown-menu" style="background-color: #0f140ae0">
+                <li><h5 class="text-center">USER FAVORITE LIST</h5></li>
+                 {foreach from=$favoriteListArray key=k item=v}
+                  <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">
+                  {$imagearray = explode(',',$v['images'])}
+                   {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                                <img src="{SITE_URL}/administrator/upload/properties/{$image}" style="height: 50px; width: 50px;">  {$v['pname']}
+                            {/if}               
+                  {/foreach} 
+                   <hr></a></li>
+                {/foreach}
+                {* <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout"><img src="img/team01.jpg" alt="partner of mikha responsive real estate theme" style="height:50px; width:50px;"> <span> Gaurav Pawar abcccc <h6> Homes</h6> <hr></a></li>
+                <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout"><img src="img/team01.jpg" alt="partner of mikha responsive real estate theme" style="height:50px; width:50px;"> <span> Gaurav Pawar abcccc <h6> Homes</h6> <hr></a></li> *}
+                <li><button type="button" class="btn btn-success btn-block" ><a href="fav" style="color:white">View All List</a></button></li>
+              </ul>     
+            </li>
+            
             
              {* {if ($smarty.session.role != 4)}
                    user

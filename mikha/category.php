@@ -9,6 +9,12 @@
 		
 	$propertiesListArray = $propertiesObj->getAllProperties1();
 	$smarty->assign('propertiesListArray', $propertiesListArray);
+
+
+	$favoriteListArray = $propertiesObj->getAllfavritenav();
+	$smarty->assign('favoriteListArray', $favoriteListArray); // its use nav show all fav list
+
+
 	$smarty->assign('moduleName', 'List of properties');
 
 	$agentObj = new Model_Agent();
