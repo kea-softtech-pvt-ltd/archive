@@ -1,4 +1,8 @@
- {include file='mikha/header.tpl'}
+{if (isset($smarty.session.role) && $smarty.session.role == 4)}
+  {include file='mikha/header.tpl'}
+{else}
+  {include file='mikha/header1.tpl'}
+{/if}
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url(img/img01.jpg);">
       <div class="container">
@@ -108,8 +112,8 @@
             <!-- begin:sorting -->
             <div class="row sort">
               <div class="col-md-4 col-sm-4 col-xs-3">
-                <a href="search.html" class="btn btn-default"><i class="fa fa-th"></i></a>
-                <a href="search_list.html" class="btn btn-success"><i class="fa fa-list"></i></a>
+                <a href="search" class="btn btn-default"><i class="fa fa-th"></i></a>
+                <a href="search_list" class="btn btn-success"><i class="fa fa-list"></i></a>
                 <span>Show <strong>3</strong> of <strong>30</strong> result.</span>
               </div>
               <div class="col-md-8 col-sm-8 col-xs-9">
@@ -144,14 +148,24 @@
 
             <!-- begin:product -->
             <div class="row container-realestate">
+             <form id="favorite-form" method="POST" action="" enctype="multipart/form-data"> 
+             <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
+             <div class="alert alert-danger text-center" id="sucess_msg1" style="display:none;"></div>
+            {if (count($propertiesListArray) > 0)}
+            {foreach from=$propertiesListArray key=k item=v}
+             <input type="hidden" name="id" id="id" value="{$v['id']}" />
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="property-container">
                   <div class="property-content-list">
                     <div class="property-image-list">
                       <img src="img/img13.jpg" alt="mikha real estate theme">
                       <div class="property-price">
-                        <h4>Luxury Villa</h4>
-                        <span>$30,000<small>/month</small></span>
+                        <h4>
+                          {foreach from=$proTypeListArray key=k item=v2}
+					                  {if ($v['title'] == $v2['id'])}{$v2['name']}{/if}
+					                {/foreach}
+                        </h4>
+                        <span>${$v['built_area'] * $v['price']}</span>
                       </div>
                       <div class="property-status">
                         <span>For Rent</span>
@@ -162,7 +176,7 @@
                       </div>
                     </div>
                     <div class="property-text">
-                      <h3><a href="#">Land In Central Park</a> <small>22, JJ Road, Yogyakarta</small></h3>
+                      <h3><a href="#">{$v['name']}</a> <small>22, JJ Road, Yogyakarta</small></h3>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -180,80 +194,14 @@
                   </div>
                 </div>
               </div>
-              <!-- break -->
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="property-container">
-                  <div class="property-content-list">
-                    <div class="property-image-list">
-                      <img src="img/img13.jpg" alt="mikha real estate theme">
-                      <div class="property-price">
-                        <h4>Land In Central Park</h4>
-                        <span>$30,000<small>/month</small></span>
-                      </div>
-                      <div class="property-status">
-                        <span>For Sale</span>
-                      </div>
-                      <div class="property-footer">
-                        <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                        <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                      </div>
-                    </div>
-                    <div class="property-text">
-                      <h3><a href="#">Land In Central Park</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum dolore eu fugiat nulla pariatur.</p>
-                      <p><a href="#" class="btn btn-success">More Detail &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 7,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 3 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                    <span><i class="fa fa-building-o"></i> 2 Floors</span>
-                    <span><i class="fa fa-car"></i> 2 Garages</span>
-                  </div>
-                </div>
-              </div>
-              <!-- break -->
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="property-container">
-                  <div class="property-content-list">
-                    <div class="property-image-list">
-                      <img src="img/img13.jpg" alt="mikha real estate theme">
-                      <div class="property-price">
-                        <h4>The Urban Life</h4>
-                        <span>$30,000<small>/month</small></span>
-                      </div>
-                      <div class="property-status">
-                        <span>For Rent</span>
-                      </div>
-                      <div class="property-footer">
-                        <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                        <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                      </div>
-                    </div>
-                    <div class="property-text">
-                      <h3><a href="#">Land In Central Park</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum dolore eu fugiat nulla pariatur.</p>
-                      <p><a href="#" class="btn btn-success">More Detail &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 7,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 3 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                    <span><i class="fa fa-building-o"></i> 2 Floors</span>
-                    <span><i class="fa fa-car"></i> 2 Garages</span>
-                  </div>
-                </div>
-              </div>
+            {/foreach}
+               {else}
+               <div>
+               <h1>Property not found</h1>
+               </div>
+               
+            {/if}
+            </form>
               <!-- break -->
             </div>
             <!-- end:product -->
@@ -262,13 +210,16 @@
             <div class="row">
               <div class="col-md-12">
                 <ul class="pagination">
-                  <li class="disabled"><a href="#">&laquo;</a></li>
+                  {* <li class="disabled"><a href="#">&laquo;</a></li>
                   <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
+                  <li><a href="#">&raquo;</a></li> *}
+                  {if (count($propertiesListArray) > 0)}
+                    {$pagLink}
+                  {/if}
                 </ul>
               </div>
             </div>

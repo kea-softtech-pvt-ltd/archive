@@ -1,6 +1,6 @@
 <?php 
-	 include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/archive/includefiles.php');
-	 include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/archive/common/model/builder.php");
+	 include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
+	 include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/builder.php");
 
 	// include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '../includefiles.php');
 	 //include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "../common/model/builder.php");

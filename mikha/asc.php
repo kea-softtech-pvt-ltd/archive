@@ -6,8 +6,16 @@
 
 	$userArray['requestGroup'] = 1;
 	//$userArray['reciver'] = 1;
-	$builderuserArray = $propertiesObj->JoinPropertyGroup($userArray,$_REQUEST['id']);
-	$builderuserArray = $propertiesObj->JoinPropertyGroup($userArray,$_REQUEST['rid']);
+	$builderuserArray = $propertiesObj->JoinPropertyGroup($userArray,$_REQUEST['id'],$_REQUEST['pro_id']);
+	$builderuserArray = $propertiesObj->JoinPropertyGroup($userArray,$_REQUEST['rid'],$_REQUEST['pro_id']);
+
+	$propertiePartnerListArray =$propertiesObj->getPropertieyPartner();
+	$smarty->assign('propertiePartnerListArray', $propertiePartnerListArray);
+	
+	$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
+	$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
+
+	//die();
 	header("Location: " . SITE_URL . "mikha/message.php");	
 	
 ?>

@@ -13,7 +13,7 @@
 
 	//error_reporting(0);
 
-	// print_r($unitsArray);
+	// print_r($wingArray);
 	// die();
 
 	$smarty->assign('builderuserArray', $builderuserArray);

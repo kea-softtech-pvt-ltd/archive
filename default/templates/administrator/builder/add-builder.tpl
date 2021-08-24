@@ -48,7 +48,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
+									<input type="text" class="form-control" name="contact_number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" placeholder="Builder telephone number">
 								</div>
 							</div>
 							<div class="col-md-6">

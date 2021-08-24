@@ -40,11 +40,16 @@ RewriteRule    ^admin/properties/add?$    administrator/source/properties/add-pr
 RewriteRule    ^admin/properties/test?$    administrator/source/properties/add-properties.php
 RewriteRule    ^admin/properties/edit?$    administrator/source/properties/edit-properties.php
 RewriteRule    ^admin/properties/delete?$    administrator/source/properties/delete-properties.php
+RewriteRule    ^admin/properties/patnership?$    administrator/source/properties/patnership-properties.php
+RewriteRule    ^admin/properties/patnershipCancel?$    administrator/source/properties/patnershipCancel-properties.php
 RewriteRule    ^admin/properties/details?$    administrator/source/properties/details-properties.php
 RewriteRule    ^admin/properties/view?$    administrator/source/properties/view-properties.php
 
 RewriteRule    ^admin/customers?$    administrator/source/customers/customers.php
 RewriteRule    ^admin/customers/add?$    administrator/source/customers/add-customer.php
+RewriteRule    ^admin/customers/list?$    administrator/source/customers/list-customer.php
+RewriteRule    ^admin/customers/delete?$    administrator/source/customers/delete-customer.php
+RewriteRule    ^admin/customers/deleteList?$    administrator/source/customers/delete-customerList.php
 
 RewriteRule    ^admin/amenities?$     administrator/source/amenities/amenities.php
 RewriteRule    ^admin/amenities/add?$ administrator/source/amenities/add-amenities.php
@@ -140,17 +145,22 @@ RewriteRule    ^builder/properties?$    buildermodule/source/properties/properti
 RewriteRule    ^admin/floor/add?$    administrator/source/floor/add-floor.php
 
 RewriteRule    ^admin/contact?$    administrator/source/contact/details-contact.php
+RewriteRule    ^admin/propertiesGroupUser?$    administrator/source/propertiesGroupUser/details-propertiesGroupUser.php
+RewriteRule    ^admin/propertiesGroupUserView?$    administrator/source/propertiesGroupUser/details-propertiesGroupUserView.php
 
-RewriteRule    ^mikha/?$    mikha/home.php
-RewriteRule    ^mikha/index?$    mikha/index.php
+
+
+RewriteRule    ^mikha/?$    mikha/index.php
 RewriteRule    ^mikha/category?$   mikha/category.php
 RewriteRule    ^mikha/category_list?$   mikha/category_list.php
 RewriteRule    ^mikha/contact?$   mikha/contact.php
 RewriteRule    ^mikha/single?$   mikha/single.php
 RewriteRule    ^mikha/single1?$   mikha/single1.php
 RewriteRule    ^mikha/message?$   mikha/message.php
+RewriteRule    ^mikha/user_profile?$   mikha/user_profile.php
 RewriteRule    ^mikha/blog?$   mikha/blog.php
 RewriteRule    ^mikha/search?$   mikha/search.php
+RewriteRule    ^mikha/search1?$   mikha/search1.php
 RewriteRule    ^mikha/search_list?$   mikha/search_list.php
 RewriteRule    ^mikha/blog_single?$   mikha/blog_single.php
 RewriteRule    ^mikha/about?$   mikha/about.php
@@ -158,10 +168,12 @@ RewriteRule    ^mikha/footer?$   mikha/footer.php
 RewriteRule    ^mikha/header?$   mikha/header.php
 RewriteRule    ^mikha/logout?$   mikha/logout.php
 RewriteRule    ^mikha/fav?$   mikha/fav.php
+RewriteRule    ^mikha/favList?$   mikha/favList.php
 RewriteRule    ^mikha/favadd?$   mikha/favadd.php
 RewriteRule    ^mikha/chat?$   mikha/chat.php
 RewriteRule    ^mikha/chatGroup?$   mikha/chatGroup.php
 RewriteRule    ^mikha/asc?$    mikha/asc.php
+RewriteRule    ^mikha/ascA?$    mikha/ascA.php
 RewriteRule    ^mikha/messagedelte?$    mikha/messagedelte.php
 
 

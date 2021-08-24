@@ -57,22 +57,28 @@
 							<h2><i class="fa fa-map-marker"></i>Address</h2>
 						</div>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>Address</label>
 									<div>{$builderuserArray['street_address']}</div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>City</label>
-									<div>{$builderuserArray['city']}</div>
+									<div>{foreach from=$citiesListArray key=k item=v}
+										 {if ($v['id'] == $builderuserArray['city']) } {$v['name']}{/if} 
+										{/foreach}	
+									</div>
 								</div>
 							</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
 								<div class="form-group">
 									<label>State</label>
-									<div>{$builderuserArray['state']}</div>
+									<div>{foreach from=$statesListArray key=k item=v}
+										 {if ($v['s_id'] == $builderuserArray['state']) } {$v['name']}{/if}
+										{/foreach}
+									</div>	
 								</div>
 							</div>
 						</div>

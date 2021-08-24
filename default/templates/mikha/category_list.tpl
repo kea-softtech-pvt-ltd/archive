@@ -33,6 +33,8 @@
               </div>
               <div class="col-md-8 col-sm-8 col-xs-9">
                 <form class="form-inline" role="form">
+                <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
+                <div class="alert alert-danger text-center" id="sucess_msg1" style="display:none;"></div>
                   <span>Sort by : </span>
                   <div class="form-group">
                     <label class="sr-only" for="sortby">Sort by : </label>
@@ -62,8 +64,9 @@
             <!-- end:sorting -->
 
             <!-- begin:product -->
-            
+             <form id="favorite-form" method="POST" action="" enctype="multipart/form-data"> 
             <div class="row container-realestate">
+            {if (count($propertiesListArray) > 0)}
             {foreach from=$propertiesListArray key=k item=v}
               <div class="col-md-12 col-sm-12 col-xs-12" href="index.php">
                {$imagearray = explode(',',$v['images'])}
@@ -76,15 +79,19 @@
                        {/if}               
                         {/foreach}
                       <div class="property-price">
-                        <h4>{$v['name']}</h4>
+                        <h4> 
+                           {foreach from=$proTypeListArray key=k item=v2}
+					                   {if ($v['title'] == $v2['id'])}{$v2['name']}{/if}
+					                {/foreach}
+                     </h4>
                         <span>${$v['built_area'] * $v['price']}<small></small></span>
                       </div>
                       <div class="property-status">
                         <span>For Sele</span>
                       </div>
                       <div class="property-footer">
-                        <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                        <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
+                        <a  title="Add to favorite"><i class="fa fa-heart addToFav" data-id="{$v['id']}"></i></a>
+                        <a  title="Contact Agent"><i class="fa fa-envelope"></i></a>
                          <a href="single?id={$v['id']}" title="View page"><i class="fa fa-eye"></i></a>
                       </div>
                     </div>
@@ -109,22 +116,30 @@
            
               </div>
                {/foreach}
+                 {else}
+               <div>
+               <h1>Property not found</h1>
+               </div>
+               
+            {/if}
               <!-- break -->
          
             </div>
+            </form>
             <!-- end:product -->
 
             <!-- begin:pagination -->
             <div class="row">
               <div class="col-md-12">
                 <ul class="pagination">
-                  <li class="disabled"><a href="#">&laquo;</a></li>
+                  {* <li class="disabled"><a href="#">&laquo;</a></li>
                   <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
+                  <li><a href="#">&raquo;</a></li> *}
+                   {$pagLink}
                 </ul>
               </div>
             </div>
@@ -138,8 +153,8 @@
               <div class="widget-header">
                 <h3>Advance Search</h3>
               </div>    
-              <form role="form" class="advance-search">
-                <div class="btn-group" data-toggle="buttons">
+             <form role="form" class="advance-search" action="category_list" method="GET">
+                {* <div class="btn-group" data-toggle="buttons">
                   <label class="btn btn-success">
                     <input type="radio" name="options" id="option1"> For Rent
                   </label>
@@ -155,67 +170,69 @@
                     <option>Little Havana</option>
                     <option>Perrine</option>
                   </select>
-                </div>
+                </div> *}
                 <div class="form-group">
-                  <label for="type">Property Type</label>
-                  <select class="form-control">
-                    <option>Office</option>
-                    <option>Shop</option>
-                    <option>Villa</option>
-                    <option>Apartment</option>
-                    <option>Single Family Home</option>
+                  <label for="type">Property Type</label> 
+                    <select class="form-control" name="propertyType" id="propertyType">
+                     <option value="" {if (isset($smarty.get.propertyType) && $smarty.get.propertyType == "")} selected {/if}>All</option>
+                  	{foreach from=$proListArray key=k item=v}
+                       <option value="{$v['id']}" {if (isset($smarty.get.propertyType) && $smarty.get.propertyType == "{$v['id']}")} selected {/if}>{$v['name']}</option>
+                   {/foreach}
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="beds">Beds</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" name="beds" id="beds">
+                       <option value="" {if (isset($smarty.get.beds) && $smarty.get.beds == "")} selected {/if}>Select</option>
+                    {foreach from=$proBedsListArray key=k item=v}
+                       <option value="{$v['id']}" {if (isset($smarty.get.beds) && $smarty.get.beds == "{$v['id']}")} selected {/if}>{substr($v['name'], 0, 1)} </option>
+                    {/foreach}
                   </select>
                 </div>
-                <div class="form-group">
+               <div class="form-group">
                   <label for="baths">Baths</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control"  name="baths" id="baths">
+                    <option value="" {if (isset($smarty.get.baths) && $smarty.get.baths == "")} selected {/if}>Select</option>
+                    <option value="1" {if (isset($smarty.get.baths) && $smarty.get.baths == "1")} selected {/if}>1</option>
+                    <option value="2" {if (isset($smarty.get.baths) && $smarty.get.baths == "2")} selected {/if}>2</option>
+                    <option value="3" {if (isset($smarty.get.baths) && $smarty.get.baths == "3")} selected {/if}>3</option>
+                    <option value="4" {if (isset($smarty.get.baths) && $smarty.get.baths == "4")} selected {/if}>4</option>
+                    <option value="5" {if (isset($smarty.get.baths) && $smarty.get.baths == "5")} selected {/if}>5</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="min-price">Min Price</label>
-                  <select class="form-control">
-                    <option>$1,000</option>
-                    <option>$5,000</option>
-                    <option>$10,000</option>
-                    <option>$20,000</option>
-                    <option>$50,000</option>
-                    <option>$350,000</option>
+                  <select class="form-control" id="minprice" name="minprice">
+                    <option value=""{if (isset($smarty.get.minprice) && $smarty.get.minprice == "")} selected {/if}>select</option>
+                    <option value="5000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "5000")} selected {/if}>$5,000</option>
+                    <option value="10000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "10000")} selected {/if}>$10,000</option>
+                    <option value="20000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "20000")} selected {/if}>$20,000</option>
+                    <option value="50000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "50000")} selected {/if}>$50,000</option>
+                    <option value="1500000"{if (isset($smarty.get.minprice) && $smarty.get.minprice == "1500000")} selected {/if}>$15,00,000</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="max-price">Max Price</label>
-                  <select class="form-control">
-                    <option>$9,000</option>
-                    <option>$19,000</option>
-                    <option>$40,000</option>
-                    <option>$100,000</option>
-                    <option>$800,000</option>
+                  <select class="form-control" id="maxprice" name="maxprice">
+                    <option value=""{if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "")} selected {/if}>select</option>
+                    <option value="2000000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "2000000")} selected {/if}>$20,00,000</option>
+                    <option value="19000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "19000")} selected {/if}>$19,000</option>
+                    <option value="40000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "40000")} selected {/if}>$40,000</option>
+                    <option value="100000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "10000")} selected {/if}>$100,000</option>
+                    <option value="800000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "80000")} selected {/if}>$800,000</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="min-area">Min Area</label>
-                  <input type="text" class="form-control" placeholder="Min Area">
+                  <input type="text" class="form-control" name="min" id="min" placeholder="Min Area"
+                  value="{if (isset($smarty.get.min) && $smarty.get.min != "")} {str_replace(" ","",$smarty.get.min)} {/if}">
                 </div>
                 <div class="form-group">
                   <label for="max-area">Max Area</label>
-                  <input type="text" class="form-control" placeholder="Max Area">
+                  <input type="text" class="form-control" id="max" name="max" placeholder="Max Area"
+                  value="{if (isset($smarty.get.max) && $smarty.get.max != "")} {str_replace(" ","",$smarty.get.max)} {/if}">
                 </div>
-                <input type="submit" name="submit" value="Search" class="btn btn-success btn-block">
+                <input type="submit" value="Search" class="btn btn-success btn-block">
               </form>
             </div>
             <!-- break -->
@@ -224,12 +241,9 @@
                 <h3>Property Type</h3>
               </div>    
               <ul class="list-check">
-                <li><a href="#">Office</a>&nbsp;(18)</li>
-                <li><a href="#">Office</a>&nbsp;(43)</li>
-                <li><a href="#">Shop</a>&nbsp;(31)</li>
-                <li><a href="#">Villa</a>&nbsp;(52)</li>
-                <li><a href="#">Apartment</a>&nbsp;(8)</li>
-                <li><a href="#">Single Family Home</a>&nbsp;(11)</li>
+                {foreach from=$proListArray key=k item=v}
+                 <li><a href="#">{$v['name']}</a>&nbsp;(18)</li>
+                {/foreach}
               </ul>
             </div>
             <!-- break -->
@@ -436,5 +450,35 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+<script>
+$(".addToFav").on("click", function(){
+  var product_id = $(this).attr('data-id');
+  $.ajax({     
+				url: "{$adminroot}/ajaxFavorite",
+        type: "POST",
+         data: { 
+				action : 'addFavorite',
+				product_id:product_id,
+				},
+        success: function(result)
+        {	
+          console.log(result);
+          if($.trim(result)=='')				
+				{
+					$('#sucess_msg1').show().html('Not add to fav you are already add to fav.');
+					setTimeout(function(){ $('#sucess_msg1').hide();},3000)
+				}
+				else
+				{						
+					$('#sucess_msg').show().removeClass('alert-danger').addClass('alert-success').html('Add to favraite list.');
+					setTimeout(function(){ $('#sucess_msg').hide();},3000)
+					setTimeout(function(){ window.location.href='category_list'; },3000);	
+				}
+        }
+  });
+
+});
+
+</script>
    
 

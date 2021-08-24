@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-03-04 12:44:53
+/* Smarty version 3.1.29, created on 2021-06-28 19:31:59
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\edit-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_604088ed87ecc7_79800220',
+  'unifunc' => 'content_60d9d657600799_78548659',
   'file_dependency' => 
   array (
     'dda7ba5d875cc850d7ce0b3b522c490171d75291' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\edit-builder.tpl',
-      1 => 1614842033,
+      1 => 1624888844,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_604088ed87ecc7_79800220 ($_smarty_tpl) {
+function content_60d9d657600799_78548659 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -41,7 +41,7 @@ label.error {
 ?>
 			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
+		<form name="addBuilderForm" id="EditBuilder" action="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /builder/edit" method="post" enctype="multipart/form-data">
 			<input type="hidden"name="id" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['id'];?>
 ">
@@ -68,7 +68,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['telephone'];?>
+									<input type="text" class="form-control" name="contact_number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" placeholder="Builder telephone number" value="<?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['telephone'];?>
 ">
 								</div>
 							</div>

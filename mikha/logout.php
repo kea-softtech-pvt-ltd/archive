@@ -7,6 +7,6 @@
 
 		//echo SITE_URL ;
 		//die();
-		header("Location: " . SITE_URL . "mikha/home.php");
+		header("Location: " . SITE_URL . "mikha/index.php");
 	}
 ?>

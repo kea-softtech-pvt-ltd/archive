@@ -24,6 +24,77 @@ $().ready(function () {
             "address": {
                 required: true,
             },
+            "image": {
+                required: true,
+            },
+             "state": {
+                required: true,
+            },
+            "register_number": {
+                required: true,
+            },
+            "zipcode": {
+                required: true,
+            }
+        },
+        messages: {
+            "name": {
+                required: "Please enter builder name."
+            },
+            "email": {
+                required: "Please enter builder email",
+                email: "Your email address must be in the format of name@domain.com",
+                remote: 'Email already in used. Log in to builder existing account.'
+            },
+            "contact_number": {
+                required: "Please enter phone number",
+               // phoneUS: "Please enter a valid phone number: (e.g. 19999999999 or 9999999999)"
+            },
+            "city": {
+                required: "Please select city"
+            },
+			 "address": {
+                required: "Please enter address"
+            },
+            "image": {
+                required: "Please select image"
+            },
+            "register_number": {
+                required: "Please enter register number"
+            },
+             "state": {
+                required: "Please select state"
+            },
+            "zipcode": {
+                required: "Please enter zipcode"
+            }
+        },
+    });
+
+
+    // edit builder 
+    $("#EditBuilder").validate({
+        rules: {
+            "name": {
+                required: true,
+            },
+            "email": {
+                required: true,
+                email: true,
+            },           
+            "contact_number": {
+                required: true,
+                minlength: 10,
+                maxlength: 10,
+              //  phoneUS: true
+            },
+            "city": {
+                required: true,
+            },
+			
+            "address": {
+                required: true,
+            },
              "state": {
                 required: true,
             },

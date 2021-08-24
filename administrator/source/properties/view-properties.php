@@ -11,8 +11,11 @@
     $wingArray = $propertyObj->getWingByUserId($_REQUEST['id']);
     $floorsArray = $propertyObj->getFloorsByUserId($_REQUEST['id']);
     $otherArray = $propertyObj->getOtherByUserId($_REQUEST['id']);
+    $proTypeListArray = $propertyObj->getProType();
+    $unitsTypeListArray = $propertyObj->getUnitsType();
 
-
+	$smarty->assign('unitsTypeListArray', $unitsTypeListArray);
+    $smarty->assign('proTypeListArray', $proTypeListArray);
     $smarty->assign('propertyArray', $propertyArray);
 	$smarty->assign('addressPropertiesArray', $addressPropertiesArray);
     $smarty->assign('unitsArray', $unitsArray);
@@ -27,8 +30,13 @@
 	}
 	$smarty->assign('addressPropertiesArray', $addressPropertiesArray);
 
+    $builderListArray = $propertyObj->getBuilders();
+	$smarty->assign('builderListArray', $builderListArray);
+
     $amenitiesListArray = $propertyObj->getAmenities();
 	$smarty->assign('amenitiesListArray', $amenitiesListArray);
+
+    
 
     $neighbourhoodListArray = $propertyObj->getNeighbourhoods();
 	$smarty->assign('neighbourhoodListArray', $neighbourhoodListArray);

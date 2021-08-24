@@ -14,6 +14,12 @@
 	$userListArray = $propertiesObj->getAllUser($_REQUEST['id']);
 	$smarty->assign('userListArray', $userListArray);
 
+	$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
+	$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
+	
+	$userMessageCount1 = $propertiesObj->getAllUserMessageCount1($_SESSION['user_id']);
+	$smarty->assign('userMessageCount1',count($userMessageCount1)); // show count group requist
+	
 	$favoriteListArray = $propertiesObj->getAllfavritenav();
 	$smarty->assign('favoriteListArray', $favoriteListArray); // its use nav show all fav list
 	
@@ -21,6 +27,12 @@
 
 	$userGroupListArray = $propertiesObj->getAllUserGroupAccept($_REQUEST['id']);
 	$smarty->assign('userGroupListArray', $userGroupListArray);
+	
+	$proTypeListArray = $propertiesObj->getProType();
+    $smarty->assign('proTypeListArray', $proTypeListArray);
+	
+	$propertiePartnerListArray =$propertiesObj->getPropertieyPartner();
+	$smarty->assign('propertiePartnerListArray', $propertiePartnerListArray);
 
 	//print_r($userGroupListArray);
 
@@ -37,7 +49,7 @@
 
 	
 }else{
-	header("Location: " . SITE_URL . "mikha/home.php");
+	header("Location: " . SITE_URL . "mikha/index.php");
 }
 	
 ?>

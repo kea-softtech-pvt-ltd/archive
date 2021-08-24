@@ -49,6 +49,14 @@
 						</ul>
 						<!--<input type="hidden" name="id" value="id">--->
 						<ul class="buttons">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Property</button>
+							<div class="dropdown-menu">
+							{foreach from=$buildersProListArray key=k item=vv}
+								{if ($vv['builder_name'] == $v['id'])}
+								<a class="dropdown-item" href="properties?propertyName={$vv['proname']}">{$vv['proname']}</a>
+								{/if}
+							{/foreach}
+  							</div>
 							 <a class="btn_1" href="{$adminroot}/builder/edit?id={$v['id']}" ><i class="fa fa-fw fa-edit"></i>Edit</a>				
 							<li><a href="{$adminroot}/builder/delete?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
 							<li><a href="{$adminroot}/builder/view?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-eye"></i> View </a></li>

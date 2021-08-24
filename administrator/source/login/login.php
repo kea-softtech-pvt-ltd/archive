@@ -24,7 +24,7 @@
 			  $smarty->assign('message1', $msg1);
 		}
 		else{
-		
+			
 			$builderId = $builderObj->getUserValueByDetailsUsernameAndPassword($_POST['mobile'],$_POST['password']);
 			// echo '<pre>';print_r($builderId);die;
 			if(count($builderId) > 0) {

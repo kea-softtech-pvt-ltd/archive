@@ -13,14 +13,36 @@
 	$favoriteListArray = $propertiesObj->getAllfavritenav();
 	$smarty->assign('favoriteListArray', $favoriteListArray);
 
-	// print_r($favoriteListArray);
-	// die();
+	$proListArray = $propertiesObj->getPropertiey();
+	$smarty->assign('proListArray', $proListArray);
+
+	$proBedsListArray = $propertiesObj->getPropertieyBeds();
+	$smarty->assign('proBedsListArray', $proBedsListArray);
+
+	$unitsTypeListArray = $propertiesObj->getUnitsType();
+    $smarty->assign('unitsTypeListArray', $unitsTypeListArray);
+
+	$proTypeListArray = $propertiesObj->getProType();
+    $smarty->assign('proTypeListArray', $proTypeListArray);
+
+	$propertiePartnerListArray =$propertiesObj->getPropertieyPartner();
+	$smarty->assign('propertiePartnerListArray', $propertiePartnerListArray);
+
+	if(isset($_SESSION['user_id'])){
+		$userMessageCount1 = $propertiesObj->getAllUserMessageCount1($_SESSION['user_id']);
+		$smarty->assign('userMessageCount1',count($userMessageCount1)); // show count group requist
+		
+		$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
+		$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
+	
+	}else{
+		$smarty->assign('userMessageCount1',''); 
+		$smarty->assign('userMessageCount',''); 
+	}
 
 	$agentObj = new Model_Agent();
 	$agentListArray = $agentObj->getAllAgent();
 	$smarty->assign('agentListArray', $agentListArray);
-
-//	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/index.tpl');
 
 
 $userObj = new Model_login();
@@ -31,9 +53,7 @@ if(isset($_POST['login'])) {
 		$vali = $userObj->validationUser($_POST['email'],$_POST['password']);
 	}
 		$userId = $userObj->getUserValueByDetailsBuildernameAndPassword($_POST['email'],$_POST['password']);
-		
-		// echo '<pre>';print_r($builderId);die;
-		
+			
 		if(count($userId) > 0) {
 			$_SESSION['isLoggedIn'] = true;
 			$_SESSION['user_id'] 	= $userId['user_id'];
@@ -45,14 +65,9 @@ if(isset($_POST['login'])) {
 		}
 	
 }
-		if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
-
+	
 		$smarty->assign('moduleName', 'login');
 		$smarty->display(FRONT_TEMPLATEDIR . '/mikha/index.tpl');
-
-		}else{
-			header("Location: " . SITE_URL . "mikha/home.php");
-		}
 
 	
 ?>

@@ -20,7 +20,11 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Builder name</label>
-									<div>{$propertyArray['builder_name']}</div>
+									<div>
+										{foreach from=$builderListArray key=k item=v}
+									 		{if $propertyArray['builder_name'] == $v['id'] } {$v['name']} {/if}
+										{/foreach}
+									</div>							
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -166,14 +170,23 @@
          <div class="col-md-3">
             <div class="form-group">
                <label>Units name</label>
-			   <div>{$v1['type']}</div>      
+			   <div>
+			   		{* {$v1['type']} *}
+					{foreach from=$unitsTypeListArray key=k item=v}
+					 {if ($v1['type'] == $v['id'])} {$v['name']}{/if} 
+					{/foreach}
+			  </div>      
 			</div>
          </div>
 		 <div></div>
          <div class="col-md-3">
             <div class="form-group">
                <label>Title</label>
-				  <div>{$v1['title']}</div>
+				  <div>
+				  	{foreach from=$proTypeListArray key=k item=v}
+					  {if ($v1['title'] == $v['id'])}{$v['name']}{/if}
+					{/foreach}
+				  </div>
 			</div>
          </div>
          <div class="col-md-3">
@@ -195,6 +208,7 @@
             </div>
          </div>
       </div>
+	  <br><hr>
                          {/foreach}
 					</div>
 					<!-- /unit-->
@@ -207,10 +221,11 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Amenities</label>
-								{foreach from=$amenitiesListArray key=k item=v} {if (in_array($v['id'] , $amenities) )} {$v['name']}  {/if}       
-											
+								<div>
+								{foreach from=$amenitiesListArray key=k item=v} {if (in_array($v['id'] , $amenities) )} {$v['name']}  {/if}       			
+								<br>
 								{/foreach}
-								
+								</div>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -218,8 +233,13 @@
 								<label>Neighbourhoods</label>
 								<div>
 									{foreach from=$neighbourhoodListArray key=k item=v}
-										{if (in_array($v['id'], $neighbourhoods) )}  {$v['name']} {/if}
-										{/foreach}
+										{if (in_array($v['id'], $neighbourhoods) )}  {$v['name']}
+										
+										 {* {elseif (in_array($neighbourhoodListArray == 1))}
+            								<li><a href="">User</a></li> *}
+									 {/if}
+
+									{/foreach}
 								</div>
 							</div>
 						</div>	

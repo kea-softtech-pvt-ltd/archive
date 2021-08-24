@@ -1,25 +1,17 @@
 <?php
 	include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/includefiles.php');
 	include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/common/model/builder.php");
-	//print_r($_REQUEST);
+	
 	$builderObj = new Model_Builders();
 	$builderListArray = $builderObj->getAllBuilders();
-
-	//$_SESSION['message_add_b'];
-
-	//$builderuserArray = $builderObj->getUserNameByUserId($_SESSION);
-
-
-	//print_r($builderListArray);
-	// $smarty->assign('builderListArray', $builderListArray);
-	// $smarty->assign('moduleName', 'List of builder');
-	// $smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
+	$buildersProListArray = $builderObj->getAllBuildersProperti();
 
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
 
 
 	if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
 	$smarty->assign('builderListArray', $builderListArray);
+	$smarty->assign('buildersProListArray', $buildersProListArray);
 	$smarty->assign('moduleName', 'List of builder');
 	$smarty->display(ADMIN_TEMPLATEDIR . '/builder/builder.tpl');
 	}else{
@@ -27,6 +19,5 @@
 	}
 
 	}
-	//echo $_REQUEST['message'];
 
 ?>

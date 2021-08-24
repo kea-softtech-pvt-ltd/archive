@@ -29,18 +29,26 @@ div .carouselExampleControls {
 							<tr>
 								<th>Propertie Name</th>
 								<th>Builder Name</th>
-                <th>RERA number</th>
-                <th>Address</th>
+                				<th>RERA number</th>
+                				<th>Address</th>
+								<th>Partnership</th>
 								<th class="text-right no-sort">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-              {foreach from=$propertiesListArray key=k item=v}
+             			 {foreach from=$propertiesListArray key=k item=v}
 							<tr>
 								<td>{$v['name']}</td>
 								<td>{$v['builder_name']}</td>
-                <td>{$v['rera_number']}</td>
-                <td>{$v['address']}</td>
+                				<td>{$v['rera_number']}</td>
+                				<td>{$v['address']}</td>
+								<td>
+									{if ($v['patnership'] == 1)}
+										<a href="{$adminroot}/properties/patnershipCancel?id={$v['id']}" title="Cancel Paratnarship" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o text-danger"></i>Cancel</a>
+									{else}
+										<a href="{$adminroot}/properties/patnership?id={$v['id']}" title="Add Paratnarship" class="btn_1 gray"><i class="fa fa-check-circle-o text-success"></i> Add</a>
+									{/if}
+								</td>
 								<td class="text-right">
 									<div class="dropdown dropdown-action">
 										<a name="id" title="Edit property"  href="{$adminroot}/properties/edit?id={$v['id']}"><i class="fa fa-pencil m-r-5"></i></a>&nbsp
@@ -66,23 +74,6 @@ div .carouselExampleControls {
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
     {include file='administrator/common/footer.tpl'}
     {include file='administrator/common/scripts.tpl'}
 	<script>

@@ -1,6 +1,7 @@
 <?php 
-	 include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/archive/includefiles.php');
-     include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/archive/common/model/properties.php");
+	 include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
+     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/properties.php");
+
 
      $builderObj = new Model_Property();
 
@@ -72,6 +73,8 @@ if($_REQUEST['action']=="addProperties")
 if($_REQUEST['action']=="addPropertieAddress")
 {
     $propertyArray['address'] = $_POST['address'];
+	$propertyArray['lat'] = $_POST['lat'];
+	$propertyArray['lng'] = $_POST['lng'];
     $propertyArray['description'] = $_POST['description'];
     $propertyArray['p_id'] = $_POST['propertyID'];
 	// print_r($_POST);die;

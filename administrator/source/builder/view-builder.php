@@ -12,6 +12,12 @@
 	
 		if($_SESSION['role']==1 || $_SESSION['role']==2 || $_SESSION['role']==3){
 			$smarty->assign('builderuserArray', $builderuserArray);
+
+			$citiesListArray = $builderObj->getCities();
+			$smarty->assign('citiesListArray', $citiesListArray);
+
+			$statesListArray = $builderObj->getStates();
+			$smarty->assign('statesListArray', $statesListArray);
 	
 			$smarty->display(ADMIN_TEMPLATEDIR . '/builder/view-builder.tpl');
 			}else{

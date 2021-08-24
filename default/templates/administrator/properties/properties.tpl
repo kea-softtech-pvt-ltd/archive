@@ -15,65 +15,81 @@ div .carouselExampleControls {
                 <div class="box_general">
 			<div class="header_box">
 				<h2 class="d-inline-block">Property List</h2>
-                
-			<!---	<div class="filter">
-					<select name="orderby" class="selectbox">
-						<option value="Any status">Any status</option>
-						<option value="Approved">Approved</option>
-						<option value="Pending">Pending</option>
-						<option value="Cancelled">Cancelled</option>
-					</select>
-         
-				</div>--->
-				 <a class="btn btn-primary" href="{$adminroot}/properties/details" style="float:right"><i class="fa fa-align-justify"></i></a>
+
+		
+				 <a class="btn btn-primary" href="{$adminroot}/properties/details" title="List View" style="float:right"><i class="fa fa-align-justify"></i></a>
                 <div class="actions">
-					
-                    <a class="btn_1 medium" href="{$adminroot}/properties/add" > Add new property</a>
+                    <a class="btn_1 medium" href="{$adminroot}/properties/add" title="Add Property" > Add new property</a>
                 </div>
-				
 			</div>
+            {* its use for search property *}
+			{* <div class="row">
+			<div class="col-md-3">
+			 <form role="form" class="advance-search" action="properties" method="GET">
+			<div class="input-group">
+              <input type="text" class="form-control" id="propertyName" name="propertyName" placeholder="Enter Property name">
+              <span class="input-group-btn">
+                <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+			<form>
+			</div>
+			</div><br> *}
+			{* its end use for search property *}
+
 			<div class="list_general">
 				<ul>{foreach from=$propertiesListArray key=k item=v}
 					<li>
-						<!--<div id="carouselExampleControls{$v['id']}" class="carousel slide carouselExampleControls" data-ride="carousel">
-							<div class="carousel-inner">
-							{$imagearray = explode(',',$v['images'])}
-							
-							{foreach from=$imagearray key=index item=image name=count}
-							
-								<div class="carousel-item {if $smarty.foreach.count.index == 0} active {/if}">
-								<img class="d-block w-100" style="height:80px" src="{SITE_URL}/administrator/source/upload/properties/{$image}" alt="First slide">
-								</div>
-								
-							{/foreach}
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls{$v['id']}" role="button" data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls{$v['id']}" role="button" data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>--->
-						<figure><img src="img/avatar1.jpg" alt=""></figure>
+					<figure>
+						{$imagearray = explode(',',$v['images'])}
+						 {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                                <img src="{SITE_URL}/administrator/upload/properties/{$image}">
+                            {/if}               
+                        {/foreach}
+					</figure> 
 						<h4>{$v['name']}</h4>
 						<ul class="booking_details">
 							<li><strong>RERA number</strong>{$v['rera_number']}</li>
 							<li><strong>Builder name</strong>{$v['buildername']}</li>
-							<li><strong>possession date</strong>{$v['possession_date']}</li>
-							<li><strong>address</strong>{$v['address']}</li>
-						</ul>
+							<li><strong>Possession date</strong>{$v['possession_date']}</li>
+							<li><strong>Address</strong>{$v['address']}</li>
+							<li><strong>Partnership</strong>
+							{if $v['patnership'] ==1} Yes {else} No{/if}
+							{* <input type="checkbox" name="type_patner" id="type_patner">&nbsp;&nbsp;&nbsp;
+							<input type="checkbox" name="type_patner" id="type_patner" {if $v['patnership'] ==1} checked {/if}>&nbsp; *}
+								{if ($smarty.session.role == 1)}
+								{if $v['patnership'] ==0}
+								<a href="{$adminroot}/properties/patnership?id={$v['id']}" class="btn_1 gray"><i class="fa fa-check-circle-o text-success"></i> Add</a>
+								{else}
+								<a href="{$adminroot}/properties/patnershipCancel?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o text-danger"></i>Cancel</a>
+								{/if}
+								{/if}
+							</li>
+							<li><strong>Users Group</strong> <a class="btn_1" href="{$adminroot}/propertiesGroupUserView?id={$v['id']}" title="See Users Group" ><i class="fa fa-users"></i></a></li>
+						</ul>	
+						 {* <a class="btn_1" href="{$adminroot}/propertiesGroupUserView?id={$v['id']}" title="User Group" ><i class="	fa fa-users"></i>User Group</a>				 *}
 						<ul class="buttons">
-							 <a class="btn_1" href="{$adminroot}/properties/edit?id={$v['id']}" ><i class="fa fa-fw fa-edit"></i>Edit</a>
-							 <li><a href="{$adminroot}/properties/delete?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-							 <li><a href="{$adminroot}/properties/view?id={$v['id']}" class="btn_1 gray"><i class="fa fa-eye"></i> View</a></li>
+							{* <li><a href="{$adminroot}/properties/patnershipCancel?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel Aprove</a></li>
+							<li><a href="{$adminroot}/properties/patnership?id={$v['id']}" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Aprove</a></li> *}
+							 <a class="btn_1" href="{$adminroot}/properties/edit?id={$v['id']}" title="Edit Properties" ><i class="fa fa-fw fa-edit"></i>Edit</a>
+							 <li><a href="{$adminroot}/properties/delete?id={$v['id']}" title="Delete Properties" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+							 <li><a href="{$adminroot}/properties/view?id={$v['id']}" title="View Properties" class="btn_1 gray"><i class="fa fa-eye"></i> View</a></li>
 							
 						</ul>
 					</li>
 					{/foreach}
 				</ul>
+				
 			</div>
+			  <div class="row">
+              <div class="col-md-12">
+                <ul class="pagination" style="float: right">
+                   {$pagLink}
+                </ul>
+              </div>
+            </div>
+            <!-- end:pagination -->
 		</div>
             </div>
    	    </div>

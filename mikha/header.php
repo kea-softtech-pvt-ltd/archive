@@ -12,6 +12,9 @@
 	$favoriteListArray = $propertiesObj->getAllfavritenav();
 	$smarty->assign('favoriteListArray', $favoriteListArray);
 
+	$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
+	$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
+
 	// $userMessage = $propertiesObj->getAllUserMessage($_SESSION['user_id']);
 
 	// $smarty->assign('userMessage',count($userMessage));

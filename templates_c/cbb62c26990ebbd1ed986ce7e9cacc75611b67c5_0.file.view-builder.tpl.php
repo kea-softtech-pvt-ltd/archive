@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-02-26 18:35:16
+/* Smarty version 3.1.29, created on 2021-06-28 12:45:12
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\view-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6038f20c9ac2a8_22260220',
+  'unifunc' => 'content_60d977007167d3_94899244',
   'file_dependency' => 
   array (
     'cbb62c26990ebbd1ed986ce7e9cacc75611b67c5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\view-builder.tpl',
-      1 => 1614344693,
+      1 => 1624864508,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6038f20c9ac2a8_22260220 ($_smarty_tpl) {
+function content_60d977007167d3_94899244 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -99,25 +99,75 @@ function content_6038f20c9ac2a8_22260220 ($_smarty_tpl) {
 							<h2><i class="fa fa-map-marker"></i>Address</h2>
 						</div>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>Address</label>
 									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['street_address'];?>
 </div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>City</label>
-									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['city'];?>
-</div>
+									<div><?php
+$_from = $_smarty_tpl->tpl_vars['citiesListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_v_0_saved_item = isset($_smarty_tpl->tpl_vars['v']) ? $_smarty_tpl->tpl_vars['v'] : false;
+$__foreach_v_0_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['v'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['v']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+$__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
+?>
+										 <?php if (($_smarty_tpl->tpl_vars['v']->value['id'] == $_smarty_tpl->tpl_vars['builderuserArray']->value['city'])) {?> <?php echo $_smarty_tpl->tpl_vars['v']->value['name'];
+}?> 
+										<?php
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_local_item;
+}
+if ($__foreach_v_0_saved_item) {
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_0_saved_item;
+}
+if ($__foreach_v_0_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
+}
+?>	
+									</div>
 								</div>
 							</div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
 								<div class="form-group">
 									<label>State</label>
-									<div><?php echo $_smarty_tpl->tpl_vars['builderuserArray']->value['state'];?>
-</div>
+									<div><?php
+$_from = $_smarty_tpl->tpl_vars['statesListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_v_1_saved_item = isset($_smarty_tpl->tpl_vars['v']) ? $_smarty_tpl->tpl_vars['v'] : false;
+$__foreach_v_1_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['v'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['v']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+$__foreach_v_1_saved_local_item = $_smarty_tpl->tpl_vars['v'];
+?>
+										 <?php if (($_smarty_tpl->tpl_vars['v']->value['s_id'] == $_smarty_tpl->tpl_vars['builderuserArray']->value['state'])) {?> <?php echo $_smarty_tpl->tpl_vars['v']->value['name'];
+}?>
+										<?php
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_1_saved_local_item;
+}
+if ($__foreach_v_1_saved_item) {
+$_smarty_tpl->tpl_vars['v'] = $__foreach_v_1_saved_item;
+}
+if ($__foreach_v_1_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_v_1_saved_key;
+}
+?>
+									</div>	
 								</div>
 							</div>
 						</div>

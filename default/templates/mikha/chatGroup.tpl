@@ -18,11 +18,17 @@
                  <div class="property-features">
                  <div class="row">
                   <div class="col-md-6">
-                    <img src="img/{$userArray['image']}" style="width: 50px;border-radius: 100px;height: 50px;" />
-                   <a style="color:#ffffff; size:20px;"> <b> {$userArray['username']} </b> </a>
+                   {$imagearray = explode(',',$userArray['images'])}
+                     {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                                <img src="{SITE_URL}/administrator/upload/properties/{$image}"  style="width: 50px;border-radius: 100px;height: 50px;" />
+                            {/if}               
+                        {/foreach} 
+                        
+                    {* <img src="img/team01.jpg" style="width: 50px;border-radius: 100px;height: 50px;" /> *}
+                   <a style="color:#ffffff; size:20px;"> <b> {$userArray['name']} </b> </a>
                   </div>
                   <div class="col-md-6">
-                      {* {$userArray['email']} *}
                      <span calss="text-left" style="float: right; margin-right: 10px; margin-top: 10px;"><i class="fa fa-phone"></i></span>
                      <span calss="text-left" style="float: right; margin-right: 10px; margin-top: 10px;"><i class="fa fa-camera"></i></span>
                   </div>
@@ -36,7 +42,7 @@
                       {$output}
                        
                     <div class="input-group">
-                    <input type ="hidden" name="reciver" id="reciver" value="{$userArray['user_id']}"/>
+                    <input type ="hidden" name="id" id="id" value="{$userArray['id']}"/>
                         <textarea class="form-control input-lg" name="message" id="message" placeholder="Enter your message" rows="1"> </textarea>
                          <div class="text-danger" id="names_error"></div>
                         <span class="input-group-btn">
@@ -45,8 +51,7 @@
                     </div>
                   </div>
                   <div class="property-footer">
-                    <a title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a title="Contact Agent"><i class="fa fa-envelope"></i></a>
+                    <a title="Add to favorite" style="height:60px"></a>
                   </div>
         </div>
         </form>
@@ -54,13 +59,13 @@
     <div class="col-md-4"></div>
 </div>
 
+
   </div>
     <!-- begin:footer -->
     {include file='mikha/footer.tpl'}
     <!-- end:footer -->
 
 
-   
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -82,7 +87,7 @@ function sendMessage() {
 
 		var _valid = 1;
 		var message = $("#message").val();
-    var user_id = $("#user_id").val();
+    var id = $("#id").val();
 		if(message=="") 
         {
             $('#names_error').show();

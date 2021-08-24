@@ -42,6 +42,35 @@ class Model_Contact extends Database
 		return $result;		
 	}
 
+	 ## Get all USER
+	 function getAllUser($search='', $limit='',$offset='') 
+	 {
+	  	$fields=array('user_login.*');
+		$tables=array('user_login');
+		$where = array("status = '1'");	
+
+	  $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+	  $result= $this->FetchAll($result1); 
+	  return $result;		
+  }
+   ## Get all USER limit
+   function getAllUserLimit($search='', $limit='',$offset='') 
+   {
+		$fields=array('user_login.*');
+	  $tables=array('user_login');
+	  $where = array("status = '1'");	
+
+	$result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit=3,0,0);
+	$result= $this->FetchAll($result1); 
+	return $result;		
+}
+#delete users
+function deleteUserValueById($array, $Id){
+	$this->UpdateData('user_login',$array,"user_id",$Id,0);
+  //  echo $Id; where
+ }
+
+
 		// ## Add favroite in database
 		// function addFavByValue($Array) 
 		// {

@@ -37,6 +37,19 @@
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+        
+        ## Get all builder detailsProject
+        function getAllBuildersProperti($search='', $limit='',$offset='') {
+            $fields=array('builders.*,property.builder_name,property.name as proname');	
+            $tables=array('builders LEFT JOIN property ON builders.id = property.builder_name');
+            $where = array("property.status = '1'");
+            // if ($_SESSION['role']=='3'){
+            //     $where=array('builders.id='.$_SESSION['id']);
+            // } 
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
         ## Get builder by id
 	    function getUserNameByUserId($id) {
 		$fields=array('name','id','register_number','telephone','email','password','city','street_address','state','zip','avatar','status','m_con','user_name','landmark');	//fetch fromdb

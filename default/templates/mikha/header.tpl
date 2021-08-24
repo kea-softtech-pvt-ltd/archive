@@ -21,10 +21,6 @@
     <link href="{$siteroot}/mikha/css/responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="{$siteroot}/mikha/js/html5shiv.js"></script>
-      <script src="{$siteroot}/mikha/js/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body id="top">
@@ -72,43 +68,39 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Property <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="search">Search (Grid View)</a></li>
-                <li><a href="search_list">Search (List View)</a></li>
-                <li class="active"><a href="category">Category (Grid View)</a></li>
-                <li><a href="category_list">Category (List View)</a></li>
-                <li><a href="single?id=1">Single page</a></li>
+                 <li><a href="category" type="submit"><i name="propertyType" id="propertyType" style="color:white">All</i></a></li>
+                {foreach from=$proListArray key=k item=v}
+                <li><a href="category?propertyType={$v['id']}"><i name="propertyType" id="propertyType" style="color:white">{$v['name']}</i></a></li>
+                {/foreach}
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="blog">Blog Archive</a></li>
-                <li><a href="blog_single">Blog Single</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="contact">Contact</a></li>
-              </ul>     
-            </li>
-            {if ($smarty.session.role != 4)}
+            <li><a href="contact">Contact</a></li>
+            <li><a href="about">About</a></li>
+             {if (isset($smarty.session.role) && $smarty.session.role != 4)}
             <li><a href="modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Sign in</a></li>
             <li><a href="#modal-signup" class="signup" data-toggle="modal" data-target="#modal-signup">Sign up</a></li>
+            {/if}
+            <li>
+            {if $userMessageCount == 1}
+            <a style="color:#ffffff" href="message" title="Property Group request">
+              <span>{$userMessageCount} </span>   <b><i class="fa fa-group"></i></b></a></li>
+            {/if}
+            {if $userMessageCount1}
+            <a style="color:#ffffff" href="message" title="Property Group request">
+              <span>{$userMessageCount1} </span>   <b><i class="fa fa-group"></i></b></a></li>
+            {/if}
+            {if (isset($smarty.session.role) && $smarty.session.role == 4)}
+             <li><a style="color:#ffffff"><b><i class="	fa fa-dot-circle-o text-success"></i></b> {$smarty.session.username}</a></li>
+            {else}
+            <li><a href="">User Name</a></li>
             {/if}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-ellipsis-v"></i></a>
               <ul class="dropdown-menu">
                 <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">Logout</a></li>
-                <li><a href="modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Sign in</a></li>
-                <li><a href="#modal-signup" class="signin" data-toggle="modal" data-target="#modal-signup">Sign up</a></li>
+                <li><a href="user_profile" class="signin">Setting</a></li>
               </ul>     
             </li>
-            {* {$userMessage} *}
-            <li><a style="color:#ffffff" href="message" title="Property Group request"><span>4  </span> <b><i class="fa fa-group"></i></b></a></li>
-            {* <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout">logout</a></li> *}
-            {if ($smarty.session.role == 4)}
-             <li><a style="color:#ffffff"><b><i class="	fa fa-dot-circle-o text-success"></i></b> {$smarty.session.username}</a></li>
-            {elseif ($smarty.session.role != 4)}
-            <li><a href="">User</a></li>
-            {/if}
-
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Favorite List"> <i class="fa fa-heart" style="color:white"></i></a>
               <ul class="dropdown-menu" style="background-color: #0f140ae0">
@@ -123,40 +115,9 @@
                   {/foreach} 
                    <hr></a></li>
                 {/foreach}
-                {* <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout"><img src="img/team01.jpg" alt="partner of mikha responsive real estate theme" style="height:50px; width:50px;"> <span> Gaurav Pawar abcccc <h6> Homes</h6> <hr></a></li>
-                <li><a href="#" class="logout" data-toggle="modal" data-target="#modal-logout"><img src="img/team01.jpg" alt="partner of mikha responsive real estate theme" style="height:50px; width:50px;"> <span> Gaurav Pawar abcccc <h6> Homes</h6> <hr></a></li> *}
                 <li><button type="button" class="btn btn-success btn-block" ><a href="fav" style="color:white">View All List</a></button></li>
               </ul>     
             </li>
-            
-            
-             {* {if ($smarty.session.role != 4)}
-                   user
-                   {elseif ($smarty.session.role == 4) }
-                {$smarty.session.username}
-				{/if} *}
-     
-             
-            {* {if isset($smarty.session.username) && $smarty.session.username != username}
-     { user }
-{elseif $smarty.session.role == 4}
-     { $smarty.session.role }
-{/if} *}
-
-
-{* {if $smarty.session.username == $smarty.session.username} 
-  {$smarty.session.username}
-  {elseif $smarty.session.username != username}
-
-   user
-
-{/if} *}
-
-{* {if $smarty.session.username != $smarty.session.username }
-sdfg
-{else}
-{$smarty.session.username}
-{/if} *}
 
 
 					<!-- /Message Notifications -->

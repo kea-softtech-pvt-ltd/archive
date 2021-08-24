@@ -7,12 +7,11 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <h2>Category : <span>Villa</span></p>
+              <h2>Category : <span>User All Favorit List</span></p>
             </div>
             <ol class="breadcrumb">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Category</a></li>
-              <li class="active">Villa</li>
+              <li><a href="index">Home</a></li>
+              <li class="fav">favorite</li>
             </ol>
           </div>
         </div>
@@ -30,6 +29,7 @@
             <div class="row sort">
               <div class="col-md-4 col-sm-4 col-xs-3">
                 <a href="fav" class="btn btn-success"><i class="fa fa-th"></i></a>
+                <a href="favList" class="btn btn-default"><i class="fa fa-list"></i></a>
               </div>
               <div class="col-md-8 col-sm-8 col-xs-9">
                 <form class="form-inline" role="form">
@@ -67,6 +67,7 @@
              <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
              <div class="alert alert-danger text-center" id="sucess_msg1" style="display:none;"></div>
             <div class="row container-realestate">
+            {if (count($favoriteListArrayAll) > 0)}
             {foreach from=$favoriteListArrayAll key=k item=v}
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="property-container">
@@ -77,6 +78,14 @@
                                 <img src="{SITE_URL}/administrator/upload/properties/{$image}" style="height: 200px"/>
                             {/if}               
                         {/foreach} 
+                    <div class="property-price">
+                      <h4>
+                         {foreach from=$proTypeListArray key=k item=v2}
+					                   {if ($v['title'] == $v2['id'])}{$v2['name']}{/if}
+					               {/foreach}
+                      </h4>
+                      <span>${$v['built_area'] * $v['price']}</span>
+                    </div>
                     <div class="property-status">
                       <span>For Sale</span>
                     </div>
@@ -94,9 +103,11 @@
               
               </div>
                {/foreach}
+                   {else}
+                    <div><h1>Property not found</h1></div>
+                {/if}
               <!-- break -->
             
-             
             </div>
             <!-- end:product -->
             </form>
@@ -104,13 +115,14 @@
             <div class="row">
               <div class="col-md-12">
                 <ul class="pagination">
-                  <li class="disabled"><a href="#">&laquo;</a></li>
+                  {* <li class="disabled"><a href="#">&laquo;</a></li>
                   <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
+                  <li><a href="#">&raquo;</a></li> *}
+                   {$pagLink}
                 </ul>
               </div>
             </div>
@@ -124,35 +136,17 @@
               <div class="widget-header">
                 <h3>Advance Search</h3>
               </div>    
-              <form role="form" class="advance-search">
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-success">
-                    <input type="radio" name="options" id="option1"> For Rent
-                  </label>
-                  <label class="btn btn-success">
-                    <input type="radio" name="options" id="option2"> For Sale
-                  </label>
-                </div>
-                <div class="form-group">
-                  <label for="location">Location</label>
-                  <select class="form-control">
-                    <option>Miami</option>
-                    <option>Doral</option>
-                    <option>Little Havana</option>
-                    <option>Perrine</option>
-                  </select>
-                </div>
+               <form role="form" class="advance-search" action="fav" method="GET">
                 <div class="form-group">
                   <label for="type">Property Type</label>
-                  <select class="form-control">
-                    <option>Office</option>
-                    <option>Shop</option>
-                    <option>Villa</option>
-                    <option>Apartment</option>
-                    <option>Single Family Home</option>
+                   <select class="form-control" name="propertyType" id="propertyType">
+                     <option value="" {if (isset($smarty.get.propertyType) && $smarty.get.propertyType == "")} selected {/if}>All</option>
+                  	{foreach from=$proListArray key=k item=v}
+                       <option value="{$v['id']}" {if (isset($smarty.get.propertyType) && $smarty.get.propertyType == "{$v['id']}")} selected {/if}>{$v['name']}</option>
+                   {/foreach}
                   </select>
                 </div>
-                <div class="form-group">
+                {* <div class="form-group">
                   <label for="beds">Beds</label>
                   <select class="form-control">
                     <option>1</option>
@@ -171,36 +165,37 @@
                     <option>4</option>
                     <option>5</option>
                   </select>
-                </div>
+                </div> *}
                 <div class="form-group">
                   <label for="min-price">Min Price</label>
-                  <select class="form-control">
-                    <option>$1,000</option>
-                    <option>$5,000</option>
-                    <option>$10,000</option>
-                    <option>$20,000</option>
-                    <option>$50,000</option>
-                    <option>$350,000</option>
+                  <select class="form-control" id="minprice" name="minprice">
+                    <option value=""{if (isset($smarty.get.minprice) && $smarty.get.minprice == "")} selected {/if}>select</option>
+                    <option value="5000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "5000")} selected {/if}>$5,000</option>
+                    <option value="10000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "10000")} selected {/if}>$10,000</option>
+                    <option value="20000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "20000")} selected {/if}>$20,000</option>
+                    <option value="50000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "50000")} selected {/if}>$50,000</option>
+                    <option value="1500000"{if (isset($smarty.get.minprice) && $smarty.get.minprice == "1500000")} selected {/if}>$15,00,000</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="max-price">Max Price</label>
-                  <select class="form-control">
-                    <option>$9,000</option>
-                    <option>$19,000</option>
-                    <option>$40,000</option>
-                    <option>$100,000</option>
-                    <option>$800,000</option>
+                 <select class="form-control" id="maxprice" name="maxprice">
+                    <option value=""{if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "")} selected {/if}>select</option>
+                    <option value="2000000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "2000000")} selected {/if}>$20,00,000</option>
+                    <option value="19000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "19000")} selected {/if}>$19,000</option>
+                    <option value="40000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "40000")} selected {/if}>$40,000</option>
+                    <option value="100000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "10000")} selected {/if}>$100,000</option>
+                    <option value="800000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "80000")} selected {/if}>$800,000</option>
                   </select>
                 </div>
-                <div class="form-group">
+                {* <div class="form-group">
                   <label for="min-area">Min Area</label>
                   <input type="text" class="form-control" placeholder="Min Area">
                 </div>
                 <div class="form-group">
                   <label for="max-area">Max Area</label>
                   <input type="text" class="form-control" placeholder="Max Area">
-                </div>
+                </div> *}
                 <input type="submit" name="submit" value="Search" class="btn btn-success btn-block">
               </form>
             </div>
@@ -210,12 +205,9 @@
                 <h3>Property Type</h3>
               </div>    
               <ul class="list-check">
-                <li><a href="#">Office</a>&nbsp;(18)</li>
-                <li><a href="#">Office</a>&nbsp;(43)</li>
-                <li><a href="#">Shop</a>&nbsp;(31)</li>
-                <li><a href="#">Villa</a>&nbsp;(52)</li>
-                <li><a href="#">Apartment</a>&nbsp;(8)</li>
-                <li><a href="#">Single Family Home</a>&nbsp;(11)</li>
+          	    {foreach from=$proListArray key=k item=v}
+                  <li><a href="#">{$v['name']}</a>&nbsp;(18)</li>
+                {/foreach}
               </ul>
             </div>
             <!-- break -->

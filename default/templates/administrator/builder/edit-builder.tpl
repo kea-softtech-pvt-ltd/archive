@@ -9,7 +9,7 @@ label.error {
 	<body cz-shortcut-listen="true" class="fixed-nav sticky-footer" id="page-top">	
 		{include file='administrator/common/sidebar.tpl'}			
 		<div class="content-wrapper">
-		<form name="addBuilderForm" id="registration" action="{$adminroot}/builder/edit" method="post" enctype="multipart/form-data">
+		<form name="addBuilderForm" id="EditBuilder" action="{$adminroot}/builder/edit" method="post" enctype="multipart/form-data">
 			<input type="hidden"name="id" value="{$builderuserArray['id']}">
 			<div class="container-fluid">
 				{include file='administrator/common/top-bar.tpl'}
@@ -29,7 +29,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number" value="{$builderuserArray['telephone']}">
+									<input type="text" class="form-control" name="contact_number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" placeholder="Builder telephone number" value="{$builderuserArray['telephone']}">
 								</div>
 							</div>
 							<div class="col-md-6">

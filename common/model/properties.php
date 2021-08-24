@@ -85,6 +85,11 @@
             $this->UpdateData($this->property,$array,"id",$Id,0);
           
          }
+          ## patnarship properties 
+          function patnership($array, $Id){
+            $this->UpdateData($this->property,$array,"id",$Id,0);
+          
+         }
         ## Get all Properties details
         function getAllProperties($search='', $limit='',$offset='') {
             $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description');
@@ -98,16 +103,72 @@
                 $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
                 
             }
-           // echo $_SESSION['role'] ;
-            if ($_SESSION['role']=='3'){
-                $where=array('builders.id='.$_SESSION['id']);
+             if ($_SESSION['role']=='3'){
+                
+                $where=array('builders.id="'.$_SESSION['id'].'" AND property.status !=1');
             }
-            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+            if(isset($_REQUEST['propertyName']) && $_REQUEST['propertyName'] != '') {
+                
+                $where[] = "(property.name LIKE '%".$_REQUEST['propertyName']."%')";
+               
+            }
+           // echo $_SESSION['role'] ;
+  
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('property.id DESC'), $group=array(), $limit,$offset,0);
             $result= $this->FetchAll($result1); 
             return $result;		
         }
         ## Get all Properties details front end
         function getAllProperties1($search='', $limit='',$offset='') {
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
+            
+         
+       $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name LEFT JOIN units ON units.p_id = property.id');		
+         $where=array("property.id");
+         $where = array($this->property.".status = '1'");
+            if($search != '') {
+                $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
+                
+            }
+
+            
+            if(isset($_REQUEST['propertyType']) && $_REQUEST['propertyType'] != '') {
+                
+                $where[] = "(units.title LIKE '%".$_REQUEST['propertyType']."%')";
+               
+            }
+
+            if(isset($_REQUEST['beds']) && $_REQUEST['beds'] != '') {
+                
+                $where[] = "(units.type LIKE '%".$_REQUEST['beds']."%')";
+               
+            }
+
+            if(isset($_REQUEST['baths']) && $_REQUEST['baths'] != '') {
+                
+                $where[] = "(units.bath LIKE '%".$_REQUEST['baths']."%')";
+               
+            }
+
+            if(isset($_REQUEST['min']) && $_REQUEST['min'] != '' && $_REQUEST['max'] !='' ) {
+              
+                $where[] = "(  units.carpet_area >= ".$_REQUEST['min']." AND units.carpet_area<=".$_REQUEST['max'].")";
+               
+            }
+
+            if(isset($_REQUEST['minprice']) && $_REQUEST['minprice'] != '' && $_REQUEST['maxprice'] !='' ) {
+              
+                $where[] = "(  units.price * units.built_area >= ".$_REQUEST['minprice']." AND units.price * units.built_area<=".$_REQUEST['maxprice'].")";
+               
+            }
+            
+              
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('id DESC'), $group=array(), $limit, $offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+         ## Get all Properties details front end
+         function getAllCount($search='', $limit='',$offset='') {
             $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description,units.carpet_area,units.title,units.parking,units.bath,units.built_area,units.price,units.type');
             
          
@@ -146,6 +207,35 @@
                 $where[] = "(concat(first_name,' ',last_name) LIKE '%".$search."%' OR email LIKE '%".$search."%' )";
                 
             }
+            if(isset($_REQUEST['propertyType']) && $_REQUEST['propertyType'] != '') {
+                
+                $where[] = "(units.title LIKE '%".$_REQUEST['propertyType']."%')";
+               
+            }
+            if(isset($_REQUEST['beds']) && $_REQUEST['beds'] != '') {
+                
+                $where[] = "(units.type LIKE '%".$_REQUEST['beds']."%')";
+               
+            }
+
+            if(isset($_REQUEST['baths']) && $_REQUEST['baths'] != '') {
+                
+                $where[] = "(units.bath LIKE '%".$_REQUEST['baths']."%')";
+               
+            }
+
+            if(isset($_REQUEST['min']) && $_REQUEST['min'] != '' && $_REQUEST['max'] !='' ) {
+              
+                $where[] = "(  units.carpet_area >= ".$_REQUEST['min']." AND units.carpet_area<=".$_REQUEST['max'].")";
+               
+            }
+
+            if(isset($_REQUEST['minprice']) && $_REQUEST['minprice'] != '' && $_REQUEST['maxprice'] !='' ) {
+              
+                $where[] = "(  units.price * units.built_area >= ".$_REQUEST['minprice']." AND units.price * units.built_area<=".$_REQUEST['maxprice'].")";
+               
+            }
+            
             $result1 = $this->SelectData($fields,$tables, $where, $order = array('id DESC'), $group=array(), $limit=4, 0,0);
             $result= $this->FetchAll($result1); 
             return $result;		
@@ -161,7 +251,7 @@
         }
          ## Get properties by id
 	    function getAddressPropertiesById($id) {
-            $fields=array('a_id','p_id','address','description');	//fetch fromdb
+            $fields=array('a_id','p_id','address','description','lat','lng');	//fetch fromdb
             $tables=array('properties_address');
             $where=array("p_id=".$id);		
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
@@ -351,6 +441,13 @@
 			$insertId = $this->getLatestRecordId();
 			return $insertId;
 		}
+          ## admin send notification to user 
+		function sendNotiAdmin($Array) 
+		{
+			$this->InsertData('purchase_request' , $Array );		
+			$insertId = $this->getLatestRecordId();
+			return $insertId;
+		}
         ## Add favroite in database
 		function addGroup($Array) 
 		{
@@ -406,10 +503,19 @@
             return $result;		
         }
         #chek user in group sender 
-        function chekuserGroup($user_id, $p_id) { 
+        function chekuserGroup($user_id, $p_id, $pro_id) { 
             $fields=array('sender','reciver','p_id','a_id');	
             $tables=array('add_group');
-            $where=array("(sender='".$user_id."'  AND  reciver='".$p_id."')");		
+            $where=array("(sender='".$user_id."'  AND  reciver='".$p_id."' AND  p_id='".$pro_id."')");		
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
+        #chek user in parches request 
+        function chekparchesRequest($p_id, $pro_id) { 
+            $fields=array('p_id','user');	
+            $tables=array('purchase_request');
+            $where=array("(user='".$p_id."' AND  p_id='".$pro_id."')");		
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
             $result= $this->FetchRow($result1); 
             return $result;		
@@ -430,16 +536,73 @@
 		$result= $this->FetchAll($result1); 
 		return $result;		
 	}
+            ## Get all user message details Ascept or not property
+            function getAllUserMessage1($search='', $limit='',$offset='') 
+            {
+             $fields=array('purchase_request.*,user_login.*,property.name');
+                $tables=array('purchase_request LEFT JOIN user_login ON purchase_request.user = user_login.user_id LEFT JOIN property ON purchase_request.p_id = property.id');
+                $where = array("purchase_request.user = '".$_SESSION['user_id']."' AND purchase_request.status='1' AND purchase_request.noti_type='0'");
+      
+             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+             $result= $this->FetchAll($result1); 
+             return $result;		
+         }
+
+
+      ## Get all user message details Count
+      function getAllUserMessageCount($search='', $limit='',$offset='') 
+      {
+       $fields=array('notification.*,user_login.*');
+       $tables=array('notification LEFT JOIN user_login ON notification.sender = user_login.user_id');
+       $where = array("notification.reciver = '".$_SESSION['user_id']."' AND notification.status='1' AND notification.requestGroup='0'");
+      
+       $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+       $result= $this->FetchAll($result1); 
+       return $result;		
+   }
+
+    ## Get all user message details Count
+    function getAllUserMessageCount1($search='', $limit='',$offset='') 
+    {
+
+     $fields=array('purchase_request.*,user_login.*');
+     $tables=array('purchase_request LEFT JOIN user_login ON purchase_request.user = user_login.user_id');
+     if(isset($_SESSION['user_id'])){
+        $where = array("purchase_request.user = '".$_SESSION['user_id']."' AND purchase_request.status='1' AND purchase_request.noti_type='0'");
+
+     }else{
+         $where = array();
+     }
+    
+     $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+     $result= $this->FetchAll($result1); 
+     return $result;			
+ }
 
    
     // # it use message update
-    function JoinPropertyGroup($array, $Id){
+    function JoinPropertyGroup($array, $Id, $p_id){
 
-     $this->UpdateData('notification',$array,'n_id',$Id,0);
+     $this->UpdateData('notification',$array,'sender',$Id,0);
 
-     $this->UpdateData('favorite',$array,'f_id',$Id,0); // its use in property seen
-      //  echo $Id; 
+    $this->UpdateData('favorite',$array,'user_id',$Id,'p_id',$p_id,0); // its use in property seen
+      //  echo $Id;
+      
+    //   if(isset($_REQUEST['user_id']) == $p_id) {
+              
+    //     $this->UpdateData('favorite',$array,'user_id',$Id,'p_id',$p_id,0);
+       
+    // }
+
      }
+
+        // # it use message update
+    function JoinPropertyGroup1($array, $Id, $p_id){
+
+        $this->UpdateData('purchase_request',$array,'user',$Id,0);
+
+   
+        }
 
      // # it use user message delte
     function deleteUserMessage($array, $Id){
@@ -462,11 +625,48 @@
          
      }
 
+     function getPurechecrequest($search='', $limit='',$offset='') {
+        // echo $id ;
+      $fields=array('purchase_request.*');
+      $tables=array('purchase_request');	
+      $where=array();
+     // $where = array("notification.reciver = '".$_SESSION['user_id']."' AND notification.status='1'");
+
+         $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+         $result= $this->FetchAll($result1); 
+         return $result;	
+         
+     }
+     //its use in show all group properties
+    function getAllUserGroupAccept1($search='', $limit='',$offset='') {
+        // echo $id ;
+      $fields=array('add_group.*');
+      $tables=array('add_group');	
+      $where=array("status='1'");
+  
+
+         $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array('add_group.p_id'), $limit,$offset,0);
+         $result= $this->FetchAll($result1); 
+         return $result;	
+         
+     }
+
           ## Get all Properties user in chat  details front end View page chat.php page
           function getUserForChat($id, $search='', $limit='',$offset='') {
             $fields=array('user_login.*,user_chat.*');
             $tables=array('user_login LEFT JOIN user_chat ON user_login.user_id = user_chat.sender');		
             $where=array("user_login.user_id=".$id);
+        
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchRow($result1); 
+            return $result;		
+        }
+
+         ## Get all Properties user in chat  details front end View page chat.php page
+         function getUserForChats($id, $search='', $limit='',$offset='') {
+            $fields=array('property.*');
+            $tables=array('property');		
+            $where=array("property.id=".$id);
         
             $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
             $result= $this->FetchRow($result1); 
@@ -484,25 +684,22 @@
             //     return $result;		
             // }
 
-            function getUserChatMessageNew($from_user_id, $to_user_id) {
+            function getUserChatMessageNew($from_user_id, $to_user_id, $id) {
                
                     $fields=array('user_chat.*');
-                    $tables=array('user_chat');		
-                    $where=array("(sender = '".$from_user_id."' 
-                    AND reciver = '".$to_user_id."') 
-                    OR (sender = '".$to_user_id."' 
-                    AND reciver = '".$from_user_id."') ");
-                     
+                    $tables=array('user_chat');
+                    		
+                    $where=array("(sender = '".$from_user_id."' AND reciver = '".$to_user_id."' AND p_id ='".$id."') OR (sender = '".$to_user_id."' AND reciver = '".$from_user_id."' AND p_id ='".$id."') ");
                     $result1 = $this->SelectData($fields,$tables, $where, $order = array("created_date ASC"), $group=array(), 0,0);
                     $result= $this->FetchAll($result1); 
                     return $result;		
                 }
-            function getUserGroupChatMessageNew() {
+            function getUserGroupChatMessageNew($id) {
                
                     $fields=array('user_chat.*');
                     $tables=array('user_chat');		
-                    $where=array("reciver = '0'");
-                     
+                    $where=array("reciver = '0' AND p_id=".$id);
+
                     $result1 = $this->SelectData($fields,$tables, $where, $order = array("created_date ASC"), $group=array(), 0,0);
                     $result= $this->FetchAll($result1); 
                     return $result;		
@@ -531,11 +728,36 @@
 
            ## Get all favroite list in user in show navbar
            function getAllfavrite($search='', $limit='',$offset='') {
+            $fields=array('favorite.*,property.name as pname,property.images,units.title,units.built_area,units.price');
+            $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id LEFT JOIN units ON units.p_id = property.id');		
+            $where=array("favorite.user_id='".$_SESSION['user_id']."'");
+            
+            if(isset($_REQUEST['propertyType']) && $_REQUEST['propertyType'] != '') {
+                
+                $where[] = "(units.title LIKE '%".$_REQUEST['propertyType']."%')";
+               
+            }
+
+            if(isset($_REQUEST['minprice']) && $_REQUEST['minprice'] != '' && $_REQUEST['maxprice'] !='' ) {
+              
+                $where[] = "(  units.price * units.built_area >= ".$_REQUEST['minprice']." AND units.price * units.built_area<=".$_REQUEST['maxprice'].")";
+               
+            }
+
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit, $offset,0);
+           // $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+
+           ## Get all favroite list in user in show navbar
+           function getAllfavriteCount($search='', $limit='',$offset='') {
             $fields=array('favorite.*,property.name as pname,property.images');
             $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id');		
             $where=array("favorite.user_id='".$_SESSION['user_id']."'");
-        
-            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
+            
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit, $offset,0);
+           // $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(),$limit = "",0,0); 
             $result= $this->FetchAll($result1); 
             return $result;		
         }
@@ -554,13 +776,61 @@
          ## Get all favroite list in user in show navbar limit 4
          function getAllfavritenav($search='', $limit='',$offset='') {
             $fields=array('favorite.*,property.name as pname,property.images');
-            $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id');		
-            $where=array("favorite.user_id='".$_SESSION['user_id']."'");
+            $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id');
+
+            if(isset($_SESSION['user_id'])){
+                $where=array("favorite.user_id='".$_SESSION['user_id']."'");
+            }else{
+                $where = array();
+            }
+           
         
             $result1 = $this->SelectData($fields,$tables, $where, $order = array('favorite.f_id DESC'), $group=array(),$limit=4,0,0); 
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+
+               ## Get all slider details
+               function getAllSlider($search='', $limit='',$offset='') {
+                $fields=array('banner.*');	
+                $tables=array('banner');
+                $where = array(" status = '1'");
+                $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+                $result= $this->FetchAll($result1); 
+                return $result;		
+            }
+
+            ## Get all Property details for use search filter
+           function getPropertiey($search='', $limit='',$offset='') 
+           {
+            $fields=array('properties_type.*');	
+            $tables=array('properties_type');
+            $where = array(" status = '1'");       
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+            }
+            ## Get all Property details for use search filter for beds
+           function getPropertieyBeds($search='', $limit='',$offset='') 
+           {
+            $fields=array('unit_type.*');	
+            $tables=array('unit_type');
+            $where = array(" status = '1'");       
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+            }
+
+            ## Get all Property details for use in patnership
+           function getPropertieyPartner($search='', $limit='',$offset='') 
+           {
+            $fields=array('property.*');	
+            $tables=array('property');
+            $where = array(" patnership = '1' AND status = '1' ");       
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+            }
 
         
     }

@@ -260,23 +260,38 @@
           <div class="col-md-12">
             <div class="jcarousel-wrapper">
               <div class="jcarousel">
+               {foreach from=$userGroupListArray key=k item=v}
                 <ul>
-                   {foreach from=$userGroupListArray key=k item=v}
+                  
                   {* {$v['user_id']}  *}
                   <li><a href="#"> {$v['username']}
-                  {if ($smarty.session.user_id != $v['user_id'])}
-                   <a href="chat?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}" style="float: right" type="button" title="Send Message"> <i class="fa fa-envelope-square" style="font-size:28px;color:#7aa93c;"></i> </a>
+                  {* {if ($smarty.session.user_id != $v['user_id'])}
+                   <a href="chat?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}&id={$propertiesArray['id']}" style="float: right" type="button" title="Send Message"> <i class="fa fa-comments" style="font-size:28px;color:#7aa93c;"></i> </a>
                     {elseif ($smarty.session.user_id == $v['user_id'])}
                       <a style="font-size:28px;color:white;"disabled><i class="fa fa-home"></i></a>
-                   {/if}
-                  <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme"></a><a href="chat?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}">
-                   {* {if ($smarty.session.user_id != $v['user_id'])}
-                  <button type="button" class="btn btn-success btn-block"><i class="fa fa-envelope"></i></button></a></li>
-                  {/if} *}
-                  {/foreach}
-                 <h1> <a href="chatGroup?from_user_id={$smarty.session.user_id}&to_user_id={$v['user_id']}" style="float: right" type="button" title="Send Message"> <i class="fa fa-envelope-square" style="font-size:28px;color:#7aa93c;"> Group chat</i> </a></h1>
-                </ul>
+                   {/if} *}
+                  <img src="img/{$v['image']}" alt="partner of mikha responsive real estate theme" />
                 
+                  </a>
+                  
+                 
+                  </li>
+                  
+                </ul>
+                  
+                 
+                 {/foreach}
+                 <!--old code not use in foreach and if condtion  ----->
+                  {foreach from=$userGroupListArray key=k item=v}
+                  {if ($smarty.session.user_id == $v['user_id'])}
+              
+                    <button type="button" class="btn btn-success btn-block"> <a href="chatGroup?from_user_id={$smarty.session.user_id}&to_user_id={$smarty.session.user_id}&id={$propertiesArray['id']}" type="button" title="Send Message"> <i class="	fa fa-comments" style="font-size:28px;color:#ffffff;"> Group chat</i> </a></button>    
+                  
+                   {/if}
+                  {/foreach}
+               
+              
+              
               </div>
               <a href="#" class="jcarousel-control-prev"><i class="fa fa-angle-left"></i></a>
               <a href="#" class="jcarousel-control-next"><i class="fa fa-angle-right"></i></a>
@@ -666,8 +681,6 @@ function notification()
 				}
 			}
 		});						
-	
-
 }
 
 </script>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-04-03 01:04:57
+/* Smarty version 3.1.29, created on 2021-08-06 14:57:24
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\add-builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_606771e10216d4_32800335',
+  'unifunc' => 'content_610d007c412a66_79141904',
   'file_dependency' => 
   array (
     'd5a3860b66f8e47e533e35c277b3026c38e62166' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\add-builder.tpl',
-      1 => 1617388962,
+      1 => 1625767076,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_606771e10216d4_32800335 ($_smarty_tpl) {
+function content_610d007c412a66_79141904 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -84,7 +84,7 @@ label.error {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Telephone</label>
-									<input type="text" class="form-control" name="contact_number" placeholder="Builder telephone number">
+									<input type="text" class="form-control" name="contact_number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" placeholder="Builder telephone number">
 								</div>
 							</div>
 							<div class="col-md-6">

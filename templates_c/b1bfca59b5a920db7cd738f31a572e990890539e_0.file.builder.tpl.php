@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-04-04 23:18:16
+/* Smarty version 3.1.29, created on 2021-07-14 13:34:39
   from "C:\xampp\htdocs\archive\default\templates\administrator\builder\builder.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_6069fbe0771ef8_19951858',
+  'unifunc' => 'content_60ee9a976b79d9_11391908',
   'file_dependency' => 
   array (
     'b1bfca59b5a920db7cd738f31a572e990890539e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\builder\\builder.tpl',
-      1 => 1617558015,
+      1 => 1626249872,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_6069fbe0771ef8_19951858 ($_smarty_tpl) {
+function content_60ee9a976b79d9_11391908 ($_smarty_tpl) {
 ?>
     <!doctype html>
 <html>
@@ -109,6 +109,38 @@ $__foreach_v_0_saved_local_item = $_smarty_tpl->tpl_vars['v'];
 						</ul>
 						<!--<input type="hidden" name="id" value="id">--->
 						<ul class="buttons">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Property</button>
+							<div class="dropdown-menu">
+							<?php
+$_from = $_smarty_tpl->tpl_vars['buildersProListArray']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_vv_1_saved_item = isset($_smarty_tpl->tpl_vars['vv']) ? $_smarty_tpl->tpl_vars['vv'] : false;
+$__foreach_vv_1_saved_key = isset($_smarty_tpl->tpl_vars['k']) ? $_smarty_tpl->tpl_vars['k'] : false;
+$_smarty_tpl->tpl_vars['vv'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['vv']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['vv']->value) {
+$_smarty_tpl->tpl_vars['vv']->_loop = true;
+$__foreach_vv_1_saved_local_item = $_smarty_tpl->tpl_vars['vv'];
+?>
+								<?php if (($_smarty_tpl->tpl_vars['vv']->value['builder_name'] == $_smarty_tpl->tpl_vars['v']->value['id'])) {?>
+								<a class="dropdown-item" href="properties?propertyName=<?php echo $_smarty_tpl->tpl_vars['vv']->value['proname'];?>
+"><?php echo $_smarty_tpl->tpl_vars['vv']->value['proname'];?>
+</a>
+								<?php }?>
+							<?php
+$_smarty_tpl->tpl_vars['vv'] = $__foreach_vv_1_saved_local_item;
+}
+if ($__foreach_vv_1_saved_item) {
+$_smarty_tpl->tpl_vars['vv'] = $__foreach_vv_1_saved_item;
+}
+if ($__foreach_vv_1_saved_key) {
+$_smarty_tpl->tpl_vars['k'] = $__foreach_vv_1_saved_key;
+}
+?>
+  							</div>
 							 <a class="btn_1" href="<?php echo $_smarty_tpl->tpl_vars['adminroot']->value;?>
 /builder/edit?id=<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
 " ><i class="fa fa-fw fa-edit"></i>Edit</a>				

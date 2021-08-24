@@ -1,4 +1,9 @@
+{if (isset($smarty.session.role) && $smarty.session.role == 4)}
   {include file='mikha/header.tpl'}
+{else}
+  {include file='mikha/header1.tpl'}
+{/if}
+{* {include file='mikha/header.tpl'} *}
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url(img/img01.jpg);">
       <div class="container">
@@ -108,8 +113,8 @@
             <!-- begin:sorting -->
             <div class="row sort">
               <div class="col-md-4 col-sm-4 col-xs-3">
-                <a href="search.html" class="btn btn-success"><i class="fa fa-th"></i></a>
-                <a href="search_list.html" class="btn btn-default"><i class="fa fa-list"></i></a>
+                <a href="search" class="btn btn-success"><i class="fa fa-th"></i></a>
+                <a href="search_list" class="btn btn-default"><i class="fa fa-list"></i></a>
                 <span>Show <strong>6</strong> of <strong>30</strong> result.</span>
               </div>
               <div class="col-md-8 col-sm-8 col-xs-9">
@@ -143,183 +148,79 @@
             <!-- end:sorting -->
 
             <!-- begin:product -->
+            <form id="favorite-form" method="POST" action="" enctype="multipart/form-data"> 
+             <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
+             <div class="alert alert-danger text-center" id="sucess_msg1" style="display:none;"></div>
             <div class="row container-realestate">
+            {if (count($propertiesListArray) > 0)}
+            {foreach from=$propertiesListArray key=k item=v}
               <div class="col-md-4 col-sm-6 col-xs-12">
+              <input type="hidden" name="id" id="id" value="{$v['id']}" />
+                {$imagearray = explode(',',$v['images'])}
                 <div class="property-container">
                   <div class="property-image">
-                    <img src="img/img02.jpg" alt="mikha real estate theme">
+                         {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                                <img src="{SITE_URL}/administrator/upload/properties/{$image}" style="height: 200px">
+                            {/if}               
+                        {/foreach} 
                     <div class="property-price">
-                      <h4>Offices</h4>
-                      <span>$800,000</span>
-                    </div>
-                    <div class="property-status">
-                      <span>For Rent</span>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                  </div>
-                  <div class="property-content">
-                    <h3><a href="#">Office</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                  </div>
-                  <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-              <!-- break -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="property-container">
-                  <div class="property-image">
-                    <img src="img/img03.jpg" alt="mikha real estate theme">
-                    <div class="property-price">
-                      <h4>Villa</h4>
-                      <span>$800,000</span>
+                      <h4>
+                       {foreach from=$proTypeListArray key=k item=v2}
+					              {if ($v['title'] == $v2['id'])}{$v2['name']}{/if}
+					            {/foreach}
+                     </h4>
+                      <span>${$v['built_area'] * $v['price']}</span>
                     </div>
                     <div class="property-status">
                       <span>For Sale</span>
                     </div>
                   </div>
                   <div class="property-features">
-                    <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
+                    <span><i class="fa fa-home"></i> {$v['carpet_area']} m<sup>2</sup></span>
+                    <span><i class="fa fa-hdd-o"></i> {$v['type']}</span>
+                    <span><i class="fa fa-male"></i>{$v['bath']} Bath</span>
                   </div>
                   <div class="property-content">
-                    <h3><a href="#">Awesome Villa</a> <small>22, JJ Road, Yogyakarta</small></h3>
+                    <h3><a href="#">{$v['name']}</a> <small>{substr($v['address'], 0, 40)}...</small></h3>
                   </div>
                   <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
+                    
+                    {* <a title="Add to favorite" href="favadd?id={$v['id']}"><i class="fa fa-heart" name="builderSave" type="submit"></i><button class="btn_1 medium" name="builderSave" type="submit">Update</button></a> *}
+                     <a title="Add to favorite"><i class="fa fa-heart addToFav" data-id="{$v['id']}"  ></i></a>
+                    <a href="single1?id={$v['id']}" title="Contact Agent"><i class="fa fa-envelope"></i></a>
+                    <a href="single?id={$v['id']}" title="View page"><i class="fa fa-eye"></i></a>
                   </div>
+                   
                 </div>
+              
               </div>
-              <!-- break -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="property-container">
-                  <div class="property-image">
-                    <img src="img/img04.jpg" alt="mikha real estate theme">
-                    <div class="property-price">
-                      <h4>Residential</h4>
-                      <span>$800,000</span>
-                    </div>
-                    <div class="property-status">
-                      <span>For Rent</span>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                  </div>
-                  <div class="property-content">
-                    <h3><a href="#">Land In Central Park</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                  </div>
-                  <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-              <!-- break -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="property-container">
-                  <div class="property-image">
-                    <img src="img/img05.jpg" alt="mikha real estate theme">
-                    <div class="property-price">
-                      <h4>Residential</h4>
-                      <span>$800,000</span>
-                    </div>
-                    <div class="property-status">
-                      <span>For Sale</span>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                  </div>
-                  <div class="property-content">
-                    <h3><a href="#">Luxury Villa</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                  </div>
-                  <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-              <!-- break -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="property-container">
-                  <div class="property-image">
-                    <img src="img/img06.jpg" alt="mikha real estate theme">
-                    <div class="property-price">
-                      <h4>Residential</h4>
-                      <span>$800,000</span>
-                    </div>
-                    <div class="property-status">
-                      <span>For Rent</span>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                  </div>
-                  <div class="property-content">
-                    <h3><a href="#">The Urban Life</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                  </div>
-                  <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-              <!-- break -->
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="property-container">
-                  <div class="property-image">
-                    <img src="img/img04.jpg" alt="mikha real estate theme">
-                    <div class="property-price">
-                      <h4>Residential</h4>
-                      <span>$800,000</span>
-                    </div>
-                    <div class="property-status">
-                      <span>For Sale</span>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> 2 Bed</span>
-                    <span><i class="fa fa-male"></i> 2 Bath</span>
-                  </div>
-                  <div class="property-content">
-                    <h3><a href="#">Land In Central Park</a> <small>22, JJ Road, Yogyakarta</small></h3>
-                  </div>
-                  <div class="property-footer">
-                    <a href="#" title="Add to favorite"><i class="fa fa-heart"></i></a>
-                    <a href="#" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
+               {/foreach}
+               {else}
+               <div>
+               <h1>Property not found</h1>
+               </div>
+               
+            {/if}
               <!-- break -->
             </div>
+             </form>
             <!-- end:product -->
 
             <!-- begin:pagination -->
             <div class="row">
               <div class="col-md-12">
                 <ul class="pagination">
-                  <li class="disabled"><a href="#">&laquo;</a></li>
+                  {* <li class="disabled"><a href="#">&laquo;</a></li>
                   <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
+                  <li><a href="#">&raquo;</a></li> *}
+                   {if (count($propertiesListArray) > 0)}
+                    {$pagLink}
+                  {/if}
                 </ul>
               </div>
             </div>
@@ -601,4 +502,33 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+<script>
+$(".addToFav").on("click", function(){
+  var product_id = $(this).attr('data-id');
+  $.ajax({     
+				url: "{$adminroot}/ajaxFavorite",
+        type: "POST",
+         data: { 
+				action : 'addFavorite',
+				product_id:product_id,
+				},
+        success: function(result)
+        {	
+          console.log(result);
+          if($.trim(result)=='')				
+				{
+					$('#sucess_msg1').show().html('Not add to fav you are already add to fav.');
+					setTimeout(function(){ $('#sucess_msg1').hide();},3000)
+				}
+				else
+				{						
+					$('#sucess_msg').show().removeClass('alert-danger').addClass('alert-success').html('Add to favraite list.');
+					setTimeout(function(){ $('#sucess_msg').hide();},3000)
+					setTimeout(function(){ window.location.href='search'; },3000);	
+				}
+        }
+  });
 
+});
+
+</script>

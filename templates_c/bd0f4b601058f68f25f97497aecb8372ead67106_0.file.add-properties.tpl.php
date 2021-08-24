@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2021-05-11 15:26:16
+/* Smarty version 3.1.29, created on 2021-07-26 11:54:10
   from "C:\xampp\htdocs\archive\default\templates\administrator\properties\add-properties.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_609a54c0b14920_00078765',
+  'unifunc' => 'content_60fe550ad65a20_41415396',
   'file_dependency' => 
   array (
     'bd0f4b601058f68f25f97497aecb8372ead67106' => 
     array (
       0 => 'C:\\xampp\\htdocs\\archive\\default\\templates\\administrator\\properties\\add-properties.tpl',
-      1 => 1620725938,
+      1 => 1627280647,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:administrator/common/scripts.tpl' => 1,
   ),
 ),false)) {
-function content_609a54c0b14920_00078765 ($_smarty_tpl) {
+function content_60fe550ad65a20_41415396 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <style>
@@ -40,6 +40,12 @@ function content_609a54c0b14920_00078765 ($_smarty_tpl) {
 }
 .user-tabs a.nav-link {
     pointer-events: none;
+}
+#map {
+  height: 200px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
 }
 </style>
 <html>
@@ -158,6 +164,7 @@ $_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
 					<div class="form-group">
 						<label>Porject picture</label>
 						<input class="form-control" type="file" id="image" name="image[]" value="" multiple />
+						<div class="text-danger" id="image_error"></div>
 					</div>
 				</div>			
 
@@ -181,13 +188,21 @@ $_smarty_tpl->tpl_vars['k'] = $__foreach_v_0_saved_key;
 						<input type="hidden" name="addressID" id="addressID">
 						<input type="text" name="address" id="address" class="form-control" placeholder="Your address" />
 						<div class="text-danger" id="address_error"></div>
+						
 					</div>
-				</div>
-				<div class="col-md-6">
 					<div class="form-group">
 						<label>Add Url</label>
 						<input type="text" name="description" id="description" class="form-control" placeholder="Your address Url">
 					</div>
+				</div>
+				   
+	
+    <input type="hidden"name="lat" id="lat" value="">
+	<input type="hidden"name="lng" id="lng" value="">
+
+
+				<div class="col-md-6">
+					<div id="map"></div>
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary" name="next" id="next" onclick="nextWing()">Next >></button>
@@ -381,6 +396,13 @@ function myFunction() {
             setTimeout(function(){ $('#names_error').hide(); }, 2000);
             _valid = 0;
         } 
+		if(image=="") 
+        {
+            $('#image_error').show();
+            $('#image_error').html('Please select images.');
+            setTimeout(function(){ $('#image_error').hide(); }, 2000);
+            _valid = 0;
+        } 
 		if(started_date=="") 
         {
             $('#started_date_error').show();
@@ -441,6 +463,8 @@ function nextWing()
 		var _valid = 1;
 		var address 	= $("#address").val();
 		var description = $("#description").val();
+		var lng = $("#lng").val();
+		var lat = $("#lat").val();
 		var propertyID = $("#propertyID").val();
 		var addressID = $("#addressID").val();
 
@@ -459,6 +483,8 @@ function nextWing()
                 data: { 
 				action : 'addPropertieAddress',
 				address : address,
+				lat : lat,
+				lng : lng,
 				description:description,
 				propertyID:propertyID,
 				addressID:addressID,
@@ -1002,13 +1028,13 @@ $().ready(function () {
 		var proop = '';
 		for(var i=0;i<unitsType.length;i++)
 		{
-			unitop += '<option value='+unitsType[i]['name']+'>'+unitsType[i]['name']+'</option>';	
+			unitop += '<option value='+unitsType[i]['id']+'>'+unitsType[i]['name']+'</option>';	
 			
 		}
 		for(var i=0;i<proType.length;i++)
 		{
-		//	proop += '<option value='+proType[i]['id']+'>'+proType[i]['name']+'</option>'; its also work
-			proop += '<option value='+proType[i]['name']+'>'+proType[i]['name']+'</option>';
+		//	proop += '<option value='+proType[i]['name']+'>'+proType[i]['name']+'</option>'; its also work
+			proop += '<option value='+proType[i]['id']+'>'+proType[i]['name']+'</option>';
 			
 		}
         html  = '<tr class="unit-list-item"  id="div_'+ number +'">';
@@ -1415,6 +1441,92 @@ $('body').on('change', '.wingsid', function() {
 		}
 	});
 });
+<?php echo '</script'; ?>
+>
+ <?php echo '<script'; ?>
+
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMWmv0f93yIsepr4PqAVC8Yts5yzOnLd4&callback=initAutocomplete&libraries=places&v=weekly"
+      async
+    ><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ type="text/javascript">
+	
+	// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <?php echo '<script'; ?>
+ src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+function initAutocomplete() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -33.8688, lng: 151.2195 },
+    zoom: 13,
+    mapTypeId: "roadmap",
+  });
+  // Create the search box and link it to the UI element.
+  const input = document.getElementById("address");
+  const searchBox = new google.maps.places.SearchBox(input);
+  //console.log(map.address)
+  //map.address[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // Bias the SearchBox results towards current map's viewport.
+ map.addListener("bounds_changed", () => {
+	//console.log("hi")
+    searchBox.setBounds(map.getBounds());
+  });
+  let markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+	console.log(places[0].geometry.location.lat())
+	console.log(places[0].geometry.location.lng())
+	$("#lat").val(places[0].geometry.location.lat());
+	$("#lng").val(places[0].geometry.location.lng());
+
+    if (places.length == 0) {
+      return;
+    }
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds();
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      const icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      };
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+        })
+      );
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+}
 <?php echo '</script'; ?>
 >
 </body>

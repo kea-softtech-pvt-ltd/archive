@@ -9,7 +9,15 @@
 }
 .form-control.required.wingsid.error,.form-control.unitwingsid.required.error,.form-control.unitfloorsid.required.error,.form-control.required.error{
 	color:black!important;
+
 }
+#map {
+  height: 200px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
 </style>
 <html>
 	{include file='administrator/common/header.tpl'}
@@ -124,13 +132,18 @@
 						<input type="hidden"name="addressID" id="addressID" value="{if isset ($addressPropertiesArray['a_id'])}{$addressPropertiesArray['a_id']} {/if}">
 						<input type="text" name="address" id="address" class="form-control" placeholder="Your address" value="{if isset ($addressPropertiesArray['address'])}{$addressPropertiesArray['address']}{/if}" />
 						<div class="text-danger" id="address_error"></div>
+						
 					</div>
-				</div>
-				<div class="col-md-6">
 					<div class="form-group">
 						<label>Add Url</label>
 						<input type="text" name="description" id="description" class="form-control"  placeholder="Your address Url" value="{if isset($addressPropertiesArray['description'])}{$addressPropertiesArray['description']}{/if}" />
 					</div>
+				</div>
+
+				<input type="hidden"name="lat" id="lat" value="{if isset ($addressPropertiesArray['lat'])}{$addressPropertiesArray['lat']}{/if}">
+				<input type="hidden"name="lng" id="lng" value="{if isset ($addressPropertiesArray['lng'])}{$addressPropertiesArray['lng']}{/if}">
+				<div class="col-md-6">
+					<div id="map"></div>
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary" name="next" id="next" onclick="nextWing()">Next >></button>
@@ -213,7 +226,7 @@
 											<select name="wing[]" id="wings{$v1['f_id']}" class="form-control wingsid required">
 												<option value="">Select Wing.</option>
 												{foreach from=$wingArray key=k item=v2}
-												<option {if $v1['wing'] == $v2['w_id'] } selected {/if} value="{$v2['w_id']}">{$v2['name']}</option>
+													<option {if $v1['wing'] == $v2['w_id'] } selected {/if} value="{$v2['w_id']}">{$v2['name']}</option>
 												{/foreach}
 											</select>
 											<div class="text-danger" id="wing_error"></div>
@@ -341,7 +354,7 @@
             <div class="form-group">
                <label>Floor</label>
                <select  class="form-control unitfloorsid required"id="unitfloorsid_{date('s')}{$v1['floor']}" name="unitfloorsid[]">
-				  <option value="">Select Floor sds</option>
+				  <option value="">Select Floor</option>
 				{foreach from=$floorsArray key=k item=v2}
 				<option  {if ($v1['floor'] == $v2['floor'])} selected {/if}  value="{$v2['floor']}">{$v2['floor']}</option>
 				{/foreach}
@@ -353,9 +366,10 @@
                <label>Type</label>
            <!-- <input type="text" class="form-control required" id="name{$v1['u_id']}" name="name[]" placeholder="Units name type"  value="{$v1['type']}"> -->
 				<select  class="form-control required" id="name{date('s')}{$v['name']}" name="name[]">
-				  <option value="{$v1['type']}">{$v1['type']}</option>
+				  {* <option value="{$v1['type']}">{$v1['type']}</option> *}
 					{foreach from=$unitsTypeListArray key=k item=v}
-						<option value="{$v['name']}">{$v['name']}</option>
+						<option  {if ($v1['type'] == $v['id'])} selected {/if}  value="{$v['id']}">{$v['name']}</option>
+						{* <option value="{$v['name']}">{$v['name']}</option> *}
 					{/foreach}
                </select>
 			</div>
@@ -365,9 +379,10 @@
                <label>Title</label>
              <!--<input type="text" class="form-control required" id="title{$v1['u_id']}" name="title[]" placeholder="Unit title name" value="{$v1['title']}" >--->
 				<select  class="form-control required"id="title{date('s')}{$v1['title']}" name="title[]">
-				  <option value="{$v1['title']}">{$v1['title']}</option>
+				  {* <option value="{$v1['title']}">{$v1['title']}</option> *}
 					{foreach from=$proTypeListArray key=k item=v}
-						<option value="{$v['name']}">{$v['name']}</option>
+						<option  {if ($v1['title'] == $v['id'])} selected {/if}  value="{$v['id']}">{$v['name']}</option>
+						{* <option value="{$v['name']}">{$v['name']}</option> *}
 					{/foreach}
                </select>
 			</div>
@@ -531,6 +546,8 @@ function nextWing()
 {
 		var _valid = 1;
 		var address 	= $("#address").val();
+		var lat 	= $("#lat").val();
+		var lng 	= $("#lng").val();
 		var description = $("#description").val();
 		var propertyID = $("#propertyID").val();
 		var addressID = $("#addressID").val();
@@ -549,6 +566,8 @@ function nextWing()
                 data: { 
 				action : 'addPropertieAddress',
 				address : address,
+				lat : lat,
+				lng : lng,
 				description:description,
 				propertyID:propertyID,
 				addressID:addressID,
@@ -820,6 +839,7 @@ function getWings(propertyID,rowCount,classnm=''){
 			success: function(response){
 				
 				var data_obj = JSON.parse(response);
+				console.log('hi');
 				console.log(data_obj.result);
 				var _html = '<option value="">Select  Wing </option>';
 				
@@ -1417,6 +1437,8 @@ var count = 1;
 
     dynamic_floor_field(count);
     function dynamic_floor_field(number) {
+		var WingsArrays = [{foreach from=$wingArray key=k item=v2} "<option value='{$v2['w_id']}'>{$v2['name']}</option>", {/foreach}];
+
 		html  = '';
 		html += '<div class="row" id="div_'+ number +'">';
 		html += '<div class="col-md-3">';
@@ -1425,6 +1447,7 @@ var count = 1;
 		html += '<span id="floorsid"></span>';
 		html += '<select name="wing[]" id="wing'+ number +'" class="form-control required wingsid">';
 		html += '<option value="">Select Wing</option>';
+		html += WingsArrays;
 		html += '</select>';
 		html += '<div class="text-danger" id="wing_error"></div>';
 		
@@ -1495,6 +1518,175 @@ var count = 1;
 
 
 });
+</script>
+
+{* 
+ <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMWmv0f93yIsepr4PqAVC8Yts5yzOnLd4&callback=initAutocomplete&libraries=places&v=weekly"
+      async
+    ></script>
+	<script type="text/javascript">
+	
+	// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+function initAutocomplete() {
+	var late = ($('#lat').val()) ? $('#lat').val():"-33.8688";
+	var lnge = ($('#lng').val()) ? $('#lng').val():'151.2195';
+	//alert(late);
+  const map = new google.maps.Map(document.getElementById("map"), {
+	
+    center: { lat: late, lng: lnge },
+    zoom: 13,
+    mapTypeId: "roadmap",
+  });
+  // Create the search box and link it to the UI element.
+  const input = document.getElementById("address");
+  const searchBox = new google.maps.places.SearchBox(input);
+  //console.log(map.address)
+  //map.address[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // Bias the SearchBox results towards current map's viewport.
+ map.addListener("bounds_changed", () => {
+	  console.log("hi")
+    searchBox.setBounds(map.getBounds());
+  });
+  let markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+	console.log(places[0].geometry.location.lat())
+	console.log(places[0].geometry.location.lng())
+	$("#lat").val(places[0].geometry.location.lat());
+	$("#lng").val(places[0].geometry.location.lng());
+
+    if (places.length == 0) {
+      return;
+    }
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds();
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      const icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      };
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+        })
+      );
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+}
+</script> *}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMWmv0f93yIsepr4PqAVC8Yts5yzOnLd4&libraries=places&v=weekly"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+ $(function(){     
+    var lat = ($("#lat").val()) ? $("#lat").val():18.4464732,
+        lng = ($("#lng").val()) ? $("#lng").val():73.826375,
+
+        latlng = new google.maps.LatLng(lat, lng),
+        image = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png'; 
+         
+    var mapOptions = {           
+            center: new google.maps.LatLng(lat, lng),           
+            zoom: 13,           
+            mapTypeId: google.maps.MapTypeId.ROADMAP         
+        },
+        map = new google.maps.Map(document.getElementById('map'), mapOptions),
+        marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            icon: image
+         });
+     
+    var input = document.getElementById('address');         
+    var autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ["geocode"]
+    });          
+    
+    autocomplete.bindTo('bounds', map); 
+    var infowindow = new google.maps.InfoWindow(); 
+ 
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+        infowindow.close();
+        var place = autocomplete.getPlace();
+        if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+        } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  
+        }
+
+      $("#lat").val(place.geometry.location.lat());
+$("#lng").val(place.geometry.location.lng());
+        
+        moveMarker(place.name, place.geometry.location);
+    });  
+    
+    $("input").focusin(function () {
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                infowindow.close();
+                var firstResult = $(".pac-container .pac-item:first").text();
+				var gcodedata  = {};
+				gcodedata['address'] = firstResult;
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode(JSON.stringify(gcodedata), function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var lat = results[0].geometry.location.lat(),
+                            lng = results[0].geometry.location.lng(),
+                            placeName = results[0].address_components[0].long_name,
+                            latlng = new google.maps.LatLng(lat, lng);
+
+                        moveMarker(placeName, latlng);
+                        $("input").val(firstResult);
+                    }
+                });
+            }
+        });
+    });
+     
+     function moveMarker(placeName, latlng){
+        marker.setIcon(image);
+        marker.setPosition(latlng);
+        infowindow.setContent(placeName);
+        infowindow.open(map, marker);
+     }
+});
+
+  });
+  
+
 
 
 </script>

@@ -35,12 +35,10 @@
             <div class="jcarousel-wrapper">
               <div class="jcarousel">
                 <ul>
-                  <li><a href="#"><img src="img/img01.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="img/img02.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="img/img03.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="img/img04.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="img/img05.jpg" alt="partner of mikha responsive real estate theme"></a></li>
-                  <li><a href="#"><img src="img/img06.jpg" alt="partner of mikha responsive real estate theme"></a></li>
+                 {foreach from=$propertiePartnerListArray key=k item=v}
+                  {$imagearray = explode(',',$v['images'])}
+                  <li><a><h4>{$v['name']}</h4>{foreach from=$imagearray key=index item=image name=count}{if $index == 0}<img src="{SITE_URL}/administrator/upload/properties/{$image}" alt="partner of mikha responsive real estate theme">{/if}{/foreach} </a></li>
+                 {/foreach}
                 </ul>
               </div>
               <a href="#" class="jcarousel-control-prev"><i class="fa fa-angle-left"></i></a>
@@ -121,9 +119,7 @@
 
       </div>
     </div>
-
-
-        <!-- begin:modal-signin -->
+  <!-- begin:modal-signin -->
     <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -132,18 +128,18 @@
             <h4 class="modal-title">Sign in</h4>
           </div>
           <div class="modal-body">
-            {* <form role="form"> *}
-            <form action="{$siteroot}mikha/index.php" method="post" name="frmLogin">
+            {* <form role="form"> *} 
+            <form id="frmLogin" action="{$siteroot}mikha/index.php" method="post" name="frmLogin">
               <div class="form-group">
                 <label for="emailAddress">Email address</label>
-                <input type="email" name="email" class="form-control input-lg" placeholder="Enter email">
+                <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Enter email">
                 {if isset($message) }
 													{$message}
 								{/if}
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
                   	{if isset($message1) }
 													{$message1}
 												{/if}
@@ -236,6 +232,7 @@
       </div>
     </div>
     <!-- end:modal-logout -->
+  
 <script>
 function signUp() {
 
@@ -306,10 +303,14 @@ function signUp() {
 						$('#sucesss_message').show();
           	$('#sucesss_message').html('User signup sucessfull.');
         		setTimeout(function(){ $('#sucesss_message').hide(); }, 3000);
-            setTimeout(function(){ window.location.href='index.php'; },3000);	
+            $('#modal-signin').modal('show');
+             //  setTimeout(function(){ window.location.href='index.php'; },3000);	
+          
 					}
                 }
             });
 		}   
 }
+
+
 </script>

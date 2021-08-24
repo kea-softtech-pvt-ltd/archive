@@ -1,0 +1,409 @@
+ {include file='mikha/header.tpl'}
+ <!--end menu bar --->
+    <!-- begin:header -->
+   <!-- begin:header -->
+    <div id="header" class="heading" style="background-image: url({$siteroot}/mikha/img/img01.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <div class="page-title">
+              <h2>Category : <span>User All Favorit List</span></p>
+            </div>
+            <ol class="breadcrumb">
+              <li><a href="index">Home</a></li>
+              <li class="fav">favorite</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:header -->
+
+    <!-- begin:content -->
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <!-- begin:article -->
+          <div class="col-md-9 col-md-push-3">
+            <!-- begin:sorting -->
+            <div class="row sort">
+              <div class="col-md-4 col-sm-4 col-xs-3">
+                <a href="fav" class="btn btn-default"><i class="fa fa-th"></i></a>
+                <a href="favList" class="btn btn-success"><i class="fa fa-list"></i></a>
+              </div>
+              <div class="col-md-8 col-sm-8 col-xs-9">
+                <form class="form-inline" role="form">
+                  <span>Sort by : </span>
+                  <div class="form-group">
+                    <label class="sr-only" for="sortby">Sort by : </label>
+                    <select class="form-control">
+                      <option>Most Recent</option>
+                      <option>Price (Low &gt; High)</option>
+                      <option>Price (High &gt; Low)</option>
+                      <option>Most Popular (Low &gt; High)</option>
+                    </select>
+                  </div>
+                  <span>Show : </span>
+                  <div class="form-group">
+                    <label class="sr-only" for="show">Show : </label>
+                    <select class="form-control">
+                      <option>6</option>
+                      <option>10</option>
+                      <option>15</option>
+                      <option>20</option>
+                      <option>25</option>
+                      <option>50</option>
+                      <option>100</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- end:sorting -->
+
+            <!-- begin:product -->
+            
+            <div class="row container-realestate">
+             {if (count($favoriteListArrayAll) > 0)}
+            {foreach from=$favoriteListArrayAll key=k item=v}
+              <div class="col-md-12 col-sm-12 col-xs-12" href="index.php">
+                <div class="property-container">
+                  <div class="property-content-list">
+                    <div class="property-image-list">
+                     {$imagearray = explode(',',$v['images'])}
+                         {foreach from=$imagearray key=index item=image name=count}
+                            {if $index == 0}
+                                 <img src="{SITE_URL}/administrator/upload/properties/{$image}" alt="mikha real estate theme" style="height: 100px">
+                            {/if}               
+                        {/foreach} 
+                      <div class="property-price">
+                        <h4>
+                        {foreach from=$proTypeListArray key=k item=v2}
+					                   {if ($v['title'] == $v2['id'])}{$v2['name']}{/if}
+					               {/foreach}
+                        </h4>
+                        <span>$<small> 989</small></span>
+                      </div>
+                    </div>
+                    <div class="property-text">
+                        <h3><a href="#">{$v['pname']}</a></h3>   
+                    </div>
+                    <a href="#" class="btn btn-success"><i class="	fa fa-trash-o"></i></i></a>   
+                  </div>
+                </div>
+           
+              </div>
+               {/foreach}
+                 {else}
+                    <div><h1>Property not found</h1></div>
+                {/if}
+              <!-- break -->
+         
+            </div>
+            <!-- end:product -->
+
+            <!-- begin:pagination -->
+            <div class="row">
+              <div class="col-md-12">
+                <ul class="pagination">
+                  {* <li class="disabled"><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li> *}
+                  {$pagLink}
+                </ul>
+              </div>
+            </div>
+            <!-- end:pagination -->
+          </div>
+          <!-- end:article -->
+
+           <!-- begin:sidebar -->
+          <div class="col-md-3 col-md-pull-9 sidebar">
+            <div class="widget widget-white">
+              <div class="widget-header">
+                <h3>Advance Search</h3>
+              </div>    
+               <form role="form" class="advance-search" action="favList" method="GET">
+                <div class="form-group">
+                  <label for="type">Property Type</label>
+                   <select class="form-control" name="propertyType" id="propertyType">
+                     <option value="" {if (isset($smarty.get.propertyType) && $smarty.get.propertyType == "")} selected {/if}>All</option>
+                  	{foreach from=$proListArray key=k item=v}
+                       <option value="{$v['id']}" {if (isset($smarty.get.propertyType) && $smarty.get.propertyType == "{$v['id']}")} selected {/if}>{$v['name']}</option>
+                   {/foreach}
+                  </select>
+                </div>
+                {* <div class="form-group">
+                  <label for="beds">Beds</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="baths">Baths</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div> *}
+                <div class="form-group">
+                  <label for="min-price">Min Price</label>
+                  <select class="form-control" id="minprice" name="minprice">
+                    <option value=""{if (isset($smarty.get.minprice) && $smarty.get.minprice == "")} selected {/if}>select</option>
+                    <option value="5000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "5000")} selected {/if}>$5,000</option>
+                    <option value="10000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "10000")} selected {/if}>$10,000</option>
+                    <option value="20000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "20000")} selected {/if}>$20,000</option>
+                    <option value="50000" {if (isset($smarty.get.minprice) && $smarty.get.minprice == "50000")} selected {/if}>$50,000</option>
+                    <option value="1500000"{if (isset($smarty.get.minprice) && $smarty.get.minprice == "1500000")} selected {/if}>$15,00,000</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="max-price">Max Price</label>
+                 <select class="form-control" id="maxprice" name="maxprice">
+                    <option value=""{if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "")} selected {/if}>select</option>
+                    <option value="2000000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "2000000")} selected {/if}>$20,00,000</option>
+                    <option value="19000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "19000")} selected {/if}>$19,000</option>
+                    <option value="40000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "40000")} selected {/if}>$40,000</option>
+                    <option value="100000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "10000")} selected {/if}>$100,000</option>
+                    <option value="800000" {if (isset($smarty.get.maxprice) && $smarty.get.maxprice == "80000")} selected {/if}>$800,000</option>
+                  </select>
+                </div>
+                {* <div class="form-group">
+                  <label for="min-area">Min Area</label>
+                  <input type="text" class="form-control" placeholder="Min Area">
+                </div>
+                <div class="form-group">
+                  <label for="max-area">Max Area</label>
+                  <input type="text" class="form-control" placeholder="Max Area">
+                </div> *}
+                <input type="submit" name="submit" value="Search" class="btn btn-success btn-block">
+              </form>
+            </div>
+            <!-- break -->
+            <div class="widget widget-sidebar widget-white">
+              <div class="widget-header">
+                <h3>Property Type</h3>
+              </div>    
+              <ul class="list-check">
+          	    {foreach from=$proListArray key=k item=v}
+                  <li><a href="#">{$v['name']}</a></li>
+                {/foreach}
+              </ul>
+            </div>
+            <!-- break -->
+          </div>
+          <!-- end:sidebar -->
+          
+        </div>
+      </div>
+    </div>
+    <!-- end:content -->
+
+    <!-- begin:news -->
+    <div id="news">
+      <div class="container">
+        <div class="row">
+          <!-- begin:blog -->
+          <div class="col-md-4 col-sm-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="heading-title heading-title-sm bg-white">
+                  <h2>Latest From Blog</h2>
+                </div>
+              </div>
+            </div>
+            <!-- break -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="post-container post-noborder">
+                  <div class="post-img" style="background: url(img/img02.jpg);"></div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span><em>in</em> <a href="#" title="View all posts in berita utama" rel="category tag">berita utama</a></span>
+                      <span><em>April 22, 2014</em></span>
+                    </div>
+                    <div class="heading-title">
+                      <h2><a href="#">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin</a></h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+
+                <div class="post-container post-noborder">
+                  <div class="post-img" style="background: url(img/img03.jpg);"></div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span><em>in</em> <a href="#" title="View all posts in berita utama" rel="category tag">berita utama</a></span>
+                      <span><em>April 22, 2014</em></span>
+                    </div>
+                    <div class="heading-title">
+                      <h2><a href="#">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin</a></h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+
+                <div class="post-container post-noborder">
+                  <div class="post-img" style="background: url(img/img15.jpg);"></div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span><em>in</em> <a href="#" title="View all posts in berita utama" rel="category tag">berita utama</a></span>
+                      <span><em>April 22, 2014</em></span>
+                    </div>
+                    <div class="heading-title">
+                      <h2><a href="#">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin</a></h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+
+              </div>
+            </div>
+            <!-- break -->
+
+          </div>
+          <!-- end:blog -->
+
+          <!-- begin:popular -->
+          <div class="col-md-4 col-sm-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="heading-title heading-title-sm bg-white">
+                  <h2>Popular Real Estate</h2>
+                </div>
+              </div>
+            </div>
+            <!-- break -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="post-container">
+                  <div class="post-img" style="background: url(img/img12.jpg);"><h3>For Rent</h3></div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span><i class="fa fa-home"></i> 7,000 m<sup>2</sup> / </span>
+                      <span><i class="fa fa-hdd-o"></i> 3 Bed / </span>
+                      <span><i class="fa fa-male"></i> 2 Bath / </span>
+                      <span><i class="fa fa-building-o"></i> 2 Floors / </span>
+                      <span><i class="fa fa-car"></i> 2 Garages / </span>
+                    </div>
+                    <div class="heading-title">
+                      <h2><a href="#">Residential - <span>$300,000</span>/year</a></h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+
+                <div class="post-container">
+                  <div class="post-img" style="background: url(img/img13.jpg);"><h3>For Rent</h3></div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span><i class="fa fa-home"></i> 6,700 m<sup>2</sup> / </span>
+                      <span><i class="fa fa-hdd-o"></i> 4 Bed / </span>
+                      <span><i class="fa fa-male"></i> 2 Bath / </span>
+                      <span><i class="fa fa-building-o"></i> 1 Floors / </span>
+                      <span><i class="fa fa-car"></i> 2 Garages / </span>
+                    </div>
+                    <div class="heading-title">
+                      <h2><a href="#">Commercial - <span>$700,000</span>/year</a></h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+
+                <div class="post-container">
+                  <div class="post-img" style="background: url(img/img14.jpg);"><h3>For Sale</h3></div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span><i class="fa fa-home"></i> 5,000 m<sup>2</sup> / </span>
+                      <span><i class="fa fa-hdd-o"></i> 3 Bed / </span>
+                      <span><i class="fa fa-male"></i> 2 Bath / </span>
+                      <span><i class="fa fa-building-o"></i> 1 Floors / </span>
+                      <span><i class="fa fa-car"></i> 1 Garages / </span>
+                    </div>
+                    <div class="heading-title">
+                      <h2><a href="#">Villa - <span>$800,000</span></a></h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+
+              </div>
+            </div>
+            <!-- break -->
+
+          </div>
+          <!-- end:popular -->
+
+          <!-- begin:agent -->
+          <div class="col-md-4 col-sm-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="heading-title heading-title-sm bg-white">
+                  <h2>Our Agents</h2>
+                </div>
+              </div>
+            </div>
+            <!-- break -->
+
+            <div class="row">
+              <div class="col-md-12">
+                {foreach from=$agentListArray key=k item=v}
+                <div class="post-container post-noborder">
+                  <div class="post-img post-img-circle" style="background: url({SITE_URL}/administrator/source/upload/agent/{$v['img']});"></div>
+                  <div class="post-content list-agent">
+                    <div class="heading-title">
+                      <h2><a href="#"> {$v['name']}</a></h2>
+                    </div>
+                    <div class="post-meta">
+                      <span><i class="fa fa-envelope-o"></i> {$v['email']}</span><br>
+                      <span><i class="fa fa-phone"></i> +{$v['phone']}</span>
+                    </div>
+                  </div>
+                </div>
+                {/foreach}
+                <!-- break -->
+
+          </div>
+          <!-- end:agent -->
+        </div>
+      </div>
+    </div>
+    <!-- end:news -->
+
+    </div>
+     <!-- begin:footer -->
+    {include file='mikha/footer.tpl'}
+    <!-- end:footer -->
+
+
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="js/gmap3.min.js"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
+   
+

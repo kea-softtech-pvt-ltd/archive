@@ -37,6 +37,7 @@
                        
                     <div class="input-group">
                     <input type ="hidden" name="reciver" id="reciver" value="{$userArray['user_id']}"/>
+                    <input type ="hidden" name="p_id" id="p_id" value="{$propertiesArray['id']}"/>
                         <textarea class="form-control input-lg" name="message" id="message" placeholder="Enter your message" rows="1"> </textarea>
                          <div class="text-danger" id="names_error"></div>
                         <span class="input-group-btn">
