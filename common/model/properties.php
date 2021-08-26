@@ -603,6 +603,13 @@
 
    
         }
+       // # it use  to delete properties request for user
+       function deletePurchesPropertiesRequest($array, $Id, $p_id){
+
+        $this->UpdateData('purchase_request',$array,'user',$Id,0);
+
+   
+        }
 
      // # it use user message delte
     function deleteUserMessage($array, $Id){

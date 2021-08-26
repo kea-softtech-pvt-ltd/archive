@@ -100,7 +100,7 @@
 				    <td class="text-right">
               <div class="dropdown dropdown-action">
                    <button type="button" class="btn btn-success"><i class="fa fa-check-triangle m-r-5"></i><a href="{$frontendroot}/ascA?id={$v['user']}" style="color:#f7f4f4">Yes</a></button>
-                   <button type="button" class="btn btn-danger"  ><i class="fa fa-check-times m-r-5" ></i><a href="{$frontendroot}/messagedelte?id={$v['sender']}" style="color:#f7f4f4"> No</a></button>
+                   <button type="button" class="btn btn-danger"  ><i class="fa fa-check-times m-r-5" ></i><a href="{$frontendroot}/deleterequest?id={$v['user']}" style="color:#f7f4f4"> No</a></button>
                 </div>
 				    </td>
 				</tr>

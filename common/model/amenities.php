@@ -6,18 +6,19 @@
             $this->amenities = AMENITIES;
             parent::__construct();
         }	       
-        ## Add builder in database
+        ## Add Amenites in database
         function addAmenitiesByValue($Array) {
             $this->InsertData( $this->amenities , $Array );		
             $insertId = $this->getLatestRecordId();
             return $insertId;
         }
-        ## Edit user by userid
+        ## Edit Amenities
 	    function editUserValueById($array, $Id){
 		return $this->UpdateData($this->amenities,$array,"id",$Id,0);
 	    }
+        ## delete Amenities
         function deleteUserValueById($array, $Id){
-               $this->UpdateData($this->amenities,$array,"id",$Id,0);
+            return $this->UpdateData($this->amenities,$array,"id",$Id,0);
              //  echo $Id; where
             }
 

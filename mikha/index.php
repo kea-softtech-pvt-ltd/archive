@@ -57,7 +57,7 @@ if(isset($_POST['login'])) {
 		if(count($userId) > 0) {
 			$_SESSION['isLoggedIn'] = true;
 			$_SESSION['user_id'] 	= $userId['user_id'];
-			$_SESSION['name'] 	= $userId['name'];
+			$_SESSION['name'] 		= $userId['name'];
 			$_SESSION['username'] 	= $userId['username'];
 			$_SESSION['email'] 	= $userId['email'];
 			$_SESSION['role'] 	= $userId['role'];

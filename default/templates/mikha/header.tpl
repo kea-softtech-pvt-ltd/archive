@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +7,17 @@
     <meta name="description" content="mikha is responsive html real estate theme">
     <meta name="author" content="afriq yasin ramadhan">
     <link rel="shortcut icon" href="{$siteroot}/mikha/img/favicon.png">
-
     <title>Mikha</title>
-
     <!-- Bootstrap core CSS -->
     <link href="{$siteroot}/mikha/css/bootstrap.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,800' rel='stylesheet' type='text/css'>
     <link href="{$siteroot}/mikha/css/font-awesome.min.css" rel="stylesheet">
     <link href="{$siteroot}/mikha/css/style.css" rel="stylesheet">
     <link href="{$siteroot}/mikha/css/responsive.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   </head>
-
   <body id="top">
-
     <!-- begin:topbar -->
     <div class="topbar">
       <div class="container">
@@ -118,8 +111,6 @@
                 <li><button type="button" class="btn btn-success btn-block" ><a href="fav" style="color:white">View All List</a></button></li>
               </ul>     
             </li>
-
-
 					<!-- /Message Notifications -->
       </ul>
         </div><!-- /.navbar-collapse -->

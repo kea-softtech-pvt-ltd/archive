@@ -5,14 +5,15 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-  include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/vendor/autoload.php'); 
-  include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/includefiles.php');
-	include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/common/model/amenities.php");
-  use \Firebase\JWT\JWT;
-    $amenitiesObj = new Model_Amenities();
+  include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/vendor/autoload.php'); 
+  include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
+  include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/contact.php");
+  
+    use \Firebase\JWT\JWT;
 
+    $contactObj = new Model_Contact();
     $data = json_decode(file_get_contents("php://input"));
-    $jwt = $data->jwt;
+    $jwt = $data->token;
     $secret_key = "123456789abcdefgh";
     // if jwt is not empty
     if($jwt){
@@ -20,18 +21,18 @@
       // if decode succeed, show user details
       try {
           // decode jwt
-          $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+            $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+             $contactArray['name'] = $data->name;
+             $contactArray['email'] = $data->email;
+             $contactArray['subject'] = $data->subject;
+             $contactArray['address'] = $data->address;
 
-          $amenitiesArray['name'] = $data->name;
-          $amenitiesArray['font_awaesome'] = $data->font_awaesome;
-          $amenitiesArray['status'] = 1;
-          $amenitiesArray['created_at'] = date('Y/m/d H:i:s');
 
-          if($amenitiesObj->addAmenitiesByValue($amenitiesArray)){
-              echo json_encode(array('status'=>'sucess','message'=>'Amenities add successfully.'));
+          if($contactObj->addContactByValue($contactArray)){
+              echo json_encode(array('status'=>'sucess','message'=>'Contact Details add successfully.'));
               //echo 'Amenities add successfully.';
           } else{
-              echo json_encode(array('status'=>'error','message'=>'Amenities could not be created.'));
+              echo json_encode(array('status'=>'error','message'=>'Contact could not be created.'));
             // echo 'Amenities could not be created.';
           }
 

@@ -14,7 +14,7 @@
         }
         ## Edit user by userid
 	    function editUserValueById($array, $Id){
-		$this->UpdateData($this->builders,$array,"id",$Id,0);
+        return $this->UpdateData($this->builders,$array,"id",$Id,0);
 	    }
         function deleteUserValueById($array, $Id){
                $this->UpdateData($this->builders,$array,"id",$Id,0);

@@ -20,10 +20,25 @@
 	$userMessageCount1 = $propertiesObj->getAllUserMessageCount1($_SESSION['user_id']);
 	$smarty->assign('userMessageCount1',count($userMessageCount1)); // show count group requist
 	
+	$proListArray = $propertiesObj->getPropertiey();
+	$smarty->assign('proListArray', $proListArray);
+
 	$favoriteListArray = $propertiesObj->getAllfavritenav();
 	$smarty->assign('favoriteListArray', $favoriteListArray); // its use nav show all fav list
 	
 	// show to asscepte group reques user show hear.
+
+	if(isset($_SESSION['user_id'])){
+		$userMessageCount1 = $propertiesObj->getAllUserMessageCount1($_SESSION['user_id']);
+		$smarty->assign('userMessageCount1',count($userMessageCount1)); // show count group requist
+		
+		$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
+		$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
+	
+	}else{
+		$smarty->assign('userMessageCount1',''); 
+		$smarty->assign('userMessageCount',''); 
+	}
 
 	$userGroupListArray = $propertiesObj->getAllUserGroupAccept($_REQUEST['id']);
 	$smarty->assign('userGroupListArray', $userGroupListArray);

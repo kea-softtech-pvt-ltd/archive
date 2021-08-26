@@ -131,10 +131,17 @@ RewriteRule    ^admin/ajaxFavorite?$    administrator/ajax/ajax_favorite.php
 RewriteRule    ^admin/ajaxGroupAdd?$    administrator/ajax/ajax_addGroup.php
 
 
-
 RewriteRule    ^admin/api?$    administrator/source/api/addAmenities.php
 RewriteRule    ^admin/api/addAmenities?$ administrator/source/api/add-amenities.php
-RewriteRule    ^admin/api/edit?$ administrator/source/api/edit-amenities.php
+RewriteRule    ^admin/api/editAmenities?$ administrator/source/api/edit-amenities.php
+RewriteRule    ^admin/api/deleteAmenities?$ administrator/source/api/delete-amenities.php
+RewriteRule    ^admin/api/viewAmenities?$ administrator/source/api/view-amenites.php
+RewriteRule    ^admin/api/viewAmenities1?$ administrator/source/api/view-amenities.php
+RewriteRule    ^admin/api/login?$ administrator/source/api/login.php
+RewriteRule    ^admin/api/test?$ administrator/source/api/test.php
+
+RewriteRule    ^admin/api/builder/addBuilder?$ administrator/source/api/builder/add-builder.php
+RewriteRule    ^admin/api/builder/editBuilder?$ administrator/source/api/builder/edit-builder.php
 
 RewriteRule    ^builder/?$    buildermodule/source/index.php
 RewriteRule    ^builder/login?$    buildermodule/source/login/login.php
@@ -147,6 +154,7 @@ RewriteRule    ^admin/floor/add?$    administrator/source/floor/add-floor.php
 RewriteRule    ^admin/contact?$    administrator/source/contact/details-contact.php
 RewriteRule    ^admin/propertiesGroupUser?$    administrator/source/propertiesGroupUser/details-propertiesGroupUser.php
 RewriteRule    ^admin/propertiesGroupUserView?$    administrator/source/propertiesGroupUser/details-propertiesGroupUserView.php
+
 
 
 
@@ -174,7 +182,13 @@ RewriteRule    ^mikha/chat?$   mikha/chat.php
 RewriteRule    ^mikha/chatGroup?$   mikha/chatGroup.php
 RewriteRule    ^mikha/asc?$    mikha/asc.php
 RewriteRule    ^mikha/ascA?$    mikha/ascA.php
+RewriteRule    ^mikha/deleterequest?$    mikha/deletereques.php
 RewriteRule    ^mikha/messagedelte?$    mikha/messagedelte.php
+
+RewriteRule    ^mikha/api/register?$    mikha/api/register.php
+RewriteRule    ^mikha/api/login?$       mikha/api/login.php
+RewriteRule    ^mikha/api/contact?$     mikha/api/contact.php
+
 
 
 
