@@ -182,12 +182,15 @@ RewriteRule    ^mikha/chat?$   mikha/chat.php
 RewriteRule    ^mikha/chatGroup?$   mikha/chatGroup.php
 RewriteRule    ^mikha/asc?$    mikha/asc.php
 RewriteRule    ^mikha/ascA?$    mikha/ascA.php
-RewriteRule    ^mikha/deleterequest?$    mikha/deletereques.php
+RewriteRule    ^mikha/deleterequest?$   mikha/deletereques.php
 RewriteRule    ^mikha/messagedelte?$    mikha/messagedelte.php
 
 RewriteRule    ^mikha/api/register?$    mikha/api/register.php
 RewriteRule    ^mikha/api/login?$       mikha/api/login.php
 RewriteRule    ^mikha/api/contact?$     mikha/api/contact.php
+RewriteRule    ^mikha/api/fav?$         mikha/api/favoraite.php
+RewriteRule    ^mikha/api/properties?$         mikha/api/properties.php
+
 
 
 

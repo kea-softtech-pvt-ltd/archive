@@ -22,7 +22,7 @@
     $res =$loginObj->getUserValueByDetailsBuildernameAndPassword($data->email,$data->password);
 
     if($res){
-        $secret_key = "123456789abcdefgh";
+        $secret_key = "1234567890seckeykeasofttech";
         $issuer_claim = $_SERVER['HTTP_HOST']; // this can be the servername
         $audience_claim = $_SERVER['HTTP_HOST'];
         $issuedat_claim = time(); // issued at

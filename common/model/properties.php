@@ -91,6 +91,17 @@
           
          }
         ## Get all Properties details
+        function getAllPropertiesAPI($search='', $limit='',$offset='') {
+            $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description');
+            $tables=array('property LEFT JOIN properties_address ON properties_address.p_id = property.id LEFT JOIN builders ON builders.id = property.builder_name');	
+            $where=array("property.id");
+            $where = array($this->property.".status = '1'");
+  
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('property.id DESC'), $group=array(), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+        ## Get all Properties details
         function getAllProperties($search='', $limit='',$offset='') {
             $fields=array('property.*,builders.name as buildername,properties_address.address,properties_address.description');
             
@@ -581,12 +592,15 @@
 
    
     // # it use message update
-    function JoinPropertyGroup($array, $Id, $p_id){
+    function JoinPropertyGroup($array, $Id, $rid, $p_id){
+    
+       
+    $this->UpdateData('notification',$array,'sender',$Id,'reciver',$Id,0);
+ 
 
-     $this->UpdateData('notification',$array,'sender',$Id,0);
+    $this->UpdateData('favorite',$array,'p_id',$p_id,$rid,'reciver',0);
+    
 
-    $this->UpdateData('favorite',$array,'user_id',$Id,'p_id',$p_id,0); // its use in property seen
-      //  echo $Id;
       
     //   if(isset($_REQUEST['user_id']) == $p_id) {
               

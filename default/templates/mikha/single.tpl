@@ -212,6 +212,7 @@
                         consequat.</p>
 
                       <!-- image Slider -->
+                        {if (count($userListArray) > 0)}
                        <div class="row">
                           <h3>Property seen by user</h3>
                             <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
@@ -242,13 +243,17 @@
                                       <!-- <p class="jcarousel-pagination"></p> -->
                          </div>
                        </div>
-
+                        {else}
+                          <div>
+                            <hr>
+                          </div>
+                        {/if}
                        
                       <!---end img slider -->
                     </div>
 
                     <!--- secend slider -->
-
+                     {if (count($userGroupListArray) > 0)}
                       <div class="row">
           <div class="col-md-12">
             <div class="heading-title bg-white">
@@ -299,6 +304,11 @@
             </div>
           </div>
         </div>
+          {else}
+              <div>
+               
+                </div>
+          {/if}
                     <!-- end secend slider -->
 
                     </div>
