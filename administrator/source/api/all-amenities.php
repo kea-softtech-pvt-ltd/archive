@@ -18,22 +18,13 @@
 
      if($jwt){
     
-        // if decode succeed, show user details
         try {
-            // decode jwt
-            $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
-            $amenitiesArray['id'] = $data->id;
-            // $amenitiesArray['name'] = $data->name;
-            // $amenitiesArray['font_awaesome'] = $data->font_awaesome;
-            // $amenitiesArray['status'] = 1;
-            // $amenitiesArray['created_at'] = date('Y/m/d H:i:s');
-
-             // $res =$amenitiesObj->getUserNameByUserId($data->id);
-  
-            if( $res =$amenitiesObj->getUserNameByUserId($data->id)){
-                echo json_encode(array('data'=>$res,'status'=>'1'));
-            } else{
-                echo json_encode(array('data'=>$res,'status'=>'0','message'=>'error'));
+            if($res =$amenitiesObj->getAllAmenities())
+            {
+              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View All Amenities.'));
+            } else
+            {
+              echo json_encode(array('status'=>'0','message'=>'Amenities could not be created.'));
             }
   
         }
@@ -59,12 +50,5 @@
         echo json_encode(array("message" => "Access denied."));
       }
   
-    
 
-    // $res =$amenitiesObj->getUserNameByUserId($data->id);
-    // if($res){ 
-    //     echo json_encode(array('data'=>$res,'status'=>'1'));
-    // } else{
-    //     echo json_encode(array('data'=>$res,'status'=>'0','message'=>'error'));
-    // }
 ?>

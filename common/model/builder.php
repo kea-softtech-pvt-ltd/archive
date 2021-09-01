@@ -37,6 +37,16 @@
             $result= $this->FetchAll($result1); 
             return $result;		
         }
+         ## Get all builder details API
+         function getAllBuildersApi($search='', $limit='',$offset='') {
+            $fields=array();	
+            $tables=array($this->builders);
+            $where = array(" status = '1'");
+           
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array('id DESC'), $group=array(), $limit,$offset,0);
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
         
         ## Get all builder detailsProject
         function getAllBuildersProperti($search='', $limit='',$offset='') {

@@ -6,7 +6,6 @@
 
 	$propertiesObj = new Model_Property();
 
-	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] != ''){
 
 	$propertiesListArray = $propertiesObj->getAllProperties1();
 	$smarty->assign('propertiesListArray', $propertiesListArray);
@@ -14,12 +13,18 @@
 	$userListArray = $propertiesObj->getAllUser($_REQUEST['id']);
 	$smarty->assign('userListArray', $userListArray);
 
-	$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
-	$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
+    if(isset($_SESSION['user_id'])){
+		$userMessageCount1 = $propertiesObj->getAllUserMessageCount1($_SESSION['user_id']);
+		$smarty->assign('userMessageCount1',count($userMessageCount1)); // show count group requist
+		
+		$userMessageCount = $propertiesObj->getAllUserMessageCount($_SESSION['user_id']);
+		$smarty->assign('userMessageCount',count($userMessageCount)); // show count group requist
 	
-	$userMessageCount1 = $propertiesObj->getAllUserMessageCount1($_SESSION['user_id']);
-	$smarty->assign('userMessageCount1',count($userMessageCount1)); // show count group requist
-	
+	}else{
+		$smarty->assign('userMessageCount1',''); 
+		$smarty->assign('userMessageCount',''); 
+	}
+    
 	$proListArray = $propertiesObj->getPropertiey();
 	$smarty->assign('proListArray', $proListArray);
 
@@ -60,12 +65,9 @@
 
 
 	$smarty->assign('moduleName', 'List of properties');
-	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/single.tpl');	
+	$smarty->display(FRONT_TEMPLATEDIR . '/mikha/singles.tpl');	
 
 	
-}else{
-	
-	header("Location: " . SITE_URL . "mikha/index.php");
-}
+
 	
 ?>

@@ -135,6 +135,7 @@ RewriteRule    ^admin/api?$    administrator/source/api/addAmenities.php
 RewriteRule    ^admin/api/addAmenities?$ administrator/source/api/add-amenities.php
 RewriteRule    ^admin/api/editAmenities?$ administrator/source/api/edit-amenities.php
 RewriteRule    ^admin/api/deleteAmenities?$ administrator/source/api/delete-amenities.php
+RewriteRule    ^admin/api/allAmenities?$ administrator/source/api/all-amenities.php
 RewriteRule    ^admin/api/viewAmenities?$ administrator/source/api/view-amenites.php
 RewriteRule    ^admin/api/viewAmenities1?$ administrator/source/api/view-amenities.php
 RewriteRule    ^admin/api/login?$ administrator/source/api/login.php
@@ -142,6 +143,8 @@ RewriteRule    ^admin/api/test?$ administrator/source/api/test.php
 
 RewriteRule    ^admin/api/builder/addBuilder?$ administrator/source/api/builder/add-builder.php
 RewriteRule    ^admin/api/builder/editBuilder?$ administrator/source/api/builder/edit-builder.php
+RewriteRule    ^admin/api/builder/allBuilder?$ administrator/source/api/builder/all-builder.php
+
 
 RewriteRule    ^builder/?$    buildermodule/source/index.php
 RewriteRule    ^builder/login?$    buildermodule/source/login/login.php
@@ -163,7 +166,7 @@ RewriteRule    ^mikha/category?$   mikha/category.php
 RewriteRule    ^mikha/category_list?$   mikha/category_list.php
 RewriteRule    ^mikha/contact?$   mikha/contact.php
 RewriteRule    ^mikha/single?$   mikha/single.php
-RewriteRule    ^mikha/single1?$   mikha/single1.php
+RewriteRule    ^mikha/singles?$   mikha/singles.php
 RewriteRule    ^mikha/message?$   mikha/message.php
 RewriteRule    ^mikha/user_profile?$   mikha/user_profile.php
 RewriteRule    ^mikha/blog?$   mikha/blog.php
@@ -185,11 +188,15 @@ RewriteRule    ^mikha/ascA?$    mikha/ascA.php
 RewriteRule    ^mikha/deleterequest?$   mikha/deletereques.php
 RewriteRule    ^mikha/messagedelte?$    mikha/messagedelte.php
 
+RewriteRule    ^mikha/api/commonApi?$    mikha/api/commonApi.php
 RewriteRule    ^mikha/api/register?$    mikha/api/register.php
 RewriteRule    ^mikha/api/login?$       mikha/api/login.php
 RewriteRule    ^mikha/api/contact?$     mikha/api/contact.php
-RewriteRule    ^mikha/api/fav?$         mikha/api/favoraite.php
-RewriteRule    ^mikha/api/properties?$         mikha/api/properties.php
+RewriteRule    ^mikha/api/addfavoraite?$      mikha/api/favoraite.php
+RewriteRule    ^mikha/api/allProperties?$  mikha/api/properties.php
+RewriteRule    ^mikha/api/userFavList?$ mikha/api/userFavoriteList.php
+RewriteRule    ^mikha/api/propertie?$ mikha/api/propertie.php
+RewriteRule    ^mikha/api/viewPartner?$ mikha/api/viewPartner.php
 
 
 

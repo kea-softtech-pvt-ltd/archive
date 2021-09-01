@@ -8,14 +8,15 @@
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/vendor/autoload.php'); 
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/contact.php");
-  
+    include_once(realpath(dirname(dirname(__FILE__))) . '/api/commonApi.php');
+
     use \Firebase\JWT\JWT;
 
     $contactObj = new Model_Contact();
 
     $data = json_decode(file_get_contents("php://input"));
     $jwt = $data->token;
-    $secret_key = "1234567890seckeykeasofttech";
+
     // if jwt is not empty
     if($jwt){
       // if decode succeed, show user details
@@ -28,9 +29,9 @@
              $contactArray['address'] = $data->address;
 
           if($contactObj->addContactByValue($contactArray)){
-              echo json_encode(array('status'=>'sucess','message'=>'Contact Details add successfully.'));
+              echo json_encode(array('status'=>'1','message'=>'Contact details add successfully.'));
           } else{
-              echo json_encode(array('status'=>'error','message'=>'Contact could not be created.'));
+              echo json_encode(array('status'=>'0','message'=>'Contact could not be created.'));
           }
       }
       catch (Exception $e){
@@ -39,9 +40,7 @@
             "error" => $e->getMessage()
         ));
       }
-
     }
-    // show error message if jwt is empty
     else{
     
       // set response code

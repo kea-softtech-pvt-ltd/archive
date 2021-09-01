@@ -120,9 +120,6 @@
                              <li data-target="#slider-property" data-slide-to="1" class="active">
                               <img src="img/img03.jpg" alt="">
                             </li>
-                           {* <li data-target="#slider-property" data-slide-to="2">
-                              <img src="img/img04.jpg" alt="">
-                            </li> *}
                           </ol>
                           <div class="carousel-inner">
                             {$imagearray = explode(',',$propertiesArray['images'])}
@@ -134,9 +131,6 @@
                             <div class="item active">
                               <img src="img/img03.jpg" alt="">
                             </div>
-                            {* <div class="item">
-                              <img src="img/img04.jpg" alt="">
-                            </div> *}
                           </div>
                           <a class="left carousel-control" href="#slider-property" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>

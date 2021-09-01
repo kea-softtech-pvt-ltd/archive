@@ -3,7 +3,6 @@
 {else}
   {include file='mikha/header1.tpl'}
 {/if}
-{* {include file='mikha/header.tpl'} *}
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url(img/img01.jpg);">
       <div class="container">
@@ -88,8 +87,7 @@
             </div>
             <ol class="breadcrumb">
               <li><a href="#">Home</a></li>
-              <li><a href="#">Search</a></li>
-              <li class="active">Your Keyword</li>
+              <li class="active">Villa</li>
             </ol>
           </div>
         </div>
@@ -104,129 +102,196 @@
           <!-- begin:article -->
           <div class="col-md-9 col-md-push-3">
             <div class="row">
-              <div class="col-md-12">
-                <div class="heading-title heading-title-alt">
-                  <h3>Property meeting the search criteria</h3>
-                </div>
-              </div>
-            </div>
-            <!-- begin:sorting -->
-            <div class="row sort">
-              <div class="col-md-4 col-sm-4 col-xs-3">
-                <a href="search" class="btn btn-success"><i class="fa fa-th"></i></a>
-                <a href="search_list" class="btn btn-default"><i class="fa fa-list"></i></a>
-                <span>Show <strong>6</strong> of <strong>30</strong> result.</span>
-              </div>
-              <div class="col-md-8 col-sm-8 col-xs-9">
-                <form class="form-inline" role="form">
-                  <span>Sort by : </span>
-                  <div class="form-group">
-                    <label class="sr-only" for="sortby">Sort by : </label>
-                    <select class="form-control">
-                      <option>Most Recent</option>
-                      <option>Price (Low &gt; High)</option>
-                      <option>Price (High &gt; Low)</option>
-                      <option>Most Popular (Low &gt; High)</option>
-                    </select>
-                  </div>
-                  <span>Show : </span>
-                  <div class="form-group">
-                    <label class="sr-only" for="show">Show : </label>
-                    <select class="form-control">
-                      <option>6</option>
-                      <option>10</option>
-                      <option>15</option>
-                      <option>20</option>
-                      <option>25</option>
-                      <option>50</option>
-                      <option>100</option>
-                    </select>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <!-- end:sorting -->
-
-            <!-- begin:product -->
-            <form id="favorite-form" method="POST" action="" enctype="multipart/form-data"> 
-             <div class="alert alert-danger text-center" id="sucess_msg" style="display:none;"></div>
-             <div class="alert alert-danger text-center" id="sucess_msg1" style="display:none;"></div>
-            <div class="row container-realestate">
-            {if (count($propertiesListArray) > 0)}
-            {foreach from=$propertiesListArray key=k item=v}
-              <div class="col-md-4 col-sm-6 col-xs-12">
-              <input type="hidden" name="id" id="id" value="{$v['id']}" />
-                {$imagearray = explode(',',$v['images'])}
-                <div class="property-container">
-                  <div class="property-image">
-                         {foreach from=$imagearray key=index item=image name=count}
-                            {if $index == 0}
-                                <img src="{SITE_URL}/administrator/upload/properties/{$image}" style="height: 200px">
-                            {/if}               
-                        {/foreach} 
-                    <div class="property-price">
-                      <h4>
-                       {foreach from=$proTypeListArray key=k item=v2}
-					              {if ($v['title'] == $v2['id'])}{$v2['name']}{/if}
-					            {/foreach}
-                     </h4>
-                      <span>${$v['built_area'] * $v['price']}</span>
-                    </div>
-                    <div class="property-status">
-                      <span>For Sale</span>
-                    </div>
-                  </div>
-                  <div class="property-features">
-                    <span><i class="fa fa-home"></i> {$v['carpet_area']} m<sup>2</sup></span>
-                    <span><i class="fa fa-hdd-o"></i> {$v['type']}</span>
-                    <span><i class="fa fa-male"></i>{$v['bath']} Bath</span>
-                  </div>
-                  <div class="property-content">
-                    <h3><a href="#">{$v['name']}</a> <small>{substr($v['address'], 0, 40)}...</small></h3>
-                  </div>
-                  <div class="property-footer">
-                    <a href="singles?id={$v['id']}" title="Contact Agent"><i class="fa fa-envelope"></i></a>
-                    <a href="singles?id={$v['id']}" title="View page"><i class="fa fa-eye"></i></a>
-                  </div>
-                   
-                </div>
-              
-              </div>
-               {/foreach}
-               {else}
-               <div>
-               <h1>Property not found</h1>
-               </div>
-               
-            {/if}
-              <!-- break -->
-            </div>
-             </form>
-            <!-- end:product -->
-
-            <!-- begin:pagination -->
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="pagination">
-                  {* <li class="disabled"><a href="#">&laquo;</a></li>
-                  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li> *}
-                   {if (count($propertiesListArray) > 0)}
-                    {$pagLink}
-                  {/if}
+              <div class="col-md-12 single-post">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                  <li class="active"><a href="#detail" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                  <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Property Location</a></li>
                 </ul>
+
+                <div id="myTabContent" class="tab-content">
+                  <div class="tab-pane fade in active" id="detail">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h2>{$propertiesArray['name']}</h2>
+                        <div id="slider-property" class="carousel slide" data-ride="carousel">
+                          <ol class="carousel-indicators">
+                           {$imagearray = explode(',',$propertiesArray['images'])}
+							              {foreach from=$imagearray key=index item=image name=count}
+                            <li data-target="#slider-property" data-slide-to="0" class="">
+                              <img src="{SITE_URL}/administrator/upload/properties/{$image}" alt="" style="height: auto;">
+                            </li>
+                            {/foreach}
+                             <li data-target="#slider-property" data-slide-to="1" class="active">
+                              <img src="img/img03.jpg" alt="">
+                            </li>
+                          </ol>
+                          <div class="carousel-inner">
+                            {$imagearray = explode(',',$propertiesArray['images'])}
+							              {foreach from=$imagearray key=index item=image name=count}
+                            <div class="item ">
+                              <img src="{SITE_URL}/administrator/upload/properties/{$image}" alt=""style="height: 520px;"> 
+                            </div>
+                             {/foreach}
+                            <div class="item active">
+                              <img src="img/img03.jpg" alt="">
+                            </div>
+                            {* <div class="item">
+                              <img src="img/img04.jpg" alt="">
+                            </div> *}
+                          </div>
+                          <a class="left carousel-control" href="#slider-property" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                          </a>
+                          <a class="right carousel-control" href="#slider-property" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                          </a>
+                        </div>
+                        <h3>Property Overview</h3>
+                        <table class="table table-bordered">
+                          <tr>
+                            <td width="20%"><strong>ID</strong></td>
+                            <td>{$propertiesArray['id']}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Price</strong></td>
+                            <td>${$propertiesArray['built_area'] * $propertiesArray['price']}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Type</strong></td>
+                            <td>Residential</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Contract</strong></td>
+                            <td>Sale</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Location</strong></td>
+                            <td>{$propertiesArray['address']}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Bathrooms</strong></td>
+                            <td>{$propertiesArray['bath']}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>type</strong></td>
+                            <td>{$propertiesArray['type']}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Area</strong></td>
+                            <td>{$propertiesArray['carpet_area']}m<sup>2</sup> </td>
+                          </tr>
+                        </table>
+                        <h3>Property Amenities</h3>
+                        <div class="row">
+                          <div class="col-md-4 col-sm-4">
+                            <ul>
+                              <li><i class="fa fa-check"></i>{$propertiesArray['a_name']}</li>
+
+                              <li><i class="fa fa-check"></i> Balcony</li>
+                              <li><i class="fa fa-times"></i> Bedding</li>
+                              <li><i class="fa fa-check"></i> Cable TV</li>
+                              <li><i class="fa fa-times"></i> Cleaning after exit</li>
+                              <li><i class="fa fa-check"></i> Cofee pot</li>
+                              <li><i class="fa fa-check"></i> Computer</li>
+                              <li><i class="fa fa-times"></i> Cot</li>
+                            </ul>
+                          </div>                    
+                        </div>
+                        
+      
+
+                        <h3>Property Description</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</p>
+
+                  
+                    </div>
+
+                    </div>
+                    </div>
+
+                    
+                  </div>
+                  <!-- break -->
+                  <div class="tab-pane fade" id="location">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div id="map-property"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Contact Agent</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                        <div class="team-container team-dark">
+                          <div class="team-image">
+                            <img src="img/team01.jpg" alt="the team - mikha realestate theme">
+                          </div>
+                          <div class="team-description">
+                            <h3>Katty Sharon</h3>
+                            <p><i class="fa fa-phone"></i> Office : 021-234-5678<br>
+                            <i class="fa fa-mobile"></i> Mobile : +62-3456-78910<br>
+                            <i class="fa fa-print"></i> Fax : 021-234-5679</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <div class="team-social">
+                              <span><a href="#" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
+                              <span><a href="#" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
+                              <span><a href="#" title="Google Plus" rel="tooltip" data-placement="top"><i class="fa fa-google-plus"></i></a></span>
+                              <span><a href="#" title="Email" rel="tooltip" data-placement="top"><i class="fa fa-envelope"></i></a></span> 
+                              <span><a href="#" title="LinkedIn" rel="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a></span> 
+                            </div>                       
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <form>
+                          <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control input-lg" placeholder="Enter name : ">
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control input-lg" placeholder="Enter email : ">
+                          </div>
+                          <div class="form-group">
+                            <label for="telp">Telp.</label>
+                            <input type="text" class="form-control input-lg" placeholder="Enter phone number : ">
+                          </div>
+                          <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control input-lg" rows="7" placeholder="Type a message : "></textarea>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" name="submit" value="Send Message" class="btn btn-success btn-lg">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <!-- end:pagination -->
           </div>
           <!-- end:article -->
 
           <!-- begin:sidebar -->
           <div class="col-md-3 col-md-pull-9 sidebar">
+            <div class="widget-white favorite">
+              <a href="#"><i class="fa fa-heart"></i> Add to favorite</a>
+            </div>
+            <!-- break -->
             <div class="widget widget-sidebar widget-white">
               <div class="widget-header">
                 <h3>Recent Property</h3>
@@ -424,52 +489,21 @@
 
             <div class="row">
               <div class="col-md-12">
-
+              {foreach from=$agentListArray key=k item=v}
                 <div class="post-container post-noborder">
-                  <div class="post-img post-img-circle" style="background: url(img/team03.jpg);"></div>
+                  <div class="post-img post-img-circle" style="background: url({SITE_URL}/administrator/source/upload/agent/{$v['img']});"></div>
                   <div class="post-content list-agent">
                     <div class="heading-title">
-                      <h2><a href="#">Julia</a></h2>
+                      <h2><a href="#"> {$v['name']}</a></h2>
                     </div>
                     <div class="post-meta">
-                      <span><i class="fa fa-envelope-o"></i> johndoe@domain.com</span><br>
-                      <span><i class="fa fa-phone"></i> +12345678</span>
+                      <span><i class="fa fa-envelope-o"></i> {$v['email']}</span><br>
+                      <span><i class="fa fa-phone"></i> +{$v['phone']}</span>
                     </div>
                   </div>
                 </div>
+                {/foreach}
                 <!-- break -->
-
-                <div class="post-container post-noborder">
-                  <div class="post-img post-img-circle" style="background: url(img/avatar.png);"></div>
-                  <div class="post-content list-agent">
-                    <div class="heading-title">
-                      <h2><a href="#">John Doe</a></h2>
-                    </div>
-                    <div class="post-meta">
-                      <span><i class="fa fa-envelope-o"></i> johndoe@domain.com</span><br>
-                      <span><i class="fa fa-phone"></i> +12345678</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- break -->
-
-                <div class="post-container post-noborder">
-                  <div class="post-img post-img-circle" style="background: url(img/team01.jpg);"></div>
-                  <div class="post-content list-agent">
-                    <div class="heading-title">
-                      <h2><a href="#">Jane Doe</a></h2>
-                    </div>
-                    <div class="post-meta">
-                      <span><i class="fa fa-envelope-o"></i> johndoe@domain.com</span><br>
-                      <span><i class="fa fa-phone"></i> +12345678</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- break -->
-
-              </div>
-            </div>
-            <!-- break -->
 
           </div>
           <!-- end:agent -->
@@ -499,33 +533,3 @@
     <script src="js/script.js"></script>
   </body>
 </html>
-<script>
-$(".addToFav").on("click", function(){
-  var product_id = $(this).attr('data-id');
-  $.ajax({     
-				url: "{$adminroot}/ajaxFavorite",
-        type: "POST",
-         data: { 
-				action : 'addFavorite',
-				product_id:product_id,
-				},
-        success: function(result)
-        {	
-          console.log(result);
-          if($.trim(result)=='')				
-				{
-					$('#sucess_msg1').show().html('Not add to fav you are already add to fav.');
-					setTimeout(function(){ $('#sucess_msg1').hide();},3000)
-				}
-				else
-				{						
-					$('#sucess_msg').show().removeClass('alert-danger').addClass('alert-success').html('Add to favraite list.');
-					setTimeout(function(){ $('#sucess_msg').hide();},3000)
-					setTimeout(function(){ window.location.href='search'; },3000);	
-				}
-        }
-  });
-
-});
-
-</script>

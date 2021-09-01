@@ -771,6 +771,18 @@
             return $result;		
         }
 
+         ## Get all favroite list in user Api
+         function getAllfavriteApi($decoded='', $limit='',$offset='') {
+            $fields=array('favorite.*,property.name as pname,property.images,units.title,units.built_area,units.price');
+            $tables=array('favorite LEFT JOIN property ON favorite.p_id = property.id LEFT JOIN units ON units.p_id = property.id');		
+            $where=array("favorite.user_id='".$decoded."'");
+            
+            $result1 = $this->SelectData($fields,$tables, $where, $order = array(), $group=array(), $limit, $offset,0);
+         
+            $result= $this->FetchAll($result1); 
+            return $result;		
+        }
+
            ## Get all favroite list in user in show navbar
            function getAllfavriteCount($search='', $limit='',$offset='') {
             $fields=array('favorite.*,property.name as pname,property.images');

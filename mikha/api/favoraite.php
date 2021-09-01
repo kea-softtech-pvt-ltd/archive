@@ -8,14 +8,13 @@
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/vendor/autoload.php'); 
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/properties.php");
-  
-    use \Firebase\JWT\JWT;
+    include_once(realpath(dirname(dirname(__FILE__))) . '/api/commonApi.php');
     
+    use \Firebase\JWT\JWT;
     $favObj = new Model_Property();
     $data = json_decode(file_get_contents("php://input"));
     $jwt = $data->token;
-    $secret_key = "1234567890seckeykeasofttech";
- 
+
     if($jwt){
         try{
              $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
@@ -29,14 +28,14 @@
             if(!empty($result1)== 0){
             if($favObj->addFavByValue($favArray))
             {
-              echo json_encode(array('status'=>'sucess','message'=>'Favorait properti add successfully.'));
+              echo json_encode(array('status'=>'1','message'=>'Favorait properti add successfully.'));
             } else
             {
-              echo json_encode(array('status'=>'error','message'=>'Favorait properti could not be created.'));
+              echo json_encode(array('status'=>'0','message'=>'Favorait properti could not be created.'));
             }
         }
         else{
-            echo json_encode(array('status'=>'error','message'=>'you are already like this property'));
+            echo json_encode(array('status'=>'0','message'=>'you are already like this property'));
         }
         }
       catch (Exception $e){

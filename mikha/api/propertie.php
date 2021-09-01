@@ -9,19 +9,20 @@
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/properties.php");
     include_once(realpath(dirname(dirname(__FILE__))) . '/api/commonApi.php');
-    use \Firebase\JWT\JWT;
     
+    use \Firebase\JWT\JWT;
     $proObj = new Model_Property();
     $data = json_decode(file_get_contents("php://input"));
     $jwt = $data->token;
  
     if($jwt){
         try{
-             $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
-        
-            if($res =$proObj->getAllPropertiesAPI())
+            $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+            $proArray['id'] = $data->p_id;
+
+            if($res =$proObj->getAllPropertiesView($data->p_id))
             {
-              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View All Properties.'));
+              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View Properties.'));
             } else
             {
               echo json_encode(array('status'=>'0','message'=>'Properties could not be created.'));

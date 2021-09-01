@@ -46,7 +46,7 @@
         echo json_encode(
         array(
             "status"  => 1,
-            "message" => "Successful login.",
+            "message" => "Successfully login.",
             "token" => $jwt,
             "email" => $res['email'],
             // "name" => $res['name'],

@@ -19,12 +19,12 @@
         try{
              $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
         
-            if($res =$proObj->getAllPropertiesAPI())
+            if($res =$proObj->getPropertieyPartner())
             {
-              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View All Properties.'));
+              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View all partners.'));
             } else
             {
-              echo json_encode(array('status'=>'0','message'=>'Properties could not be created.'));
+              echo json_encode(array('status'=>'0','message'=>'Partners could not be found.'));
             }
     
         }

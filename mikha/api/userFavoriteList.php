@@ -9,22 +9,22 @@
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
     include_once(realpath(dirname(dirname(dirname(__FILE__)))) . "/common/model/properties.php");
     include_once(realpath(dirname(dirname(__FILE__))) . '/api/commonApi.php');
+
     use \Firebase\JWT\JWT;
-    
     $proObj = new Model_Property();
     $data = json_decode(file_get_contents("php://input"));
     $jwt = $data->token;
- 
+
     if($jwt){
         try{
              $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
-        
-            if($res =$proObj->getAllPropertiesAPI())
+           // print_r($decoded->data->id);die;  
+            if($res =$proObj->getAllfavriteApi($decoded->data->id))
             {
-              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View All Properties.'));
+              echo json_encode(array('data'=>$res,'status'=>'1','message'=>'View all user favroite property.'));
             } else
             {
-              echo json_encode(array('status'=>'0','message'=>'Properties could not be created.'));
+              echo json_encode(array('status'=>'0','message'=>'User not add favroite property.'));
             }
     
         }

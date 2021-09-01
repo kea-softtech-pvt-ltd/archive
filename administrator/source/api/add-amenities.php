@@ -8,11 +8,12 @@
   include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/vendor/autoload.php'); 
   include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . '/includefiles.php');
 	include_once(realpath(dirname(dirname(dirname(dirname(__FILE__))))) . "/common/model/amenities.php");
+  
   use \Firebase\JWT\JWT;
-    $amenitiesObj = new Model_Amenities();
+  $amenitiesObj = new Model_Amenities();
 
     $data = json_decode(file_get_contents("php://input"));
-    $jwt = $data->jwt;
+    $jwt = $data->token;
     $secret_key = "123456789abcdefgh";
     // if jwt is not empty
     if($jwt){
@@ -28,10 +29,10 @@
           $amenitiesArray['created_at'] = date('Y/m/d H:i:s');
 
           if($amenitiesObj->addAmenitiesByValue($amenitiesArray)){
-              echo json_encode(array('status'=>'sucess','message'=>'Amenities add successfully.'));
+              echo json_encode(array('status'=>'1','message'=>'Amenities add successfully.'));
               //echo 'Amenities add successfully.';
           } else{
-              echo json_encode(array('status'=>'error','message'=>'Amenities could not be created.'));
+              echo json_encode(array('status'=>'0','message'=>'Amenities could not be created.'));
             // echo 'Amenities could not be created.';
           }
 
